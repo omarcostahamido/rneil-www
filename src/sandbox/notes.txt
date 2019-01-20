@@ -1,0 +1,15 @@
+
+01/20/19
+github says I need to update react dom to 16.0.1
+
+updated webpack-dev-server and webpack today. 
+code compiled fine but got this invalid host/origin header
+in console [WDS disconnected]
+-probably something they patched -maybe the problem
+they were talking about. 
+
+added this 
+
+    disableHostCheck: true
+
+to the devServer webpack.config 

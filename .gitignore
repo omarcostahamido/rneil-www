@@ -1,0 +1,7 @@
+/sandbox
+/node_modules
+/design
+
+.env
+.DS_Store
+.config.js
