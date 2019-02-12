@@ -8,8 +8,11 @@ const RootApp = () => {
   
   return (
     <div>
-      {console.log(`testing ${process.env.REACT_APP_API_KEY}`)}
-      <Homepage />
+      <Homepage 
+        token = {process.env.REACT_APP_ACCESS_TOKEN}
+        spaceId = {process.env.REACT_APP_SPACE_ID}
+        baseUrl = {process.env.REACT_APP_BASE_URL}
+      />
     </div>
   )
 }

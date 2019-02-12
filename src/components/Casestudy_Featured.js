@@ -6,8 +6,8 @@ const Casestudy_Featured = (props) => {
   return (
     <div>
       <div className="casestudy">
-        <img className="casestudy-hero" src={props.hero}/>
-        <p className="casestudy-title">{props.title}</p>
+        <img className="casestudy-hero" src={ props.hero }/>
+        <p className="casestudy-title">{ props.title }</p>
       </div>
     </div>
   )
