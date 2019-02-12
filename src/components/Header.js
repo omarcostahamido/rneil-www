@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
+import Gallery from "./Gallery.js";
 
 class Header extends React.Component {
   render() {
-    const { copy , img } = this.props
     return (
       <div>
-        <h1 className="header-message">{ copy }</h1>
-        <img className="header-img" src={ img } />
+        <h1 className="header-message">{this.props.copy}</h1>
+        <Gallery galleryImages={this.props.galleryImages} />
         <p>Exhibitions</p>
       </div>
-    )
+    );
   }
 }
 
-export default Header
+export default Header;
