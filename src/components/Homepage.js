@@ -8,38 +8,76 @@ class Homepage extends React.Component {
   state = {
     doc: null,
     headerMainCopy: "how terrible and how beautiful",
-    headerImageGallery: []
+    headerImageGallery: [],
+    featuredCasestudies: []
   };
+
+  //Data Handling functions----------------------
 
   getPrismicData = () => {
     const { token, apiEndpoint } = this.props;
 
     Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
       api
-        .query(Prismic.Predicates.at("document.type", "homepage_header"))
+        .query(
+          Prismic.Predicates.any("document.type", [
+            "homepage_header",
+            "casestudy"
+          ])
+        )
         .then(response => {
           if (response) {
             this.setState({
-              doc: response.results[0]
+              doc: response.results
             });
-            this.setState({
-              headerMainCopy: this.state.doc.data.home_header_main_copy[0].text
-            });
-            this.handleCleanGalleryData();
-          } else {
-            console.log("no response");
+            this.handleCleanData();
           }
-        });
+        })
+        .catch(error => console.log(error));
     });
   };
 
-  handleCleanGalleryData = () => {
+  handleCleanData = () => {
+    let featuredCasestudies = [];
+
     if (this.state.doc) {
-      let images = [];
-      this.state.doc.data.home_header_gallery.map(image => {
-        images.push(image.home_header_gallery_image.url);
+      this.state.doc.map(homepageItem => {
+        if (homepageItem.type === "homepage_header") {
+          let images = [];
+          homepageItem.data.home_header_gallery.map(image => {
+            images.push(image.home_header_gallery_image.url);
+          });
+          this.setState({
+            headerImageGallery: images,
+            headerMainCopy: homepageItem.data.home_header_main_copy[0].text
+          });
+        } else if (homepageItem.type === "casestudy") {
+          let casestudy = {};
+          casestudy.title = homepageItem.data.casestudy_title[0].text;
+          casestudy.hero = homepageItem.data.casestudy_hero_image.url;
+          featuredCasestudies.push(casestudy);
+        }
       });
-      this.setState({ headerImageGallery: images });
+
+      this.setState({ featuredCasestudies });
+    }
+  };
+
+  renderCasestudies = () => {
+    if (this.state.featuredCasestudies) {
+      return (
+        <div>
+          {this.state.featuredCasestudies.map(casestudy => {
+            return (
+              <Casestudy_Featured
+                title={casestudy.title}
+                hero={casestudy.hero}
+                key={casestudy.title}
+              />
+            );
+          })}
+        </div>
+      );
     }
   };
 
@@ -49,6 +87,8 @@ class Homepage extends React.Component {
     this.getPrismicData();
   }
 
+  // RENDER ---------------------------------------------
+
   render() {
     return (
       <div>
@@ -57,14 +97,7 @@ class Homepage extends React.Component {
           copy={this.state.headerMainCopy}
           galleryImages={this.state.headerImageGallery}
         />
-        <Casestudy_Featured
-          title="Casestudy 1"
-          hero="https://images.unsplash.com/photo-1547898812-9e25c5a693e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=2168&q=80"
-        />
-        <Casestudy_Featured
-          title="Casestudy 2"
-          hero="https://images.unsplash.com/photo-1547958600-915c8a5131de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
-        />
+        {this.renderCasestudies()}
       </div>
     );
   }

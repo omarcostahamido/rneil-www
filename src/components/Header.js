@@ -1,26 +1,12 @@
 import React from "react";
+import Gallery from "./Gallery.js";
 
 class Header extends React.Component {
-  handleGalleryBuild = galleryImages => {
-    if (galleryImages) {
-      return (
-        <div>
-          {galleryImages.map(image => {
-            return <img id={galleryImages.indexOf(image)} src={image} />;
-          })}
-        </div>
-      );
-    }
-  };
-
   render() {
-    const { copy, galleryImages } = this.props;
     return (
       <div>
-        <h1 className="header-message">{copy}</h1>
-        {galleryImages
-          ? this.handleGalleryBuild(galleryImages)
-          : "https://source.unsplash.com/random"}
+        <h1 className="header-message">{this.props.copy}</h1>
+        <Gallery galleryImages={this.props.galleryImages} />
         <p>Exhibitions</p>
       </div>
     );
