@@ -1,17 +1,19 @@
-import React from 'react'
-import Homepage from './Homepage.js'
-
+import React from "react";
+import Homepage from "./Homepage.js";
 
 //add routing here
 
 const RootApp = () => {
-  
   return (
     <div>
-      {console.log(`testing ${process.env.REACT_APP_API_KEY}`)}
-      <Homepage />
+      <Homepage
+        token={process.env.REACT_APP_ACCESS_TOKEN}
+        clientId={process.env.REACT_APP_CLIENT_ID}
+        clientSecret={process.env.REACT_APP_CLIENT_SECRET}
+        apiEndpoint={process.env.REACT_APP_BASE_URL}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default RootApp
+export default RootApp;
