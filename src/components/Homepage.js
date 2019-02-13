@@ -16,7 +16,7 @@ class Homepage extends React.Component {
 
   getPrismicData = () => {
     const { token, apiEndpoint } = this.props;
-
+    console.log("get prismic data!");
     Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
       api
         .query(
