@@ -41,6 +41,8 @@ module.exports = {
     disableHostCheck: true
   },
   plugins: [
-    new Dotenv()
+    new Dotenv({
+      systemvars: true
+    })
   ]
 };
