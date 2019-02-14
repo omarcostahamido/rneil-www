@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import Header from "./Header";
 import Casestudy_Featured from "./Casestudy_Featured";
 import Prismic from "prismic-javascript";
+import { Link } from "@reach/router";
 
 class Homepage extends React.Component {
   state = {
@@ -16,7 +17,6 @@ class Homepage extends React.Component {
 
   getPrismicData = () => {
     const { token, apiEndpoint } = this.props;
-    console.log("get prismic data!");
     Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
       api
         .query(
@@ -30,6 +30,7 @@ class Homepage extends React.Component {
             this.setState({
               doc: response.results
             });
+            console.log(this.state.doc);
             this.handleCleanData();
           }
         })
@@ -55,6 +56,8 @@ class Homepage extends React.Component {
           let casestudy = {};
           casestudy.title = homepageItem.data.casestudy_title[0].text;
           casestudy.hero = homepageItem.data.casestudy_hero_image.url;
+          casestudy.slug = homepageItem.slugs[0];
+          casestudy.id = homepageItem.id;
           featuredCasestudies.push(casestudy);
         }
       });
@@ -69,11 +72,15 @@ class Homepage extends React.Component {
         <div>
           {this.state.featuredCasestudies.map(casestudy => {
             return (
-              <Casestudy_Featured
-                title={casestudy.title}
-                hero={casestudy.hero}
-                key={casestudy.title}
-              />
+              <Link
+                to={`casestudy/${casestudy.slug}/${casestudy.id}`}
+                key={casestudy.slug}
+              >
+                <Casestudy_Featured
+                  title={casestudy.title}
+                  hero={casestudy.hero}
+                />
+              </Link>
             );
           })}
         </div>
