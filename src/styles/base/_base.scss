@@ -17,3 +17,12 @@ button {
 button:disabled {
   cursor: default;
 }
+
+img {
+  width: 1000px;
+}
+
+img#logo {
+  width: 50px;
+  height: 50px;
+}
