@@ -2,6 +2,7 @@ import React from "react";
 import Homepage from "./Homepage.js";
 import { Router } from "@reach/router";
 import Casestudy from "./Casestudy.js";
+import About from "./About";
 
 /* Re: routing - i foresee a potential problem with routes in production
 i.e. the path might not work if someone navigates directly to it. 
@@ -30,6 +31,11 @@ const RootApp = () => {
         />
         <Casestudy
           path="casestudy/:slug/:id"
+          apiEndpoint={process.env.REACT_APP_BASE_URL}
+          token={process.env.REACT_APP_ACCESS_TOKEN}
+        />
+        <About
+          path="about"
           apiEndpoint={process.env.REACT_APP_BASE_URL}
           token={process.env.REACT_APP_ACCESS_TOKEN}
         />

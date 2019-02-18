@@ -7,7 +7,7 @@ class Header extends React.Component {
       <div>
         <h1 className="header-message">{this.props.copy}</h1>
         <Gallery galleryImages={this.props.galleryImages} />
-        <p>Exhibitions</p>
+        <p id="exhibitions">Exhibitions</p>
       </div>
     );
   }

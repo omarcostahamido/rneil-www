@@ -3,6 +3,7 @@ import Body_Text_Slice from "./Slices/Body_Text_Slice";
 import Image_Slice from "./Slices/Image_Slice";
 import Pull_Quote_Slice from "./Slices/Pull_Quote_Slice";
 import Image_Left_Right_Slice from "./Slices/Image_Left_Right_Slice";
+import Autoplay_Video_Module from "./Slices/Autoplay_Video_Module";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
 import { navigate } from "@reach/router";
@@ -20,7 +21,6 @@ class Casestudy_Slice extends React.Component {
 
   cleanData = () => {
     if (this.state.doc) {
-      // console.log("doc true!");
       if (this.state.type === "body_text") {
         this.setState({
           bodyCopy: this.state.doc.primary.body_copy_rich_text[0].text
@@ -44,7 +44,6 @@ class Casestudy_Slice extends React.Component {
           panoramicImageUrl: this.state.doc.primary.panoramic_slider_image.url
         });
       } else if (this.props.slice_type === "image_slider") {
-        console.log(this.state.doc);
         let sliderImages = [];
 
         this.state.doc.items.map(image => {
@@ -54,6 +53,10 @@ class Casestudy_Slice extends React.Component {
           sliderImages: sliderImages,
           sliderPullQuote: this.state.doc.primary.image_slider_pull_quote[0]
             .text
+        });
+      } else if (this.props.slice_type === "autoplay_video_module") {
+        this.setState({
+          autoplayVideoUrl: this.state.doc.primary.autoplay_video_url.url
         });
       } else if (this.props.slice_type === "video_module") {
         this.setState({
@@ -66,7 +69,7 @@ class Casestudy_Slice extends React.Component {
       }
     } else {
       console.log("error- no doc found");
-      // this.navigateHome();
+      this.navigateHome();
     }
   };
 
@@ -103,12 +106,14 @@ class Casestudy_Slice extends React.Component {
           sliderPullQuote={this.state.sliderPullQuote}
         />
       );
+    } else if (this.props.slice_type === "autoplay_video_module") {
+      return (
+        <Autoplay_Video_Module autoplayVideoUrl={this.state.autoplayVideoUrl} />
+      );
     } else if (this.props.slice_type === "video_module") {
       return <Video_Module_Slice mediaModuleUrl={this.state.mediaModuleUrl} />;
     } else if (this.props.slice_type === "audio_module") {
       return <Audio_Module_Slice mediaModuleUrl={this.state.mediaModuleUrl} />;
-    } else {
-      // return <div>{this.navigateHome()}</div>;
     }
   };
 
