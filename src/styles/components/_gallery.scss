@@ -1,6 +1,6 @@
 div.home-header-gallery {
   position: relative;
-  // overflow: hidden;
+  overflow: hidden;
   white-space: nowrap;
   width: 100vw;
   cursor: grab;
@@ -15,17 +15,12 @@ to get the initial touchpad working again - this will break desktop
 */
 div.home-header-gallery-wrap {
   height: 60vh;
-  // display: flex;
-  display: inline-flex;
+  display: flex;
+  // display: inline-flex;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-  overflow-x: scroll;
- 
-  
+  overflow-x: auto;
   align-items: center;
-  // width: auto;
-
-  position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -33,6 +28,8 @@ div.home-header-gallery-wrap {
 }
 
 img.home-header-gallery-images{
+ 
+  flex-shrink: 0;
   width: 36vw;
   margin-left: 7vw;
  
@@ -42,15 +39,61 @@ img.home-header-gallery-images{
 
 img.is--active {
  opacity: 1;
- transform: translate3d(0px, 0px, 0px)
+//  transform: translate3d(0px, 0px, 0px)
 }
 
 img.animate {
   opacity: 0;
-  transform: translate3d(0, 0px, 0);
-  transition: opacity 600ms ease-out, transform 400ms ease-out;
+  // transform: translate3d(0, 0px, 0); transform 400ms ease-out; - to bottom transition
+  transition: opacity 600ms ease-out
 }
 
-img.animate--horz {
-  transform: translate3d(40px, 0px, 0px)
+// img.animate--horz {
+//   transform: translate3d(40px, 0px, 0px)
+// }
+
+@media (min-width: 320px) and (max-width: 812px) {
+  div.home-header-gallery {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100vw;
+    cursor: grab;
+  }
+  
+  /*THIS WORKS ON MOBILE and 'touchpad'
+  - need to find a way to make it work on desktop
+  while hiding the scroll bar
+  
+  - set to flex instead of inline flex and disable the wheel events
+  to get the initial touchpad working again - this will break desktop
+  */
+  div.home-header-gallery-wrap {
+    height: 60vh;
+    display: flex;
+    // display: inline-flex;
+    -webkit-overflow-scrolling: touch;
+    
+    scroll-snap-type: x mandatory;
+    touch-action: pan-y;
+    overflow-x: auto;
+    
+    
+    align-items: center;
+    // width: auto;
+  
+    // position: relative;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  img.home-header-gallery-images{
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    width: 80vw;
+    margin-left: 7vw;
+   
+  }
 }
