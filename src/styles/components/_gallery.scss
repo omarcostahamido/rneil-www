@@ -3,7 +3,7 @@ div.home-header-gallery {
   overflow: hidden;
   white-space: nowrap;
   width: 100vw;
-  cursor: grab;
+ 
 }
 
 /*THIS WORKS ON MOBILE and 'touchpad'
@@ -39,13 +39,14 @@ img.home-header-gallery-images{
 
 img.is--active {
  opacity: 1;
+ transition: opacity 500ms ease-out
 //  transform: translate3d(0px, 0px, 0px)
 }
 
 img.animate {
   opacity: 0;
   // transform: translate3d(0, 0px, 0); transform 400ms ease-out; - to bottom transition
-  transition: opacity 600ms ease-out
+  transition: opacity 500ms ease-out
 }
 
 // img.animate--horz {
