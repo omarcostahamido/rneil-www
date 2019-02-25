@@ -1,15 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-//this is where that fancy anchor link needs to go
-/* 
-issue here with the anchor tag behavior with exhibitions in the nav
-exhibitions can route with the anchor tag on the home page
-but not on about or case study....unless somehow I can handle that
-by checking for that rerouting and then calling that handleScrollDown()
-func.....could be possible with the history obj - might not be worth looking into
-*/
-
 class Nav extends React.Component {
   handleAnchorLink = () => {
     document

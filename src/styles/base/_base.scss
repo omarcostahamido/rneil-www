@@ -19,10 +19,38 @@ button:disabled {
 }
 
 img {
-  width: 1000px;
+  width: 33vw;
 }
 
 img#logo {
   width: 50px;
   height: 50px;
 }
+
+// TRANSITIONS / ANIMATIONS --------------
+  
+img.is--active {
+    opacity: 1;
+    transition: opacity 500ms ease-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-transition: opacity 500ms ease-out;
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+   //  transform: translate3d(0px, 0px, 0px)
+   }
+   
+img.animate {
+      opacity: 0;
+      // transform: translate3d(0, 0px, 0); transform 400ms ease-out; - to bottom transition
+      transition: opacity 500ms ease-out;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-transition: opacity 500ms ease-out;
+      -webkit-transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+   }
+   
+   // img.animate--horz {
+   //   transform: translate3d(40px, 0px, 0px)
+   // }

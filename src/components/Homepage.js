@@ -4,7 +4,6 @@ import Header from "./Header";
 import Casestudy_Featured from "./Casestudy_Featured";
 import Prismic from "prismic-javascript";
 import { Link } from "@reach/router";
-import About from "./About";
 
 class Homepage extends React.Component {
   state = {
@@ -58,6 +57,8 @@ class Homepage extends React.Component {
           let casestudy = {};
           casestudy.title = homepageItem.data.casestudy_title[0].text;
           casestudy.hero = homepageItem.data.casestudy_hero_image.url;
+          casestudy.heroMobile =
+            homepageItem.data.casestudy_hero_image_mobile.url;
           casestudy.slug = homepageItem.slugs[0];
           casestudy.id = homepageItem.id;
           featuredCasestudies.push(casestudy);
@@ -87,6 +88,7 @@ class Homepage extends React.Component {
                 <Casestudy_Featured
                   title={casestudy.title}
                   hero={casestudy.hero}
+                  heroMobile={casestudy.heroMobile}
                 />
               </Link>
             );

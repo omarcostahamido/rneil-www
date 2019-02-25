@@ -1,0 +1,34 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+div.slice__pano {
+  position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100vw;
+    // transform: translate3d(70vw, 0 , 0)
+}
+
+div.slice__pano--wrap {
+  // height: 60vh;
+  // width: 100vw;
+  display: flex;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  touch-action: pan-y;
+  overflow-x: auto;
+  align-items: center;
+}
+
+div.slice__pano--padding {
+  width: 100vw;
+  height: inherit;
+  padding-left: 70vw;
+  // display: flex;
+}
+
+img.slice__pano--img {
+  width: 120vw;
+  flex-shrink: 0;
+}
