@@ -41,21 +41,19 @@ class Gallery extends React.Component {
     }
   };
 
+  //if I have more styles and specific classes to add to the specific galleries,
+  //do it here in handleGalleryBuild()
+
   handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div
-          className="home-header-gallery-wrap"
-          onScroll={this.handleGalleryScroll}
-        >
+        <div className="gallery-wrap" onScroll={this.handleGalleryScroll}>
           {galleryImages.map(image => {
             return (
               <img
-                className="home-header-gallery-images animate"
-                id={`home-header-gallery-image-${galleryImages.indexOf(image)}`}
-                key={`home-header-gallery-image-${galleryImages.indexOf(
-                  image
-                )}`}
+                className="gallery-images animate"
+                id={`gallery-image-${galleryImages.indexOf(image)}`}
+                key={`gallery-image-${galleryImages.indexOf(image)}`}
                 src={image}
                 onClick={this.handleImageClick}
               />
@@ -74,8 +72,8 @@ class Gallery extends React.Component {
         isDesktop: true
       });
     }
-    if (document.querySelector("div.home-header-gallery-wrap")) {
-      let images = document.querySelectorAll("img.home-header-gallery-images");
+    if (document.querySelector("div.gallery-wrap")) {
+      let images = document.querySelectorAll("img.gallery-images");
       // console.log(images);
       if (this.state.imageNum == 0 && images.length > 1) {
         this.setState({
@@ -90,14 +88,18 @@ class Gallery extends React.Component {
   //RENDER----------------------------------------------------------
 
   render() {
-    const { galleryImages } = this.props;
+    const { galleryImages, type } = this.props;
     // console.log(this.state);
     return (
       <div>
-        <div className="home-header-gallery">
-          {galleryImages
-            ? this.handleGalleryBuild(galleryImages)
-            : "https://source.unsplash.com/random"}
+        <div
+          className={`gallery ${
+            type && type == "headerGallery"
+              ? "header__gallery"
+              : "slice__slider"
+          }`}
+        >
+          {galleryImages && this.handleGalleryBuild(galleryImages)}
         </div>
       </div>
     );

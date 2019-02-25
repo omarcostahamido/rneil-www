@@ -1,34 +1,15 @@
 import React from "react";
+import Gallery from "./Gallery";
 
-/* 
-will need to handle multiple images here 
-- get all images from props and add
-styles
-*/
-
-class Slider_Slice extends React.Component {
-  checkForPullQuote = () => {
-    if (this.props.sliderPullQuote) {
-      return <h1>{this.props.sliderPullQuote}</h1>;
-    }
-  };
-
-  renderImages = () => {
-    if (this.props.sliderImages) {
-      return (
-        <div>
-          {this.props.sliderImages.map(imageUrl => {
-            return <img key={imageUrl} src={imageUrl} />;
-          })}
-          {this.checkForPullQuote()}
-        </div>
-      );
-    }
-  };
-
-  render() {
-    return <div>{this.renderImages()}</div>;
-  }
-}
+const Slider_Slice = props => {
+  return (
+    <div>
+      <Gallery type="casestudySlider" galleryImages={props.sliderImages} />
+      {props.sliderPullQuote && (
+        <h1 className="slice__slider-pullquote">{props.sliderPullQuote}</h1>
+      )}
+    </div>
+  );
+};
 
 export default Slider_Slice;

@@ -6,7 +6,9 @@
 @import './components/nav';
 @import './components/header';
 @import './components/casestudy';
-@import './components/gallery';
+
 //SLICES--------------------
+@import './components/slices/gallery';
+@import './components/slices/slider_slice';
 @import './components/slices/panoramic_slider_slice';
 
