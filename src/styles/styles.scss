@@ -1,9 +1,12 @@
-//relative path, can leave off extension and underscore
+//BASE---------------------
 @import './base/settings';
 @import './base/base';
+//COMPONENTS---------------
 @import './components/homepage';
 @import './components/nav';
 @import './components/header';
 @import './components/casestudy';
-@import './components/gallery'
+@import './components/gallery';
+//SLICES--------------------
+@import './components/slices/panoramic_slider_slice';
 

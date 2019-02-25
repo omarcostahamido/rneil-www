@@ -1,13 +1,11 @@
 import React from "react";
 
-class Pull_Quote_Slice extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.pullQuoteCopy}</h1>
-      </div>
-    );
-  }
-}
+const Pull_Quote_Slice = props => {
+  return (
+    <div>
+      <h1>{props.pullQuoteCopy}</h1>
+    </div>
+  );
+};
 
 export default Pull_Quote_Slice;

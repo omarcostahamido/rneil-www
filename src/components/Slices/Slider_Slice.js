@@ -18,7 +18,6 @@ class Slider_Slice extends React.Component {
       return (
         <div>
           {this.props.sliderImages.map(imageUrl => {
-            // console.log("render image!");
             return <img key={imageUrl} src={imageUrl} />;
           })}
           {this.checkForPullQuote()}

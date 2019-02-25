@@ -1,13 +1,10 @@
 import React from "react";
 
-//check whether image is visible in viewport, then toggle classes
-
 class Gallery extends React.Component {
-  //STATE----------------------------------------
+  //STATE-------------------------------------------
   state = {
     isDesktop: false,
     imageNum: 0,
-    currentX: 0,
     images: []
   };
 
@@ -18,16 +15,11 @@ class Gallery extends React.Component {
 
   handleImageAnimations = images => {
     if (images.length > 1) {
-      // images.forEach(image => {
-      //   console.log(image);
-      //   console.log(image.getBoundingClientRect());
-      // });
-
       images.forEach(image => {
         image.getBoundingClientRect().left;
         if (
-          image.getBoundingClientRect().left < window.innerWidth &&
-          image.getBoundingClientRect().left > 0
+          image.getBoundingClientRect().left < window.innerWidth + 100 &&
+          image.getBoundingClientRect().left > -150
         ) {
           image.classList.add("is--active");
           image.classList.remove("animate");
@@ -82,18 +74,15 @@ class Gallery extends React.Component {
         isDesktop: true
       });
     }
-
     if (document.querySelector("div.home-header-gallery-wrap")) {
       let images = document.querySelectorAll("img.home-header-gallery-images");
       // console.log(images);
-
       if (this.state.imageNum == 0 && images.length > 1) {
         this.setState({
           imageNum: images.length,
           images: images
         });
       }
-
       this.handleImageAnimations(images);
     }
   }
