@@ -1,1 +1,49 @@
 /*-----------Nav Styles Here-----------*/
+
+
+
+div.nav__sticky-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: white;
+  transform: translate3d(0, 0, 0);
+  transition: transform 500ms ease-out;
+}
+
+div.nav__sticky-wrap.is--scroll {
+  background-color: rgba(255,255,255,.95);
+}
+
+div.nav__sticky-wrap.is--scroll-down { 
+  transform: translate3d(0, -100%, 0);
+  transition: transform 500ms ease-out;
+}
+
+nav.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  padding: 20px;
+}
+
+div.nav__nav-items {
+  display: flex;
+  padding: 20px;
+}
+
+div.nav__nav-items > * {
+  margin-left: 20px;
+}
+
+
+img#logo {
+  width: 50px;
+  height: 50px;
+}
