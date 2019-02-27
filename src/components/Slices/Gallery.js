@@ -47,13 +47,13 @@ class Gallery extends React.Component {
   handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div className="gallery-wrap" onScroll={this.handleGalleryScroll}>
+        <div className="gallery--wrap" onScroll={this.handleGalleryScroll}>
           {galleryImages.map(image => {
             return (
               <img
-                className="gallery-images animate"
-                id={`gallery-image-${galleryImages.indexOf(image)}`}
-                key={`gallery-image-${galleryImages.indexOf(image)}`}
+                className="gallery__images animate"
+                id={`gallery__image-${galleryImages.indexOf(image)}`}
+                key={`gallery__image-${galleryImages.indexOf(image)}`}
                 src={image}
                 onClick={this.handleImageClick}
               />
@@ -72,8 +72,8 @@ class Gallery extends React.Component {
         isDesktop: true
       });
     }
-    if (document.querySelector("div.gallery-wrap")) {
-      let images = document.querySelectorAll("img.gallery-images");
+    if (document.querySelector("div.gallery--wrap")) {
+      let images = document.querySelectorAll("img.gallery__images");
       // console.log(images);
       if (this.state.imageNum == 0 && images.length > 1) {
         this.setState({
@@ -94,9 +94,7 @@ class Gallery extends React.Component {
       <div>
         <div
           className={`gallery ${
-            type && type == "headerGallery"
-              ? "header__gallery"
-              : "slice__slider"
+            type && type == "headerGallery" ? "header-gallery" : "slice-slider"
           }`}
         >
           {galleryImages && this.handleGalleryBuild(galleryImages)}

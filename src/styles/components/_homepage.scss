@@ -1,6 +1,5 @@
 /*-------------------home page styles go here---------------*/
 
 .homepage__body {
-  height: 100vh;
-  width: 100vw;
+  @include entire-viewport
 }

@@ -17,6 +17,7 @@ class Nav extends React.Component {
     hasScrolled: false,
     scrollDelta: 0
   };
+
   handleAnchorLink = () => {
     document
       .getElementById("exhibitions")
@@ -32,7 +33,7 @@ class Nav extends React.Component {
   };
 
   handleNavAnimation = () => {
-    const nav = document.querySelector(".nav__sticky-wrap");
+    const nav = document.querySelector(".nav--sticky-wrap");
 
     //animate in the right-hand side items
     if (window.pageYOffset > 100 && !this.hasScrolled) {
@@ -43,7 +44,7 @@ class Nav extends React.Component {
       });
     }
 
-    //check for up-scroll - show nav
+    //check for up or down-scroll - show/hide nav
     if (window.pageYOffset >= this.state.scrollDelta) {
       this.setState({
         scrollDelta: window.pageYOffset
@@ -56,7 +57,6 @@ class Nav extends React.Component {
         scrollDelta: window.pageYOffset
       });
     }
-    //check for down-scroll again
   };
 
   componentDidMount() {
@@ -65,7 +65,7 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className="nav__sticky-wrap">
+      <div className="nav--sticky-wrap">
         <nav className="nav">
           <Link className="nav__logo" to="/">
             <img id="logo" alt="logo" src={this.props.logo} />
@@ -81,16 +81,3 @@ class Nav extends React.Component {
 }
 
 export default Nav;
-
-/*
-scroll event version - hacky and hard to get numbers on
-not a lot of info given on this scroll event since its on the 
-window and not on a targeted element
-// handleStickyScroll = e => {
-  //   console.log(e.path[0].scrollingElement.offsetTop);
-  // };
-
-  // componentDidMount() {
-  //   document.addEventListener("scroll", this.handleStickyScroll);
-  // }
-*/

@@ -10,11 +10,11 @@ const Panoramic_Slider_Slice = props => {
     });
   };
   return (
-    <div id="pano" className="slice__pano" onClick={handleImageClick}>
-      <div className="slice__pano--wrap">
-        <div className="slice__pano--padding" />
+    <div id="pano" className="slice-pano" onClick={handleImageClick}>
+      <div className="slice-pano--wrap">
+        <div className="slice-pano--padding" />
         <p>Slide</p>
-        <img className="slice__pano--img" src={props.panoramicImageUrl} />
+        <img className="slice-pano__img" src={props.panoramicImageUrl} />
       </div>
     </div>
   );

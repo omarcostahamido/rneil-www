@@ -2,33 +2,22 @@
   display: none;
 }
 
-div.slice__pano {
-  position: relative;
-    overflow: hidden;
-    white-space: nowrap;
+div.slice-pano {
+  @include slider-base;
+
+  div.slice-pano--wrap {
+    @include slider-wrap;
+  }
+  div.slice-pano--padding {
     width: 100vw;
-    // transform: translate3d(70vw, 0 , 0)
+    height: inherit;
+    padding-left: 70vw;
+  }
+  img.slice-pano__img {
+    width: 120vw;
+    flex-shrink: 0;
+  }
 }
 
-div.slice__pano--wrap {
-  // height: 60vh;
-  // width: 100vw;
-  display: flex;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  touch-action: pan-y;
-  overflow-x: auto;
-  align-items: center;
-}
 
-div.slice__pano--padding {
-  width: 100vw;
-  height: inherit;
-  padding-left: 70vw;
-  // display: flex;
-}
 
-img.slice__pano--img {
-  width: 120vw;
-  flex-shrink: 0;
-}

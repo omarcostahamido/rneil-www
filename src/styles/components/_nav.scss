@@ -1,25 +1,21 @@
 /*-----------Nav Styles Here-----------*/
 
-
-
-div.nav__sticky-wrap {
+div.nav--sticky-wrap {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
   width: 100%;
-  background-color: white;
+  background-color: $white;
   transform: translate3d(0, 0, 0);
   transition: transform 500ms ease-out;
-}
-
-div.nav__sticky-wrap.is--scroll {
-  background-color: rgba(255,255,255,.95);
-}
-
-div.nav__sticky-wrap.is--scroll-down { 
-  transform: translate3d(0, -100%, 0);
-  transition: transform 500ms ease-out;
+  &.is--scroll {
+    background-color: rgba(255,255,255,.95);
+  }
+  &.is--scroll-down {
+    transform: translate3d(0, -100%, 0);
+    transition: transform 500ms ease-out;
+  }
 }
 
 nav.nav {
@@ -30,20 +26,27 @@ nav.nav {
 }
 
 .nav__logo {
-  padding: 20px;
+  padding: $s-size;
+  img#logo {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 div.nav__nav-items {
   display: flex;
-  padding: 20px;
+  padding: $s-size;
+  * {
+    margin-left: $s-size;
+  }
+  &.animate {
+    @include fade(0);
+    //any additional specific modifiers here
+    //will override the _base class
+  }
+  &.is--active {
+    @include fade(1);
+  }
 }
 
-div.nav__nav-items > * {
-  margin-left: 20px;
-}
 
-
-img#logo {
-  width: 50px;
-  height: 50px;
-}

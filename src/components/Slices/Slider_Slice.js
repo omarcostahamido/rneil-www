@@ -6,7 +6,7 @@ const Slider_Slice = props => {
     <div>
       <Gallery type="casestudySlider" galleryImages={props.sliderImages} />
       {props.sliderPullQuote && (
-        <h1 className="slice__slider-pullquote">{props.sliderPullQuote}</h1>
+        <h1 className="slice-slider__pullquote">{props.sliderPullQuote}</h1>
       )}
     </div>
   );
