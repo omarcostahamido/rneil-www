@@ -1,6 +1,15 @@
 //casestudy root
 .casestudy {
-  
+  margin: 0;
+  padding-top: 120px;
+
+  &.casestudy--dark {
+    background-color: $black;
+    color: $white;
+  }
+  &.casestudy--light {
+    background-color: $white;
+  }
 }
 
 .casestudy-hero {
@@ -10,3 +19,8 @@
 .casestudy-title {
 
 }
+
+.casestudy--dark {
+
+}
+

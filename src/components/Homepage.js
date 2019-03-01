@@ -10,8 +10,15 @@ class Homepage extends React.Component {
     doc: null,
     headerMainCopy: "how terrible and how beautiful",
     headerImageSlider: [],
-    featuredCasestudies: []
+    featuredCasestudies: [],
+    casestudyNum: 0
   };
+
+  /* 
+  Could refactor this data call to only specifically get
+  some info from the casestudies..... right now getting 
+  all data... could get only the title, hero, and id
+  */
 
   //Data Handling functions----------------------
 
@@ -23,7 +30,18 @@ class Homepage extends React.Component {
           Prismic.Predicates.any("document.type", [
             "home_page_header",
             "casestudy"
-          ])
+          ]),
+          {
+            fetch: [
+              "home_page_header.home_page_header_title_copy",
+              "home_page_header.home_page_header_slider_images",
+              "casestudy.casestudy_hero_image",
+              "casestudy.casestudy_hero_image_mobile",
+              "casestudy.casestudy_title",
+              "casestudy.slugs",
+              "casestudy.id"
+            ]
+          }
         )
         .then(response => {
           if (response) {
@@ -65,7 +83,9 @@ class Homepage extends React.Component {
         }
       });
 
-      this.setState({ featuredCasestudies });
+      this.setState({
+        featuredCasestudies
+      });
       /*
       had to put this here to make the 'scroll' happen after the prismic
       content bc at first it was occurring but the anchor was already
@@ -140,3 +160,29 @@ class Homepage extends React.Component {
 export default Homepage;
 
 //    <h1 onClick={this.handleAnchorLink}>TO ABOUT</h1>
+
+/*
+
+  getPrismicData = () => {
+    const { token, apiEndpoint } = this.props;
+    Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
+      api
+        .query(
+          Prismic.Predicates.any("document.type", [
+            "home_page_header",
+            "casestudy"
+          ])
+        )
+        .then(response => {
+          if (response) {
+            this.setState({
+              doc: response.results
+            });
+            console.log(this.state.doc);
+            this.handleCleanData();
+          }
+        })
+        .catch(error => console.log(error));
+    });
+  };
+  */

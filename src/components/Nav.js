@@ -33,6 +33,7 @@ class Nav extends React.Component {
   };
 
   handleNavAnimation = () => {
+    // console.log(window.pageYOffset);
     const nav = document.querySelector(".nav--sticky-wrap");
 
     //animate in the right-hand side items
@@ -45,7 +46,7 @@ class Nav extends React.Component {
     }
 
     //check for up or down-scroll - show/hide nav
-    if (window.pageYOffset >= this.state.scrollDelta) {
+    if (window.pageYOffset > this.state.scrollDelta) {
       this.setState({
         scrollDelta: window.pageYOffset
       });
@@ -62,6 +63,12 @@ class Nav extends React.Component {
   componentDidMount() {
     window.addEventListener("scroll", this.handleNavAnimation);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNavAnimation);
+  }
+
+  //use component will unmount to handle the animation and transition between pages??
 
   render() {
     return (

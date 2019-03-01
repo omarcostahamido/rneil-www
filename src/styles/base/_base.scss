@@ -1,13 +1,21 @@
 html {
   //sets rem to base 10 system like pixels
   font-size: 62.5%;
+  //for firefox scroll
+  scrollbar-width: none;
+  overflow: auto;
 }
 
 body {
+  // margin: 0;
   background-color: $white;
   font-family: Helvetica, Arial, sans-serif;
   //base font-size is 16px
   font-size: $m-size;
+}
+
+h1, h2, p, img, div {
+  margin: 0;
 }
 
 button {

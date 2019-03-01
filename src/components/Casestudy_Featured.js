@@ -5,16 +5,16 @@ import React from "react";
 const Casestudy_Featured = props => {
   return (
     <div>
-      <div className="casestudy">
+      <div className="casestudy-featured">
         <img
-          className="casestudy-hero"
+          className="casestudy-featured__hero"
           src={
             props.heroMobile && window.innerWidth < 768
               ? props.heroMobile
               : props.hero
           }
         />
-        <p className="casestudy-title">{props.title}</p>
+        <p className="casestudy-featured__title">{props.title}</p>
       </div>
     </div>
   );

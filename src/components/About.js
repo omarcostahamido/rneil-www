@@ -12,7 +12,9 @@ class About extends React.Component {
 
     Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
       api
-        .query(Prismic.Predicates.any("document.type", ["about_page"]))
+        .query(Prismic.Predicates.at("document.type", "about_page"), {
+          fetch: ["about_page.about_page_copy", "about_page.about_page_image"]
+        })
         .then(response => {
           if (response) {
             this.setState({

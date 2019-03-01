@@ -20,6 +20,8 @@
   touch-action: pan-y;
   overflow-x: auto;
   align-items: center;
+  //this is for firefox scrollbar
+  scrollbar-width: none;
 }
 
 //transitions / animations--------------------
