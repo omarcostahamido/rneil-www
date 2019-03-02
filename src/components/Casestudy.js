@@ -2,7 +2,7 @@ import React from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
-import { Link, Redirect, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 
 class Casestudy extends React.Component {
   state = {
