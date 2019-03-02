@@ -117,7 +117,11 @@ class RootApp extends React.Component {
             casestudiesFeatured={this.state.casestudiesFeatured}
           />
 
-          {this.setupCasestudyRoutes()}
+          <Casestudy
+            path="casestudy/:slug/:id"
+            apiEndpoint={process.env.REACT_APP_BASE_URL}
+            token={process.env.REACT_APP_ACCESS_TOKEN}
+          />
 
           <About
             path="about"
