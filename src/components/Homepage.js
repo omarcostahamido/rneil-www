@@ -71,7 +71,7 @@ class Homepage extends React.Component {
   };
 
   renderCasestudies = () => {
-    console.log(this.props.casestudiesFeatured);
+    // console.log(this.props.casestudiesFeatured);
     if (this.props.casestudiesFeatured) {
       return (
         <div>

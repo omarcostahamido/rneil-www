@@ -128,7 +128,7 @@ class Casestudy extends React.Component {
     this.getPrismicData();
     this.checkForMobile();
     this.handleNextButton();
-    window.addEventListener("popstate", e => {
+    window.addEventListener("popstate", () => {
       location.reload();
     });
   }

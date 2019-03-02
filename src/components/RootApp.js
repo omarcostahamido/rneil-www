@@ -55,47 +55,58 @@ class RootApp extends React.Component {
               casestudyNum: response.results.length
             });
             // console.log(this.state);
-            this.handleCleanData();
+            this.reorderCasestudies();
           }
         })
         .catch(error => console.log(error));
     });
   };
 
-  handleCleanData = () => {
+  reorderCasestudies = () => {
     if (this.state.casestudiesFeatured) {
       let casestudiesFeatured = [];
-
-      for (let i = 0; i < this.state.casestudyNum; i++) {
-        casestudiesFeatured.push(i);
-      }
+      let order = [];
+      let checkOutliers = false;
 
       this.state.casestudiesFeatured.forEach(casestudy => {
-        casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
+        order.push(casestudy.data.casestudy_order);
       });
 
-      if (this.state.casestudiesFeatured) {
-        this.setState({
-          casestudiesFeatured
-        });
-      }
-    }
-  };
+      const checkDuplicates = order.reduce(function(acc, el, i, arr) {
+        if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) acc.push(el);
+        return acc;
+      }, []);
 
-  setupCasestudyRoutes = () => {
-    if (this.state.casestudiesFeatured) {
-      {
-        this.state.casestudiesFeatured.map(casestudy => {
-          return (
-            <Casestudy
-              path={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
-              apiEndpoint={process.env.REACT_APP_BASE_URL}
-              token={process.env.REACT_APP_ACCESS_TOKEN}
-              data={casestudy.data}
-              key={casestudy.id}
-            />
-          );
+      this.state.casestudiesFeatured.forEach(casestudy => {
+        if (
+          casestudy.data.casestudy_order > this.state.casestudiesFeatured.length
+        ) {
+          console.log("outliers!! check prismic for casestudy order");
+          checkOutliers = true;
+        }
+      });
+
+      if (!checkDuplicates.length && !checkOutliers) {
+        console.log(
+          "no duplicates or outliers! casestudies rendering in order"
+        );
+        for (let i = 0; i < this.state.casestudyNum; i++) {
+          casestudiesFeatured.push(i);
+        }
+        this.state.casestudiesFeatured.forEach(casestudy => {
+          casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
         });
+
+        if (this.state.casestudiesFeatured) {
+          this.setState({
+            casestudiesFeatured
+          });
+        }
+      } else {
+        console.log(
+          "duplicates or outliers!! check prismic for casestudy index " +
+            checkDuplicates
+        );
       }
     }
   };
