@@ -1,5 +1,13 @@
 /*-------------------home page styles go here---------------*/
 
 .homepage__body {
-  @include entire-viewport
+  @include entire-viewport;
+}
+
+div.homepage__casestudies-featured {
+  background-color: $black;
+  color: $white;
+  padding-top: $l-size;
+  position: relative;
+  z-index: 3;
 }

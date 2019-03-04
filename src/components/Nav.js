@@ -19,9 +19,6 @@ class Nav extends React.Component {
   };
 
   handleNavAnimation = () => {
-    // console.log(window.pageYOffset);
-    const nav = document.querySelector(".nav--sticky-wrap");
-
     //animate in the right-hand side items
     if (window.pageYOffset > 100 && !this.hasScrolled) {
       document.querySelector(".nav__nav-items").classList.add("is--active");
@@ -30,24 +27,34 @@ class Nav extends React.Component {
         hasScrolled: true
       });
     }
+  };
 
-    //check for up or down-scroll - show/hide nav
-    if (window.pageYOffset > this.state.scrollDelta) {
-      this.setState({
-        scrollDelta: window.pageYOffset
-      });
-      nav.classList.add("is--scroll-down");
-      nav.classList.add("is--scroll");
-    } else {
-      nav.classList.remove("is--scroll-down");
-      this.setState({
-        scrollDelta: window.pageYOffset
-      });
-    }
+  logScrollDirection = () => {
+    let previous = window.pageYOffset * 0.4;
+    const nav = document.querySelector(".nav--sticky-wrap");
+
+    window.addEventListener("scroll", function() {
+      if (window.pageYOffset * 0.4 > previous) {
+        console.log("down");
+        nav.classList.add("is--scroll-down");
+        nav.classList.add("is--scroll");
+      } else {
+        console.log("up");
+        nav.classList.remove("is--scroll-down");
+      }
+      previous = window.pageYOffset * 0.4;
+    });
   };
 
   componentDidMount() {
+    this.logScrollDirection();
     window.addEventListener("scroll", this.handleNavAnimation);
+  }
+
+  componentDidUpdate() {
+    if (this.state.hasScrolled) {
+      window.removeEventListener("scroll", this.handleNavAnimation);
+    }
   }
 
   componentWillUnmount() {

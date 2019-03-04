@@ -1,7 +1,11 @@
 .header {
-  padding-top: 120px;
+  @include entire-viewport;
+  position: relative;
+  // position:sticky;
+  // position: -webkit-sticky;
+  // top: 0;
 }
 
 .header__main-copy {
-  
+   padding-top: 120px;
 }

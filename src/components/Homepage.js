@@ -55,17 +55,28 @@ class Homepage extends React.Component {
     }
   };
 
-  //The fancy animated 'scroll' down to that point
   handleAnchorLink = () => {
+    window.removeEventListener("scroll", this.handleParallax);
     document
-      .getElementById("exhibitions")
+      .querySelector("div.homepage__casestudies-featured")
       .scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  handleParallax = () => {
+    document.querySelector("div.header").style.top = `${(
+      window.pageYOffset * 0.4
+    ).toString()}px`;
   };
 
   //LIFECYCLE----------------------------------
 
   componentDidMount() {
     this.getPrismicData();
+    window.addEventListener("scroll", this.handleParallax);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleParallax);
   }
 
   // RENDER ---------------------------------------------
@@ -81,7 +92,9 @@ class Homepage extends React.Component {
             galleryImages={this.state.headerImageSlider}
             handleAnchorLink={this.handleAnchorLink}
           />
-          {this.props.renderCasestudies()}
+          <div className="homepage__casestudies-featured">
+            {this.props.renderCasestudies()}
+          </div>
         </div>
       </div>
     );
@@ -124,6 +137,12 @@ handleExhibitionsLink = () => {
       this.handleAnchorLink();
     }
   };
+
+  // handleAnchorLink = () => {
+  //   document
+  //     .getElementById("exhibitions")
+  //     .scrollIntoView({ behavior: "smooth", block: "start" });
+  // };
 
 else if (homepageItem.type === "casestudy") {
           let casestudy = {};
