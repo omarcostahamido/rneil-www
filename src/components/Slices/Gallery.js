@@ -53,7 +53,7 @@ class Gallery extends React.Component {
               <img
                 className="gallery__images animate"
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
-                key={`gallery__image-${galleryImages.indexOf(image)}`}
+                key={`gallery__image-${image}-${Math.random()}`}
                 src={image}
                 onClick={this.handleImageClick}
               />
@@ -89,7 +89,7 @@ class Gallery extends React.Component {
 
   render() {
     const { galleryImages, type } = this.props;
-    // console.log(this.state);
+    // console.log(this.props.galleryImages);
     return (
       <div>
         <div

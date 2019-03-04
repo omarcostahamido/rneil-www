@@ -19,18 +19,20 @@ redirect all requests to .index.html
 
 --- could move api call to this root and pass down the data to child components....
 
-
  <Casestudy
           path="/casestudy/:slug/:id"
           apiEndpoint={process.env.REACT_APP_BASE_URL}
           token={process.env.REACT_APP_ACCESS_TOKEN}
         />
+
+  - make an order object in state that has the order number and id of the casestudies
 */
 
 class RootApp extends React.Component {
   state = {
     casestudiesFeatured: null,
-    casestudyNum: null
+    casestudyNum: null,
+    casestudyOrder: []
   };
 
   getCasestudyOrder = () => {
@@ -67,16 +69,15 @@ class RootApp extends React.Component {
       let casestudiesFeatured = [];
       let order = [];
       let checkOutliers = false;
-
       this.state.casestudiesFeatured.forEach(casestudy => {
         order.push(casestudy.data.casestudy_order);
       });
-
+      //check for duplicates in order data from prismic
       const checkDuplicates = order.reduce(function(acc, el, i, arr) {
         if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) acc.push(el);
         return acc;
       }, []);
-
+      //check for outliers in order data
       this.state.casestudiesFeatured.forEach(casestudy => {
         if (
           casestudy.data.casestudy_order > this.state.casestudiesFeatured.length
@@ -85,21 +86,26 @@ class RootApp extends React.Component {
           checkOutliers = true;
         }
       });
-
+      //if there are no duplicates/outliers, set state for order and featured
       if (!checkDuplicates.length && !checkOutliers) {
-        console.log(
-          "no duplicates or outliers! casestudies rendering in order"
-        );
+        let casestudyOrder = [];
+        console.log("casestudies rendering in order");
         for (let i = 0; i < this.state.casestudyNum; i++) {
           casestudiesFeatured.push(i);
         }
         this.state.casestudiesFeatured.forEach(casestudy => {
           casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
+          casestudyOrder.push({
+            id: casestudy.id,
+            slug: casestudy.slugs[0],
+            order: casestudy.data.casestudy_order
+          });
         });
 
         if (this.state.casestudiesFeatured) {
           this.setState({
-            casestudiesFeatured
+            casestudiesFeatured,
+            casestudyOrder
           });
         }
       } else {
@@ -116,14 +122,12 @@ class RootApp extends React.Component {
   }
 
   render() {
+    // console.log(this.state);
     return (
       <div>
         <Router>
           <Homepage
             path="/*"
-            token={process.env.REACT_APP_ACCESS_TOKEN}
-            clientId={process.env.REACT_APP_CLIENT_ID}
-            clientSecret={process.env.REACT_APP_CLIENT_SECRET}
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             casestudiesFeatured={this.state.casestudiesFeatured}
           />
@@ -131,14 +135,10 @@ class RootApp extends React.Component {
           <Casestudy
             path="casestudy/:slug/:id"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
-            token={process.env.REACT_APP_ACCESS_TOKEN}
+            order={this.state.casestudyOrder}
           />
 
-          <About
-            path="about"
-            apiEndpoint={process.env.REACT_APP_BASE_URL}
-            token={process.env.REACT_APP_ACCESS_TOKEN}
-          />
+          <About path="about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
         </Router>
       </div>
     );

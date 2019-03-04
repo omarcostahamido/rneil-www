@@ -9,22 +9,16 @@ class Homepage extends React.Component {
   state = {
     doc: null,
     headerMainCopy: "how terrible and how beautiful",
-    headerImageSlider: [],
-    featuredCasestudies: [],
-    casestudyNum: 0
+    headerImageSlider: []
   };
-
-  /* 
-  Could refactor this data call to only specifically get
-  some info from the casestudies..... right now getting 
-  all data... could get only the title, hero, and id
-  */
 
   //Data Handling functions----------------------
 
   getPrismicData = () => {
-    const { token, apiEndpoint } = this.props;
-    Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
+    const { apiEndpoint } = this.props;
+    Prismic.api(apiEndpoint, {
+      accessToken: process.env.REACT_APP_ACCESS_TOKEN
+    }).then(api => {
       api
         .query(Prismic.Predicates.at("document.type", "home_page_header"), {
           fetch: [
