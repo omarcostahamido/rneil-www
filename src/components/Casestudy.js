@@ -112,7 +112,6 @@ class Casestudy extends React.Component {
       otherwise, set next route 
       */
       if (currentIndex == 0) {
-        console.log("'next' routes back to beginning");
         nextIndex = order[this.props.order.length - 1];
       } else {
         nextIndex = order[currentIndex - 1];

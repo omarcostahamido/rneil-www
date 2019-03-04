@@ -68,6 +68,7 @@ class RootApp extends React.Component {
     if (this.state.casestudiesFeatured) {
       let casestudiesFeatured = [];
       let order = [];
+      let casestudyOrder = [];
       let checkOutliers = false;
       this.state.casestudiesFeatured.forEach(casestudy => {
         order.push(casestudy.data.casestudy_order);
@@ -86,9 +87,11 @@ class RootApp extends React.Component {
           checkOutliers = true;
         }
       });
-      //if there are no duplicates/outliers, set state for order and featured
+      /*
+      if there are no duplicates/outliers, set state for order and featured
+      otherwise...set order for the current prismic order 
+      */
       if (!checkDuplicates.length && !checkOutliers) {
-        let casestudyOrder = [];
         console.log("casestudies rendering in order");
         for (let i = 0; i < this.state.casestudyNum; i++) {
           casestudiesFeatured.push(i);
@@ -101,7 +104,6 @@ class RootApp extends React.Component {
             order: casestudy.data.casestudy_order
           });
         });
-
         if (this.state.casestudiesFeatured) {
           this.setState({
             casestudiesFeatured,
@@ -109,8 +111,20 @@ class RootApp extends React.Component {
           });
         }
       } else {
+        this.state.casestudiesFeatured.forEach(casestudy => {
+          casestudyOrder.push({
+            id: casestudy.id,
+            slug: casestudy.slugs[0],
+            order: casestudy.data.casestudy_order
+          });
+        });
+        if (casestudyOrder) {
+          this.setState({
+            casestudyOrder
+          });
+        }
         console.log(
-          "duplicates or outliers!! check prismic for casestudy index " +
+          "duplicates or outliers!! check prismic for casestudy order no. " +
             checkDuplicates
         );
       }
