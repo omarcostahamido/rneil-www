@@ -1,8 +1,10 @@
 import React from "react";
 import Homepage from "./Homepage.js";
-import { Router } from "@reach/router";
+import { Router, Link } from "@reach/router";
 import Casestudy from "./Casestudy.js";
+import Casestudy_Featured from "./Casestudy_Featured";
 import About from "./About";
+import Exhibitions from "./Exhibitions";
 import Prismic from "prismic-javascript";
 
 /* Re: routing - i foresee a potential problem with routes in production
@@ -131,6 +133,29 @@ class RootApp extends React.Component {
     }
   };
 
+  renderCasestudies = () => {
+    if (this.state.casestudiesFeatured) {
+      return (
+        <div>
+          {this.state.casestudiesFeatured.map(casestudy => {
+            return (
+              <Link
+                to={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
+                key={casestudy.slugs[0]}
+              >
+                <Casestudy_Featured
+                  title={casestudy.data.casestudy_title[0].text}
+                  hero={casestudy.data.casestudy_hero_image.url}
+                  heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
+                />
+              </Link>
+            );
+          })}
+        </div>
+      );
+    }
+  };
+
   componentDidMount() {
     this.getCasestudyOrder();
   }
@@ -143,7 +168,7 @@ class RootApp extends React.Component {
           <Homepage
             path="/*"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
-            casestudiesFeatured={this.state.casestudiesFeatured}
+            renderCasestudies={this.renderCasestudies}
           />
 
           <Casestudy
@@ -151,7 +176,7 @@ class RootApp extends React.Component {
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             order={this.state.casestudyOrder}
           />
-
+          <Exhibitions path="work" renderCasestudies={this.renderCasestudies} />
           <About path="about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
         </Router>
       </div>

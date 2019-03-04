@@ -1,9 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import Header from "./Header";
-import Casestudy_Featured from "./Casestudy_Featured";
 import Prismic from "prismic-javascript";
-import { Link } from "@reach/router";
 
 class Homepage extends React.Component {
   state = {
@@ -54,53 +52,14 @@ class Homepage extends React.Component {
           });
         }
       });
-
-      /*
-      had to put this here to make the 'scroll' happen after the prismic
-      content bc at first it was occurring but the anchor was already
-      at the top of the page
-      */
-      this.handleExhibitionsLink();
-    }
-  };
-
-  renderCasestudies = () => {
-    // console.log(this.props.casestudiesFeatured);
-    if (this.props.casestudiesFeatured) {
-      return (
-        <div>
-          {this.props.casestudiesFeatured.map(casestudy => {
-            return (
-              <Link
-                to={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
-                key={casestudy.slugs[0]}
-              >
-                <Casestudy_Featured
-                  title={casestudy.data.casestudy_title[0].text}
-                  hero={casestudy.data.casestudy_hero_image.url}
-                  heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
-                />
-              </Link>
-            );
-          })}
-        </div>
-      );
     }
   };
 
   //The fancy animated 'scroll' down to that point
   handleAnchorLink = () => {
-    console.log("anchor link!");
     document
       .getElementById("exhibitions")
       .scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  handleExhibitionsLink = () => {
-    if (/exhibitions$/.test(window.location)) {
-      console.log("exhibitions!");
-      this.handleAnchorLink();
-    }
   };
 
   //LIFECYCLE----------------------------------
@@ -112,6 +71,7 @@ class Homepage extends React.Component {
   // RENDER ---------------------------------------------
 
   render() {
+    // console.log(this.props);
     return (
       <div>
         <div className="homepage__body">
@@ -119,8 +79,9 @@ class Homepage extends React.Component {
           <Header
             copy={this.state.headerMainCopy}
             galleryImages={this.state.headerImageSlider}
+            handleAnchorLink={this.handleAnchorLink}
           />
-          {this.renderCasestudies()}
+          {this.props.renderCasestudies()}
         </div>
       </div>
     );
@@ -132,6 +93,37 @@ export default Homepage;
 //    <h1 onClick={this.handleAnchorLink}>TO ABOUT</h1>
 
 /*
+
+  // renderCasestudies = () => {
+  //   // console.log(this.props.casestudiesFeatured);
+  //   if (this.props.casestudiesFeatured) {
+  //     return (
+  //       <div>
+  //         {this.props.casestudiesFeatured.map(casestudy => {
+  //           return (
+  //             <Link
+  //               to={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
+  //               key={casestudy.slugs[0]}
+  //             >
+  //               <Casestudy_Featured
+  //                 title={casestudy.data.casestudy_title[0].text}
+  //                 hero={casestudy.data.casestudy_hero_image.url}
+  //                 heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
+  //               />
+  //             </Link>
+  //           );
+  //         })}
+  //       </div>
+  //     );
+  //   }
+  // };
+
+handleExhibitionsLink = () => {
+    if (/exhibitions$/.test(window.location)) {
+      console.log("exhibitions!");
+      this.handleAnchorLink();
+    }
+  };
 
 else if (homepageItem.type === "casestudy") {
           let casestudy = {};

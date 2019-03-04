@@ -18,20 +18,6 @@ class Nav extends React.Component {
     scrollDelta: 0
   };
 
-  handleAnchorLink = () => {
-    document
-      .getElementById("exhibitions")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  renderExhibitionLink = () => {
-    if (/about$/.test(window.location) || /casestudy/.test(window.location)) {
-      return <Link to="/exhibitions">Exhibitions</Link>;
-    } else {
-      return <a onClick={this.handleAnchorLink}>Exhibitions</a>;
-    }
-  };
-
   handleNavAnimation = () => {
     // console.log(window.pageYOffset);
     const nav = document.querySelector(".nav--sticky-wrap");
@@ -78,7 +64,7 @@ class Nav extends React.Component {
             <img id="logo" alt="logo" src={this.props.logo} />
           </Link>
           <div className="nav__nav-items animate">
-            {this.renderExhibitionLink()}
+            <Link to="/work">Work</Link>
             <Link to="/about">About</Link>
           </div>
         </nav>
@@ -88,3 +74,20 @@ class Nav extends React.Component {
 }
 
 export default Nav;
+
+/**
+ *
+ *   handleAnchorLink = () => {
+    document
+      .getElementById("exhibitions")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+   // renderExhibitionLink = () => {
+  //   if (/about$/.test(window.location) || /casestudy/.test(window.location)) {
+  //     return <Link to="/exhibitions">Exhibitions</Link>;
+  //   } else {
+  //     return <a onClick={this.handleAnchorLink}>Exhibitions</a>;
+  //   }
+  // };
+ */
