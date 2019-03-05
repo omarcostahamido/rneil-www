@@ -72,11 +72,23 @@ class Homepage extends React.Component {
 
   componentDidMount() {
     this.getPrismicData();
-    window.addEventListener("scroll", this.handleParallax);
+    if (!(window.innerWidth <= 1024)) {
+      window.addEventListener("scroll", () => {
+        setInterval(() => {
+          window.requestAnimationFrame(this.handleParallax);
+        }, 10);
+      });
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleParallax);
+    if (!(window.innerWidth <= 1024)) {
+      window.removeEventListener("scroll", () => {
+        setInterval(() => {
+          window.requestAnimationFrame(this.handleParallax);
+        }, 10);
+      });
+    }
   }
 
   // RENDER ---------------------------------------------

@@ -1,17 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-/*
-
-implement sticky nav bx here 
-- get correct styling - logo on left, items on right - CHECK
-- have it load with items not showing - CHECK
-- on scroll...fade in those items - CHECK
-- first get the nav to stick to top of page....adjust z-index.... - CHECK
-- last....at a certain scroll point, do transform3d(0 100% 0) to hide it
-- listen for the scroll up and transform3d again
-*/
-
 class Nav extends React.Component {
   state = {
     hasScrolled: false,
@@ -34,12 +23,14 @@ class Nav extends React.Component {
     const nav = document.querySelector(".nav--sticky-wrap");
 
     window.addEventListener("scroll", function() {
-      if (window.pageYOffset * 0.4 > previous) {
-        console.log("down");
+      if (window.pageYOffset <= 0) {
+        nav.classList.remove("is--scroll-down");
+      } else if (window.pageYOffset * 0.4 > previous) {
+        // console.log("down");
         nav.classList.add("is--scroll-down");
         nav.classList.add("is--scroll");
       } else {
-        console.log("up");
+        // console.log("up");
         nav.classList.remove("is--scroll-down");
       }
       previous = window.pageYOffset * 0.4;
@@ -48,7 +39,9 @@ class Nav extends React.Component {
 
   componentDidMount() {
     this.logScrollDirection();
-    window.addEventListener("scroll", this.handleNavAnimation);
+    // window.addEventListener("scroll", () => {
+    //   window.requestAnimationFrame(this.handleNavAnimation);
+    // });
   }
 
   componentDidUpdate() {
