@@ -8,9 +8,11 @@ class About extends React.Component {
   };
 
   getPrismicData = () => {
-    const { token, apiEndpoint } = this.props;
+    const { apiEndpoint } = this.props;
 
-    Prismic.api(apiEndpoint, { accessToken: token }).then(api => {
+    Prismic.api(apiEndpoint, {
+      accessToken: process.env.REACT_APP_ACCESS_TOKEN
+    }).then(api => {
       api
         .query(Prismic.Predicates.at("document.type", "about_page"), {
           fetch: ["about_page.about_page_copy", "about_page.about_page_image"]

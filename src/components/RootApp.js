@@ -5,6 +5,7 @@ import Casestudy from "./Casestudy.js";
 import Casestudy_Featured from "./Casestudy_Featured";
 import About from "./About";
 import Exhibitions from "./Exhibitions";
+import Not_Found from "./Not_Found";
 import Prismic from "prismic-javascript";
 
 /* Re: routing - i foresee a potential problem with routes in production
@@ -166,18 +167,22 @@ class RootApp extends React.Component {
       <div>
         <Router>
           <Homepage
-            path="/*"
+            path="/"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             renderCasestudies={this.renderCasestudies}
           />
 
           <Casestudy
-            path="casestudy/:slug/:id"
+            path="/casestudy/:slug/:id"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             order={this.state.casestudyOrder}
           />
-          <Exhibitions path="work" renderCasestudies={this.renderCasestudies} />
-          <About path="about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
+          <Exhibitions
+            path="/work"
+            renderCasestudies={this.renderCasestudies}
+          />
+          <About path="/about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
+          <Not_Found default />
         </Router>
       </div>
     );
