@@ -76,23 +76,23 @@ class Homepage extends React.Component {
 
   componentDidMount() {
     this.getPrismicData();
-    if (!(window.innerWidth <= 1024)) {
-      window.addEventListener("scroll", () => {
-        setInterval(() => {
-          window.requestAnimationFrame(this.handleParallax);
-        }, 10);
-      });
-    }
+    // if (!(window.innerWidth <= 1024)) {
+    //   window.addEventListener("scroll", () => {
+    //     setInterval(() => {
+    //       window.requestAnimationFrame(this.handleParallax);
+    //     }, 10);
+    //   });
+    // }
   }
 
   componentWillUnmount() {
-    if (!(window.innerWidth <= 1024)) {
-      window.removeEventListener("scroll", () => {
-        setInterval(() => {
-          window.requestAnimationFrame(this.handleParallax);
-        }, 10);
-      });
-    }
+    // if (!(window.innerWidth <= 1024)) {
+    //   window.removeEventListener("scroll", () => {
+    //     setInterval(() => {
+    //       window.requestAnimationFrame(this.handleParallax);
+    //     }, 10);
+    //   });
+    // }
   }
 
   // RENDER ---------------------------------------------
@@ -102,7 +102,11 @@ class Homepage extends React.Component {
     return (
       <div>
         <div className="homepage__body">
-          <Nav logo="../../../assets/Rneil.svg" />
+          <Nav
+            page="homepage"
+            class="--home"
+            logo="../../../assets/Rneil.svg"
+          />
           <Header
             copy={this.state.headerMainCopy}
             galleryImages={this.state.headerImageSlider}
