@@ -51,7 +51,6 @@ class Nav extends React.Component {
       this.props.page == "homepage" &&
       window.pageYOffset >= window.innerHeight
     ) {
-      console.log("handling nav color");
       document.querySelector(".logo-path").style.fill = "#fff";
       document.querySelector("div.nav__nav-items").style.color = "#fff";
     } else if (
@@ -61,36 +60,24 @@ class Nav extends React.Component {
       document.querySelector(".logo-path").style.fill = "#000";
       document.querySelector("div.nav__nav-items").style.color = "#000";
     }
-    requestAnimationFrame(this.handleNavColor);
   };
 
   componentDidMount() {
     this.handleNavScroll(true, this.handleNavItemAnimation);
-    // if (this.props.page == "homepage") {
-    //   console.log("homepage!");
-    //   requestAnimationFrame(this.handleNavColor);
-    // }
-  }
-
-  componentDidUpdate() {
-    // if (!(this.props.page == "homepage")) {
-    //   console.log("not home page!");
-    //   cancelAnimationFrame(requestAnimationFrame(this.handleNavColor));
-    // }
+    if (window.location.pathname == "/") {
+      document.addEventListener("scroll", this.handleNavColor);
+    }
   }
 
   componentWillUnmount() {
     this.handleNavScroll(false, this.handleNavItemAnimation);
-    // if (this.props.page == "homepage") {
-    //   console.log("removing!");
-    //   cancelAnimationFrame(requestAnimationFrame(this.handleNavColor));
-    // }
+    document.removeEventListener("scroll", this.handleNavColor);
   }
 
   //use component will unmount to handle the animation and transition between pages??
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div
         className={`nav--sticky-wrap ${this.props.page == "homepage" &&
@@ -151,6 +138,24 @@ export default Nav;
   // };
 
 
+handleNavColor = () => {
+    if (
+      this.props.page == "homepage" &&
+      window.pageYOffset >= window.innerHeight
+    ) {
+      console.log("handling nav color");
+      document.querySelector(".logo-path").style.fill = "#fff";
+      document.querySelector("div.nav__nav-items").style.color = "#fff";
+    } else if (
+      this.props.page == "homepage" &&
+      window.pageYOffset <= window.innerHeight
+    ) {
+      document.querySelector(".logo-path").style.fill = "#000";
+      document.querySelector("div.nav__nav-items").style.color = "#000";
+    }
+    requestAnimationFrame(this.handleNavColor);
+  };
+
 handleNavColor = mounting => {
     console.log("handling nav color");
     if (mounting) {
@@ -185,4 +190,47 @@ handleNavColor = mounting => {
     }
   };
  
+
+
+
+
+   handleNavColor = mounting => {
+    if (mounting) {
+      document.addEventListener("scroll", () => {
+        if (window.location.pathname == "/") {
+          if (
+            this.props.page == "homepage" &&
+            window.pageYOffset >= window.innerHeight
+          ) {
+            document.querySelector(".logo-path").style.fill = "#fff";
+            document.querySelector("div.nav__nav-items").style.color = "#fff";
+          } else if (
+            this.props.page == "homepage" &&
+            window.pageYOffset <= window.innerHeight
+          ) {
+            document.querySelector(".logo-path").style.fill = "#000";
+            document.querySelector("div.nav__nav-items").style.color = "#000";
+          }
+        }
+      });
+    } else if (!mounting) {
+      document.removeEventListener("scroll", () => {
+        if (window.location.pathname == "/") {
+          if (
+            this.props.page == "homepage" &&
+            window.pageYOffset >= window.innerHeight
+          ) {
+            document.querySelector(".logo-path").style.fill = "#fff";
+            document.querySelector("div.nav__nav-items").style.color = "#fff";
+          } else if (
+            this.props.page == "homepage" &&
+            window.pageYOffset <= window.innerHeight
+          ) {
+            document.querySelector(".logo-path").style.fill = "#000";
+            document.querySelector("div.nav__nav-items").style.color = "#000";
+          }
+        }
+      });
+    }
+  };
  */

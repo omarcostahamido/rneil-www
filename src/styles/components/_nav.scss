@@ -7,9 +7,6 @@ div.nav--sticky-wrap {
   left: 0;
   z-index: 10;
   width: 100%;
-  &.--dynamic-color {
-    mix-blend-mode: exclusion;
-  }
  
   
   @include prefixer(transform,translate3d(0, 0, 0), true, false, true);
