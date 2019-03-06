@@ -102,7 +102,7 @@ class Homepage extends React.Component {
     return (
       <div>
         <div className="homepage__body">
-          <Nav logo="../../../assets/Rneil.svg" />
+          <Nav page="homepage" logo="../../../assets/Rneil.svg" />
           <Header
             copy={this.state.headerMainCopy}
             galleryImages={this.state.headerImageSlider}

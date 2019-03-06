@@ -58,7 +58,13 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className="nav--sticky-wrap">
+      <div
+        className={`nav--sticky-wrap ${
+          this.props.page && this.props.page == "homepage"
+            ? "--dynamic-color"
+            : null
+        }`}
+      >
         <nav className="nav">
           <Link className="nav__logo" to="/">
             <svg
@@ -73,9 +79,9 @@ class Nav extends React.Component {
               <g
                 id="Icon-/-Logo-/-Longhand-/-Horiz"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <path
                   className="logo-path"
