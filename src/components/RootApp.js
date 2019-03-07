@@ -19,16 +19,6 @@ Netlify also supports client-side routing, you
 just need to create a /_redirects file with the following rule
 As you can probably guess, that tells Netlify to 
 redirect all requests to .index.html
-
---- could move api call to this root and pass down the data to child components....
-
- <Casestudy
-          path="/casestudy/:slug/:id"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          token={process.env.REACT_APP_ACCESS_TOKEN}
-        />
-
-  - make an order object in state that has the order number and id of the casestudies
 */
 
 class RootApp extends React.Component {

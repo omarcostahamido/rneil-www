@@ -7,11 +7,11 @@ div.nav--sticky-wrap {
   left: 0;
   z-index: 10;
   width: 100%;
-  background-color: white;
-  @supports(mix-blend-mode: exclusion) {
-    mix-blend-mode: exclusion;
-    background-color: transparent;
-  }
+  // background-color: white;
+  // @supports(mix-blend-mode: exclusion) {
+  //   mix-blend-mode: exclusion;
+  //   background-color: transparent;
+  // }
   
   @include prefixer(transform,translate3d(0, 0, 0), true, false, true);
   @include prefixer(transition, transform 400ms ease-out, true, false, false);
@@ -49,25 +49,44 @@ nav.nav {
 
 .logo-path {
   fill: $black;
-  @supports(mix-blend-mode: exclusion) {
-      fill: $white;
+  // @supports(mix-blend-mode: exclusion) {
+  //     fill: $white;
+  // }
+  &.--home {
+    fill: $black;
+  }
+  &.--dark-mode {
+    fill: $white;
+  }
+  &.--light-mode {
+    fill: $black;
   }
 }
 
 
 div.nav__nav-items {
+  color: $black;
   a{
     text-decoration: none;
-    color: $black;
-    @supports(mix-blend-mode: exclusion) {
-      color: $white;
-  }
+    color: inherit;
+  //   @supports(mix-blend-mode: exclusion) {
+  //     color: $white;
+  // }
    
   }
   @include flexbox;
   padding: $s-size;
   * {
     margin-left: $s-size;
+  }
+  &.--home {
+    color: $black;
+  }
+  &.--dark-mode {
+    color: $white;
+  }
+  &.--light-mode {
+    color: $black;
   }
   &.animate {
     @include fade(0);
