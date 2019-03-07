@@ -1,10 +1,6 @@
 .header {
   @include entire-viewport;
   position: relative;
-  background-color: blue;
-  // position:sticky;
-  // position: -webkit-sticky;
-  // top: 0;
 }
 
 .header__main-copy {

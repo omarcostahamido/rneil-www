@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 class Nav extends React.Component {
   //FUNCS-----------------------------------------
-  handleNavScroll = mounting => {
+  handleNavScroll = isMounting => {
     let previous = window.pageYOffset * 0.4;
     let hasScrolled = false;
     const nav = document.querySelector(".nav--sticky-wrap");
@@ -25,7 +25,7 @@ class Nav extends React.Component {
       }
       previous = window.pageYOffset * 0.4;
     };
-    if (mounting) {
+    if (isMounting) {
       document.addEventListener("scroll", scrollAnimate);
     } else {
       document.removeEventListener("scroll", scrollAnimate);
