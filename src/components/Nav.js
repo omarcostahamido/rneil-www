@@ -2,56 +2,40 @@ import React from "react";
 import { Link } from "@reach/router";
 
 class Nav extends React.Component {
-  handleNavItemAnimation = () => {
-    //animate in the right-hand side items
-    document.querySelector(".nav__nav-items").classList.add("is--active");
-    document.querySelector(".nav__nav-items").classList.remove("animate");
-  };
-
-  handleNavScroll = (mounting, handleNavItemAnimation) => {
+  //FUNCS-----------------------------------------
+  handleNavScroll = mounting => {
     let previous = window.pageYOffset * 0.4;
     let hasScrolled = false;
     const nav = document.querySelector(".nav--sticky-wrap");
-
+    const scrollAnimate = () => {
+      //handle dynamic scrolling behavior
+      if (window.pageYOffset <= 0) {
+        nav.classList.remove("is--scroll-down");
+      } else if (window.pageYOffset * 0.4 > previous) {
+        nav.classList.add("is--scroll-down");
+        nav.classList.add("is--scroll");
+        if (!hasScrolled) {
+          //fade in nav items
+          document.querySelector(".nav__nav-items").classList.add("is--active");
+          document.querySelector(".nav__nav-items").classList.remove("animate");
+          hasScrolled = true;
+        }
+      } else {
+        nav.classList.remove("is--scroll-down");
+      }
+      previous = window.pageYOffset * 0.4;
+    };
     if (mounting) {
-      window.addEventListener("scroll", function() {
-        if (window.pageYOffset <= 0) {
-          nav.classList.remove("is--scroll-down");
-        } else if (window.pageYOffset * 0.4 > previous) {
-          nav.classList.add("is--scroll-down");
-          nav.classList.add("is--scroll");
-          if (!hasScrolled) {
-            handleNavItemAnimation();
-          }
-        } else {
-          nav.classList.remove("is--scroll-down");
-        }
-        previous = window.pageYOffset * 0.4;
-      });
-    } else if (!mounting) {
-      window.removeEventListener("scroll", function() {
-        if (window.pageYOffset > 100 && !this.hasScrolled) {
-          handleNavItemAnimation();
-        }
-        if (window.pageYOffset <= 0) {
-          nav.classList.remove("is--scroll-down");
-        } else if (window.pageYOffset * 0.4 > previous) {
-          nav.classList.add("is--scroll-down");
-          nav.classList.add("is--scroll");
-        } else {
-          nav.classList.remove("is--scroll-down");
-        }
-        previous = window.pageYOffset * 0.4;
-      });
+      document.addEventListener("scroll", scrollAnimate);
+    } else {
+      document.removeEventListener("scroll", scrollAnimate);
     }
   };
-
   handleNavColor = () => {
     if (
       this.props.page == "homepage" &&
       window.pageYOffset >= window.innerHeight
     ) {
-      console.log("handling nav color");
       document.querySelector(".logo-path").style.fill = "#fff";
       document.querySelector("div.nav__nav-items").style.color = "#fff";
     } else if (
@@ -61,27 +45,19 @@ class Nav extends React.Component {
       document.querySelector(".logo-path").style.fill = "#000";
       document.querySelector("div.nav__nav-items").style.color = "#000";
     }
-    requestAnimationFrame(this.handleNavColor);
   };
-
+  //LIFECYCLE---------------------------------------------------
   componentDidMount() {
-    this.handleNavScroll(true, this.handleNavItemAnimation);
-    // if (this.props.page == "homepage") {
-    //   console.log("removing!");
-    //   cancelAnimationFrame(requestAnimationFrame(this.handleNavColor));
-    // }
+    this.handleNavScroll(true);
+    if (window.location.pathname == "/") {
+      document.addEventListener("scroll", this.handleNavColor);
+    }
   }
-
   componentWillUnmount() {
-    this.handleNavScroll(false, this.handleNavItemAnimation);
-    // if (!(this.props.page == "homepage")) {
-    //   console.log("not home page!");
-    //   cancelAnimationFrame(requestAnimationFrame(this.handleNavColor));
-    // }
+    this.handleNavScroll(false);
+    document.removeEventListener("scroll", this.handleNavColor);
   }
-
-  //use component will unmount to handle the animation and transition between pages??
-
+  //RENDER-------------------------------------------------------
   render() {
     return (
       <div
@@ -129,20 +105,3 @@ class Nav extends React.Component {
 }
 
 export default Nav;
-
-/**
- *<img id="logo" alt="logo" src="../assets/Rneil.svg" />
- *   handleAnchorLink = () => {
-    document
-      .getElementById("exhibitions")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-   // renderExhibitionLink = () => {
-  //   if (/about$/.test(window.location) || /casestudy/.test(window.location)) {
-  //     return <Link to="/exhibitions">Exhibitions</Link>;
-  //   } else {
-  //     return <a onClick={this.handleAnchorLink}>Exhibitions</a>;
-  //   }
-  // };
- */

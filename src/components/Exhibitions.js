@@ -3,7 +3,7 @@ import Nav from "./Nav";
 
 const Exhibitions = props => {
   return (
-    <div>
+    <div className="work">
       <Nav class="--dark-mode" color="#fff" page="work" />
       {props.renderCasestudies()}
     </div>
