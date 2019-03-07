@@ -16,9 +16,8 @@ class Gallery extends React.Component {
   handleImageAnimations = images => {
     if (images.length > 1) {
       images.forEach(image => {
-        image.getBoundingClientRect().left;
         if (
-          image.getBoundingClientRect().left < window.innerWidth + 100 &&
+          image.getBoundingClientRect().left < window.innerWidth &&
           image.getBoundingClientRect().left > -150
         ) {
           image.classList.add("is--active");
@@ -33,6 +32,7 @@ class Gallery extends React.Component {
 
   handleImageClick = e => {
     if (this.state.isDesktop == true) {
+      console.log(e);
       document.getElementById(e.target.id.toString()).scrollIntoView({
         behavior: "smooth",
         block: "nearest",
@@ -53,7 +53,7 @@ class Gallery extends React.Component {
               <img
                 className="gallery__images animate"
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
-                key={`gallery__image-${galleryImages.indexOf(image)}`}
+                key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
                 onClick={this.handleImageClick}
               />
@@ -89,7 +89,7 @@ class Gallery extends React.Component {
 
   render() {
     const { galleryImages, type } = this.props;
-    // console.log(this.state);
+    // console.log(this.props.galleryImages);
     return (
       <div>
         <div
