@@ -16,9 +16,8 @@ class Casestudy_Slice extends React.Component {
     type: this.props.slice_type,
     sliderImages: []
   };
-
+  //FUNCS--------------------------------------------------
   //set the state as per component data needs
-
   cleanData = () => {
     if (this.state.doc) {
       if (this.state.type === "body_text") {
@@ -85,7 +84,6 @@ class Casestudy_Slice extends React.Component {
       this.navigateHome();
     }
   };
-
   /*
   handle the styling and class assignments at indiv component level
   pass down any slice data in renderSlice via props 
@@ -93,7 +91,6 @@ class Casestudy_Slice extends React.Component {
   add mobile conditionals here to what gets passed down to the slice
   in terms of mobile versus desktop assets  
   */
-
   renderSlice = () => {
     if (this.props.slice_type === "body_text") {
       return <Body_Text_Slice bodyCopy={this.state.bodyCopy} />;
@@ -155,19 +152,14 @@ class Casestudy_Slice extends React.Component {
       return <Audio_Module_Slice mediaModuleUrl={this.state.mediaModuleUrl} />;
     }
   };
-
   navigateHome = () => {
     navigate("/");
   };
-
   //LIFECYCLE-------------------------------------------------------
-
   componentDidMount() {
     this.cleanData();
   }
-
   //RENDER-----------------------------------------------------------
-
   render() {
     // console.log(this.state);
     return <div>{this.renderSlice()}</div>;

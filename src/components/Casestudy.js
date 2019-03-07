@@ -13,10 +13,8 @@ class Casestudy extends React.Component {
     nextCasestudyId: null,
     nextCasestudySlug: null
   };
-
   getPrismicData = () => {
     const { apiEndpoint } = this.props;
-
     Prismic.api(apiEndpoint, {
       accessToken: process.env.REACT_APP_ACCESS_TOKEN
     }).then(api => {
@@ -34,9 +32,7 @@ class Casestudy extends React.Component {
         .catch(error => console.log(error));
     });
   };
-
   //run through all the casestudy data, assign the casestudy content as props
-
   cleanData = () => {
     let casestudyContent = [];
     if (this.state.doc) {
@@ -64,7 +60,6 @@ class Casestudy extends React.Component {
       });
     }
   };
-
   renderCasestudyData = () => {
     // console.log(this.state.casestudyContent);
     if (this.state.casestudyContent) {
@@ -87,8 +82,7 @@ class Casestudy extends React.Component {
       );
     }
   };
-
-  //this gets passed down to the casestudy and slices to toggle mobile/desktop assets
+  //pass down to the casestudy and slices to toggle mobile/desktop assets
   checkForMobile = () => {
     if (window.innerWidth < 768) {
       this.setState({
@@ -96,12 +90,10 @@ class Casestudy extends React.Component {
       });
     }
   };
-
   //check props for 'next' casestudy, pass down id and slug
   handleNextButton = () => {
     const { order } = this.props;
     let nextIndex = 0;
-
     //find out where we are in the order...
     if (this.props.order.length > 0) {
       let currentIndex = order.indexOf(
@@ -126,7 +118,6 @@ class Casestudy extends React.Component {
       }
     }
   };
-
   /*
   added this reload since the router wasn't reloading the page
   even though the url was updating...
@@ -137,7 +128,6 @@ class Casestudy extends React.Component {
     ).then(location.reload());
   };
   //LIFECYCLE------------------------------------------------
-
   componentDidMount() {
     this.getPrismicData();
     this.checkForMobile();
@@ -153,9 +143,7 @@ class Casestudy extends React.Component {
       location.reload();
     });
   }
-
   //RENDER-------------------------------------------------
-
   render() {
     // console.log(this.props);
     return (

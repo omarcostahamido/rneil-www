@@ -8,7 +8,8 @@ import Exhibitions from "./Exhibitions";
 import Not_Found from "./Not_Found";
 import Prismic from "prismic-javascript";
 
-/* Re: routing - i foresee a potential problem with routes in production
+/* 
+Re: routing - i foresee a potential problem with routes in production
 i.e. the path might not work if someone navigates directly to it. 
 made the casestudy route 'relative' to see if that would help. wont know until
 i get this into action.  
@@ -19,16 +20,6 @@ Netlify also supports client-side routing, you
 just need to create a /_redirects file with the following rule
 As you can probably guess, that tells Netlify to 
 redirect all requests to .index.html
-
---- could move api call to this root and pass down the data to child components....
-
- <Casestudy
-          path="/casestudy/:slug/:id"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          token={process.env.REACT_APP_ACCESS_TOKEN}
-        />
-
-  - make an order object in state that has the order number and id of the casestudies
 */
 
 class RootApp extends React.Component {
@@ -37,7 +28,7 @@ class RootApp extends React.Component {
     casestudyNum: null,
     casestudyOrder: []
   };
-
+  //FUNCS-------------------------------------------
   getCasestudyOrder = () => {
     Prismic.api(process.env.REACT_APP_BASE_URL, {
       accessToken: process.env.REACT_APP_ACCESS_TOKEN
@@ -66,7 +57,6 @@ class RootApp extends React.Component {
         .catch(error => console.log(error));
     });
   };
-
   reorderCasestudies = () => {
     if (this.state.casestudiesFeatured) {
       let casestudiesFeatured = [];
@@ -133,7 +123,6 @@ class RootApp extends React.Component {
       }
     }
   };
-
   renderCasestudies = () => {
     if (this.state.casestudiesFeatured) {
       return (
@@ -156,11 +145,11 @@ class RootApp extends React.Component {
       );
     }
   };
-
+  //LIFECYCLE---------------------------------------------------
   componentDidMount() {
     this.getCasestudyOrder();
   }
-
+  //RENDER-------------------------------------------------------
   render() {
     // console.log(this.state);
     return (
@@ -190,34 +179,3 @@ class RootApp extends React.Component {
 }
 
 export default RootApp;
-
-/*
-const RootApp = () => {
-  return (
-    <div>
-      <Router>
-        <Homepage
-          path="/*"
-          token={process.env.REACT_APP_ACCESS_TOKEN}
-          clientId={process.env.REACT_APP_CLIENT_ID}
-          clientSecret={process.env.REACT_APP_CLIENT_SECRET}
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-        />
-
-        <Casestudy
-          path="casestudy/:slug/:id"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          token={process.env.REACT_APP_ACCESS_TOKEN}
-        />
-
-        <About
-          path="about"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          token={process.env.REACT_APP_ACCESS_TOKEN}
-        />
-      </Router>
-    </div>
-  );
-};
-
-*/
