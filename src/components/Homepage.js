@@ -2,15 +2,20 @@ import React from "react";
 import Nav from "./Nav";
 import Header from "./Header";
 import Prismic from "prismic-javascript";
+import Loader from "./Loader";
 
 class Homepage extends React.Component {
   state = {
     doc: null,
-    headerMainCopy: "how terrible and how beautiful",
-    headerImageSlider: []
+    headerMainCopy: null,
+    headerImageSlider: [],
+    isLoading: false
   };
   //FUNCS--------------------------------------------------
   getPrismicData = () => {
+    this.setState({
+      isLoading: true
+    });
     const { apiEndpoint } = this.props;
     Prismic.api(apiEndpoint, {
       accessToken: process.env.REACT_APP_ACCESS_TOKEN
@@ -25,7 +30,9 @@ class Homepage extends React.Component {
         .then(response => {
           if (response) {
             this.setState({
-              doc: response.results
+              doc: response.results,
+              isLoading: false,
+              hasLoaded: true
             });
             // console.log(this.state.doc);
             this.handleCleanData();
@@ -76,7 +83,7 @@ class Homepage extends React.Component {
   }
   // RENDER ---------------------------------------------
   render() {
-    // console.log(this.props);
+    // console.log(this.state);
     return (
       <div>
         <div className="homepage__body">
@@ -96,3 +103,25 @@ class Homepage extends React.Component {
 }
 
 export default Homepage;
+
+/**
+ * 
+ * 
+ *  <div>
+        {this.state.isLoading ? (
+          <Loader isLoading={this.state.isLoading} />
+        ) : (
+          <div className="homepage__body">
+            <Nav page="homepage" class="--home" />
+            <Header
+              copy={this.state.headerMainCopy}
+              galleryImages={this.state.headerImageSlider}
+              handleAnchorLink={this.handleAnchorLink}
+            />
+            <div className="homepage__casestudies-featured">
+              {this.props.renderCasestudies()}
+            </div>
+          </div>
+        )}
+      </div>
+ */

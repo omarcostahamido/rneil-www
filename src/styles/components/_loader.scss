@@ -1,0 +1,24 @@
+// .rootapp:empty {
+//   background-color: blue;
+//   @include entire-viewport;
+// }
+
+.isLoading{
+  position: relative;
+  z-index: 1000;
+  background-color: blue;
+  @include entire-viewport;
+}
+
+.isLoadingFirst {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: orange;
+  @include entire-viewport;
+}
+
+.loaded {
+  display: none;
+}

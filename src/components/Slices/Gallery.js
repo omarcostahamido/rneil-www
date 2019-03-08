@@ -1,19 +1,9 @@
 import React from "react";
 
 class Gallery extends React.Component {
-  //STATE-------------------------------------------
-  state = {
-    isDesktop: false,
-    imageNum: 0,
-    images: []
-  };
-
-  //OTHER FUNCTIONS----------------------------------
-  handleGalleryScroll = () => {
-    this.handleImageAnimations(this.state.images);
-  };
-
-  handleImageAnimations = images => {
+  //FUNCS----------------------------------
+  handleImageAnimations = () => {
+    const images = document.querySelectorAll("img.gallery__images");
     if (images.length > 1) {
       images.forEach(image => {
         if (
@@ -29,10 +19,8 @@ class Gallery extends React.Component {
       });
     }
   };
-
   handleImageClick = e => {
-    if (this.state.isDesktop == true) {
-      console.log(e);
+    if (window.innerWidth > 768) {
       document.getElementById(e.target.id.toString()).scrollIntoView({
         behavior: "smooth",
         block: "nearest",
@@ -40,14 +28,10 @@ class Gallery extends React.Component {
       });
     }
   };
-
-  //if I have more styles and specific classes to add to the specific galleries,
-  //do it here in handleGalleryBuild()
-
   handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div className="gallery--wrap" onScroll={this.handleGalleryScroll}>
+        <div className="gallery--wrap" onScroll={this.handleImageAnimations}>
           {galleryImages.map(image => {
             return (
               <img
@@ -63,33 +47,13 @@ class Gallery extends React.Component {
       );
     }
   };
-
   //LIFECYCLE--------------------------------------------------
-
   componentDidUpdate() {
-    if (window.innerWidth > 1024 && this.state.isDesktop == false) {
-      this.setState({
-        isDesktop: true
-      });
-    }
-    if (document.querySelector("div.gallery--wrap")) {
-      let images = document.querySelectorAll("img.gallery__images");
-      // console.log(images);
-      if (this.state.imageNum == 0 && images.length > 1) {
-        this.setState({
-          imageNum: images.length,
-          images: images
-        });
-      }
-      this.handleImageAnimations(images);
-    }
+    this.handleImageAnimations();
   }
-
   //RENDER----------------------------------------------------------
-
   render() {
     const { galleryImages, type } = this.props;
-    // console.log(this.props.galleryImages);
     return (
       <div>
         <div
