@@ -2,7 +2,7 @@ import React from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
-import { navigate } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 
 class Casestudy extends React.Component {
   state = {
@@ -11,7 +11,9 @@ class Casestudy extends React.Component {
     isMobile: false,
     colorMode: null,
     nextCasestudyId: null,
-    nextCasestudySlug: null
+    nextCasestudySlug: null,
+    isNext: false,
+    currentPath: null
   };
   //FUNCS---------------------------------------------
   getPrismicData = () => {
@@ -25,9 +27,12 @@ class Casestudy extends React.Component {
         .then(response => {
           if (response) {
             this.setState({
-              doc: response.results
+              doc: response.results,
+              isNext: false,
+              nextCasestudyId: null,
+              nextCasestudySlug: null
             });
-            // console.log(this.state.doc);
+
             this.cleanData();
           }
         })
@@ -112,42 +117,36 @@ class Casestudy extends React.Component {
       } else {
         nextIndex = order[currentIndex - 1];
       }
-      if (nextIndex && this.state.nextCasestudyId === null) {
+      // if (nextIndex && this.state.nextCasestudyId === null)
+      if (nextIndex && !this.state.isNext) {
         this.setState({
           nextCasestudyId: nextIndex.id,
-          nextCasestudySlug: nextIndex.slug
+          nextCasestudySlug: nextIndex.slug,
+          isNext: true,
+          currentPath: this.props.location.pathname
         });
       }
     }
-  };
-  /*
-  added this reload since the router wasn't reloading the page
-  even though the url was updating...
-  */
-  navigateNext = () => {
-    navigate(
-      `casestudy/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`
-    ).then(location.reload());
   };
   //LIFECYCLE------------------------------------------------
   componentDidMount() {
     this.getPrismicData();
     this.checkForMobile();
-    window.addEventListener("popstate", () => {
-      location.reload();
-    });
   }
   componentDidUpdate() {
+    if (
+      this.state.nextCasestudySlug &&
+      !(this.state.currentPath == this.props.location.pathname)
+    ) {
+      console.log("notsame!");
+      this.getPrismicData();
+    }
+    // console.log("updating");
     this.handleNextButton();
   }
-  componentWillUnmount() {
-    window.removeEventListener("popstate", () => {
-      location.reload();
-    });
-  }
+
   //RENDER-------------------------------------------------
   render() {
-    // console.log(this.props);
     return (
       <div
         className={`casestudy ${
@@ -174,8 +173,11 @@ class Casestudy extends React.Component {
           }
         />
         {this.renderCasestudyData()}
-
-        <h2 onClick={this.navigateNext}>Next</h2>
+        <Link
+          to={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}
+        >
+          Next
+        </Link>
       </div>
     );
   }

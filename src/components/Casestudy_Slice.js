@@ -8,6 +8,7 @@ import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
 import Panoramic_Slider_Slice from "./Slices/Panoramic_Slider_Slice";
 import Slider_Slice from "./Slices/Slider_Slice";
+import Image_Dyptich from "./Slices/Image_Dyptich";
 
 const Casestudy_Slice = props => {
   const renderSlice = props => {
@@ -45,6 +46,22 @@ const Casestudy_Slice = props => {
             }
             imageLeftRightCopy={props.slice_doc.primary.image_left_copy[0]}
             orientation={props.slice_doc.primary.left_or_right}
+          />
+        );
+      } else if (props.slice_type === "image_dyptich") {
+        return (
+          <Image_Dyptich
+            dyptichUrls={
+              props.isMobile && props.slice_doc.primary.dyptich_image_1_mobile
+                ? [
+                    props.slice_doc.primary.dyptich_image_1_mobile.url,
+                    props.slice_doc.primary.dyptich_image_2_mobile.url
+                  ]
+                : [
+                    props.slice_doc.primary.dyptich_image_1.url,
+                    props.slice_doc.primary.dyptich_image_2.url
+                  ]
+            }
           />
         );
       } else if (props.slice_type === "panoramic_slider") {

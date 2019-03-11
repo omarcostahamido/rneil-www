@@ -122,7 +122,7 @@ class Data_And_Routes extends React.Component {
           {this.state.casestudiesFeatured.map(casestudy => {
             return (
               <Link
-                to={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
+                to={`/${casestudy.slugs[0]}/${casestudy.id}`}
                 key={casestudy.slugs[0]}
               >
                 <Casestudy_Featured
@@ -142,9 +142,20 @@ class Data_And_Routes extends React.Component {
     this.getCasestudyOrder();
   }
 
+  renderRoute = () => {
+    this.setState({
+      casestudy:
+        '<Casestudy path={`/${this.state.casestudiesFeatured[0].slugs[0]}`} id="XGb4LBEAAB8AbT4j" apiEndpoint={process.env.REACT_APP_BASE_URL} order={this.state.casestudyOrder}'
+    });
+  };
+
+  componentDidUpdate() {
+    this.render();
+  }
+
   //RENDER-------------------------------------------------------
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         <Router>
@@ -154,10 +165,11 @@ class Data_And_Routes extends React.Component {
             renderCasestudies={this.renderCasestudies}
           />
           <Casestudy
-            path="/casestudy/:slug/:id"
+            path="/:slug/:id"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             order={this.state.casestudyOrder}
           />
+          {this.state.casestudy && this.state.casestudy}
           <Exhibitions
             path="/work"
             renderCasestudies={this.renderCasestudies}
@@ -173,7 +185,6 @@ class Data_And_Routes extends React.Component {
 export default Data_And_Routes;
 
 /**
- * 
  * 
  * class Data_And_Routes extends React.Component {
   state = {
@@ -237,131 +248,106 @@ export default Data_And_Routes;
           checkOutliers = true;
         }
       });
-      
+
       //if there are no duplicates/outliers, set state for order and featured
       //otherwise...set order for the current prismic order
-      
-     if (!checkDuplicates.length && !checkOutliers) {
-      console.log("casestudies rendering in order");
-      for (let i = 0; i < this.state.casestudyNum; i++) {
-        casestudiesFeatured.push(i);
+
+      if (!checkDuplicates.length && !checkOutliers) {
+        console.log("casestudies rendering in order");
+        for (let i = 0; i < this.state.casestudyNum; i++) {
+          casestudiesFeatured.push(i);
+        }
+        this.state.casestudiesFeatured.forEach(casestudy => {
+          casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
+          casestudyOrder.push({
+            id: casestudy.id,
+            slug: casestudy.slugs[0],
+            order: casestudy.data.casestudy_order
+          });
+        });
+        if (this.state.casestudiesFeatured) {
+          this.setState({
+            casestudiesFeatured,
+            casestudyOrder
+          });
+        }
+      } else {
+        this.state.casestudiesFeatured.forEach(casestudy => {
+          casestudyOrder.push({
+            id: casestudy.id,
+            slug: casestudy.slugs[0],
+            order: casestudy.data.casestudy_order
+          });
+        });
+        if (casestudyOrder) {
+          this.setState({
+            casestudyOrder
+          });
+        }
+        console.log(
+          "duplicates or outliers!! check prismic for casestudy order no. " +
+            checkDuplicates
+        );
       }
-      this.state.casestudiesFeatured.forEach(casestudy => {
-        casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
-        casestudyOrder.push({
-          id: casestudy.id,
-          slug: casestudy.slugs[0],
-          order: casestudy.data.casestudy_order
-        });
-      });
-      if (this.state.casestudiesFeatured) {
-        this.setState({
-          casestudiesFeatured,
-          casestudyOrder
-        });
-      }
-    } else {
-      this.state.casestudiesFeatured.forEach(casestudy => {
-        casestudyOrder.push({
-          id: casestudy.id,
-          slug: casestudy.slugs[0],
-          order: casestudy.data.casestudy_order
-        });
-      });
-      if (casestudyOrder) {
-        this.setState({
-          casestudyOrder
-        });
-      }
-      console.log(
-        "duplicates or outliers!! check prismic for casestudy order no. " +
-          checkDuplicates
+    }
+  };
+  //passed down to homepage and exhibitions page
+  renderCasestudies = () => {
+    if (this.state.casestudiesFeatured) {
+      return (
+        <div>
+          {this.state.casestudiesFeatured.map(casestudy => {
+            return (
+              <Link
+                to={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
+                key={casestudy.slugs[0]}
+              >
+                <Casestudy_Featured
+                  title={casestudy.data.casestudy_title[0].text}
+                  hero={casestudy.data.casestudy_hero_image.url}
+                  heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
+                />
+              </Link>
+            );
+          })}
+        </div>
       );
     }
+  };
+  //LIFECYCLE----------------------------------------------------
+  componentDidMount() {
+    this.getCasestudyOrder();
   }
-};
-//passed down to homepage and exhibitions page
-renderCasestudies = () => {
-  if (this.state.casestudiesFeatured) {
+
+  //RENDER-------------------------------------------------------
+  render() {
+    console.log(this.state);
     return (
       <div>
-        {this.state.casestudiesFeatured.map(casestudy => {
-          return (
-            <Link
-              to={`casestudy/${casestudy.slugs[0]}/${casestudy.id}`}
-              key={casestudy.slugs[0]}
-            >
-              <Casestudy_Featured
-                title={casestudy.data.casestudy_title[0].text}
-                hero={casestudy.data.casestudy_hero_image.url}
-                heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
-              />
-            </Link>
-          );
-        })}
+        <Router>
+          <Homepage
+            path="/"
+            apiEndpoint={process.env.REACT_APP_BASE_URL}
+            renderCasestudies={this.renderCasestudies}
+          />
+          <Casestudy
+            path="/casestudy/:slug/:id"
+            apiEndpoint={process.env.REACT_APP_BASE_URL}
+            order={this.state.casestudyOrder}
+          />
+          <Exhibitions
+            path="/work"
+            renderCasestudies={this.renderCasestudies}
+          />
+          <About path="/about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
+          <Not_Found default />
+        </Router>
       </div>
     );
   }
-};
-//LIFECYCLE----------------------------------------------------
-componentDidMount() {
-  this.getCasestudyOrder();
-}
-
-renderRoute = () => {
-  return (
-    <Casestudy
-      path={`/${this.state.casestudiesFeatured}`}
-      id="XGb4LBEAAB8AbT4j"
-      apiEndpoint={process.env.REACT_APP_BASE_URL}
-      order={this.state.casestudyOrder}
-    />
-  );
-};
-
-//RENDER-------------------------------------------------------
-render() {
-  console.log(this.state);
-  return (
-    <div>
-      <Router>
-        <Homepage
-          path="/"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          renderCasestudies={this.renderCasestudies}
-        />
-        <Casestudy
-          path="/casestudy/:slug/:id"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          order={this.state.casestudyOrder}
-        />
-
-        {this.renderRoute()}
-        <Exhibitions
-          path="/work"
-          renderCasestudies={this.renderCasestudies}
-        />
-        <About path="/about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
-        <Not_Found default />
-      </Router>
-    </div>
-  );
-}
 }
 
 export default Data_And_Routes;
-
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  *
 
  */
