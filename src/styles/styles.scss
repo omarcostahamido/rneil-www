@@ -1,8 +1,19 @@
-//relative path, can leave off extension and underscore
+//BASE---------------------
+@import '../../node_modules/normalize.css/normalize.css';
+@import './base/mixins';
 @import './base/settings';
 @import './base/base';
+//COMPONENTS---------------
+@import './components/loader';
 @import './components/homepage';
 @import './components/nav';
 @import './components/header';
+@import './components/exhibitions';
+@import './components/casestudy-featured';
 @import './components/casestudy';
+
+//SLICES--------------------
+@import './components/slices/gallery';
+@import './components/slices/slider_slice';
+@import './components/slices/panoramic_slider_slice';
 

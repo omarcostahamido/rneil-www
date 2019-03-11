@@ -1,13 +1,19 @@
 html {
   //sets rem to base 10 system like pixels
   font-size: 62.5%;
+  //for firefox scroll
+  scrollbar-width: none;
+  overflow: auto;
 }
 
 body {
-  background-color: $white;
   font-family: Helvetica, Arial, sans-serif;
   //base font-size is 16px
   font-size: $m-size;
+}
+
+h1, h2, p, img, div {
+  margin: 0;
 }
 
 button {
@@ -17,3 +23,18 @@ button {
 button:disabled {
   cursor: default;
 }
+
+img {
+  width: 33vw;
+}
+
+// TRANSITIONS / ANIMATIONS --------------
+
+.is--active {
+  @include fade(1)
+ }
+ 
+.animate {
+  @include fade(0)
+ }
+  

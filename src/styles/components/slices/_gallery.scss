@@ -1,0 +1,37 @@
+div.header-gallery {
+
+}
+  
+div.gallery {
+  @include slider-base
+}
+  
+div.gallery--wrap {
+  height: 60vh;
+  @include slider-wrap;
+}
+
+img.gallery__images{
+  background-color: pink;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  width: 80vw;
+  height: 50vh;
+  margin-left: 7vw;
+}
+
+  //could add more styles to home gallery here
+  //or create own instance and file....probably better
+  
+::-webkit-scrollbar {
+  display: none;
+}
+  
+//blanket desktop setting for dev purposes. default is mobile
+@media (min-width: 1024px) {
+  
+  img.gallery__images{
+    width: 36vw;
+    height: 33vh;
+  }
+}

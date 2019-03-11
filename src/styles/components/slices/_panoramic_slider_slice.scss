@@ -1,0 +1,23 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+div.slice-pano {
+  @include slider-base;
+
+  div.slice-pano--wrap {
+    @include slider-wrap;
+  }
+  div.slice-pano--padding {
+    width: 100vw;
+    height: inherit;
+    padding-left: 70vw;
+  }
+  img.slice-pano__img {
+    width: 120vw;
+    flex-shrink: 0;
+  }
+}
+
+
+

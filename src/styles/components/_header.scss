@@ -1,11 +1,9 @@
 .header {
-
+  @include entire-viewport;
+  position: relative;
 }
 
-.header-message {
-
-}
-
-.header-img {
-  width: 768px;
+.header__main-copy {
+   padding-top: 120px;
+   
 }

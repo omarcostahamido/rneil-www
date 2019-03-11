@@ -1,1 +1,101 @@
 /*-----------Nav Styles Here-----------*/
+
+div.nav--sticky-wrap {
+  background-color: rbga(255,255,255,0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  // background-color: white;
+  // @supports(mix-blend-mode: exclusion) {
+  //   mix-blend-mode: exclusion;
+  //   background-color: transparent;
+  // }
+  
+  @include prefixer(transform,translate3d(0, 0, 0), true, false, true);
+  @include prefixer(transition, transform 400ms ease-out, true, false, false);
+  transform: translate3d(0, 0, 0);
+  transition: transform 400ms ease-out;
+  &.is--scroll {
+    
+  }
+  &.is--scroll-down {
+    @include prefixer(transform,translate3d(0, -100%, 0), true, false, true);
+    @include prefixer(transition, transform 250ms ease-out, true, false, false);
+    transform: translate3d(0, -100%, 0);
+    transition: transform 250ms ease-out;
+  }
+}
+
+nav.nav {
+  position: relative;
+  @include flexbox;
+  align-items: center;
+  justify-content: space-between;
+ 
+  
+}
+
+.nav__logo {
+  padding: $s-size;
+  img#logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+
+.logo-path {
+  fill: $black;
+  // @supports(mix-blend-mode: exclusion) {
+  //     fill: $white;
+  // }
+  &.--home {
+    fill: $black;
+  }
+  &.--dark-mode {
+    fill: $white;
+  }
+  &.--light-mode {
+    fill: $black;
+  }
+}
+
+
+div.nav__nav-items {
+  color: $black;
+  a{
+    text-decoration: none;
+    color: inherit;
+  //   @supports(mix-blend-mode: exclusion) {
+  //     color: $white;
+  // }
+   
+  }
+  @include flexbox;
+  padding: $s-size;
+  * {
+    margin-left: $s-size;
+  }
+  &.--home {
+    color: $black;
+  }
+  &.--dark-mode {
+    color: $white;
+  }
+  &.--light-mode {
+    color: $black;
+  }
+  &.animate {
+    @include fade(0);
+    //any additional specific modifiers here
+    //will override the _base class
+  }
+  &.is--active {
+    @include fade(1);
+  }
+}
+
+
