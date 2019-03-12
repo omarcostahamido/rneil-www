@@ -1,0 +1,29 @@
+img.dyptich__image {
+  width: 84vw;
+  &.left {
+    padding: $xxs-padding 0;
+  }
+  &.right {
+    padding: $xxs-padding 0 $l-padding 0;
+  }
+}
+
+@include media($desktop) {
+  .dyptich {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    height: 35vw;
+    margin-bottom: $m-padding;
+  }
+  img.dyptich__image {
+    width: 35vw;
+    height: auto;
+    &.left {
+      padding: 0 10vw 0 0;
+    }
+    &.right {
+      padding: 0 0 0 0;
+    }
+  }
+}

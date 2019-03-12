@@ -12,8 +12,9 @@ body {
   font-size: $m-size;
 }
 
-h1, h2, p, img, div {
+h1, h2, p, img, div, button, a {
   margin: 0;
+  padding: 0;
 }
 
 button {
@@ -22,10 +23,6 @@ button {
 
 button:disabled {
   cursor: default;
-}
-
-img {
-  width: 33vw;
 }
 
 // TRANSITIONS / ANIMATIONS --------------

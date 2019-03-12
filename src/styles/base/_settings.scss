@@ -1,4 +1,10 @@
-//place to define a theme for our app - defining variables
+//BREAKPOINTS
+$iphoneSE: 320px;
+$mobile: 375px;
+$ipad: 768px;
+$ipad-pro: 1024px;
+$desktop: 1280px;
+$desktop-lrg: 1440px;
 
 //COLORS
 
@@ -6,13 +12,16 @@ $black: #000;
 $white: #fff;
 
 //SPACING
+$xxs-padding: 4vw;
+$xs-padding: 8vw;
+$s-padding: 12.8vw;
+$m-padding: 16vw;
+$l-padding: 21.34vw;
+$xl-padding: 34.13vw;
 
-//root of 10 (think in px/10)
+//TYPEOGRAPHY- root of 10 (think in px/10)
 $s-size: 1.2rem;
 $m-size: 1.6rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
 
-
-$desktop-breakpoint: 45rem;
-$desktop-max-width: 120rem

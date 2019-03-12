@@ -40,7 +40,11 @@ class About extends React.Component {
     if (this.state.doc) {
       let videos = [];
       this.state.doc[0].data.about_page_videos.forEach(video => {
-        videos.push(video.about_page_video_url.url);
+        videos.push({
+          url: video.about_page_video_url.url,
+          title: video.video_title[0].text,
+          year: video.video_year[0].text
+        });
       });
       this.setState({
         aboutPageMainCopy: this.state.doc[0].data.about_page_main_copy[0].text,
@@ -58,7 +62,15 @@ class About extends React.Component {
       return (
         <div>
           {this.state.aboutPageVideos.map(video => {
-            return <Video_Module_Slice mediaModuleUrl={video} key={video} />;
+            return (
+              <div key={video.title}>
+                <Video_Module_Slice mediaModuleUrl={video.url} />
+                <div className="about-videos__info">
+                  <p>{video.title}</p>
+                  <p>{video.year}</p>
+                </div>
+              </div>
+            );
           })}
         </div>
       );
@@ -72,12 +84,15 @@ class About extends React.Component {
   render() {
     return (
       <div>
-        <Nav class="--light-mode" color="#000" page="about" />
-        <h1>{this.state.aboutPageMainCopy}</h1>
-        <button>inquire</button>
-        <p>{this.state.aboutPageCopy}</p>
-        <Image_Dyptich dyptichUrls={this.state.aboutPageImages} />
-
+        <Nav className="--light-mode" color="#000" page="about" />
+        <div className="about__header">
+          <h1 className="about__title">{this.state.aboutPageMainCopy}</h1>
+          <div className="about__copy">
+            <a href="mailto:hello@r-neil.com">email for inquiries</a>
+            <p>{this.state.aboutPageCopy}</p>
+          </div>
+          <Image_Dyptich dyptichUrls={this.state.aboutPageImages} />
+        </div>
         {this.state.aboutPageVideos && this.renderVideos()}
       </div>
     );
