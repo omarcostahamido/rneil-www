@@ -1,49 +1,52 @@
+//375px base--------------------------------------
 .about__header {
-  padding: 0 $xs-padding;
+  padding: 0 8vw;
 }
 .about__title {
-  padding-top: $xl-padding;
+  padding-top: 35.47vw;
+  @include h1($black);
 }
-
 .about__copy {
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
-  padding: $xs-padding 0;
+  padding: 10.67vw 0 21.47vw 0;
   p {
-    margin-bottom: $s-padding;
+    margin-bottom: 12.8vw;
+    @include body-copy($black);
   }
   a {
-    width: 140px;
+    width: 135px;
     text-decoration: none;
     color: inherit;
     border-bottom: 1px solid $black;
     padding-bottom: 10px;
+    @include label($black);
   }
 }
-
 .about-videos__info {
+  p {
+    @include label($black);
+  }
   p:first-child {
-    padding: 24px 0 2vw $xs-padding;
+    padding: 24px 0 10px 8vw;
   }
   p:last-child {
-    padding-left: $xs-padding;
-    margin-bottom: $s-padding;
+    padding-left: 8vw;
+    margin-bottom: 12.8vw;
   }
 }
-
-@include media($ipad) {
+//Mediaqueries- sm>>lrg--------------------------------
+@include media-min($ipad) {
   .about__title {
-    padding-top: $m-padding;
-   
+    padding-top: 20vw;//guess - no ipad styles yet
   }
 }
-
-@include media($desktop) {
+@include media-min($desktop) {
   .about__header {
     padding: 0 10vw;
+  
   }
-
   .about__title {
     padding: 12.2vw 6vw 0 6vw;
     max-width: 41.67vw;
@@ -52,22 +55,20 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 5vw 6vw $s-padding 6vw;
+    padding: 5vw 6vw 12.8vw 6vw;
     p {
       margin-bottom: 0;
       max-width: 980px;
       width: 41.67vw;
     }
   }
-
   .about-videos__info {
     p:first-child {
-      padding: 24px 0 .5vw 10vw;
+      padding: 24px 0 10px 10vw;
     }
     p:last-child {
       padding-left: 10vw;
-      margin-bottom: $xs-padding;
+      margin-bottom: 8vw;
     }
   }
 }
- 

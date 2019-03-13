@@ -1,0 +1,13 @@
+div.video-player > div {
+  background: transparent !important;
+}
+
+div.video-player--wrap {
+  width: 100vw;
+  height: 53vw;
+  @include media-min(1280px) {
+    padding: 0 10vw;
+    width: 80vw;
+    height: 42.4vw;
+  }
+}

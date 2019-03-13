@@ -7,9 +7,13 @@ html {
 }
 
 body {
+ 
   font-family: Helvetica, Arial, sans-serif;
   //base font-size is 16px
-  font-size: $m-size;
+  font-size: 16px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, p, img, div, button, a {
@@ -17,12 +21,17 @@ h1, h2, p, img, div, button, a {
   padding: 0;
 }
 
-button {
-  cursor: pointer;
+::selection {
+  background-color: none;
+  color:palegreen;
 }
 
 button:disabled {
   cursor: default;
+}
+
+img {
+  width: 33vw;
 }
 
 // TRANSITIONS / ANIMATIONS --------------

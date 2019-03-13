@@ -38,20 +38,12 @@ nav.nav {
 }
 
 .nav__logo {
-  padding: $s-size;
-  img#logo {
-    width: 50px;
-    height: 50px;
-  }
+  width: 81px;
+  padding: 24px 0 0 24px;
 }
-
-
 
 .logo-path {
   fill: $black;
-  // @supports(mix-blend-mode: exclusion) {
-  //     fill: $white;
-  // }
   &.--home {
     fill: $black;
   }
@@ -67,17 +59,24 @@ nav.nav {
 div.nav__nav-items {
   color: $black;
   a{
+    @include label($black);
     text-decoration: none;
     color: inherit;
-  //   @supports(mix-blend-mode: exclusion) {
-  //     color: $white;
-  // }
-   
   }
   @include flexbox;
-  padding: $s-size;
+  padding: 22px 21px 0 0;
   * {
-    margin-left: $s-size;
+    margin-left: 22px;
+  }
+  &.about {
+    a:first-child {
+      color: $light-grey;
+    }
+  }
+  &.work {
+    a:last-child {
+      color: $light-grey;
+    } 
   }
   &.--home {
     color: $black;
@@ -98,4 +97,17 @@ div.nav__nav-items {
   }
 }
 
+//Mediaqueries------------------------------------------
+@include media-min($ipad) {
+  .nav__logo {
+    width: 232px;
+    padding: 40px 0 0 48px;
+  }
 
+  div.nav__nav-items {
+    padding: 38px 48px 0 0;
+    * {
+      margin-left: 40px;
+    }
+  }
+}

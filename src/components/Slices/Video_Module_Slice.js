@@ -3,12 +3,14 @@ import ReactPlayer from "react-player";
 
 const Video_Module_Slice = props => {
   return (
-    <ReactPlayer
-      className="video-player"
-      width="100vw"
-      height="53vw"
-      url={props.mediaModuleUrl}
-    />
+    <div className="video-player--wrap">
+      <ReactPlayer
+        className="video-player"
+        width="100%"
+        height="100%"
+        url={props.mediaModuleUrl}
+      />
+    </div>
   );
 };
 

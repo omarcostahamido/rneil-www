@@ -56,6 +56,8 @@ class About extends React.Component {
         aboutPageVideos: videos
       });
     }
+    document.querySelector(".about__header").classList.remove("animate");
+    document.querySelector(".about__header").classList.add("is--active");
   };
   renderVideos = () => {
     if (this.state.aboutPageVideos && this.state.aboutPageVideos.length > 0) {
@@ -85,12 +87,14 @@ class About extends React.Component {
     return (
       <div>
         <Nav className="--light-mode" color="#000" page="about" />
-        <div className="about__header">
+        <div className="about__header animate">
           <h1 className="about__title">{this.state.aboutPageMainCopy}</h1>
           <div className="about__copy">
             <a href="mailto:hello@r-neil.com">email for inquiries</a>
             <p>{this.state.aboutPageCopy}</p>
           </div>
+        </div>
+        <div className="dyptich--wrapper animate">
           <Image_Dyptich dyptichUrls={this.state.aboutPageImages} />
         </div>
         {this.state.aboutPageVideos && this.renderVideos()}
