@@ -160,7 +160,7 @@ class Data_And_Routes extends React.Component {
       <div>
         <Router>
           <Homepage
-            path="/*"
+            path="/"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             renderCasestudies={this.renderCasestudies}
           />
