@@ -18,6 +18,7 @@
 @include media-min($desktop) {
   .dyptich {
     display: flex;
+    align-items: center;
     flex-direction: row;
     flex-wrap: none;
     height: 35vw;

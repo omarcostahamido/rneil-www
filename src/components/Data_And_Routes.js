@@ -165,16 +165,13 @@ class Data_And_Routes extends React.Component {
             renderCasestudies={this.renderCasestudies}
           />
           <Casestudy
-            path="/:slug/:id"
+            path=":slug/:id"
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             order={this.state.casestudyOrder}
           />
           {this.state.casestudy && this.state.casestudy}
-          <Exhibitions
-            path="/work"
-            renderCasestudies={this.renderCasestudies}
-          />
-          <About path="/about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
+          <Exhibitions path="work" renderCasestudies={this.renderCasestudies} />
+          <About path="about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
           <Not_Found default />
         </Router>
       </div>
