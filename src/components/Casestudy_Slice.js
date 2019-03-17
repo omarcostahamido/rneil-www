@@ -9,14 +9,6 @@ import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
 import Panoramic_Slider_Slice from "./Slices/Panoramic_Slider_Slice";
 import Slider_Slice from "./Slices/Slider_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
-/**
- * 
- * singleImageUrl={
-              props.isMobile && props.slice_doc.primary.casestudy_image_mobile
-                ? props.slice_doc.primary.casestudy_image_mobile.url
-                : props.slice_doc.primary.casestudy_image.url
-            }
- */
 
 const Casestudy_Slice = props => {
   const renderSlice = props => {
@@ -35,7 +27,6 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "image") {
-        console.log(props.slice_doc.primary.casestudy_image_mobile);
         return (
           <Image_Slice
             singleImageUrl={

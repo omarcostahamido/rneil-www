@@ -136,6 +136,10 @@ class Casestudy extends React.Component {
   componentDidMount() {
     this.getPrismicData();
     this.checkForMobile();
+    //HACK to fix weird scroll bug between Router Links
+    if (window.pageYOffset > 0) {
+      window.scrollTo(0, 0);
+    }
   }
   componentDidUpdate() {
     if (
