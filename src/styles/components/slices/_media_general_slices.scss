@@ -1,0 +1,14 @@
+.media--wide {
+  padding: 34.133vw 8vw 0 8vw;
+  width: 84vw;
+  img{
+    width: 100%;
+  }
+}
+
+@include media-min($desktop) {
+  .media--wide {
+    padding: 16.67vw 10vw 0 10vw;
+    width: 80vw;
+  }
+}

@@ -1,0 +1,12 @@
+.pull-quote {
+  padding: 0 8vw;
+  h2 {
+    @include h2(inherit);
+  }
+}
+@include media-min($desktop) {
+  .pull-quote {
+    max-width: 980px;
+    padding: 0 16vw;
+  }
+}

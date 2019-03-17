@@ -9,6 +9,14 @@ import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
 import Panoramic_Slider_Slice from "./Slices/Panoramic_Slider_Slice";
 import Slider_Slice from "./Slices/Slider_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
+/**
+ * 
+ * singleImageUrl={
+              props.isMobile && props.slice_doc.primary.casestudy_image_mobile
+                ? props.slice_doc.primary.casestudy_image_mobile.url
+                : props.slice_doc.primary.casestudy_image.url
+            }
+ */
 
 const Casestudy_Slice = props => {
   const renderSlice = props => {
@@ -17,6 +25,7 @@ const Casestudy_Slice = props => {
         return (
           <Body_Text_Slice
             bodyCopy={props.slice_doc.primary.body_copy_rich_text[0].text}
+            position={props.slice_doc.primary.position}
           />
         );
       } else if (props.slice_type === "pull_quote") {
@@ -26,11 +35,12 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "image") {
+        console.log(props.slice_doc.primary.casestudy_image_mobile);
         return (
           <Image_Slice
             singleImageUrl={
               props.isMobile && props.slice_doc.primary.casestudy_image_mobile
-                ? props.slice_doc.primary.casestudy_image_mobile
+                ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
           />
@@ -50,19 +60,21 @@ const Casestudy_Slice = props => {
         );
       } else if (props.slice_type === "image_dyptich") {
         return (
-          <Image_Dyptich
-            dyptichUrls={
-              props.isMobile && props.slice_doc.primary.dyptich_image_1_mobile
-                ? [
-                    props.slice_doc.primary.dyptich_image_1_mobile.url,
-                    props.slice_doc.primary.dyptich_image_2_mobile.url
-                  ]
-                : [
-                    props.slice_doc.primary.dyptich_image_1.url,
-                    props.slice_doc.primary.dyptich_image_2.url
-                  ]
-            }
-          />
+          <div className="dyptich--wrapper animate">
+            <Image_Dyptich
+              dyptichUrls={
+                props.isMobile && props.slice_doc.primary.dyptich_image_1_mobile
+                  ? [
+                      props.slice_doc.primary.dyptich_image_1_mobile.url,
+                      props.slice_doc.primary.dyptich_image_2_mobile.url
+                    ]
+                  : [
+                      props.slice_doc.primary.dyptich_image_1.url,
+                      props.slice_doc.primary.dyptich_image_2.url
+                    ]
+              }
+            />
+          </div>
         );
       } else if (props.slice_type === "panoramic_slider") {
         return (

@@ -58,6 +58,7 @@ nav.nav {
 
 div.nav__nav-items {
   color: $black;
+  
   a{
     @include label($black);
     text-decoration: none;
@@ -83,6 +84,7 @@ div.nav__nav-items {
   }
   &.--dark-mode {
     color: $white;
+    
   }
   &.--light-mode {
     color: $black;
@@ -94,6 +96,7 @@ div.nav__nav-items {
   }
   &.is--active {
     @include fade(1);
+    background-color: transparent;
   }
 }
 

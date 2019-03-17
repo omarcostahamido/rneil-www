@@ -83,6 +83,12 @@ class Nav extends React.Component {
       document.addEventListener("scroll", this.handleNavColor);
     }
   }
+  componentDidUpdate() {
+    if (/^casestudy/.test(this.props.page)) {
+      document.querySelector(".nav__nav-items").classList.add("is--active");
+      document.querySelector(".nav__nav-items").classList.remove("animate");
+    }
+  }
   componentWillUnmount() {
     this.handleNavScroll(false);
     document.removeEventListener("scroll", this.handleNavColor);

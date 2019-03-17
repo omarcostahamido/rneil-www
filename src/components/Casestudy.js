@@ -3,6 +3,7 @@ import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
 import { Link, navigate } from "@reach/router";
+import Header_Slice from "./Slices/Header_Slice";
 
 class Casestudy extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class Casestudy extends React.Component {
               nextCasestudyId: null,
               nextCasestudySlug: null
             });
-
+            // console.log(this.state.doc);
             this.cleanData();
           }
         })
@@ -51,6 +52,9 @@ class Casestudy extends React.Component {
     this.setState({
       casestudyContent,
       casestudyTitle: this.state.doc[0].data.casestudy_title[0].text,
+      casestudyTitleCopy:
+        this.state.doc[0].data.casestudy_supporting_title_copy[0] &&
+        this.state.doc[0].data.casestudy_supporting_title_copy[0].text,
       casestudyHero: this.state.doc[0].data.casestudy_hero_image.url,
       casestudyHeroMobile: this.state.doc[0].data.casestudy_hero_image_mobile
         .url
@@ -164,14 +168,15 @@ class Casestudy extends React.Component {
               : "casestudy--light"
           }`}
         />
-        <h2>{this.state.casestudyTitle}</h2>
-        <img
-          src={
+        <Header_Slice
+          titleCopy={this.state.casestudyTitleCopy}
+          casestudyHero={
             this.state.casestudyHeroMobile && window.innerWidth < 768
               ? this.state.casestudyHeroMobile
               : this.state.casestudyHero
           }
         />
+
         {this.renderCasestudyData()}
         <Link
           to={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}

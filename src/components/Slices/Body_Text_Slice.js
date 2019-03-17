@@ -1,12 +1,11 @@
 import React from "react";
 
-/* could pass more info from api here to configure different classes based
-on what type of body copy it is */
-
 const Body_Text_Slice = props => {
   return (
-    <div>
-      <p>{props.bodyCopy}</p>
+    <div className={`body-copy--flex --${props.position}`}>
+      <div className="body-copy">
+        <p>{props.bodyCopy}</p>
+      </div>
     </div>
   );
 };

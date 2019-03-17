@@ -2,8 +2,8 @@ import React from "react";
 
 const Pull_Quote_Slice = props => {
   return (
-    <div>
-      <h1>{props.pullQuoteCopy}</h1>
+    <div className="pull-quote">
+      <h2>{props.pullQuoteCopy}</h2>
     </div>
   );
 };

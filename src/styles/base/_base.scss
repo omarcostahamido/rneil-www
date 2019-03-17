@@ -4,6 +4,13 @@ html {
   //for firefox scroll
   scrollbar-width: none;
   overflow: auto;
+  // @include media-min($desktop) {
+  //   position: fixed;
+  //   height: 100%;
+  //   overflow: hidden;
+  // }
+  //^^^ fixes the overflow scroll bounce on desktop
+  //but kills the cool nav up and down..... fuck with later
 }
 
 body {
@@ -13,7 +20,13 @@ body {
   font-size: 16px;
   text-align: left;
   -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+  // @include media-min($desktop) {
+  //   width: 100vw;
+  //   height: 100vh;
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+  // }
 }
 
 h1, h2, p, img, div, button, a {
@@ -28,10 +41,6 @@ h1, h2, p, img, div, button, a {
 
 button:disabled {
   cursor: default;
-}
-
-img {
-  width: 33vw;
 }
 
 // TRANSITIONS / ANIMATIONS --------------

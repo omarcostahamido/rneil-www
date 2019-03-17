@@ -3,21 +3,35 @@
 }
 
 div.slice-pano {
+  padding-bottom: 34.133vw;
   @include slider-base;
-
   div.slice-pano--wrap {
     @include slider-wrap;
   }
   div.slice-pano--padding {
-    width: 100vw;
-    height: inherit;
-    padding-left: 70vw;
+    padding-left: 8vw;
+    p {
+      @include label(inherit);
+    }
   }
   img.slice-pano__img {
-    width: 120vw;
-    flex-shrink: 0;
+    width: 400vw;
+    padding: 0 8vw 0 24px;
+   
   }
 }
 
-
-
+@include media-min($desktop) {
+  div.slice-pano {
+    padding-bottom: 16.667vw;
+    
+    div.slice-pano--padding {
+      padding-left: 45.14vw;
+    }
+    img.slice-pano__img {
+      width: 175vw;
+      padding: 0 45.14vw 0 32px;
+     
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.body-copy{
+  @include body-copy(inherit);
+  padding: 34.133vw 8vw;
+}
+
+@include media-min($desktop) {
+
+  .body-copy{
+    
+    padding: 16.667vw 15.97vw;
+    max-width: 600px;
+  }
+  .body-copy--flex {
+    display: flex;
+    width: 100%;
+    &.--right {
+     flex-direction: row-reverse;
+    }
+  }
+}
