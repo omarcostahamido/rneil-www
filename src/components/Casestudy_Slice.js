@@ -92,6 +92,8 @@ const Casestudy_Slice = props => {
             sliderImages={sliderImages}
             sliderPullQuote={
               props.slice_doc.primary.image_slider_pull_quote[0].text
+                ? props.slice_doc.primary.image_slider_pull_quote[0].text
+                : null
             }
           />
         );

@@ -1,15 +1,48 @@
 import React from "react";
 
 const Panoramic_Slider_Slice = props => {
+  // const handleImageClick = e => {
+  //   e.target.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "nearest",
+  //     inline: "center"
+  //   });
+  // };
   const handleImageClick = e => {
-    e.target.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center"
-    });
+    let scrollX = 0;
+    let eventX = 0;
+    return function handleScroll(e) {
+      if (window.innerWidth > 768) {
+        //to accommodate safari & edge not understanding scrollIntoView option obj
+        if (
+          /^Apple/.test(navigator.vendor) ||
+          /^Microsoft/.test(navigator.vendor)
+        ) {
+          console.log("safari");
+          console.log(e.pageX);
+          if (eventX < e.pageX) {
+            scrollX += e.target.getBoundingClientRect().width / 3;
+          } else {
+            scrollX -= e.target.getBoundingClientRect().width / 3;
+          }
+          eventX = e.pageX;
+          document.querySelector(".slice-pano--wrap").scrollTo(scrollX, 0);
+        } else {
+          document
+            .querySelector(`.${e.target.className.toString()}`)
+            .scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "end"
+            });
+        }
+      }
+    };
   };
+  //close over that scrollX
+  const handleScroll = handleImageClick();
   return (
-    <div id="pano" className="slice-pano" onClick={handleImageClick}>
+    <div id="pano" className="slice-pano" onClick={handleScroll}>
       <div className="slice-pano--wrap">
         <div className="slice-pano--padding" />
         <p>swipe</p>

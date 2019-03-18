@@ -1,5 +1,6 @@
 //casestudy root
 .casestudy { 
+  overflow: hidden;
   &.casestudy--dark {
     background-color: $black;
     color: $white;
@@ -14,7 +15,6 @@
 }
 
 .next-btn {
-  
   display: block;
   text-align: right;
   width: 84vw;
@@ -24,7 +24,6 @@
     text-decoration: none;
     padding-right: 16px;
   }
-  
 }
 
 @include media-min($desktop) {

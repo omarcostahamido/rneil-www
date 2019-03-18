@@ -20,14 +20,32 @@ class Gallery extends React.Component {
     }
   };
   handleImageClick = e => {
-    if (window.innerWidth > 768) {
-      document.getElementById(e.target.id.toString()).scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center"
-      });
-    }
+    let scrollX = 0;
+    return function handleScroll(e) {
+      //to accommodate safari not understanding scrollIntoView option obj
+      if (
+        /^Apple/.test(navigator.vendor) ||
+        /^Microsoft/.test(navigator.vendor)
+      ) {
+        if (e.pageX / 3 + e.target.getBoundingClientRect().width > scrollX) {
+          scrollX += e.pageX / 3 + e.target.getBoundingClientRect().width;
+        } else {
+          scrollX -= e.target.getBoundingClientRect().width;
+        }
+        document.querySelector(".gallery--wrap").scrollTo(scrollX, 0);
+      } else {
+        if (window.innerWidth > 768) {
+          document.getElementById(e.target.id.toString()).scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+          });
+        }
+      }
+    };
   };
+  //close over that scrollX
+  handleScroll = this.handleImageClick();
   handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
@@ -39,7 +57,7 @@ class Gallery extends React.Component {
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
                 key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
-                onClick={this.handleImageClick}
+                onClick={this.handleScroll}
               />
             );
           })}

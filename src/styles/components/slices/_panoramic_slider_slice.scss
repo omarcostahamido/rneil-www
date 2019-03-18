@@ -1,7 +1,3 @@
-::-webkit-scrollbar {
-  display: none;
-}
-
 div.slice-pano {
   padding-top: 34.133vw;
   @include slider-base;
@@ -18,6 +14,9 @@ div.slice-pano {
     width: 400vw;
     padding: 0 8vw 0 24px;
     flex-shrink: 0;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
 
