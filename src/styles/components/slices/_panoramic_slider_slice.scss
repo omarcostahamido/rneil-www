@@ -18,7 +18,7 @@ div.slice-pano {
   img.slice-pano__img {
     width: 400vw;
     padding: 0 8vw 0 24px;
-   
+    flex-shrink: 0;
   }
 }
 
