@@ -2,8 +2,8 @@ import React from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
-import { Link } from "@reach/router";
 import Header_Slice from "./Slices/Header_Slice";
+import Next_Btn from "./Next_Btn";
 
 class Casestudy extends React.Component {
   state = {
@@ -182,38 +182,16 @@ class Casestudy extends React.Component {
           }
           colorMode={this.state.colorMode}
         />
-
         {this.renderCasestudyData()}
-        <div className="next-btn">
-          <Link
-            to={`/${this.state.nextCasestudySlug}/${
-              this.state.nextCasestudyId
-            }`}
-          >
-            next exhibition
-          </Link>
-          <svg width="24px" height="13px" viewBox="0 0 24 13">
-            <g
-              transform="translate(-320.000000, -8032.000000)"
-              stroke={
-                this.state.colorMode &&
-                this.state.colorMode.toLowerCase() === "dark"
-                  ? "#FFF"
-                  : "#000"
-              }
-            >
-              <g transform="translate(182.000000, 8025.000000)">
-                <g transform="translate(150.000000, 13.500000) rotate(-90.000000) translate(-150.000000, -13.500000) translate(143.500000, 0.500000)">
-                  <path
-                    d="M12.5,17 L6.5,25 L0.5,17 M6.5,25 L6.5,1 L6.5,25"
-                    id="Arrow"
-                    fill="transparent"
-                  />
-                </g>
-              </g>
-            </g>
-          </svg>
-        </div>
+        <Next_Btn
+          url={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}
+          colorMode={
+            this.state.colorMode &&
+            this.state.colorMode.toLowerCase() === "dark"
+              ? "#FFF"
+              : "#000"
+          }
+        />
       </div>
     );
   }

@@ -4,7 +4,6 @@
   
   h1{
     @include h1(inherit);
-    
   }
   @include entire-viewport;
   .header--info {
