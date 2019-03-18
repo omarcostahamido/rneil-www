@@ -7,7 +7,6 @@ div.slice-pano {
   @include slider-base;
   div.slice-pano--wrap {
     @include slider-wrap;
-    width:400vw;
   }
   div.slice-pano--padding {
     padding-left: 8vw;
@@ -25,15 +24,12 @@ div.slice-pano {
 @include media-min($desktop) {
   div.slice-pano {
     padding-bottom: 16.667vw;
-    div.slice-pano--wrap {
-      width:175vw;
-    }
     div.slice-pano--padding {
       padding-left: 45.14vw;
     }
     img.slice-pano__img {
       width: 175vw;
-      padding: 0 45.14vw 0 32px;
+      margin: 0 45.14vw 0 32px;
      
     }
   }
