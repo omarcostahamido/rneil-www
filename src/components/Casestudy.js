@@ -2,7 +2,7 @@ import React from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import Header_Slice from "./Slices/Header_Slice";
 
 class Casestudy extends React.Component {
@@ -19,7 +19,6 @@ class Casestudy extends React.Component {
   //FUNCS---------------------------------------------
   getPrismicData = () => {
     const { apiEndpoint } = this.props;
-
     Prismic.api(apiEndpoint, {
       accessToken: process.env.REACT_APP_ACCESS_TOKEN
     }).then(api => {
@@ -35,6 +34,7 @@ class Casestudy extends React.Component {
             });
             // console.log(this.state.doc);
             this.cleanData();
+            this.scrollTop();
           }
         })
         .catch(error => console.log(error));
@@ -132,24 +132,25 @@ class Casestudy extends React.Component {
       }
     }
   };
+  scrollTop = () => {
+    if (window.pageYOffset > 0) {
+      window.scrollTo(0, 0);
+    }
+  };
   //LIFECYCLE------------------------------------------------
   componentDidMount() {
     this.getPrismicData();
     this.checkForMobile();
     //HACK to fix weird scroll bug between Router Links
-    if (window.pageYOffset > 0) {
-      window.scrollTo(0, 0);
-    }
+    this.scrollTop();
   }
   componentDidUpdate() {
     if (
       this.state.nextCasestudySlug &&
       !(this.state.currentPath == this.props.location.pathname)
     ) {
-      console.log("notsame!");
       this.getPrismicData();
     }
-    // console.log("updating");
     this.handleNextButton();
   }
 
@@ -179,14 +180,40 @@ class Casestudy extends React.Component {
               ? this.state.casestudyHeroMobile
               : this.state.casestudyHero
           }
+          colorMode={this.state.colorMode}
         />
 
         {this.renderCasestudyData()}
-        <Link
-          to={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}
-        >
-          Next
-        </Link>
+        <div className="next-btn">
+          <Link
+            to={`/${this.state.nextCasestudySlug}/${
+              this.state.nextCasestudyId
+            }`}
+          >
+            next exhibition
+          </Link>
+          <svg width="24px" height="13px" viewBox="0 0 24 13">
+            <g
+              transform="translate(-320.000000, -8032.000000)"
+              stroke={
+                this.state.colorMode &&
+                this.state.colorMode.toLowerCase() === "dark"
+                  ? "#FFF"
+                  : "#000"
+              }
+            >
+              <g transform="translate(182.000000, 8025.000000)">
+                <g transform="translate(150.000000, 13.500000) rotate(-90.000000) translate(-150.000000, -13.500000) translate(143.500000, 0.500000)">
+                  <path
+                    d="M12.5,17 L6.5,25 L0.5,17 M6.5,25 L6.5,1 L6.5,25"
+                    id="Arrow"
+                    fill="transparent"
+                  />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
       </div>
     );
   }

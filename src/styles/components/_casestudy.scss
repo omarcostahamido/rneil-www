@@ -12,3 +12,27 @@
 .casestudy-hero {
   width: 33vw;
 }
+
+.next-btn {
+  
+  display: block;
+  text-align: right;
+  width: 84vw;
+  padding: 19.2vw 8vw 34.133vw 8vw;
+  a {
+    @include body-copy(inherit);
+    text-decoration: none;
+    padding-right: 16px;
+  }
+  
+}
+
+@include media-min($desktop) {
+  .next-btn {
+    width: 80vw;
+    padding: 16.667vw 10vw;
+    a{
+      padding-right: 24px;
+    }
+  }
+}

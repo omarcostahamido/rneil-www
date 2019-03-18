@@ -3,7 +3,7 @@
 }
 
 div.slice-pano {
-  padding-bottom: 34.133vw;
+  padding-top: 34.133vw;
   @include slider-base;
   div.slice-pano--wrap {
     @include slider-wrap;
@@ -23,7 +23,7 @@ div.slice-pano {
 
 @include media-min($desktop) {
   div.slice-pano {
-    padding-bottom: 16.667vw;
+    padding-top: 16.667vw;
     div.slice-pano--padding {
       padding-left: 45.14vw;
     }
