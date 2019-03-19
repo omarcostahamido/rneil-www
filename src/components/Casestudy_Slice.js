@@ -24,6 +24,7 @@ const Casestudy_Slice = props => {
         return (
           <Pull_Quote_Slice
             pullQuoteCopy={props.slice_doc.primary.pull_quote_copy[0].text}
+            position={props.slice_doc.primary.position}
           />
         );
       } else if (props.slice_type === "image") {
@@ -115,6 +116,7 @@ const Casestudy_Slice = props => {
             mediaModuleUrl={
               props.slice_doc.primary.video_module_embed.embed_url
             }
+            style={props.slice_doc.primary.style}
           />
         );
       } else if (props.slice_type === "audio_module") {

@@ -1,25 +1,48 @@
-.media--wide {
-  padding: 34.133vw 8vw 0 8vw;
-  width: 84vw;
+.media {
+  padding-top: 34.133vw;
   img{
     width: 100%;
   }
 }
-
-.media--fullwidth {
-  img {
-    width: 100vw;
+.media--wide {
+  padding-left: 8vw; 
+  padding-right: 8vw;
+  width: 84vw;
+  &.video-player--wrap {
+    height: 44.52vw;
   }
-  
-  padding-top: 34.133vw;
+}
+.media--fullwidth {
+  width: 100vw;
+  &.video-player--wrap {
+    height: 53vw;
+  }
+}
+.media--narrow {
+  padding-left: 20vw;
+  padding-right: 20vw;
+  width: 60vw;
 }
 
 @include media-min($desktop) {
-  .media--wide {
-    padding: 16.67vw 10vw 0 10vw;
-    width: 80vw;
+  .media {
+    padding-top: 16.67vw;
   }
-  .media--fullwidth {
-    padding-top: 16.667vw;
+  .media--wide {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    width: 80vw;
+    &.video-player--wrap {
+        height: 42.4vw;
+    }
+  }
+  .media--narrow {
+    padding-left: 28vw;
+    padding-right: 28vw;
+    width: 44vw;
   }
 }
+
+
+
+

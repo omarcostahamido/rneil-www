@@ -3,7 +3,11 @@ import ReactPlayer from "react-player";
 
 const Video_Module_Slice = props => {
   return (
-    <div className="video-player--wrap">
+    <div
+      className={`video-player--wrap media ${
+        props.style ? props.style : "media--wide"
+      }`}
+    >
       <ReactPlayer
         className="video-player"
         width="100%"

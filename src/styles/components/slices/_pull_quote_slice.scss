@@ -6,7 +6,12 @@
 }
 @include media-min($desktop) {
   .pull-quote {
-    max-width: 980px;
     padding: 16.667vw 16vw 0 16vw;
+    &.--wide {
+      max-width: 980px;
+    }
+    &.--left {
+      max-width: 600px;
+    }
   }
 }
