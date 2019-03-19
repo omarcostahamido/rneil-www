@@ -16,7 +16,7 @@ const Casestudy_Slice = props => {
       if (props.slice_type === "body_text") {
         return (
           <Body_Text_Slice
-            bodyCopy={props.slice_doc.primary.body_copy_rich_text[0].text}
+            bodyCopy={props.slice_doc.primary.body_copy_rich_text}
             position={props.slice_doc.primary.position}
           />
         );
