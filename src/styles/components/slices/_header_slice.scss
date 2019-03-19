@@ -1,10 +1,16 @@
 .casestudy__header {
   display: flex;
   align-items: flex-end;
-  
   h1{
     @include h1(inherit);
+    &.black {
+      @include h1($black);
+    }
+    &.white {
+      @include h1($white);
+    }
   }
+ 
   @include entire-viewport;
   .header--info {
     max-width: 87.2vw;

@@ -3,6 +3,7 @@ import React from "react";
 const Header_Slice = props => {
   //add conditional to the style of the header whether it's a vid??
   //or just pull autoplay vid slice with extra parameters??
+  // console.log(props);
   return (
     <div
       className="casestudy__header"
@@ -17,11 +18,15 @@ const Header_Slice = props => {
       }}
     >
       <div className="header--info">
-        <h1>{props.titleCopy}</h1>
+        <h1 className={props.titleCopyColor ? props.titleCopyColor : null}>
+          {props.titleCopy}
+        </h1>
         <svg width="13px" height="15px" viewBox="0 0 13 15">
           <g
             stroke={
-              props.colorMode && props.colorMode === "dark" ? "#FFF" : "#000"
+              props.titleCopyColor && props.titleCopyColor === "black"
+                ? "#000"
+                : "#FFF"
             }
           >
             <path

@@ -32,7 +32,7 @@ class Casestudy extends React.Component {
               nextCasestudyId: null,
               nextCasestudySlug: null
             });
-            // console.log(this.state.doc);
+            console.log(this.state.doc);
             this.cleanData();
             this.scrollTop();
           }
@@ -55,6 +55,7 @@ class Casestudy extends React.Component {
       casestudyTitleCopy:
         this.state.doc[0].data.casestudy_supporting_title_copy[0] &&
         this.state.doc[0].data.casestudy_supporting_title_copy[0].text,
+      titleCopyColor: this.state.doc[0].data.title_copy_color,
       casestudyHero: this.state.doc[0].data.casestudy_hero_image.url,
       casestudyHeroMobile: this.state.doc[0].data.casestudy_hero_image_mobile
         .url
@@ -156,6 +157,7 @@ class Casestudy extends React.Component {
 
   //RENDER-------------------------------------------------
   render() {
+    console.log(this.state.titleCopyColor);
     return (
       <div
         className={`casestudy ${
@@ -175,6 +177,7 @@ class Casestudy extends React.Component {
         />
         <Header_Slice
           titleCopy={this.state.casestudyTitleCopy}
+          titleCopyColor={this.state.titleCopyColor}
           casestudyHero={
             this.state.casestudyHeroMobile && window.innerWidth < 768
               ? this.state.casestudyHeroMobile
