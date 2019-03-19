@@ -39,7 +39,7 @@ const Panoramic_Slider_Slice = props => {
       }
     };
   };
-  //close over that scrollX
+  //closure for scrollX & eventX
   const handleScroll = handleImageClick();
   return (
     <div id="pano" className="slice-pano" onClick={handleScroll}>

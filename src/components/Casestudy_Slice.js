@@ -29,6 +29,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "image") {
         return (
           <Image_Slice
+            style={props.slice_doc.primary.style}
             singleImageUrl={
               props.isMobile && props.slice_doc.primary.casestudy_image_mobile
                 ? props.slice_doc.primary.casestudy_image_mobile.url

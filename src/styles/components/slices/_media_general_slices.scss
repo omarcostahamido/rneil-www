@@ -6,9 +6,20 @@
   }
 }
 
+.media--fullwidth {
+  img {
+    width: 100vw;
+  }
+  
+  padding-top: 34.133vw;
+}
+
 @include media-min($desktop) {
   .media--wide {
     padding: 16.67vw 10vw 0 10vw;
     width: 80vw;
+  }
+  .media--fullwidth {
+    padding-top: 16.667vw;
   }
 }
