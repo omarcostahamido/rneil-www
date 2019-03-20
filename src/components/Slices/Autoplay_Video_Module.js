@@ -2,10 +2,14 @@ import React from "react";
 
 const Autoplay_Video_Module = props => {
   return (
-    <div>
-      <video autoPlay loop muted>
-        <source src={props.autoplayVideoUrl} type="video/mp4" />
-      </video>
+    <div className={`media ${props.style}`}>
+      <video
+        autoPlay
+        loop
+        muted
+        src={props.autoplayVideoUrl}
+        type="video/mp4"
+      />
     </div>
   );
 };

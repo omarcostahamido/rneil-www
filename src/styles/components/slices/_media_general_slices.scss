@@ -1,7 +1,15 @@
 .media {
   padding-top: 34.133vw;
-  img{
+  img, video{
     width: 100%;
+  }
+  &.autoplay-hero {
+    @include entire-viewport;
+    padding: 0;
+    video {
+      height: 100%;
+      width: auto;
+    }
   }
 }
 .media--wide {
@@ -17,6 +25,7 @@
   &.video-player--wrap {
     height: 53vw;
   }
+  
 }
 .media--narrow {
   padding-left: 20vw;

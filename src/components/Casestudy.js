@@ -32,7 +32,7 @@ class Casestudy extends React.Component {
               nextCasestudyId: null,
               nextCasestudySlug: null
             });
-            console.log(this.state.doc);
+            // console.log(this.state.doc);
             this.cleanData();
             this.scrollTop();
           }
@@ -58,7 +58,10 @@ class Casestudy extends React.Component {
       titleCopyColor: this.state.doc[0].data.title_copy_color,
       casestudyHero: this.state.doc[0].data.casestudy_hero_image.url,
       casestudyHeroMobile: this.state.doc[0].data.casestudy_hero_image_mobile
-        .url
+        .url,
+      heroIsVideo: this.state.doc[0].data.image_or_video,
+      autoplayHero: this.state.doc[0].data.autoplay_video_hero.url,
+      autoplayHeroMobile: this.state.doc[0].data.autoplay_video_hero_mobile.url
     });
     if (this.state.doc[0].data.light_dark_mode.toLowerCase() == "dark") {
       this.setState({
@@ -157,7 +160,6 @@ class Casestudy extends React.Component {
 
   //RENDER-------------------------------------------------
   render() {
-    console.log(this.state.titleCopyColor);
     return (
       <div
         className={`casestudy ${
@@ -178,10 +180,16 @@ class Casestudy extends React.Component {
         <Header_Slice
           titleCopy={this.state.casestudyTitleCopy}
           titleCopyColor={this.state.titleCopyColor}
+          isVideo={this.state.heroIsVideo === "video" ? true : false}
           casestudyHero={
             this.state.casestudyHeroMobile && window.innerWidth < 768
               ? this.state.casestudyHeroMobile
               : this.state.casestudyHero
+          }
+          casestudyHeroVideo={
+            this.state.autoplayHeroMobile && window.innerWidth < 768
+              ? this.state.autoplayHeroMobile
+              : this.state.autoplayHero
           }
           colorMode={this.state.colorMode}
         />

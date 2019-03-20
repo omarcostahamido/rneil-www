@@ -28,11 +28,13 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "image") {
+        console.log(props.slice_doc);
         return (
           <Image_Slice
             style={props.slice_doc.primary.style}
             singleImageUrl={
-              props.isMobile && props.slice_doc.primary.casestudy_image_mobile
+              props.isMobile &&
+              props.slice_doc.primary.casestudy_image_mobile.url
                 ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
@@ -56,7 +58,8 @@ const Casestudy_Slice = props => {
           <div className="dyptich--wrapper animate">
             <Image_Dyptich
               dyptichUrls={
-                props.isMobile && props.slice_doc.primary.dyptich_image_1_mobile
+                props.isMobile &&
+                props.slice_doc.primary.dyptich_image_1_mobile.url
                   ? [
                       props.slice_doc.primary.dyptich_image_1_mobile.url,
                       props.slice_doc.primary.dyptich_image_2_mobile.url
@@ -83,7 +86,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "image_slider") {
         let sliderImages = [];
         props.slice_doc.items.map(image => {
-          if (props.isMobile && image.image_slider_images_mobile) {
+          if (props.isMobile && image.image_slider_images_mobile.url) {
             sliderImages.push(image.image_slider_images_mobile.url);
           } else {
             sliderImages.push(image.image_slider_images.url);
@@ -108,6 +111,7 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.autoplay_video_url_mobile.url
                 : props.slice_doc.primary.autoplay_video_url.url
             }
+            style={props.slice_doc.primary.style}
           />
         );
       } else if (props.slice_type === "video_module") {
