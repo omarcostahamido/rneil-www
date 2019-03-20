@@ -1,6 +1,7 @@
 .casestudy__header {
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
   h1{
     @include h1(inherit);
     &.black {

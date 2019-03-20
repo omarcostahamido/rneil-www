@@ -4,9 +4,13 @@
     width: 100%;
   }
   &.autoplay-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include entire-viewport;
     padding: 0;
     video {
+      flex-shrink: 0;
       height: 100%;
       width: auto;
     }
@@ -36,6 +40,13 @@
 @include media-min($desktop) {
   .media {
     padding-top: 16.67vw;
+    &.autoplay-hero {
+      video {
+        min-width: 100%;
+        height: auto;
+        min-height: 100%;
+      }
+    }
   }
   .media--wide {
     padding-left: 10vw;
