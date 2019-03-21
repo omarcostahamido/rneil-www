@@ -5,7 +5,6 @@ const Image_Dyptich = props => {
     document.querySelector(".dyptich--wrapper").classList.remove("animate");
     document.querySelector(".dyptich--wrapper").classList.add("is--active");
   };
-
   return (
     <div className="dyptich">
       <div className="dyptich__image left">

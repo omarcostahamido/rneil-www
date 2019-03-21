@@ -157,7 +157,6 @@ class Casestudy extends React.Component {
     }
     this.handleNextButton();
   }
-
   //RENDER-------------------------------------------------
   render() {
     return (

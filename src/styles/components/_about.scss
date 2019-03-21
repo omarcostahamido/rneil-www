@@ -36,7 +36,7 @@
     margin-bottom: 12.8vw;
   }
 }
-//Mediaqueries- sm>>lrg--------------------------------
+//MQ's- sm>>lrg--------------------------------
 @include media-min($ipad) {
   .about__title {
     padding-top: 20vw;//guess - no ipad styles yet
@@ -45,7 +45,6 @@
 @include media-min($desktop) {
   .about__header {
     padding: 0 10vw;
-  
   }
   .about__title {
     padding: 12.2vw 6vw 0 6vw;

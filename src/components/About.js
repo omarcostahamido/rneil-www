@@ -81,14 +81,10 @@ class About extends React.Component {
   //LIFECYCLE-----------------------------------------
   componentDidMount() {
     this.getPrismicData();
-    //HACK to fix weird scroll bug between Router Links
-    if (window.pageYOffset > 0) {
-      window.scrollTo(0, 0);
-    }
+    this.props.scrollTop();
   }
-
   componentDidUpdate() {
-    //put code to make sure the animated elements stay visible between clicks here
+    //put code to make sure the animated elements stay visible between clicks here?
   }
   //RENDER--------------------------------------------
   render() {

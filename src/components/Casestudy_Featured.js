@@ -1,7 +1,6 @@
 import React from "react";
 
 //this links to casestudy/${id}
-
 const Casestudy_Featured = props => {
   return (
     <div>

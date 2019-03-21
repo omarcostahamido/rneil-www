@@ -83,7 +83,6 @@ class Homepage extends React.Component {
   }
   // RENDER ---------------------------------------------
   render() {
-    // console.log(this.state);
     return (
       <div>
         <div className="homepage__body">

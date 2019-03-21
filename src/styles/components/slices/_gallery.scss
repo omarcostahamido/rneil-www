@@ -1,7 +1,6 @@
 div.header-gallery {
   overflow: hidden;
 }
-  
 div.gallery {
   @include slider-base;
   overflow: hidden;
@@ -9,7 +8,6 @@ div.gallery {
     display: none !important;
   }
 }
-  
 div.gallery--wrap {
   @include slider-wrap;
   padding: 34.133vw 0 0 20vw;
@@ -23,14 +21,11 @@ div.gallery--wrap {
     display: none !important;
   }
 }
-
 img.gallery__images{
   scroll-snap-align: center;
   flex-shrink: 0;
   width: 66.667vw;
 }
-  
-//blanket desktop setting for dev purposes. default is mobile
 @include media-min($desktop) {
   div.gallery--wrap {
     @include slider-wrap;

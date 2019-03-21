@@ -71,10 +71,8 @@ class Data_And_Routes extends React.Component {
           checkOutliers = true;
         }
       });
-
       //if there are no duplicates/outliers, set state for order and featured
       //otherwise...set order for the current prismic order
-
       if (!checkDuplicates.length && !checkOutliers) {
         console.log("casestudies rendering in order");
         for (let i = 0; i < this.state.casestudyNum; i++) {
@@ -114,7 +112,7 @@ class Data_And_Routes extends React.Component {
       }
     }
   };
-  //passed down to homepage and exhibitions page
+  //Common Funcs passed down to kids--------------------------
   renderCasestudies = () => {
     if (this.state.casestudiesFeatured) {
       return (
@@ -137,25 +135,22 @@ class Data_And_Routes extends React.Component {
       );
     }
   };
+  //HACK to fix weird scroll bug between Router Links
+  scrollTop = () => {
+    if (window.pageYOffset > 0) {
+      window.scrollTo(0, 0);
+    }
+  };
   //LIFECYCLE----------------------------------------------------
   componentDidMount() {
     this.getCasestudyOrder();
   }
-
-  renderRoute = () => {
-    this.setState({
-      casestudy:
-        '<Casestudy path={`/${this.state.casestudiesFeatured[0].slugs[0]}`} id="XGb4LBEAAB8AbT4j" apiEndpoint={process.env.REACT_APP_BASE_URL} order={this.state.casestudyOrder}'
-    });
-  };
-
-  componentDidUpdate() {
-    this.render();
-  }
-
+  // componentDidUpdate() {
+  //   not sure why this is here - commented out to see
+  //   this.render();
+  // }
   //RENDER-------------------------------------------------------
   render() {
-    // console.log(this.state);
     return (
       <div>
         <Router>
@@ -169,9 +164,16 @@ class Data_And_Routes extends React.Component {
             apiEndpoint={process.env.REACT_APP_BASE_URL}
             order={this.state.casestudyOrder}
           />
-          {this.state.casestudy && this.state.casestudy}
-          <Exhibitions path="work" renderCasestudies={this.renderCasestudies} />
-          <About path="about" apiEndpoint={process.env.REACT_APP_BASE_URL} />
+          <Exhibitions
+            path="work"
+            renderCasestudies={this.renderCasestudies}
+            scrollTop={this.scrollTop}
+          />
+          <About
+            path="about"
+            apiEndpoint={process.env.REACT_APP_BASE_URL}
+            scrollTop={this.scrollTop}
+          />
           <Not_Found default />
         </Router>
       </div>

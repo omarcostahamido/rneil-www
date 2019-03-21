@@ -1,12 +1,6 @@
-/*-------------------home page styles go here---------------*/
-
 .homepage__body {
   @include entire-viewport;
-  // @supports(mix-blend-mode: difference) {
-  //   background-color: white;
-  // } 
 }
-
 div.homepage__casestudies-featured {
   background-color: $black;
   color: $white;

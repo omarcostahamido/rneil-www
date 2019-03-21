@@ -21,6 +21,8 @@ body {
   text-align: left;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  overflow-x: hidden;
   // @include media-min($desktop) {
   //   width: 100vw;
   //   height: 100vh;

@@ -3,9 +3,7 @@
   padding: 34.133vw 8vw 0 8vw;
   white-space:pre-line;
 }
-
 @include media-min($desktop) {
-
   .body-copy{
     padding: 16.667vw 16vw 0 16vw;
     max-width: 600px;
