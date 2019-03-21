@@ -5,10 +5,11 @@ const Body_Text_Slice = props => {
     if (props.bodyCopy.length === 1) {
       return <p>{props.bodyCopy[0].text}</p>;
     } else {
+      let i = 2;
       return props.bodyCopy.map(textItem => {
-        console.log(textItem.text);
+        i++;
         if (textItem.text == "") {
-          return <br key={textItem.text + Math.random().toFixed(4)} />;
+          return <br key={"br-" + props.bodyCopy[0].text.slice(0, i)} />;
         } else {
           return <p key={textItem.text.slice(0, 8)}>{textItem.text}</p>;
         }

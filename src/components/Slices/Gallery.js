@@ -1,6 +1,7 @@
 import React from "react";
 
 const Gallery = props => {
+  // console.log(props);
   const handleImageAnimations = () => {
     const images = document.querySelectorAll("img.gallery__images");
     if (images.length > 1) {
@@ -18,33 +19,33 @@ const Gallery = props => {
       });
     }
   };
-  const handleImageClick = e => {
-    let scrollX = 0;
-    if (window.innerWidth > 768) {
-      return function handleScroll(e) {
-        //to accommodate safari not understanding scrollIntoView option obj
-        if (
-          /^Apple/.test(navigator.vendor) ||
-          /^Microsoft/.test(navigator.vendor)
-        ) {
-          if (e.pageX / 3 + e.target.getBoundingClientRect().width > scrollX) {
-            scrollX += e.pageX / 3 + e.target.getBoundingClientRect().width;
-          } else {
-            scrollX -= e.target.getBoundingClientRect().width;
-          }
-          document.querySelector(".gallery--wrap").scrollTo(scrollX, 0);
-        } else {
-          document.getElementById(e.target.id.toString()).scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center"
-          });
-        }
-      };
-    }
-  };
+  // const handleImageClick = e => {
+  //   let scrollX = 0;
+  //   if (window.innerWidth > 768) {
+  //     return function handleScroll(e) {
+  //       //to accommodate safari not understanding scrollIntoView option obj
+  //       if (
+  //         /^Apple/.test(navigator.vendor) ||
+  //         /^Microsoft/.test(navigator.vendor)
+  //       ) {
+  //         if (e.pageX / 3 + e.target.getBoundingClientRect().width > scrollX) {
+  //           scrollX += e.pageX / 3 + e.target.getBoundingClientRect().width;
+  //         } else {
+  //           scrollX -= e.target.getBoundingClientRect().width;
+  //         }
+  //         document.querySelector(".gallery--wrap").scrollTo(scrollX, 0);
+  //       } else {
+  //         document.getElementById(e.target.id.toString()).scrollIntoView({
+  //           behavior: "smooth",
+  //           block: "nearest",
+  //           inline: "center"
+  //         });
+  //       }
+  //     };
+  //   }
+  // };
   //close over that scrollX
-  const handleScroll = handleImageClick();
+  const handleScroll = props.handleImageClick(".gallery--wrap");
   const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
@@ -76,6 +77,9 @@ const Gallery = props => {
         }`}
       >
         {props.galleryImages && handleGalleryBuild(props.galleryImages)}
+        {props.pullQuote && (
+          <h1 className="gallery__pullquote">{props.pullQuote}</h1>
+        )}
       </div>
     </div>
   );

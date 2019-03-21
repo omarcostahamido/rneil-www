@@ -1,6 +1,6 @@
 import React from "react";
 
-//had to set innerHTML so muted attribute gets passed
+//had to set innerHTML so muted attribute gets passed for Android
 const Autoplay_Video_Module = props => {
   return (
     <div
