@@ -1,7 +1,6 @@
 import React from "react";
 
 const Body_Text_Slice = props => {
-  console.log(props);
   const handleRichText = props => {
     if (props.bodyCopy.length === 1) {
       return <p>{props.bodyCopy[0].text}</p>;

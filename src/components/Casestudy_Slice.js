@@ -2,7 +2,6 @@ import React from "react";
 import Body_Text_Slice from "./Slices/Body_Text_Slice";
 import Image_Slice from "./Slices/Image_Slice";
 import Pull_Quote_Slice from "./Slices/Pull_Quote_Slice";
-import Image_Left_Right_Slice from "./Slices/Image_Left_Right_Slice";
 import Autoplay_Video_Module from "./Slices/Autoplay_Video_Module";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
@@ -31,25 +30,13 @@ const Casestudy_Slice = props => {
         return (
           <Image_Slice
             style={props.slice_doc.primary.style}
+            position={props.slice_doc.primary.position}
             singleImageUrl={
               props.isMobile &&
               props.slice_doc.primary.casestudy_image_mobile.url
                 ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
-          />
-        );
-      } else if (props.slice_type === "image_left") {
-        return (
-          <Image_Left_Right_Slice
-            imageLeftRightUrl={
-              props.isMobile &&
-              props.slice_doc.primary.image_left_image_mobile.url
-                ? props.slice_doc.primary.image_left_image_mobile.url
-                : props.slice_doc.primary.image_left_image.url
-            }
-            imageLeftRightCopy={props.slice_doc.primary.image_left_copy[0]}
-            orientation={props.slice_doc.primary.left_or_right}
           />
         );
       } else if (props.slice_type === "image_dyptich") {
