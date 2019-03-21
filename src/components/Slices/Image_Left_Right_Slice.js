@@ -1,15 +1,6 @@
 import React from "react";
 
 const Image_Left_Right_Slice = props => {
-  const checkForCopy = () => {
-    if (props.imageLeftRightCopy) {
-      return (
-        <div>
-          <h1>{props.imageLeftRightCopy.text}</h1>
-        </div>
-      );
-    }
-  };
   return (
     <div
       className={
@@ -19,7 +10,9 @@ const Image_Left_Right_Slice = props => {
       }
     >
       <img src={props.imageLeftRightUrl} />
-      {checkForCopy()}
+      {props.imageLeftRightCopy ? (
+        <h1>{props.imageLeftRightCopy.text}</h1>
+      ) : null}
     </div>
   );
 };

@@ -1,13 +1,6 @@
 import React from "react";
 
 const Panoramic_Slider_Slice = props => {
-  // const handleImageClick = e => {
-  //   e.target.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "nearest",
-  //     inline: "center"
-  //   });
-  // };
   const handleImageClick = e => {
     let scrollX = 0;
     let eventX = 0;
