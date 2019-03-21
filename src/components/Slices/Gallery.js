@@ -1,8 +1,7 @@
 import React from "react";
 
-class Gallery extends React.Component {
-  //FUNCS----------------------------------
-  handleImageAnimations = () => {
+const Gallery = props => {
+  const handleImageAnimations = () => {
     const images = document.querySelectorAll("img.gallery__images");
     if (images.length > 1) {
       images.forEach(image => {
@@ -19,7 +18,7 @@ class Gallery extends React.Component {
       });
     }
   };
-  handleImageClick = e => {
+  const handleImageClick = e => {
     let scrollX = 0;
     if (window.innerWidth > 768) {
       return function handleScroll(e) {
@@ -45,11 +44,11 @@ class Gallery extends React.Component {
     }
   };
   //close over that scrollX
-  handleScroll = this.handleImageClick();
-  handleGalleryBuild = galleryImages => {
+  const handleScroll = handleImageClick();
+  const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div className="gallery--wrap" onScroll={this.handleImageAnimations}>
+        <div className="gallery--wrap" onScroll={handleImageAnimations}>
           {galleryImages.map(image => {
             return (
               <img
@@ -57,7 +56,8 @@ class Gallery extends React.Component {
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
                 key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
-                onClick={this.handleScroll}
+                onClick={handleScroll}
+                onLoad={handleImageAnimations}
               />
             );
           })}
@@ -65,25 +65,20 @@ class Gallery extends React.Component {
       );
     }
   };
-  //LIFECYCLE--------------------------------------------------
-  componentDidUpdate() {
-    this.handleImageAnimations();
-  }
   //RENDER----------------------------------------------------------
-  render() {
-    const { galleryImages, type } = this.props;
-    return (
-      <div>
-        <div
-          className={`gallery ${
-            type && type == "headerGallery" ? "header-gallery" : "slice-slider"
-          }`}
-        >
-          {galleryImages && this.handleGalleryBuild(galleryImages)}
-        </div>
+  return (
+    <div>
+      <div
+        className={`gallery ${
+          props.type && props.type == "headerGallery"
+            ? "header-gallery"
+            : "slice-slider"
+        }`}
+      >
+        {props.galleryImages && handleGalleryBuild(props.galleryImages)}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Gallery;

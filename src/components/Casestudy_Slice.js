@@ -28,7 +28,6 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "image") {
-        console.log(props.slice_doc);
         return (
           <Image_Slice
             style={props.slice_doc.primary.style}
