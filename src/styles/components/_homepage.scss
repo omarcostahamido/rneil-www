@@ -1,5 +1,8 @@
 .homepage__body {
-  // @include entire-viewport;
+  &.--isLoading {
+    @include entire-viewport;
+    overflow: hidden;
+  }
 }
 div.homepage__casestudies-featured {
   background-color: $black;

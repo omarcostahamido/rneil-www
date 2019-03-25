@@ -1,13 +1,15 @@
 import React from "react";
 import Routes from "./Routes";
 import Prismic from "prismic-javascript";
+import Loader from "./Loader";
 
 class RootApp_Data extends React.Component {
   state = {
     homePage: null,
     aboutPage: null,
     casestudiesFeatured: null,
-    casestudyOrder: []
+    casestudyOrder: [],
+    isLoading: true
   };
   getPrismicData = () => {
     Prismic.api(process.env.REACT_APP_BASE_URL, {
@@ -44,6 +46,11 @@ class RootApp_Data extends React.Component {
               doc: response.results
             });
             this.cleanData();
+            window.setTimeout(() => {
+              this.setState({
+                isLoading: false
+              });
+            }, 2000);
           }
         })
         .catch(error => console.log(error));
@@ -144,12 +151,16 @@ class RootApp_Data extends React.Component {
   }
   render() {
     return (
-      <Routes
-        homePageData={this.state.homePage}
-        aboutPageData={this.state.aboutPage}
-        casestudyData={this.state.casestudiesFeatured}
-        casestudyOrder={this.state.casestudyOrder}
-      />
+      <div>
+        <Loader isLoading={this.state.isLoading} class="--dark-mode" />
+        <Routes
+          isLoading={this.state.isLoading}
+          homePageData={this.state.homePage}
+          aboutPageData={this.state.aboutPage}
+          casestudyData={this.state.casestudiesFeatured}
+          casestudyOrder={this.state.casestudyOrder}
+        />
+      </div>
     );
   }
 }

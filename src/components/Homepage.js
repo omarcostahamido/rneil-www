@@ -1,9 +1,11 @@
 import React from "react";
 import Nav from "./Nav";
 import Header from "./Header";
-import Loader from "./Loader";
 
 class Homepage extends React.Component {
+  state = {
+    isLoading: true
+  };
   handleAnchorLink = () => {
     document.removeEventListener("scroll", this.handleParallax);
     document
@@ -20,6 +22,11 @@ class Homepage extends React.Component {
     if (window.innerWidth >= 1024) {
       document.addEventListener("scroll", this.handleParallax);
     }
+    window.setTimeout(() => {
+      this.setState({
+        isLoading: false
+      });
+    }, 4000);
   }
   componentWillUnmount() {
     if (window.innerWidth >= 1024) {
@@ -30,7 +37,11 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        <div className="homepage__body">
+        <div
+          className={`homepage__body ${
+            this.props.isLoading ? "--isLoading" : null
+          }`}
+        >
           <Nav page="homepage" class="--home" />
           <Header
             copy={
@@ -50,25 +61,3 @@ class Homepage extends React.Component {
 }
 
 export default Homepage;
-
-/**
- * 
- * 
- *  <div>
-        {this.state.isLoading ? (
-          <Loader isLoading={this.state.isLoading} />
-        ) : (
-          <div className="homepage__body">
-            <Nav page="homepage" class="--home" />
-            <Header
-              copy={this.state.headerMainCopy}
-              galleryImages={this.state.headerImageSlider}
-              handleAnchorLink={this.handleAnchorLink}
-            />
-            <div className="homepage__casestudies-featured">
-              {this.props.renderCasestudies()}
-            </div>
-          </div>
-        )}
-      </div>
- */

@@ -34,7 +34,7 @@ class Casestudy extends React.Component {
             });
             // console.log(this.state.doc);
             this.cleanData();
-            this.scrollTop();
+            this.props.scrollTop();
           }
         })
         .catch(error => console.log(error));
@@ -136,17 +136,12 @@ class Casestudy extends React.Component {
       }
     }
   };
-  scrollTop = () => {
-    if (window.pageYOffset > 0) {
-      window.scrollTo(0, 0);
-    }
-  };
   //LIFECYCLE------------------------------------------------
   componentDidMount() {
     this.getPrismicData();
     this.checkForMobile();
     //HACK to fix weird scroll bug between Router Links
-    this.scrollTop();
+    this.props.scrollTop();
   }
   componentDidUpdate() {
     if (

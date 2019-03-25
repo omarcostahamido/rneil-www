@@ -6,7 +6,6 @@ import Casestudy_Featured from "./Casestudy_Featured";
 import About from "./About";
 import Exhibitions from "./Exhibitions";
 import Not_Found from "./Not_Found";
-import Loader from "./Loader";
 
 const Routes = props => {
   //Common Funcs passed down to kids--------------------------
@@ -47,22 +46,27 @@ const Routes = props => {
           apiEndpoint={process.env.REACT_APP_BASE_URL}
           renderCasestudies={renderCasestudies}
           data={props.homePageData}
+          isLoading={props.isLoading}
         />
         <Casestudy
           path=":slug/:id"
           apiEndpoint={process.env.REACT_APP_BASE_URL}
           order={props.casestudyOrder}
+          scrollTop={scrollTop}
+          isLoading={props.isLoading}
         />
         <Exhibitions
           path="work"
           renderCasestudies={renderCasestudies}
           scrollTop={scrollTop}
+          isLoading={props.isLoading}
         />
         <About
           path="about"
           apiEndpoint={process.env.REACT_APP_BASE_URL}
           scrollTop={scrollTop}
           data={props.aboutPageData}
+          isLoading={props.isLoading}
         />
         <Not_Found default />
       </Router>
