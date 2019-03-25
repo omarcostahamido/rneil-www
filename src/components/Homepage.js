@@ -27,7 +27,6 @@ class Homepage extends React.Component {
   }
   // RENDER ---------------------------------------------
   render() {
-    console.log(this.props.isLoading);
     return (
       <div>
         <div
