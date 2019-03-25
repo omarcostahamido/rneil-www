@@ -3,9 +3,6 @@ import Nav from "./Nav";
 import Header from "./Header";
 
 class Homepage extends React.Component {
-  state = {
-    isLoading: true
-  };
   handleAnchorLink = () => {
     document.removeEventListener("scroll", this.handleParallax);
     document
@@ -22,11 +19,6 @@ class Homepage extends React.Component {
     if (window.innerWidth >= 1024) {
       document.addEventListener("scroll", this.handleParallax);
     }
-    window.setTimeout(() => {
-      this.setState({
-        isLoading: false
-      });
-    }, 4000);
   }
   componentWillUnmount() {
     if (window.innerWidth >= 1024) {
@@ -39,7 +31,7 @@ class Homepage extends React.Component {
       <div>
         <div
           className={`homepage__body ${
-            this.props.isLoading ? "--isLoading" : null
+            this.props.isLoading ? "--isLoading" : "--isLoaded"
           }`}
         >
           <Nav page="homepage" class="--home" />

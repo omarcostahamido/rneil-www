@@ -27,7 +27,7 @@ const About = props => {
   };
   props.scrollTop();
   return (
-    <div>
+    <div className="--isLoaded about">
       <Nav className="--light-mode" color="#000" page="about" />
       <div className={`about__header ${props.data ? "is--active" : "animate"}`}>
         <h1 className="about__title">

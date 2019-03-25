@@ -18,8 +18,7 @@ class Casestudy extends React.Component {
   };
   //FUNCS---------------------------------------------
   getPrismicData = () => {
-    const { apiEndpoint } = this.props;
-    Prismic.api(apiEndpoint, {
+    Prismic.api(process.env.REACT_APP_BASE_URL, {
       accessToken: process.env.REACT_APP_ACCESS_TOKEN
     }).then(api => {
       api
@@ -157,10 +156,10 @@ class Casestudy extends React.Component {
     return (
       <div
         className={`casestudy ${
-          this.state.colorMode && this.state.colorMode.toLowerCase() === "dark"
-            ? "casestudy--dark"
-            : "casestudy--light"
-        }`}
+          this.state.colorMode && this.state.colorMode.toLowerCase() === "light"
+            ? "casestudy--light"
+            : "casestudy--dark"
+        } --isLoaded`}
       >
         <Nav
           class={this.state.navClass}

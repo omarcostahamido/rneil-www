@@ -36,12 +36,14 @@ class Nav extends React.Component {
       this.props.page == "homepage" &&
       window.pageYOffset >= window.innerHeight
     ) {
+      console.log("white");
       document.querySelector(".logo-path").style.fill = "#fff";
       document.querySelector("div.nav__nav-items").style.color = "#fff";
     } else if (
       this.props.page == "homepage" &&
       window.pageYOffset <= window.innerHeight
     ) {
+      console.log("black");
       document.querySelector(".logo-path").style.fill = "#000";
       document.querySelector("div.nav__nav-items").style.color = "#000";
     }

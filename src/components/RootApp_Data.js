@@ -25,7 +25,6 @@ class RootApp_Data extends React.Component {
           {
             fetch: [
               "home_page_header.home_page_header_title_copy",
-              "home_page_header.home_page_header_slider_images",
               "casestudy.casestudy_order",
               "casestudy.casestudy_hero_image",
               "casestudy.casestudy_hero_image_mobile",
@@ -46,15 +45,44 @@ class RootApp_Data extends React.Component {
               doc: response.results
             });
             this.cleanData();
-            window.setTimeout(() => {
-              this.setState({
-                isLoading: false
-              });
-            }, 2000);
+            this.removeLoader();
           }
         })
         .catch(error => console.log(error));
     });
+  };
+  removeLoader = () => {
+    window.setTimeout(() => {
+      this.setState({
+        isLoading: false
+      });
+    }, 2000);
+  };
+  cleanData = () => {
+    if (this.state.doc) {
+      let casestudiesFeatured = [];
+      let homePage = [];
+      let aboutPage = [];
+      this.state.doc.forEach(page => {
+        if (page.type === "casestudy") {
+          casestudiesFeatured.push(page);
+        } else if (page.type === "about_page") {
+          aboutPage.push(page);
+        } else if (page.type === "home_page_header") {
+          homePage.push(page);
+        }
+      });
+      if (casestudiesFeatured.length > 1 || homePage || aboutPage) {
+        this.setState({
+          casestudiesFeatured,
+          homePage,
+          aboutPage
+        });
+      }
+    }
+    if (this.state.casestudiesFeatured) {
+      this.reorderCasestudies();
+    }
   };
   reorderCasestudies = () => {
     if (this.state.casestudiesFeatured) {
@@ -80,7 +108,6 @@ class RootApp_Data extends React.Component {
         }
       });
       //if there are no duplicates/outliers, set state for order and featured
-      //otherwise...set order for the current prismic order
       if (!checkDuplicates.length && !checkOutliers) {
         console.log("casestudies rendering in order");
         for (let i = 0; i < this.state.casestudyNum; i++) {
@@ -120,32 +147,6 @@ class RootApp_Data extends React.Component {
       }
     }
   };
-  cleanData = () => {
-    if (this.state.doc) {
-      let casestudiesFeatured = [];
-      let homePage = [];
-      let aboutPage = [];
-      this.state.doc.forEach(page => {
-        if (page.type === "casestudy") {
-          casestudiesFeatured.push(page);
-        } else if (page.type === "about_page") {
-          aboutPage.push(page);
-        } else if (page.type === "home_page_header") {
-          homePage.push(page);
-        }
-      });
-      if (casestudiesFeatured.length > 1 || homePage || aboutPage) {
-        this.setState({
-          casestudiesFeatured,
-          homePage,
-          aboutPage
-        });
-      }
-    }
-    if (this.state.casestudiesFeatured) {
-      this.reorderCasestudies();
-    }
-  };
   componentDidMount() {
     this.getPrismicData();
   }
@@ -166,9 +167,3 @@ class RootApp_Data extends React.Component {
 }
 
 export default RootApp_Data;
-
-/*
-const RootApp = () => {
-return <Data_And_Routes />;
-};
-*/

@@ -1,6 +1,7 @@
 .header {
   @include entire-viewport;
   position: relative;
+  background-color: $white;
 }
 .header__main-copy {
    padding-top: 120px;

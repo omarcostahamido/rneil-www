@@ -43,14 +43,12 @@ const Routes = props => {
       <Router>
         <Homepage
           path="/"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          renderCasestudies={renderCasestudies}
           data={props.homePageData}
+          renderCasestudies={renderCasestudies}
           isLoading={props.isLoading}
         />
         <Casestudy
           path=":slug/:id"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
           order={props.casestudyOrder}
           scrollTop={scrollTop}
           isLoading={props.isLoading}
@@ -63,9 +61,8 @@ const Routes = props => {
         />
         <About
           path="about"
-          apiEndpoint={process.env.REACT_APP_BASE_URL}
-          scrollTop={scrollTop}
           data={props.aboutPageData}
+          scrollTop={scrollTop}
           isLoading={props.isLoading}
         />
         <Not_Found default />
