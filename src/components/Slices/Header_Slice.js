@@ -34,7 +34,10 @@ const Header_Slice = props => {
           <h1 className={props.titleCopyColor ? props.titleCopyColor : null}>
             {props.titleCopy}
           </h1>
-          <Down_Arrow titleCopyColor={props.titleCopyColor} />
+          <Down_Arrow
+            class="down-arrow"
+            titleCopyColor={props.titleCopyColor}
+          />
         </div>
       </div>
     </div>

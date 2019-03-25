@@ -8,7 +8,10 @@ const Header = props => {
       <p onClick={props.handleAnchorLink} id="exhibitions">
         Exhibitions
       </p>
-      <Down_Arrow titleCopyColor="black" />
+      <Down_Arrow
+        class={!props.isLoading ? "down-arrow" : null}
+        titleCopyColor="black"
+      />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const Down_Arrow = props => {
   return (
-    <svg width="13px" height="15px" viewBox="0 0 13 15">
+    <svg className={props.class} width="13px" height="15px" viewBox="0 0 13 15">
       <g
         stroke={
           props.titleCopyColor && props.titleCopyColor === "black"

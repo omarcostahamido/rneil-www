@@ -27,6 +27,7 @@ class Homepage extends React.Component {
   }
   // RENDER ---------------------------------------------
   render() {
+    console.log(this.props.isLoading);
     return (
       <div>
         <div
@@ -36,6 +37,7 @@ class Homepage extends React.Component {
         >
           <Nav page="homepage" class="--home" />
           <Header
+            isLoading={this.props.isLoading}
             copy={
               this.props.data
                 ? this.props.data[0].data.home_page_header_title_copy[0].text
