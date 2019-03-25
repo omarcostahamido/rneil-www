@@ -1,4 +1,5 @@
 import React from "react";
+import Down_Arrow from "./Down_Arrow";
 
 const Header = props => {
   return (
@@ -7,6 +8,7 @@ const Header = props => {
       <p onClick={props.handleAnchorLink} id="exhibitions">
         Exhibitions
       </p>
+      <Down_Arrow titleCopyColor="black" />
     </div>
   );
 };
