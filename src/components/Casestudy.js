@@ -8,6 +8,7 @@ import Next_Btn from "./Next_Btn";
 class Casestudy extends React.Component {
   state = {
     doc: null,
+    casestudyId: null,
     casestudyContent: [],
     isMobile: false,
     colorMode: null,
@@ -27,6 +28,7 @@ class Casestudy extends React.Component {
           if (response) {
             this.setState({
               doc: response.results,
+              casestudyId: response.results[0].id,
               isNext: false,
               nextCasestudyId: null,
               nextCasestudySlug: null
@@ -84,8 +86,13 @@ class Casestudy extends React.Component {
             i++;
             return (
               <Casestudy_Slice
+                id={`${this.state.casestudyId}-${[i]}-${
+                  casestudySlice.slice_type
+                }`}
                 slice_doc={casestudySlice}
-                key={`${[i]}-${casestudySlice.slice_type}`}
+                key={`${this.state.casestudyId}-${[i]}-${
+                  casestudySlice.slice_type
+                }`}
                 slice_type={casestudySlice.slice_type}
                 isMobile={this.state.isMobile}
                 colorMode={this.state.colorMode}

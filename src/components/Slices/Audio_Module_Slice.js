@@ -3,18 +3,20 @@ import ReactPlayer from "react-player";
 
 const Audio_Module_Slice = props => {
   return (
-    <ReactPlayer
-      height={150}
-      url={props.mediaModuleUrl}
-      config={{
-        soundcloud: {
-          options: {
-            visual: false,
-            show_artwork: false
+    <div id={props.id}>
+      <ReactPlayer
+        height={150}
+        url={props.mediaModuleUrl}
+        config={{
+          soundcloud: {
+            options: {
+              visual: false,
+              show_artwork: false
+            }
           }
-        }
-      }}
-    />
+        }}
+      />
+    </div>
   );
 };
 

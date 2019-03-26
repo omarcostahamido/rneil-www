@@ -9,7 +9,7 @@ const Panoramic_Slider_Slice = props => {
         <p>swipe</p>
         <img
           className="slice-pano__img"
-          id={props.panoramicImageUrl.slice(60, 70)}
+          id={props.id}
           src={props.panoramicImageUrl}
         />
       </div>

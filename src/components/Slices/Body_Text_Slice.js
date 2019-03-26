@@ -18,7 +18,9 @@ const Body_Text_Slice = props => {
   };
   return (
     <div className={`body-copy--flex --${props.position}`}>
-      <div className="body-copy">{handleRichText(props)}</div>
+      <div id={props.id} className="body-copy">
+        {handleRichText(props)}
+      </div>
     </div>
   );
 };

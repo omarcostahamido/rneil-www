@@ -8,7 +8,7 @@ const Image_Slice = props => {
         props.style ? props.style.toString() : "media--wide"
       } ${props.position ? props.position : "center"}`}
     >
-      <img src={props.singleImageUrl} />
+      <img id={props.id} src={props.singleImageUrl} />
     </div>
   );
 };

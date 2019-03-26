@@ -56,6 +56,7 @@ const Casestudy_Slice = props => {
       if (props.slice_type === "body_text") {
         return (
           <Body_Text_Slice
+            id={props.id}
             bodyCopy={props.slice_doc.primary.body_copy_rich_text}
             position={props.slice_doc.primary.position}
           />
@@ -63,6 +64,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "pull_quote") {
         return (
           <Pull_Quote_Slice
+            id={props.id}
             pullQuoteCopy={props.slice_doc.primary.pull_quote_copy[0].text}
             position={props.slice_doc.primary.position}
           />
@@ -70,6 +72,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "image") {
         return (
           <Image_Slice
+            id={props.id}
             style={props.slice_doc.primary.style}
             position={props.slice_doc.primary.position}
             singleImageUrl={
@@ -82,8 +85,9 @@ const Casestudy_Slice = props => {
         );
       } else if (props.slice_type === "image_dyptich") {
         return (
-          <div className="dyptich--wrapper animate">
+          <div className="dyptich--wrapper">
             <Image_Dyptich
+              id={props.id}
               dyptichUrls={
                 props.isMobile &&
                 props.slice_doc.primary.dyptich_image_1_mobile.url
@@ -102,6 +106,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "panoramic_slider") {
         return (
           <Panoramic_Slider_Slice
+            id={props.id}
             handleImageClick={handleImageClick}
             panoramicImageUrl={
               props.isMobile &&
@@ -122,6 +127,7 @@ const Casestudy_Slice = props => {
         });
         return (
           <Gallery
+            id={props.id}
             handleImageClick={handleImageClick}
             galleryImages={sliderImages}
             type="slice-slider"
@@ -135,6 +141,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "autoplay_video_module") {
         return (
           <Autoplay_Video_Module
+            id={props.id}
             autoplayVideoUrl={
               props.isMobile &&
               props.slice_doc.primary.autoplay_video_url_mobile.url
@@ -147,6 +154,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "video_module") {
         return (
           <Video_Module_Slice
+            id={props.id}
             mediaModuleUrl={
               props.slice_doc.primary.video_module_embed.embed_url
             }
@@ -156,6 +164,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "audio_module") {
         return (
           <Audio_Module_Slice
+            id={props.id}
             mediaModuleUrl={
               props.slice_doc.primary.audio_module_embed.embed_url
             }

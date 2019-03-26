@@ -2,7 +2,6 @@ import React from "react";
 import Nav from "./Nav";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
-import { CSSTransition } from "react-transition-group";
 import { Waypoint } from "react-waypoint";
 
 const About = props => {
@@ -12,8 +11,9 @@ const About = props => {
         <div>
           {props.data[0].data.about_page_videos.map(video => {
             return (
-              <div key={video.video_title[0].text}>
+              <div key={`${props.data[0].id}-${video.video_title[0].text}`}>
                 <Video_Module_Slice
+                  id={`${props.data[0].id}-${video.video_title[0].text}`}
                   mediaModuleUrl={video.about_page_video_url.url}
                 />
                 <div className="about-videos__info">
@@ -27,7 +27,7 @@ const About = props => {
       );
     }
   };
-  props.scrollTop();
+  // props.scrollTop();
   /**
    * use a hook here to store the state of whether the 'in' for the transition
    * should be true based on whether or not that element is in view
@@ -43,6 +43,7 @@ const About = props => {
   };
   return (
     <div className="--isLoaded about">
+      {!props.data && props.scrollTop()}
       <Nav className="--light-mode" color="#000" page="about" />
       <Waypoint
         onEnter={handleWaypointEnter}
@@ -70,6 +71,7 @@ const About = props => {
       </Waypoint>
       <div className="dyptich--wrapper">
         <Image_Dyptich
+          id={props.data && `${props.data[0].id}-about-dyptich`}
           dyptichUrls={
             props.data
               ? [

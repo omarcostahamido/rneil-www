@@ -43,6 +43,7 @@ const Gallery = props => {
   return (
     <div>
       <div
+        id={props.id}
         className={`gallery ${
           props.type && props.type == "headerGallery"
             ? "header-gallery"

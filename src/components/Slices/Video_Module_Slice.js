@@ -4,30 +4,24 @@ import { Waypoint } from "react-waypoint";
 
 const Video_Module_Slice = props => {
   const handleFadeIn = () => {
-    document
-      .getElementById(`${props.mediaModuleUrl}`)
-      .classList.remove("animate");
-    document
-      .getElementById(`${props.mediaModuleUrl}`)
-      .classList.add("is--active");
+    document.getElementById(`${props.id}`).classList.remove("animate");
+    document.getElementById(`${props.id}`).classList.add("is--active");
   };
-
   const handleFadeOut = () => {
-    document
-      .getElementById(`${props.mediaModuleUrl}`)
-      .classList.remove("is--active");
-    document.getElementById(`${props.mediaModuleUrl}`).classList.add("animate");
+    // document
+    //   .getElementById(`${props.id}`)
+    //   .classList.remove("is--active");
+    // document.getElementById(`${props.id}`).classList.add("animate");
   };
-
   return (
     <Waypoint
       onEnter={handleFadeIn}
       onLeave={handleFadeOut}
-      topOffset="15%"
+      topOffset="-10%"
       bottomOffset="15%"
     >
       <div
-        id={props.mediaModuleUrl}
+        id={props.id}
         className={`animate video-player--wrap media ${
           props.style ? props.style : "media--wide"
         }`}

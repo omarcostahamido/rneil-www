@@ -4,7 +4,7 @@
 }
 
 .about__header {
-  padding: 0 8vw 34.133vw 8vw;
+  padding: 0 8vw;
 }
 .about__title {
   padding-top: 35.47vw;
@@ -48,7 +48,7 @@
 }
 @include media-min($desktop) {
   .about__header {
-    padding: 0 10vw 16.667vw 10vw;
+    padding: 0 10vw;
   }
   .about__title {
     padding: 12.2vw 6vw 0 6vw;
