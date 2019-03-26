@@ -15,7 +15,6 @@ const Autoplay_Video_Module = props => {
             playsinline
             loop
             src="${props.autoplayVideoUrl}"
-            id="${props.autoplayVideoUrl}"
             type="video/mp4"
           />
         `

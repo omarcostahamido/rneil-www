@@ -56,11 +56,19 @@ br {
 // TRANSITIONS / ANIMATIONS --------------
 
 .is--active {
-  @include fade(1)
+  @include fade(1);
+  
+  &.is--transform {
+    transition: transform 800ms ease;
+    transform: translate3d(-40px, 0, 0);
+  }
  }
  
 .animate {
-  @include fade(0)
+  @include fade(0);
+  &.is--transform { 
+    transform: translate3d(40px, 0, 0);
+  }
  }
 
 .--isLoaded {
@@ -68,10 +76,10 @@ br {
 }
 @keyframes fade {
   0%{
-    opacity: 0
+    opacity: 0;
   }
   100% {
-    opacity: 1
+    opacity: 1;
   }
 }
 

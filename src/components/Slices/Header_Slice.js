@@ -16,23 +16,11 @@ const Header_Slice = props => {
     document.querySelector(".casestudy__header").classList.add("is--active");
     document.querySelector(".casestudy__header").classList.remove("animate");
   };
+  window.setTimeout(handleBackgroundFade, 1000);
   return (
     <div>
-      {props.isVideo ? (
-        <video
-          onCanPlay={handleBackgroundFade}
-          src={props.casestudyHeroVideo}
-          style={{ opacity: "0", position: "absolute", pointerEvents: "none" }}
-        />
-      ) : (
-        <img
-          onLoad={handleBackgroundFade}
-          src={props.casestudyHero}
-          style={{ opacity: "0", position: "absolute", pointerEvents: "none" }}
-        />
-      )}
       <div
-        className="casestudy__header animate"
+        className="casestudy__header  animate"
         style={
           !props.isVideo
             ? {
@@ -78,3 +66,39 @@ const Header_Slice = props => {
 };
 
 export default Header_Slice;
+/**
+ * 
+ * hack to get some fade-in animations but not a smart route
+ * also breaks on ios
+ * 
+ * {props.isVideo ? (
+        <video
+          autoplay={true}
+          muted
+          playsinline
+          onCanPlay={handleBackgroundFade}
+          src={props.casestudyHeroVideo}
+          style={{
+            opacity: "0",
+            position: "absolute",
+            pointerEvents: "none",
+            visibility: "hidden",
+            width: "100%",
+            height: "100%"
+          }}
+        />
+      ) : (
+        <img
+          onLoad={handleBackgroundFade}
+          src={props.casestudyHero}
+          style={{
+            opacity: "0",
+            position: "absolute",
+            pointerEvents: "none",
+            visibility: "hidden",
+            width: "100%",
+            height: "100%"
+          }}
+        />
+      )}
+ */
