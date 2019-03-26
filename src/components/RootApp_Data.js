@@ -1,7 +1,6 @@
 import React from "react";
 import Routes from "./Routes";
 import Prismic from "prismic-javascript";
-import Loader from "./Loader";
 
 class RootApp_Data extends React.Component {
   state = {
@@ -153,7 +152,6 @@ class RootApp_Data extends React.Component {
   render() {
     return (
       <div>
-        <Loader isLoading={this.state.isLoading} class="--dark-mode" />
         <Routes
           isLoading={this.state.isLoading}
           homePageData={this.state.homePage}
@@ -167,3 +165,6 @@ class RootApp_Data extends React.Component {
 }
 
 export default RootApp_Data;
+
+//<Loader isLoading={this.state.isLoading} class="--dark-mode" />
+//could add nav here and conditionally set styles

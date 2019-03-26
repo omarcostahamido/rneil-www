@@ -1,7 +1,3 @@
-//node file
-//what is the entry point?? --> where is the output??
-//loader lets webpack use babel and scss etc. to transform files
-
 const path = require("path");
 
 //to handle the environmental variables

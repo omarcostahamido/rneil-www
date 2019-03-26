@@ -2,6 +2,8 @@ import React from "react";
 import Nav from "./Nav";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
+import { CSSTransition } from "react-transition-group";
+import { Waypoint } from "react-waypoint";
 
 const About = props => {
   const renderVideos = props => {
@@ -26,21 +28,47 @@ const About = props => {
     }
   };
   props.scrollTop();
+  /**
+   * use a hook here to store the state of whether the 'in' for the transition
+   * should be true based on whether or not that element is in view
+   * or i could toggle my own classes with a func and bind it to the bigger 'about' onScroll div event
+   */
+  const handleWaypointEnter = () => {
+    document.querySelector(".about__header").classList.remove("animate");
+    document.querySelector(".about__header").classList.add("is--active");
+  };
+  const handleWaypointLeave = () => {
+    document.querySelector(".about__header").classList.remove("is--active");
+    document.querySelector(".about__header").classList.add("animate");
+  };
   return (
     <div className="--isLoaded about">
       <Nav className="--light-mode" color="#000" page="about" />
-      <div className={`about__header ${props.data ? "is--active" : "animate"}`}>
-        <h1 className="about__title">
-          {props.data ? props.data[0].data.about_page_main_copy[0].text : null}
-        </h1>
-        <div className="about__copy">
-          <a href="mailto:hello@r-neil.com">email for inquiries</a>
-          <p>
-            {props.data ? props.data[0].data.about_page_copy[0].text : null}
-          </p>
+      <Waypoint
+        onEnter={handleWaypointEnter}
+        onLeave={handleWaypointLeave}
+        topOffset="15%"
+        bottomOffset="15%"
+      >
+        <div className={`about__header animate`}>
+          <h1 className="about__title">
+            {props.data
+              ? props.data[0].data.about_page_main_copy[0].text
+              : null}
+          </h1>
+
+          <div className="about__copy">
+            {props.data ? (
+              <a href="mailto:hello@r-neil.com">email for inquiries</a>
+            ) : null}
+
+            <p>
+              {props.data ? props.data[0].data.about_page_copy[0].text : null}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="dyptich--wrapper animate">
+      </Waypoint>
+      <div className="dyptich--wrapper">
         <Image_Dyptich
           dyptichUrls={
             props.data
@@ -51,6 +79,7 @@ const About = props => {
               : null
           }
         />
+
         {props.data && renderVideos(props)}
       </div>
     </div>
@@ -58,3 +87,5 @@ const About = props => {
 };
 
 export default About;
+
+//className={`about__header ${props.data ? "is--active" : "animate"}`}

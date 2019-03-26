@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import Header from "./Header";
+import Loader from "./Loader";
 
 class Homepage extends React.Component {
   handleAnchorLink = () => {
@@ -29,25 +30,29 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        <div
-          className={`homepage__body ${
-            this.props.isLoading ? "--isLoading" : "--isLoaded"
-          }`}
-        >
-          <Nav page="homepage" class="--home" />
-          <Header
-            isLoading={this.props.isLoading}
-            copy={
-              this.props.data
-                ? this.props.data[0].data.home_page_header_title_copy[0].text
-                : null
-            }
-            handleAnchorLink={this.handleAnchorLink}
-          />
-          <div className="homepage__casestudies-featured">
-            {this.props.renderCasestudies()}
+        {this.props.isLoading ? (
+          <Loader isLoading={this.props.isLoading} class="--dark-mode" />
+        ) : (
+          <div
+            className={`homepage__body ${
+              this.props.isLoading ? "--isLoading" : "--isLoaded"
+            }`}
+          >
+            <Nav page="homepage" class="--home" />
+            <Header
+              isLoading={this.props.isLoading}
+              copy={
+                this.props.data
+                  ? this.props.data[0].data.home_page_header_title_copy[0].text
+                  : null
+              }
+              handleAnchorLink={this.handleAnchorLink}
+            />
+            <div className="homepage__casestudies-featured">
+              {this.props.renderCasestudies()}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
