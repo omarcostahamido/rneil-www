@@ -1,12 +1,18 @@
 import React from "react";
+import { Waypoint } from "react-waypoint";
 
 //had to set innerHTML so muted attribute gets passed for Android
 const Autoplay_Video_Module = props => {
+  const fadeIn = props.handleFadeIn(props.id);
+  const fadeOut = props.handleFadeOut(props.id);
+  console.log(props);
   return (
     <div>
       <div
         id={props.id}
-        className={`media ${props.style} --isLoaded`}
+        className={`media ${props.style} --isLoaded ${!(
+          props.style == "autoplay-hero"
+        ) && `animate`}`}
         dangerouslySetInnerHTML={{
           __html: `
           <video
@@ -19,6 +25,11 @@ const Autoplay_Video_Module = props => {
           />
         `
         }}
+      />
+      <Waypoint
+        onEnter={props.id && fadeIn}
+        onLeave={props.id && fadeOut}
+        bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
       />
     </div>
   );

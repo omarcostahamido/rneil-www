@@ -4,14 +4,32 @@ import Down_Arrow from "../Down_Arrow";
 import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
-  const handleFadeIn = () => {
-    document.querySelector(".header--info").classList.remove("animate");
-    document.querySelector(".header--info").classList.add("is--active");
+  // const handleFadeIn = () => {
+  //   document.querySelector(".header--info").classList.remove("animate");
+  //   document.querySelector(".header--info").classList.add("is--active");
+  // };
+  // const handleFadeOut = () => {
+  //   document.querySelector(".header--info").classList.remove("is--active");
+  //   document.querySelector(".header--info").classList.add("animate");
+  // };
+  //for slice fade-ins
+  const handleFadeIn = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      console.log("fading in");
+      el.classList.remove("animate");
+      el.classList.add("is--active");
+    };
   };
-  const handleFadeOut = () => {
-    document.querySelector(".header--info").classList.remove("is--active");
-    document.querySelector(".header--info").classList.add("animate");
+  const handleFadeOut = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      console.log("fading out");
+      el.classList.add("animate");
+      el.classList.remove("is--active");
+    };
   };
+
   return (
     <div>
       <div
@@ -34,27 +52,23 @@ const Header_Slice = props => {
           <Autoplay_Video_Module
             autoplayVideoUrl={props.casestudyHeroVideo}
             style="autoplay-hero"
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         ) : null}
-        <Waypoint
-          onEnter={handleFadeIn}
-          onLeave={handleFadeOut}
-          topOffset="40%"
-          bottomOffset="15%"
+
+        <div
+          className="header--info"
+          style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
         >
-          <div
-            className="header--info"
-            style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
-          >
-            <h1 className={props.titleCopyColor ? props.titleCopyColor : null}>
-              {props.titleCopy}
-            </h1>
-            <Down_Arrow
-              class="down-arrow"
-              titleCopyColor={props.titleCopyColor}
-            />
-          </div>
-        </Waypoint>
+          <h1 className={props.titleCopyColor ? props.titleCopyColor : null}>
+            {props.titleCopy}
+          </h1>
+          <Down_Arrow
+            class="down-arrow"
+            titleCopyColor={props.titleCopyColor}
+          />
+        </div>
       </div>
     </div>
   );
@@ -62,6 +76,14 @@ const Header_Slice = props => {
 
 export default Header_Slice;
 /**
+ * 
+ * <Waypoint
+          onEnter={handleFadeIn}
+          onLeave={handleFadeOut}
+          topOffset="40%"
+          bottomOffset="15%"
+        >
+ * 
  * 
  *  const handleBackgroundFade = () => {
     console.log("fading");
