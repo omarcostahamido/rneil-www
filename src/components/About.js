@@ -43,8 +43,23 @@ const About = props => {
     document.querySelector(".about__header").classList.remove("is--active");
     document.querySelector(".about__header").classList.add("animate");
   };
+  const handleFadeIn = elementId => {
+    const el = document.getElementById(elementId);
+    console.log(el);
+    return () => {
+      el.classList.remove("animate");
+      el.classList.add("is--active");
+    };
+  };
+  const handleFadeOut = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.add("animate");
+      el.classList.remove("is--active");
+    };
+  };
   return (
-    <div className="--isLoaded about">
+    <div onChange={props.scrollTop} className="--isLoaded about">
       {!props.data && props.scrollTop()}
       <Nav className="--light-mode" color="#000" page="about" />
       <Waypoint
@@ -82,8 +97,8 @@ const About = props => {
                 ]
               : null
           }
-          handleFadeIn={props.handleFadeIn}
-          handleFadeOut={props.handleFadeOut}
+          handleFadeIn={handleFadeIn}
+          handleFadeOut={handleFadeOut}
         />
 
         {props.data && renderVideos(props)}

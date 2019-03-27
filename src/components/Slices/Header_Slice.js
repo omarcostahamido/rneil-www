@@ -1,8 +1,19 @@
 import React from "react";
 import Autoplay_Video_Module from "./Autoplay_Video_Module";
 import Down_Arrow from "../Down_Arrow";
+import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
+  const fadeIn = () => {
+    console.log("fading");
+    document.querySelector(".header--info").classList.add("is--active");
+    document.querySelector(".header--info").classList.remove("animate");
+  };
+  const fadeOut = () => {
+    console.log("fading out");
+    document.querySelector(".header--info").classList.remove("is--active");
+    document.querySelector(".header--info").classList.add("animate");
+  };
   return (
     <div>
       <div
@@ -29,14 +40,22 @@ const Header_Slice = props => {
             handleFadeOut={props.handleFadeOut}
           />
         ) : null}
-
         <div
           className="header--info"
           style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
         >
-          <h1 className={props.titleCopyColor ? props.titleCopyColor : null}>
+          <Waypoint
+            onEnter={fadeIn}
+            onLeave={fadeOut}
+            topOffset={window.innerWidth < 768 ? "40%" : "60%"}
+          />
+          <h1
+            id={`${props.id}--titleCopy`}
+            className={props.titleCopyColor ? props.titleCopyColor : null}
+          >
             {props.titleCopy}
           </h1>
+
           <Down_Arrow
             class="down-arrow"
             titleCopyColor={props.titleCopyColor}

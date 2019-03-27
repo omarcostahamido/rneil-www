@@ -6,7 +6,9 @@ const Panoramic_Slider_Slice = props => {
     document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
   };
   const transformOut = () => {
-    // document.getElementById(props.id).classList.remove("is--transform");
+    document
+      .getElementById(`${props.id}--wrap`)
+      .classList.remove("is--transform");
   };
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
@@ -32,7 +34,7 @@ const Panoramic_Slider_Slice = props => {
       <Waypoint
         onEnter={transformIn}
         onLeave={transformOut}
-        bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
+        bottomOffset={window.innerWidth < 768 ? "-50%" : "-70%"}
       />
     </div>
   );

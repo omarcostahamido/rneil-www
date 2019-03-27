@@ -1,4 +1,4 @@
-
+//blanket fade --------------------
 .is--active {
   @include fade(1);
  }
@@ -6,7 +6,26 @@
 .animate {
   @include fade(0);
  }
-
+//slider&gallery transform ----------
+.transform {
+  transition: transform 600ms ease;
+  transform: translate3d(19px, 0, 0);
+  &.is--transform {
+    transition: transform 600ms ease;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@include media-min($iphoneSE) {
+  .transform {
+    transition: transform 800ms ease;
+    transform: translate3d(17px, 0, 0);
+    &.is--transform {
+      transition: transform 800ms ease;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+@include media-min($desktop) {
 .transform {
   transition: transform 800ms ease;
   transform: translate3d(40px, 0, 0);
@@ -15,7 +34,8 @@
     transform: translate3d(0, 0, 0);
   }
 }
-
+}
+//backup fade for all pages------
 .--isLoaded {
   animation: fade 1s linear;
 }

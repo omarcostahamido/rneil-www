@@ -180,6 +180,7 @@ class Casestudy extends React.Component {
           }`}
         />
         <Header_Slice
+          id={this.state.casestudyId}
           titleCopy={this.state.casestudyTitleCopy}
           titleCopyColor={this.state.titleCopyColor}
           isVideo={this.state.heroIsVideo === "video" ? true : false}

@@ -31,9 +31,9 @@ const Routes = props => {
       );
     }
   };
-  //-----for slice fade-ins
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
+    // console.log(el);
     return () => {
       el.classList.remove("animate");
       el.classList.add("is--active");

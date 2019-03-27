@@ -8,9 +8,9 @@ const Gallery = props => {
     document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
   };
   const transformOut = () => {
-    document
-      .getElementById(`${props.id}--wrap`)
-      .classList.remove("is--transform");
+    // document
+    //   .getElementById(`${props.id}--wrap`)
+    //   .classList.remove("is--transform");
   };
   const handleImageAnimations = () => {
     const images = document.querySelectorAll("img.gallery__images");

@@ -10,21 +10,6 @@ import Image_Dyptich from "./Slices/Image_Dyptich";
 import Gallery from "./Slices/Gallery";
 
 const Casestudy_Slice = props => {
-  //for slice fade-ins
-  // const handleFadeIn = elementId => {
-  //   const el = document.getElementById(elementId);
-  //   return () => {
-  //     el.classList.remove("animate");
-  //     el.classList.add("is--active");
-  //   };
-  // };
-  // const handleFadeOut = elementId => {
-  //   const el = document.getElementById(elementId);
-  //   return () => {
-  //     el.classList.add("animate");
-  //     el.classList.remove("is--active");
-  //   };
-  // };
   //for the gallery & pano slider scroll bx
   const handleImageClick = () => {
     let scrollX = 0;
