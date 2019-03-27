@@ -6,7 +6,7 @@ const Autoplay_Video_Module = props => {
     <div>
       <div
         id={props.id}
-        className={`media ${props.style}`}
+        className={`media ${props.style} --isLoaded`}
         dangerouslySetInnerHTML={{
           __html: `
           <video

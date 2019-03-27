@@ -12,15 +12,10 @@ const Header_Slice = props => {
     document.querySelector(".header--info").classList.remove("is--active");
     document.querySelector(".header--info").classList.add("animate");
   };
-  const handleBackgroundFade = () => {
-    document.querySelector(".casestudy__header").classList.add("is--active");
-    document.querySelector(".casestudy__header").classList.remove("animate");
-  };
-  window.setTimeout(handleBackgroundFade, 1000);
   return (
     <div>
       <div
-        className="casestudy__header  animate"
+        className="casestudy__header --isLoaded"
         style={
           !props.isVideo
             ? {
@@ -67,6 +62,17 @@ const Header_Slice = props => {
 
 export default Header_Slice;
 /**
+ * 
+ *  const handleBackgroundFade = () => {
+    console.log("fading");
+    document.querySelector(".casestudy__header").classList.add("is--active");
+    document.querySelector(".casestudy__header").classList.remove("animate");
+  };
+  const setTimeoutFade = () => {
+    window.setTimeout(handleBackgroundFade, 1000);
+  };
+  setTimeoutFade();
+ * 
  * 
  * hack to get some fade-in animations but not a smart route
  * also breaks on ios

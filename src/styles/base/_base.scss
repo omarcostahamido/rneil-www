@@ -14,7 +14,6 @@ html {
 
 body {
   background-color: $black;
-  scroll-behavior: smooth;
   font-family: Helvetica, Arial, sans-serif;
   //base font-size is 16px
   font-size: 16px;
@@ -72,7 +71,7 @@ br {
  }
 
 .--isLoaded {
-  animation: fade .5s ease;
+  animation: fade 1s linear;
 }
 @keyframes fade {
   0%{
