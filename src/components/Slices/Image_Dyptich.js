@@ -2,36 +2,32 @@ import React from "react";
 import { Waypoint } from "react-waypoint";
 
 const Image_Dyptich = props => {
-  const handleFadeInLeft = () => {
-    document.getElementById(`${props.id}-left`).classList.remove("animate");
-    document.getElementById(`${props.id}-left`).classList.add("is--active");
-  };
-  const handleFadeInRight = () => {
-    document.getElementById(`${props.id}-right`).classList.remove("animate");
-    document.getElementById(`${props.id}-right`).classList.add("is--active");
-  };
-  const handleFadeOutLeft = () => {
-    document.getElementById(`${props.id}-left`).classList.remove("is--active");
-    document.getElementById(`${props.id}-left`).classList.add("animate");
-  };
-  const handleFadeOutRight = () => {
-    document.getElementById(`${props.id}-right`).classList.remove("is--active");
-    document.getElementById(`${props.id}-right`).classList.add("animate");
-  };
+  const fadeInLeft = props.handleFadeIn(`${props.id}-left`);
+  const fadeOutLeft = props.handleFadeOut(`${props.id}-left`);
+  const fadeInRight = props.handleFadeIn(`${props.id}-right`);
+  const fadeOutRight = props.handleFadeOut(`${props.id}-right`);
+  //hack to get the waypoint component to not throw warnings while getting props
+  const intermittent = () => {};
   return (
     <div className="dyptich">
-      <div className="dyptich__image left ">
-        <Waypoint onEnter={handleFadeInLeft} onLeave={handleFadeOutLeft}>
+      <div className="dyptich__image left">
+        <Waypoint
+          onEnter={props.id ? fadeInLeft : intermittent}
+          onLeave={props.id ? fadeOutLeft : intermittent}
+        >
           <img
-            id={`${props.id}-left`}
+            id={props.id && `${props.id}-left`}
             src={props.dyptichUrls && props.dyptichUrls[0]}
           />
         </Waypoint>
       </div>
       <div className="dyptich__image right">
-        <Waypoint onEnter={handleFadeInRight} onLeave={handleFadeOutRight}>
+        <Waypoint
+          onEnter={props.id ? fadeInRight : intermittent}
+          onLeave={props.id ? fadeOutRight : intermittent}
+        >
           <img
-            id={`${props.id}-right`}
+            id={props.id && `${props.id}-right`}
             src={props.dyptichUrls && props.dyptichUrls[1]}
           />
         </Waypoint>

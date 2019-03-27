@@ -14,13 +14,15 @@ const Casestudy_Slice = props => {
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
     return () => {
-      el.classList.add("is--active");
+      console.log("fading in");
       el.classList.remove("animate");
+      el.classList.add("is--active");
     };
   };
   const handleFadeOut = elementId => {
     const el = document.getElementById(elementId);
     return () => {
+      console.log("fading out");
       el.classList.add("animate");
       el.classList.remove("is--active");
     };
@@ -100,6 +102,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       } else if (props.slice_type === "image_dyptich") {
@@ -119,6 +123,8 @@ const Casestudy_Slice = props => {
                       props.slice_doc.primary.dyptich_image_2.url
                     ]
               }
+              handleFadeIn={handleFadeIn}
+              handleFadeOut={handleFadeOut}
             />
           </div>
         );

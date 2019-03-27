@@ -27,6 +27,20 @@ const About = props => {
       );
     }
   };
+  const handleFadeIn = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.add("is--active");
+      el.classList.remove("animate");
+    };
+  };
+  const handleFadeOut = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.add("animate");
+      el.classList.remove("is--active");
+    };
+  };
   // props.scrollTop();
   /**
    * use a hook here to store the state of whether the 'in' for the transition
@@ -80,6 +94,8 @@ const About = props => {
                 ]
               : null
           }
+          handleFadeIn={handleFadeIn}
+          handleFadeOut={handleFadeOut}
         />
 
         {props.data && renderVideos(props)}

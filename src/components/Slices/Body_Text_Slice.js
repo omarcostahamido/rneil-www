@@ -1,4 +1,5 @@
 import React from "react";
+import { Waypoint } from "react-waypoint";
 
 const Body_Text_Slice = props => {
   const handleRichText = props => {
@@ -16,10 +17,14 @@ const Body_Text_Slice = props => {
       });
     }
   };
+  const fadeIn = props.handleFadeIn(props.id);
+  const fadeOut = props.handleFadeOut(props.id);
   return (
     <div className={`body-copy--flex --${props.position}`}>
       <div id={props.id} className="body-copy">
-        {handleRichText(props)}
+        <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
+          {handleRichText(props)}
+        </Waypoint>
       </div>
     </div>
   );
