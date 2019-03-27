@@ -10,6 +10,21 @@ import Image_Dyptich from "./Slices/Image_Dyptich";
 import Gallery from "./Slices/Gallery";
 
 const Casestudy_Slice = props => {
+  //for slice fade-ins
+  const handleFadeIn = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.add("is--active");
+      el.classList.remove("animate");
+    };
+  };
+  const handleFadeOut = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.add("animate");
+      el.classList.remove("is--active");
+    };
+  };
   //for the gallery & pano slider scroll bx
   const handleImageClick = () => {
     let scrollX = 0;
@@ -59,6 +74,8 @@ const Casestudy_Slice = props => {
             id={props.id}
             bodyCopy={props.slice_doc.primary.body_copy_rich_text}
             position={props.slice_doc.primary.position}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       } else if (props.slice_type === "pull_quote") {
@@ -67,6 +84,8 @@ const Casestudy_Slice = props => {
             id={props.id}
             pullQuoteCopy={props.slice_doc.primary.pull_quote_copy[0].text}
             position={props.slice_doc.primary.position}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       } else if (props.slice_type === "image") {
