@@ -5,7 +5,6 @@ import { Waypoint } from "react-waypoint";
 const Autoplay_Video_Module = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
-  console.log(props);
   return (
     <div>
       <div

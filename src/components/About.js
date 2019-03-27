@@ -15,6 +15,8 @@ const About = props => {
                 <Video_Module_Slice
                   id={`${props.data[0].id}-${video.video_title[0].text}`}
                   mediaModuleUrl={video.about_page_video_url.url}
+                  handleFadeIn={handleFadeIn}
+                  handleFadeOut={handleFadeOut}
                 />
                 <div className="about-videos__info">
                   <p>{video.video_title[0].text}</p>

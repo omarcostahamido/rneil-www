@@ -190,6 +190,8 @@ const Casestudy_Slice = props => {
               props.slice_doc.primary.video_module_embed.embed_url
             }
             style={props.slice_doc.primary.style}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       } else if (props.slice_type === "audio_module") {
@@ -199,6 +201,8 @@ const Casestudy_Slice = props => {
             mediaModuleUrl={
               props.slice_doc.primary.audio_module_embed.embed_url
             }
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       }

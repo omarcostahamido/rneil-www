@@ -3,20 +3,12 @@ import ReactPlayer from "react-player";
 import { Waypoint } from "react-waypoint";
 
 const Video_Module_Slice = props => {
-  const handleFadeIn = () => {
-    document.getElementById(`${props.id}`).classList.remove("animate");
-    document.getElementById(`${props.id}`).classList.add("is--active");
-  };
-  const handleFadeOut = () => {
-    // document
-    //   .getElementById(`${props.id}`)
-    //   .classList.remove("is--active");
-    // document.getElementById(`${props.id}`).classList.add("animate");
-  };
+  const fadeIn = props.handleFadeIn(props.id);
+  const fadeOut = props.handleFadeOut(props.id);
   return (
     <Waypoint
-      onEnter={handleFadeIn}
-      onLeave={handleFadeOut}
+      onEnter={fadeIn}
+      onLeave={fadeOut}
       topOffset="-10%"
       bottomOffset="15%"
     >
