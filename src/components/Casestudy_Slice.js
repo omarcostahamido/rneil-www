@@ -14,7 +14,7 @@ const Casestudy_Slice = props => {
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
     return () => {
-      console.log("fading in");
+      // console.log("fading in");
       el.classList.remove("animate");
       el.classList.add("is--active");
     };
@@ -22,7 +22,7 @@ const Casestudy_Slice = props => {
   const handleFadeOut = elementId => {
     const el = document.getElementById(elementId);
     return () => {
-      console.log("fading out");
+      // console.log("fading out");
       el.classList.add("animate");
       el.classList.remove("is--active");
     };
@@ -139,6 +139,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.panoramic_slider_image_mobile.url
                 : props.slice_doc.primary.panoramic_slider_image.url
             }
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       } else if (props.slice_type === "image_slider") {

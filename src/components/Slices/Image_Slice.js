@@ -12,7 +12,7 @@ const Image_Slice = props => {
       } ${props.position ? props.position : "center"}`}
     >
       <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
-        <img id={props.id} src={props.singleImageUrl} />
+        <img id={props.id} src={props.singleImageUrl} className="animate" />
       </Waypoint>
     </div>
   );

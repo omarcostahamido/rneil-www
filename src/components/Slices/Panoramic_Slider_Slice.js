@@ -2,33 +2,37 @@ import React from "react";
 import { Waypoint } from "react-waypoint";
 
 const Panoramic_Slider_Slice = props => {
-  const handleFadeIn = () => {
-    console.log(document.getElementById(props.id));
-    console.log("animating");
-    document.getElementById(props.id).classList.remove("animate");
-    document.getElementById(props.id).classList.add("is--active");
+  const transformIn = () => {
+    document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
   };
-  const handleFadeOut = () => {
-    console.log("fade out");
-    document.getElementById(props.id).classList.add("animate");
-    document.getElementById(props.id).classList.remove("is--active");
+  const transformOut = () => {
+    // document.getElementById(props.id).classList.remove("is--transform");
   };
+  const fadeIn = props.handleFadeIn(props.id);
+  const fadeOut = props.handleFadeOut(props.id);
   const handleScroll = props.handleImageClick(".slice-pano--wrap");
   return (
-    <div className="slice-pano" onClick={handleScroll}>
-      <div className="slice-pano--wrap">
+    <div className="slice-pano " onClick={handleScroll}>
+      <div className="slice-pano--wrap ">
         <div className="slice-pano--padding" />
         <p>swipe</p>
-        <img
-          className="slice-pano__img is--transform animate"
-          id={props.id}
-          src={props.panoramicImageUrl}
-        />
+        <span className="transform" id={`${props.id}--wrap`}>
+          <img
+            className="slice-pano__img animate"
+            id={props.id}
+            src={props.panoramicImageUrl}
+          />
+        </span>
       </div>
       <Waypoint
-        onEnter={handleFadeIn}
-        onLeave={handleFadeOut}
-        bottomOffset="-30%"
+        onEnter={fadeIn}
+        onLeave={fadeOut}
+        bottomOffset={window.innerWidth < 768 ? "-70%" : "-100%"}
+      />
+      <Waypoint
+        onEnter={transformIn}
+        onLeave={transformOut}
+        bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
       />
     </div>
   );

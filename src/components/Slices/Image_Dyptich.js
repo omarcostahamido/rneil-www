@@ -6,27 +6,29 @@ const Image_Dyptich = props => {
   const fadeOutLeft = props.handleFadeOut(`${props.id}-left`);
   const fadeInRight = props.handleFadeIn(`${props.id}-right`);
   const fadeOutRight = props.handleFadeOut(`${props.id}-right`);
-  //hack to get the waypoint component to not throw warnings while getting props
+  //hack so waypoint wont throw warnings while getting props on about
   const intermittent = () => {};
   return (
     <div className="dyptich">
-      <div className="dyptich__image left">
+      <div className="dyptich__image left ">
         <Waypoint
           onEnter={props.id ? fadeInLeft : intermittent}
           onLeave={props.id ? fadeOutLeft : intermittent}
         >
           <img
+            className="animate"
             id={props.id && `${props.id}-left`}
             src={props.dyptichUrls && props.dyptichUrls[0]}
           />
         </Waypoint>
       </div>
-      <div className="dyptich__image right">
+      <div className="dyptich__image right ">
         <Waypoint
           onEnter={props.id ? fadeInRight : intermittent}
           onLeave={props.id ? fadeOutRight : intermittent}
         >
           <img
+            className="animate"
             id={props.id && `${props.id}-right`}
             src={props.dyptichUrls && props.dyptichUrls[1]}
           />
@@ -37,10 +39,3 @@ const Image_Dyptich = props => {
 };
 
 export default Image_Dyptich;
-
-/****
- * 
- *  i liked these values esp for mobile
- *  topOffset="-80%"
-        bottomOffset="-15%"
- */
