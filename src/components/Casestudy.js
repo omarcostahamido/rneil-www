@@ -96,6 +96,8 @@ class Casestudy extends React.Component {
                 slice_type={casestudySlice.slice_type}
                 isMobile={this.state.isMobile}
                 colorMode={this.state.colorMode}
+                handleFadeIn={this.props.handleFadeIn}
+                handleFadeOut={this.props.handleFadeOut}
               />
             );
           })}
@@ -192,6 +194,8 @@ class Casestudy extends React.Component {
               : this.state.autoplayHero
           }
           colorMode={this.state.colorMode}
+          handleFadeIn={this.props.handleFadeIn}
+          handleFadeOut={this.props.handleFadeOut}
         />
         {this.renderCasestudyData()}
         <Next_Btn

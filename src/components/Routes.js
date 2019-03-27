@@ -31,6 +31,21 @@ const Routes = props => {
       );
     }
   };
+  //-----for slice fade-ins
+  const handleFadeIn = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.remove("animate");
+      el.classList.add("is--active");
+    };
+  };
+  const handleFadeOut = elementId => {
+    const el = document.getElementById(elementId);
+    return () => {
+      el.classList.add("animate");
+      el.classList.remove("is--active");
+    };
+  };
   //-----HACK to fix weird scroll bug between Router Links
   const scrollTop = () => {
     if (window.pageYOffset > 0) {
@@ -46,24 +61,32 @@ const Routes = props => {
           data={props.homePageData}
           renderCasestudies={renderCasestudies}
           isLoading={props.isLoading}
+          handleFadeIn={handleFadeIn}
+          handleFadeOut={handleFadeOut}
         />
         <Casestudy
           path=":slug/:id"
           order={props.casestudyOrder}
           scrollTop={scrollTop}
           isLoading={props.isLoading}
+          handleFadeIn={handleFadeIn}
+          handleFadeOut={handleFadeOut}
         />
         <Exhibitions
           path="work"
           renderCasestudies={renderCasestudies}
           scrollTop={scrollTop}
           isLoading={props.isLoading}
+          handleFadeIn={handleFadeIn}
+          handleFadeOut={handleFadeOut}
         />
         <About
           path="about"
           data={props.aboutPageData}
           scrollTop={scrollTop}
           isLoading={props.isLoading}
+          handleFadeIn={handleFadeIn}
+          handleFadeOut={handleFadeOut}
         />
         <Not_Found default />
       </Router>

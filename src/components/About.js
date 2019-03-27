@@ -15,8 +15,8 @@ const About = props => {
                 <Video_Module_Slice
                   id={`${props.data[0].id}-${video.video_title[0].text}`}
                   mediaModuleUrl={video.about_page_video_url.url}
-                  handleFadeIn={handleFadeIn}
-                  handleFadeOut={handleFadeOut}
+                  handleFadeIn={props.handleFadeIn}
+                  handleFadeOut={props.handleFadeOut}
                 />
                 <div className="about-videos__info">
                   <p>{video.video_title[0].text}</p>
@@ -29,31 +29,17 @@ const About = props => {
       );
     }
   };
-  const handleFadeIn = elementId => {
-    const el = document.getElementById(elementId);
-    return () => {
-      el.classList.add("is--active");
-      el.classList.remove("animate");
-    };
-  };
-  const handleFadeOut = elementId => {
-    const el = document.getElementById(elementId);
-    return () => {
-      el.classList.add("animate");
-      el.classList.remove("is--active");
-    };
-  };
   // props.scrollTop();
   /**
    * use a hook here to store the state of whether the 'in' for the transition
    * should be true based on whether or not that element is in view
    * or i could toggle my own classes with a func and bind it to the bigger 'about' onScroll div event
    */
-  const handleWaypointEnter = () => {
+  const fadeIn = () => {
     document.querySelector(".about__header").classList.remove("animate");
     document.querySelector(".about__header").classList.add("is--active");
   };
-  const handleWaypointLeave = () => {
+  const fadeOut = () => {
     document.querySelector(".about__header").classList.remove("is--active");
     document.querySelector(".about__header").classList.add("animate");
   };
@@ -62,8 +48,8 @@ const About = props => {
       {!props.data && props.scrollTop()}
       <Nav className="--light-mode" color="#000" page="about" />
       <Waypoint
-        onEnter={handleWaypointEnter}
-        onLeave={handleWaypointLeave}
+        onEnter={fadeIn}
+        onLeave={fadeOut}
         topOffset="15%"
         bottomOffset="15%"
       >
@@ -96,8 +82,8 @@ const About = props => {
                 ]
               : null
           }
-          handleFadeIn={handleFadeIn}
-          handleFadeOut={handleFadeOut}
+          handleFadeIn={props.handleFadeIn}
+          handleFadeOut={props.handleFadeOut}
         />
 
         {props.data && renderVideos(props)}

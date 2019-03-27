@@ -1,35 +1,8 @@
 import React from "react";
 import Autoplay_Video_Module from "./Autoplay_Video_Module";
 import Down_Arrow from "../Down_Arrow";
-import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
-  // const handleFadeIn = () => {
-  //   document.querySelector(".header--info").classList.remove("animate");
-  //   document.querySelector(".header--info").classList.add("is--active");
-  // };
-  // const handleFadeOut = () => {
-  //   document.querySelector(".header--info").classList.remove("is--active");
-  //   document.querySelector(".header--info").classList.add("animate");
-  // };
-  //for slice fade-ins
-  const handleFadeIn = elementId => {
-    const el = document.getElementById(elementId);
-    return () => {
-      console.log("fading in");
-      el.classList.remove("animate");
-      el.classList.add("is--active");
-    };
-  };
-  const handleFadeOut = elementId => {
-    const el = document.getElementById(elementId);
-    return () => {
-      console.log("fading out");
-      el.classList.add("animate");
-      el.classList.remove("is--active");
-    };
-  };
-
   return (
     <div>
       <div
@@ -52,8 +25,8 @@ const Header_Slice = props => {
           <Autoplay_Video_Module
             autoplayVideoUrl={props.casestudyHeroVideo}
             style="autoplay-hero"
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         ) : null}
 

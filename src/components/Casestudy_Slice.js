@@ -11,22 +11,20 @@ import Gallery from "./Slices/Gallery";
 
 const Casestudy_Slice = props => {
   //for slice fade-ins
-  const handleFadeIn = elementId => {
-    const el = document.getElementById(elementId);
-    return () => {
-      console.log("fading in");
-      el.classList.remove("animate");
-      el.classList.add("is--active");
-    };
-  };
-  const handleFadeOut = elementId => {
-    const el = document.getElementById(elementId);
-    return () => {
-      console.log("fading out");
-      el.classList.add("animate");
-      el.classList.remove("is--active");
-    };
-  };
+  // const handleFadeIn = elementId => {
+  //   const el = document.getElementById(elementId);
+  //   return () => {
+  //     el.classList.remove("animate");
+  //     el.classList.add("is--active");
+  //   };
+  // };
+  // const handleFadeOut = elementId => {
+  //   const el = document.getElementById(elementId);
+  //   return () => {
+  //     el.classList.add("animate");
+  //     el.classList.remove("is--active");
+  //   };
+  // };
   //for the gallery & pano slider scroll bx
   const handleImageClick = () => {
     let scrollX = 0;
@@ -76,8 +74,8 @@ const Casestudy_Slice = props => {
             id={props.id}
             bodyCopy={props.slice_doc.primary.body_copy_rich_text}
             position={props.slice_doc.primary.position}
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "pull_quote") {
@@ -86,8 +84,8 @@ const Casestudy_Slice = props => {
             id={props.id}
             pullQuoteCopy={props.slice_doc.primary.pull_quote_copy[0].text}
             position={props.slice_doc.primary.position}
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "image") {
@@ -102,8 +100,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "image_dyptich") {
@@ -123,8 +121,8 @@ const Casestudy_Slice = props => {
                       props.slice_doc.primary.dyptich_image_2.url
                     ]
               }
-              handleFadeIn={handleFadeIn}
-              handleFadeOut={handleFadeOut}
+              handleFadeIn={props.handleFadeIn}
+              handleFadeOut={props.handleFadeOut}
             />
           </div>
         );
@@ -139,8 +137,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.panoramic_slider_image_mobile.url
                 : props.slice_doc.primary.panoramic_slider_image.url
             }
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "image_slider") {
@@ -163,8 +161,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.image_slider_pull_quote[0].text
                 : null
             }
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "autoplay_video_module") {
@@ -178,8 +176,8 @@ const Casestudy_Slice = props => {
                 : props.slice_doc.primary.autoplay_video_url.url
             }
             style={props.slice_doc.primary.style}
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "video_module") {
@@ -190,8 +188,8 @@ const Casestudy_Slice = props => {
               props.slice_doc.primary.video_module_embed.embed_url
             }
             style={props.slice_doc.primary.style}
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "audio_module") {
@@ -201,8 +199,8 @@ const Casestudy_Slice = props => {
             mediaModuleUrl={
               props.slice_doc.primary.audio_module_embed.embed_url
             }
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       }
