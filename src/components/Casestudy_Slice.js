@@ -163,6 +163,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.image_slider_pull_quote[0].text
                 : null
             }
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
           />
         );
       } else if (props.slice_type === "autoplay_video_module") {

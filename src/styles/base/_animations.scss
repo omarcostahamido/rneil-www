@@ -8,10 +8,10 @@
  }
 
 .transform {
-  transition: transform 600ms ease;
+  transition: transform 800ms ease;
   transform: translate3d(40px, 0, 0);
   &.is--transform {
-    transition: transform 600ms ease;
+    transition: transform 800ms ease;
     transform: translate3d(0, 0, 0);
   }
 }

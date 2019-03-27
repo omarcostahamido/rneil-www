@@ -1,6 +1,9 @@
 import React from "react";
+import { Waypoint } from "react-waypoint";
 
 const Gallery = props => {
+  const fadeIn = props.handleFadeIn(props.id);
+  const fadeOut = props.handleFadeOut(props.id);
   const handleImageAnimations = () => {
     const images = document.querySelectorAll("img.gallery__images");
     if (images.length > 1) {
@@ -22,7 +25,11 @@ const Gallery = props => {
   const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div className="gallery--wrap" onScroll={handleImageAnimations}>
+        <div
+          id={props.id}
+          className="gallery--wrap animate"
+          onScroll={handleImageAnimations}
+        >
           {galleryImages.map(image => {
             return (
               <img
@@ -43,7 +50,6 @@ const Gallery = props => {
   return (
     <div>
       <div
-        id={props.id}
         className={`gallery ${
           props.type && props.type == "headerGallery"
             ? "header-gallery"
@@ -51,10 +57,16 @@ const Gallery = props => {
         }`}
       >
         {props.galleryImages && handleGalleryBuild(props.galleryImages)}
+
         {props.pullQuote && (
           <h1 className="gallery__pullquote">{props.pullQuote}</h1>
         )}
       </div>
+      <Waypoint
+        onEnter={fadeIn}
+        onLeave={fadeOut}
+        bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
+      />
     </div>
   );
 };
