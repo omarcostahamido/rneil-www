@@ -4,6 +4,14 @@ import { Waypoint } from "react-waypoint";
 const Gallery = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
+  const transformIn = () => {
+    document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
+  };
+  const transformOut = () => {
+    document
+      .getElementById(`${props.id}--wrap`)
+      .classList.remove("is--transform");
+  };
   const handleImageAnimations = () => {
     const images = document.querySelectorAll("img.gallery__images");
     if (images.length > 1) {
@@ -50,7 +58,8 @@ const Gallery = props => {
   return (
     <div>
       <div
-        className={`gallery ${
+        id={`${props.id}--wrap`}
+        className={`gallery transform ${
           props.type && props.type == "headerGallery"
             ? "header-gallery"
             : "slice-slider"
@@ -65,6 +74,11 @@ const Gallery = props => {
       <Waypoint
         onEnter={fadeIn}
         onLeave={fadeOut}
+        bottomOffset={window.innerWidth < 768 ? "-40%" : "-70%"}
+      />
+      <Waypoint
+        onEnter={transformIn}
+        onLeave={transformOut}
         bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
       />
     </div>
