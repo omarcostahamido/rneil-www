@@ -7,7 +7,6 @@ const Dotenv = require("dotenv-webpack");
 // console.log(path.join(__dirname, 'public'));
 
 module.exports = {
-  mode: "development",
   entry: "./src/app.js",
   output: {
     path: path.join(__dirname, "public"),

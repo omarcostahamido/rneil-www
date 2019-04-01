@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack",
-    "dev-server": "webpack-dev-server"
+    "build": "webpack --mode=production",
+    "dev-server": "webpack-dev-server --mode=development --open"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
