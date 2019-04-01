@@ -1,11 +1,12 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Homepage from "./Homepage.js";
 import { Router, Link } from "@reach/router";
-import Casestudy from "./Casestudy.js";
-import Casestudy_Featured from "./Casestudy_Featured";
-import About from "./About";
-import Exhibitions from "./Exhibitions";
-import Not_Found from "./Not_Found";
+import Loader from "./Loader";
+const Casestudy = lazy(() => import("./Casestudy"));
+const Casestudy_Featured = lazy(() => import("./Casestudy_Featured"));
+const About = lazy(() => import("./About"));
+const Exhibitions = lazy(() => import("./Exhibitions"));
+const Not_Found = lazy(() => import("./Not_Found"));
 
 const Routes = props => {
   //Common Funcs passed down to kids--------------------------
@@ -55,41 +56,45 @@ const Routes = props => {
   //RENDER-------------------------------------------------------
   return (
     <div>
-      <Router>
-        <Homepage
-          path="/"
-          data={props.homePageData}
-          renderCasestudies={renderCasestudies}
-          isLoading={props.isLoading}
-          handleFadeIn={handleFadeIn}
-          handleFadeOut={handleFadeOut}
-        />
-        <Casestudy
-          path=":slug/:id"
-          order={props.casestudyOrder}
-          scrollTop={scrollTop}
-          isLoading={props.isLoading}
-          handleFadeIn={handleFadeIn}
-          handleFadeOut={handleFadeOut}
-        />
-        <Exhibitions
-          path="work"
-          renderCasestudies={renderCasestudies}
-          scrollTop={scrollTop}
-          isLoading={props.isLoading}
-          handleFadeIn={handleFadeIn}
-          handleFadeOut={handleFadeOut}
-        />
-        <About
-          path="about"
-          data={props.aboutPageData}
-          scrollTop={scrollTop}
-          isLoading={props.isLoading}
-          handleFadeIn={handleFadeIn}
-          handleFadeOut={handleFadeOut}
-        />
-        <Not_Found default />
-      </Router>
+      <Suspense
+        fallback={<Loader isLoading={props.isLoading} class="--dark-mode" />}
+      >
+        <Router>
+          <Homepage
+            path="/"
+            data={props.homePageData}
+            renderCasestudies={renderCasestudies}
+            isLoading={props.isLoading}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
+          />
+          <Casestudy
+            path=":slug/:id"
+            order={props.casestudyOrder}
+            scrollTop={scrollTop}
+            isLoading={props.isLoading}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
+          />
+          <Exhibitions
+            path="work"
+            renderCasestudies={renderCasestudies}
+            scrollTop={scrollTop}
+            isLoading={props.isLoading}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
+          />
+          <About
+            path="about"
+            data={props.aboutPageData}
+            scrollTop={scrollTop}
+            isLoading={props.isLoading}
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
+          />
+          <Not_Found default />
+        </Router>
+      </Suspense>
     </div>
   );
 };
