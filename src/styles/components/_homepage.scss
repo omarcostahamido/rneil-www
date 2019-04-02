@@ -1,16 +1,24 @@
-/*-------------------home page styles go here---------------*/
-
+// .homepage__body {
+//   &.--isLoading {
+//     @include entire-viewport;
+//     overflow: hidden;
+//     opacity: 0;
+//   }
+//   &.--isLoaded {
+//     opacity: 1;
+//     transition: opacity .5s ease;
+//   }
+// }
 .homepage__body {
-  @include entire-viewport;
-  // @supports(mix-blend-mode: difference) {
-  //   background-color: white;
-  // } 
+  &.--isLoading {
+    @include entire-viewport;
+    overflow: hidden;
+  }
 }
-
 div.homepage__casestudies-featured {
   background-color: $black;
   color: $white;
-  padding-top: $l-size;
+  padding-top: 3.2rem;
   position: relative;
   z-index: 3;
 }

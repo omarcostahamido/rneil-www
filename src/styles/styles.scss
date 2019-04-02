@@ -3,17 +3,23 @@
 @import './base/mixins';
 @import './base/settings';
 @import './base/base';
+@import './base/animations';
 //COMPONENTS---------------
 @import './components/loader';
 @import './components/homepage';
 @import './components/nav';
 @import './components/header';
+@import './components/down_arrow';
+@import './components/about';
 @import './components/exhibitions';
 @import './components/casestudy-featured';
 @import './components/casestudy';
 
 //SLICES--------------------
 @import './components/slices/gallery';
-@import './components/slices/slider_slice';
+@import './components/slices/header_slice';
+@import './components/slices/body_text_slice';
+@import './components/slices/pull_quote_slice';
+@import './components/slices/media_general_slices';
 @import './components/slices/panoramic_slider_slice';
-
+@import './components/slices/image_dyptich';

@@ -1,8 +1,6 @@
-//casestudy root
-.casestudy {
-  margin: 0;
-  padding-top: 120px;
-
+.casestudy { 
+  background-color: $black;
+  overflow: hidden;
   &.casestudy--dark {
     background-color: $black;
     color: $white;
@@ -11,16 +9,27 @@
     background-color: $white;
   }
 }
-
 .casestudy-hero {
   width: 33vw;
 }
-
-.casestudy-title {
-
+.next-btn {
+  display: block;
+  text-align: right;
+  width: 84vw;
+  padding: 19.2vw 8vw 34.133vw 8vw;
+  a {
+    @include body-copy(inherit);
+    text-decoration: none;
+    padding-right: 16px;
+  }
 }
-
-.casestudy--dark {
-
+//MQ's-----------------------------------
+@include media-min($desktop) {
+  .next-btn {
+    width: 80vw;
+    padding: 16.667vw 10vw;
+    a{
+      padding-right: 24px;
+    }
+  }
 }
-

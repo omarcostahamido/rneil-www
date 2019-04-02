@@ -3,21 +3,41 @@ html {
   font-size: 62.5%;
   //for firefox scroll
   scrollbar-width: none;
-  overflow: auto;
+  // @include media-min($desktop) {
+  //   position: fixed;
+  //   height: 100%;
+  //   overflow: hidden;
+  // }
+  //^^^ fixes the overflow scroll bounce on desktop
+  //but kills the cool nav up and down..... fuck with later
 }
 
 body {
+  background-color: $black;
   font-family: Helvetica, Arial, sans-serif;
   //base font-size is 16px
-  font-size: $m-size;
+  font-size: 16px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  overflow-x: hidden;
+  // @include media-min($desktop) {
+  //   width: 100vw;
+  //   height: 100vh;
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+  // }
 }
 
-h1, h2, p, img, div {
+h1, h2, p, img, div, button, a {
   margin: 0;
+  padding: 0;
 }
 
-button {
-  cursor: pointer;
+::selection {
+  background-color: none;
+  color:palegreen;
 }
 
 button:disabled {
@@ -28,13 +48,6 @@ img {
   width: 33vw;
 }
 
-// TRANSITIONS / ANIMATIONS --------------
-
-.is--active {
-  @include fade(1)
- }
- 
-.animate {
-  @include fade(0)
- }
-  
+br {
+  line-height: 1.667;
+}

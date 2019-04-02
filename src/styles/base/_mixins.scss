@@ -8,11 +8,61 @@
   width: 100vw;
 }
 
+//Typography--root of 10 (think in px/10)-----
+
+@mixin fluid-type($min, $max) {
+  font-size: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 320px) / (1440 - 320)));
+}
+
+@mixin micro($color) {
+  font-size: 1.4rem;
+  line-height: .82;
+  color: $color;
+}
+
+@mixin label($color) {
+  font-size: 1.7rem;
+  line-height: 1;
+  color: $color;
+}
+
+@mixin body-copy($color) {
+  font-size: 1.7rem;
+  line-height: 1.667;
+  color: $color;
+  @include media-min($ipad) {
+    font-size: 2.2rem;
+  }
+}
+@mixin h2($color) {
+  font-size: 3rem;
+  line-height: 1.5;
+  color: $color;
+  @include media-min($ipad) {
+    font-size: 4.8rem;
+  }
+}
+
+// @mixin h1($color) {
+//   font-size: 3.6rem;
+//   line-height: 1.5;
+//   color: $color;
+//   @include media-min($ipad) {
+//     font-size: 4.8rem;
+//   }
+// }
+
+@mixin h1($color) {
+  @include fluid-type(36 , 48);
+  line-height: 1.5;
+  color: $color;
+}
+
 //slice layout stuff-------------------------
 
 @mixin slider-base {
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
   white-space: nowrap;
   width: 100vw;
 }
@@ -61,8 +111,8 @@
 
 //mediaqueries-------------------------------
 
-
-
-
-
-
+@mixin media-min($width) {
+  @media only screen and (min-width: #{$width}) {
+    @content
+  }
+}

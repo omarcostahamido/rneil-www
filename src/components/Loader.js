@@ -1,9 +1,17 @@
 import React from "react";
+import Logo from "./Logo";
 
 const Loader = props => {
-  console.log('loading')
   return (
-    <div className={props.isLoading ? "isLoading" : "loaded"}>loading!!</div>
+    <div
+      className={
+        props.isLoading && window.location.pathname === "/"
+          ? "isLoading"
+          : "loaded"
+      }
+    >
+      <Logo class={props.class} isLoader={true} />
+    </div>
   );
 };
 

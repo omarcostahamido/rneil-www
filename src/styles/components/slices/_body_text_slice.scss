@@ -1,0 +1,26 @@
+.body-copy{
+  @include body-copy(inherit);
+  padding: 34.133vw 8vw 0 8vw;
+  white-space:pre-line;
+}
+@include media-min($desktop) {
+  .body-copy{
+    padding: 16.667vw 16vw 0 16vw;
+    max-width: 600px;
+  }
+  .body-copy--flex {
+    display: flex;
+    width: 100%;
+    &.--right {
+     flex-direction: row-reverse;
+    }
+    &.--two-column {
+      .body-copy {
+        width: 84vw;
+        column-count: 2;
+        column-gap: 48px;
+        max-width: 84vw;
+      }
+    }
+  }
+}

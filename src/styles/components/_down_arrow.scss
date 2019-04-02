@@ -1,0 +1,10 @@
+.down-arrow {
+  animation: bounce .8s ease 4 800ms;
+}
+
+@keyframes bounce {
+  0%{transform: translateY(0px)}
+  25%{transform: translateY(10px)}
+  75%{transform: translateY(-10px)}
+  100%{transform: translateY((0px))}
+}

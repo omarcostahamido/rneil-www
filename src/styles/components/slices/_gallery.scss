@@ -1,37 +1,40 @@
 div.header-gallery {
-
+  overflow: hidden;
 }
-  
 div.gallery {
-  @include slider-base
+  @include slider-base;
+  overflow: hidden;
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
 }
-  
 div.gallery--wrap {
-  height: 60vh;
   @include slider-wrap;
+  padding: 34.133vw 0 0 20vw;
+  img:nth-child(n+2) {
+    margin-left: 8vw;
+  }
+  img:last-child {
+    padding-right: 20vw;
+  }
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
 }
-
 img.gallery__images{
-  background-color: pink;
   scroll-snap-align: center;
   flex-shrink: 0;
-  width: 80vw;
-  height: 50vh;
-  margin-left: 7vw;
+  width: 66.667vw;
 }
-
-  //could add more styles to home gallery here
-  //or create own instance and file....probably better
-  
-::-webkit-scrollbar {
-  display: none;
-}
-  
-//blanket desktop setting for dev purposes. default is mobile
-@media (min-width: 1024px) {
-  
-  img.gallery__images{
-    width: 36vw;
-    height: 33vh;
+@include media-min($desktop) {
+  div.gallery--wrap {
+    @include slider-wrap;
+    padding: 16.667vw 0 0 10vw;
+    img:nth-child(n+2) {
+      margin-left: 6.4vw;
+    }
+    img:last-child {
+      padding-right: 10vw;
+    }
   }
 }

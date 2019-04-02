@@ -1,8 +1,18 @@
 import React from "react";
+import { Waypoint } from "react-waypoint";
 
-class Gallery extends React.Component {
-  //FUNCS----------------------------------
-  handleImageAnimations = () => {
+const Gallery = props => {
+  const fadeIn = props.handleFadeIn(props.id);
+  const fadeOut = props.handleFadeOut(props.id);
+  const transformIn = () => {
+    document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
+  };
+  const transformOut = () => {
+    // document
+    //   .getElementById(`${props.id}--wrap`)
+    //   .classList.remove("is--transform");
+  };
+  const handleImageAnimations = () => {
     const images = document.querySelectorAll("img.gallery__images");
     if (images.length > 1) {
       images.forEach(image => {
@@ -19,19 +29,15 @@ class Gallery extends React.Component {
       });
     }
   };
-  handleImageClick = e => {
-    if (window.innerWidth > 768) {
-      document.getElementById(e.target.id.toString()).scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center"
-      });
-    }
-  };
-  handleGalleryBuild = galleryImages => {
+  const handleScroll = props.handleImageClick(".gallery--wrap");
+  const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div className="gallery--wrap" onScroll={this.handleImageAnimations}>
+        <div
+          id={props.id}
+          className="gallery--wrap animate"
+          onScroll={handleImageAnimations}
+        >
           {galleryImages.map(image => {
             return (
               <img
@@ -39,7 +45,8 @@ class Gallery extends React.Component {
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
                 key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
-                onClick={this.handleImageClick}
+                onClick={handleScroll}
+                onLoad={handleImageAnimations}
               />
             );
           })}
@@ -47,25 +54,35 @@ class Gallery extends React.Component {
       );
     }
   };
-  //LIFECYCLE--------------------------------------------------
-  componentDidUpdate() {
-    this.handleImageAnimations();
-  }
   //RENDER----------------------------------------------------------
-  render() {
-    const { galleryImages, type } = this.props;
-    return (
-      <div>
-        <div
-          className={`gallery ${
-            type && type == "headerGallery" ? "header-gallery" : "slice-slider"
-          }`}
-        >
-          {galleryImages && this.handleGalleryBuild(galleryImages)}
-        </div>
+  return (
+    <div>
+      <div
+        id={`${props.id}--wrap`}
+        className={`gallery transform ${
+          props.type && props.type == "headerGallery"
+            ? "header-gallery"
+            : "slice-slider"
+        }`}
+      >
+        {props.galleryImages && handleGalleryBuild(props.galleryImages)}
+
+        {props.pullQuote && (
+          <h1 className="gallery__pullquote">{props.pullQuote}</h1>
+        )}
       </div>
-    );
-  }
-}
+      <Waypoint
+        onEnter={fadeIn}
+        onLeave={fadeOut}
+        bottomOffset={window.innerWidth < 768 ? "-40%" : "-70%"}
+      />
+      <Waypoint
+        onEnter={transformIn}
+        onLeave={transformOut}
+        bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
+      />
+    </div>
+  );
+};
 
 export default Gallery;

@@ -1,7 +1,3 @@
-//node file
-//what is the entry point?? --> where is the output??
-//loader lets webpack use babel and scss etc. to transform files
-
 const path = require("path");
 
 //to handle the environmental variables
@@ -11,7 +7,6 @@ const Dotenv = require("dotenv-webpack");
 // console.log(path.join(__dirname, 'public'));
 
 module.exports = {
-  mode: "development",
   entry: "./src/app.js",
   output: {
     path: path.join(__dirname, "public"),

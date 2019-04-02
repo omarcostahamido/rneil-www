@@ -1,0 +1,38 @@
+.dyptich {
+  padding: 34.133vw 8vw 0 8vw;
+}
+
+.dyptich__image {
+  width: 84vw;
+  &.left {
+    padding-bottom: 96px;
+  }
+  &.right {
+    // padding-bottom: 21.47vw;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+@include media-min($desktop) {
+  .dyptich {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: none;
+    height: 35vw;
+    // margin-bottom: 16vw;
+    padding: 16.667vw 10vw 0 10vw;
+  }
+  .dyptich__image {
+    width: 35vw;
+    height: auto;
+    &.left {
+      padding: 0 10vw 0 0;
+    }
+    &.right {
+      // padding: 0;
+    }
+  }
+}
