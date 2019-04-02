@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Favorit';
+  src: url('../assets/fonts/Favorit-Std/favorit-std-book.woff') format('woff');
+}
 html {
   //sets rem to base 10 system like pixels
   font-size: 62.5%;
@@ -14,7 +18,7 @@ html {
 
 body {
   background-color: $black;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Favorit', Helvetica, Arial, sans-serif;
   //base font-size is 16px
   font-size: 16px;
   text-align: left;

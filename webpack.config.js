@@ -24,6 +24,18 @@ module.exports = {
         test: /\.s?css$/,
         //with 'use' we can provide an array of loaders
         use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "src/assets/fonts/Favorit-Std/"
+            }
+          }
+        ]
       }
     ]
   },

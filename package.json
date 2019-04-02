@@ -5,7 +5,6 @@
   "author": "kendall strautman",
   "license": "MIT",
   "scripts": {
-    "serve": "live-server public/",
     "build": "webpack --mode=production",
     "dev-server": "webpack-dev-server --mode=development --open"
   },
@@ -21,6 +20,7 @@
     "css-loader": "0.28.4",
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.7.0",
+    "file-loader": "^3.0.1",
     "node-sass": "4.5.3",
     "normalize.css": "7.0.0",
     "prismic-javascript": "^2.0.1",
