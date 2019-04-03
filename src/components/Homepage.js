@@ -46,6 +46,26 @@ class Homepage extends React.Component {
                   ? this.props.data[0].data.home_page_header_title_copy[0].text
                   : null
               }
+              imageUrl={
+                this.props.data
+                  ? this.props.data[0].data.header_image_desktop.url
+                  : null
+              }
+              imageUrlMobile={
+                this.props.data[0].data.header_image_mobile.url
+                  ? this.props.data[0].data.header_image_mobile.url
+                  : this.props.data[0].data.header_image_desktop.url
+              }
+              autoplayUrl={
+                this.props.data[0].data.header_autoplay_vid.url
+                  ? this.props.data[0].data.header_autoplay_vid.url
+                  : null
+              }
+              autoplayUrlMobile={
+                this.props.data[0].data.header_autoplay_vid_mobile.url
+                  ? this.props.data[0].data.header_autoplay_vid_mobile.url
+                  : null
+              }
               handleAnchorLink={this.handleAnchorLink}
             />
             <div className="homepage__casestudies-featured">

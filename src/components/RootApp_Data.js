@@ -24,6 +24,10 @@ class RootApp_Data extends React.Component {
           {
             fetch: [
               "home_page_header.home_page_header_title_copy",
+              "home_page_header.header_image_desktop",
+              "home_page_header.header_image_mobile",
+              "home_page_header.header_autoplay_vid",
+              "home_page_header.header_autoplay_vid_mobile",
               "casestudy.casestudy_order",
               "casestudy.casestudy_hero_image",
               "casestudy.casestudy_hero_image_mobile",

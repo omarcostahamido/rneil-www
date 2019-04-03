@@ -1,8 +1,57 @@
 .header {
-  @include entire-viewport;
+  // @include entire-viewport;
   position: relative;
   background-color: $white;
+  h1 {
+    font-size: 8vw;
+    line-height: 1.375;
+    letter-spacing: -.5px;
+  }
 }
+
+.header__img {
+  height: 60%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  img {
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.header__info {
+  height: calc(40% - 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 24px 0 24px;
+  span {
+    display: flex;
+    #exhibitions {
+      margin-right: 16px;
+    }
+  }
+}
+
 .header__main-copy {
-   padding-top: 120px;
+  // padding: 24px 24px 0 24px;
+}
+
+@include media-min($mobile) {
+  .header__img {
+    height: 70%;
+  }
+  .header__info {
+    height: calc(30% - 48px);
+  }
+}
+
+@include media-min($desktop) {
+  .header__main-copy {
+    padding-top: 120px;
+ }
 }
