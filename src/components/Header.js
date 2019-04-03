@@ -3,7 +3,10 @@ import Down_Arrow from "./Down_Arrow";
 
 const Header = props => {
   return (
-    <div className="header" style={{ height: window.innerHeight }}>
+    <div
+      className="header"
+      style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
+    >
       <div className="header__img">
         <img
           src={window.innerWidth < 1024 ? props.imageUrl : props.imageUrlMobile}

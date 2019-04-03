@@ -1,5 +1,5 @@
 .header {
-  // @include entire-viewport;
+  @include entire-viewport;
   position: relative;
   background-color: $white;
   h1 {
