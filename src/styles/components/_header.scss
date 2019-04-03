@@ -55,15 +55,8 @@
   }
 }
 
-@include media-min($ipad-pro) {
-  .header {
-    color: green;
-  }
-}
-
 @include media-min($desktop) {
   .header{
-    color: blue;
     display: flex;
    
   }
@@ -98,13 +91,11 @@
 @include media-min($ipad-landscape) {
   .header__main-copy {
     width: 72%; 
-    color: purple;
   }
 }
 
 @include media-orientation($ipad-pro, 1279px, landscape) {
   .header{
-    color: red;
     display: flex;
   }
   .header__img {

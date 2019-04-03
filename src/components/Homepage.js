@@ -17,12 +17,12 @@ class Homepage extends React.Component {
   };
   //LIFECYCLE----------------------------------
   componentDidMount() {
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth > 1024) {
       document.addEventListener("scroll", this.handleParallax);
     }
   }
   componentWillUnmount() {
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth > 1024) {
       document.removeEventListener("scroll", this.handleParallax);
     }
   }

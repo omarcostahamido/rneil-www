@@ -101,7 +101,7 @@ div.nav__nav-items {
 }
 
 //Mediaqueries------------------------------------------
-@include media-min($ipad) {
+@include media-min(769px) {
   .nav__logo {
     width: 232px;
     padding: 40px 0 0 48px;
