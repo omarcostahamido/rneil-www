@@ -13,8 +13,10 @@ const Header = props => {
         />
       </div>
       <div className="header__info">
-        <h1 className="header__main-copy">{props.copy}</h1>
-        <span>
+        <span className="header-copy--wrap">
+          <h1 className="header__main-copy">{props.copy}</h1>
+        </span>
+        <span className="exhibitions--wrap">
           <p onClick={props.handleAnchorLink} id="exhibitions">
             exhibitions
           </p>
