@@ -26,6 +26,7 @@ const Routes = props => {
                     title={casestudy.data.casestudy_title[0].text}
                     hero={casestudy.data.casestudy_hero_image.url}
                     heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
+                    year={casestudy.data.casestudy_year[0].text}
                     handleFadeIn={handleFadeIn}
                     handleFadeOut={handleFadeOut}
                   />

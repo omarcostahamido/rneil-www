@@ -2,13 +2,13 @@ div.casestudy-featured {
   // background-color:$black;
   padding: 14.4vw 6.4vw 0 6.4vw;
   color: $white;
-  span.hero--wrap {
-    
+  p {
+    @include label(inherit);
   }
   .casestudy-featured__hero {
     width: 100%;
   }
   .casestudy-featured__title {
-    padding-top: 16px;
+    padding: 16px 0 10px 0;
   }
 }

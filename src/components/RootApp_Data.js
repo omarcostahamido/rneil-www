@@ -32,6 +32,7 @@ class RootApp_Data extends React.Component {
               "casestudy.casestudy_hero_image",
               "casestudy.casestudy_hero_image_mobile",
               "casestudy.casestudy_title",
+              "casestudy.casestudy_year",
               "casestudy.slugs",
               "casestudy.id",
               "about_page.about_page_copy",
