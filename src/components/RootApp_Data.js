@@ -1,5 +1,6 @@
 import React from "react";
 import Routes from "./Routes";
+import Error_Boundary from "./Error_Boundary";
 import Prismic from "prismic-javascript";
 
 class RootApp_Data extends React.Component {
@@ -159,13 +160,15 @@ class RootApp_Data extends React.Component {
   render() {
     return (
       <div>
-        <Routes
-          isLoading={this.state.isLoading}
-          homePageData={this.state.homePage}
-          aboutPageData={this.state.aboutPage}
-          casestudyData={this.state.casestudiesFeatured}
-          casestudyOrder={this.state.casestudyOrder}
-        />
+        <Error_Boundary>
+          <Routes
+            isLoading={this.state.isLoading}
+            homePageData={this.state.homePage}
+            aboutPageData={this.state.aboutPage}
+            casestudyData={this.state.casestudiesFeatured}
+            casestudyOrder={this.state.casestudyOrder}
+          />
+        </Error_Boundary>
       </div>
     );
   }

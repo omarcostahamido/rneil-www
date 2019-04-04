@@ -70,7 +70,12 @@ class Nav extends React.Component {
   };
   //LIFECYCLE---------------------------------------------------
   componentDidMount() {
-    if (this.props.page == "about" || this.props.page == "work") {
+    if (
+      this.props.page == "about" ||
+      this.props.page == "work" ||
+      this.props.page == "not-found" ||
+      this.props.page == "error"
+    ) {
       document.querySelector(".nav__nav-items").classList.add("is--active");
       document.querySelector(".nav__nav-items").classList.remove("animate");
     }
