@@ -20,11 +20,16 @@ const Routes = props => {
                 to={`/${casestudy.slugs[0]}/${casestudy.id}`}
                 key={casestudy.slugs[0]}
               >
-                <Casestudy_Featured
-                  title={casestudy.data.casestudy_title[0].text}
-                  hero={casestudy.data.casestudy_hero_image.url}
-                  heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
-                />
+                <div className={`${casestudy.id}--feat animate`}>
+                  <Casestudy_Featured
+                    class={`${casestudy.id}--feat`}
+                    title={casestudy.data.casestudy_title[0].text}
+                    hero={casestudy.data.casestudy_hero_image.url}
+                    heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
+                    handleFadeIn={handleFadeIn}
+                    handleFadeOut={handleFadeOut}
+                  />
+                </div>
               </Link>
             );
           })}

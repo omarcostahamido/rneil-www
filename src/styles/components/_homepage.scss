@@ -1,14 +1,3 @@
-// .homepage__body {
-//   &.--isLoading {
-//     @include entire-viewport;
-//     overflow: hidden;
-//     opacity: 0;
-//   }
-//   &.--isLoaded {
-//     opacity: 1;
-//     transition: opacity .5s ease;
-//   }
-// }
 .homepage__body {
   &.--isLoading {
     @include entire-viewport;
@@ -18,7 +7,7 @@
 div.homepage__casestudies-featured {
   background-color: $black;
   color: $white;
-  padding-top: 3.2rem;
+  padding-bottom:14.4vw;
   position: relative;
   z-index: 3;
 }

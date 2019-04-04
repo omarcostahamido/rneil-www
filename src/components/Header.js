@@ -4,7 +4,8 @@ import Down_Arrow from "./Down_Arrow";
 const Header = props => {
   return (
     <div
-      className="header"
+      id="home-header"
+      className="header --isLoaded"
       style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
     >
       <div className="header__img">
@@ -16,10 +17,8 @@ const Header = props => {
         <span className="header-copy--wrap">
           <h1 className="header__main-copy">{props.copy}</h1>
         </span>
-        <span className="exhibitions--wrap">
-          <p onClick={props.handleAnchorLink} id="exhibitions">
-            exhibitions
-          </p>
+        <span className="exhibitions--wrap" onClick={props.handleAnchorLink}>
+          <p id="exhibitions">exhibitions</p>
           <Down_Arrow
             class={!props.isLoading ? "down-arrow" : null}
             titleCopyColor="black"
