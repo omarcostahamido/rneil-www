@@ -36,7 +36,11 @@ const Routes = props => {
                       heroMobile={
                         casestudy.data.casestudy_hero_image_mobile.url
                       }
-                      year={casestudy.data.casestudy_year[0].text}
+                      year={
+                        casestudy.data.casestudy_year[0].text
+                          ? casestudy.data.casestudy_year[0].text
+                          : null
+                      }
                       handleFadeIn={handleFadeIn}
                       handleFadeOut={handleFadeOut}
                     />

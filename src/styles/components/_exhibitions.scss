@@ -1,4 +1,16 @@
 .work {
   background-color: $black;
-  padding-top: 14.4vw;
+  padding: 14.4vw 6.4vw;
+}
+
+@include media-min($ipad-pro) {
+  .work {
+    padding: 10vw 10vw;
+  }
+}
+
+@include media-min(1680px) {
+  .work {
+    padding: 10vw 14vw;
+  }
 }
