@@ -4,6 +4,7 @@ import { Waypoint } from "react-waypoint";
 //this links to casestudy/${id}
 const Casestudy_Featured = props => {
   //div that gets faded is in routes-renderCasestudies()
+  //also wide/narrow in grid is ^^^
   const fadeIn = () => {
     const el = document.querySelector(`.${props.class}`);
     el.classList.remove("animate");
@@ -35,5 +36,3 @@ const Casestudy_Featured = props => {
 };
 
 export default Casestudy_Featured;
-
-//

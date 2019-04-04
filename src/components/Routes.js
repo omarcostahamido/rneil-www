@@ -13,25 +13,36 @@ const Routes = props => {
   const renderCasestudies = () => {
     if (props.casestudyData) {
       return (
-        <div>
+        <div className="casestudy-featured--grid">
           {props.casestudyData.map(casestudy => {
             return (
-              <Link
-                to={`/${casestudy.slugs[0]}/${casestudy.id}`}
+              <span
                 key={casestudy.slugs[0]}
+                className={
+                  casestudy.data.grid_style
+                    ? casestudy.data.grid_style
+                    : "grid--narrow"
+                }
               >
-                <div className={`${casestudy.id}--feat animate`}>
-                  <Casestudy_Featured
-                    class={`${casestudy.id}--feat`}
-                    title={casestudy.data.casestudy_title[0].text}
-                    hero={casestudy.data.casestudy_hero_image.url}
-                    heroMobile={casestudy.data.casestudy_hero_image_mobile.url}
-                    year={casestudy.data.casestudy_year[0].text}
-                    handleFadeIn={handleFadeIn}
-                    handleFadeOut={handleFadeOut}
-                  />
-                </div>
-              </Link>
+                <Link
+                  className={`${casestudy.slugs[0]}--feat`}
+                  to={`/${casestudy.slugs[0]}/${casestudy.id}`}
+                >
+                  <div className={`${casestudy.id}--feat animate`}>
+                    <Casestudy_Featured
+                      class={`${casestudy.id}--feat`}
+                      title={casestudy.data.casestudy_title[0].text}
+                      hero={casestudy.data.casestudy_hero_image.url}
+                      heroMobile={
+                        casestudy.data.casestudy_hero_image_mobile.url
+                      }
+                      year={casestudy.data.casestudy_year[0].text}
+                      handleFadeIn={handleFadeIn}
+                      handleFadeOut={handleFadeOut}
+                    />
+                  </div>
+                </Link>
+              </span>
             );
           })}
         </div>
