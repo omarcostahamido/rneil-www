@@ -5,16 +5,18 @@ import { Waypoint } from "react-waypoint";
 const Autoplay_Video_Module = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
+  const vid = document.getElementById(props.autoplayVideoUrl);
+  console.log(vid);
   return (
-    <div>
+    <div className="--isLoaded">
       <div
         id={props.id}
-        className={`media ${props.style} --isLoaded ${!(
-          props.style == "autoplay-hero"
-        ) && `animate`}`}
+        className={`media ${props.style} ${!(props.style == "autoplay-hero") &&
+          `animate`}`}
         dangerouslySetInnerHTML={{
           __html: `
           <video
+            id="${props.autoplayVideoUrl}"
             muted
             autoplay
             playsinline

@@ -12,10 +12,20 @@ const Header_Slice = props => {
     document.querySelector(".header--info").classList.remove("is--active");
     document.querySelector(".header--info").classList.add("animate");
   };
+  const fadeInBg = () => {
+    document.querySelector(".casestudy__header").classList.add("is--active");
+    document.querySelector(".casestudy__header").classList.remove("animate");
+  };
+
   return (
-    <div>
+    <div className="--isLoaded">
+      <img
+        src={props.casestudyHero}
+        onLoad={fadeInBg}
+        style={{ display: "none" }}
+      />
       <div
-        className="casestudy__header --isLoaded"
+        className="casestudy__header animate"
         style={
           !props.isVideo
             ? {
