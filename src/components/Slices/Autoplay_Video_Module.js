@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Waypoint } from "react-waypoint";
 
 //had to set innerHTML so muted attribute gets passed for Android
 const Autoplay_Video_Module = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
-
+  let [currentPath, updatePath] = useState(window.location.href);
   useEffect(() => {
     const video = document.getElementById(props.autoplayVideoUrl);
     const fadeInVid = props.handleFadeIn(props.autoplayVideoUrl);
@@ -15,6 +15,14 @@ const Autoplay_Video_Module = props => {
       };
     } else {
       fadeInVid();
+    }
+    //to accommodate for in btw casestudy routing
+    if (currentPath != window.location.href) {
+      updatePath(() => {
+        currentPath = window.location.href;
+      });
+      video.classList.add("animate");
+      window.setTimeout(fadeInVid, 300);
     }
   });
   return (

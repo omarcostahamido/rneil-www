@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Autoplay_Video_Module from "./Autoplay_Video_Module";
 import Down_Arrow from "../Down_Arrow";
 import { Waypoint } from "react-waypoint";
@@ -16,7 +16,17 @@ const Header_Slice = props => {
     document.querySelector(".casestudy__header").classList.add("is--active");
     document.querySelector(".casestudy__header").classList.remove("animate");
   };
-
+  let [currentPath, updatePath] = useState(window.location.href);
+  //to accommodate for in btw casestudy routing
+  useEffect(() => {
+    if (currentPath != window.location.href) {
+      updatePath(() => {
+        currentPath = window.location.href;
+      });
+      document.querySelector(".casestudy__header").classList.add("animate");
+      window.setTimeout(fadeInBg, 300);
+    }
+  });
   return (
     <div className="--isLoaded">
       <img
