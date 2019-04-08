@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Waypoint } from "react-waypoint";
 
 const Panoramic_Slider_Slice = props => {

@@ -23,7 +23,7 @@ const Autoplay_Video_Module = props => {
         currentPath = window.location.href;
       });
       fadeOutVid();
-      window.setTimeout(fadeInVid, 300);
+      // window.setTimeout(fadeInVid, 300);
     }
   });
   return (

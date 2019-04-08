@@ -119,7 +119,6 @@ class Casestudy extends React.Component {
   //check props for 'next' casestudy, pass down id and slug
   handleNextButton = () => {
     const { order } = this.props;
-    console.log(order);
     let nextIndex = 0;
     //find out where we are in the order...
     if (this.props.order.length > 0) {
@@ -128,8 +127,6 @@ class Casestudy extends React.Component {
           return current.slug == this.props.slug;
         })
       );
-      console.log(currentIndex);
-
       /*
       if were at the last casestudy, route to beginning 
       otherwise, set next route 
