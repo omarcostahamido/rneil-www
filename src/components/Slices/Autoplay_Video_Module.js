@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Waypoint } from "react-waypoint";
 
 //had to set innerHTML so muted attribute gets passed for Android
 const Autoplay_Video_Module = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
-  const vid = document.getElementById(props.autoplayVideoUrl);
-  console.log(vid);
+
+  useEffect(() => {
+    const video = document.getElementById(props.autoplayVideoUrl);
+    const fadeInVid = props.handleFadeIn(props.autoplayVideoUrl);
+    if (video) {
+      video.oncanplay = () => {
+        fadeInVid();
+      };
+    } else {
+      fadeInVid();
+    }
+  });
   return (
-    <div className="--isLoaded">
+    <div>
       <div
         id={props.id}
         className={`media ${props.style} ${!(props.style == "autoplay-hero") &&
@@ -23,6 +33,7 @@ const Autoplay_Video_Module = props => {
             loop
             src="${props.autoplayVideoUrl}"
             type="video/mp4"
+            class="animate"
           />
         `
         }}
