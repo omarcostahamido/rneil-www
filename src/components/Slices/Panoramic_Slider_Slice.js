@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Waypoint } from "react-waypoint";
 
 const Panoramic_Slider_Slice = props => {
@@ -13,15 +13,18 @@ const Panoramic_Slider_Slice = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
   const handleScroll = props.handleImageClick(".slice-pano--wrap");
+  useEffect(() => {
+    document.querySelector(".slice-pano--wrap").scrollTo(0, 0);
+  });
   return (
     <div className="slice-pano " onClick={handleScroll}>
-      <div className="slice-pano--wrap ">
+      <div className="slice-pano--wrap" id={props.id}>
         <div className="slice-pano--padding" />
         <p>swipe</p>
         <span className="transform" id={`${props.id}--wrap`}>
           <img
             className="slice-pano__img animate"
-            id={props.id}
+            id={`${props.id}--img`}
             src={props.panoramicImageUrl}
           />
         </span>
