@@ -13,18 +13,36 @@ const Header_Slice = props => {
     document.querySelector(".header--info").classList.add("animate");
   };
   const fadeInBg = () => {
+    updateIsFading(() => {
+      isFading = true;
+    });
     document.querySelector(".casestudy__header").classList.add("is--active");
     document.querySelector(".casestudy__header").classList.remove("animate");
+    updateIsFading(() => {
+      isFading = false;
+    });
+  };
+  const fadeOutBg = () => {
+    updateIsFading(() => {
+      isFading = true;
+    });
+    document.querySelector(".casestudy__header").classList.remove("is--active");
+    document.querySelector(".casestudy__header").classList.add("animate");
+    updateIsFading(() => {
+      isFading = false;
+    });
   };
   let [currentPath, updatePath] = useState(window.location.href);
+  let [isFading, updateIsFading] = useState(false);
   //to accommodate for in btw casestudy routing
   useEffect(() => {
     if (currentPath != window.location.href) {
       updatePath(() => {
         currentPath = window.location.href;
       });
-      document.querySelector(".casestudy__header").classList.add("animate");
-      window.setTimeout(fadeInBg, 300);
+      if (!isFading) {
+        fadeOutBg();
+      }
     }
   });
   return (
@@ -52,6 +70,7 @@ const Header_Slice = props => {
       >
         {props.isVideo ? (
           <Autoplay_Video_Module
+            type="header"
             autoplayVideoUrl={props.casestudyHeroVideo}
             style="autoplay-hero"
             handleFadeIn={props.handleFadeIn}

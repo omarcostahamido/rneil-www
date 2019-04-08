@@ -11,9 +11,9 @@ class Homepage extends React.Component {
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
   handleParallax = () => {
-    document.querySelector("div.header").style.top = `${(
-      window.pageYOffset * 0.4
-    ).toString()}px`;
+    // document.querySelector("div.header").style.top = `${(
+    //   window.pageYOffset * 0.4
+    // ).toString()}px`;
   };
   //LIFECYCLE----------------------------------
   componentDidMount() {

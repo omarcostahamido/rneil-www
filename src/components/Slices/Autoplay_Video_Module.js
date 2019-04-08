@@ -9,6 +9,7 @@ const Autoplay_Video_Module = props => {
   useEffect(() => {
     const video = document.getElementById(props.autoplayVideoUrl);
     const fadeInVid = props.handleFadeIn(props.autoplayVideoUrl);
+    const fadeOutVid = props.handleFadeOut(props.autoplayVideoUrl);
     if (video) {
       video.oncanplay = () => {
         fadeInVid();
@@ -16,12 +17,12 @@ const Autoplay_Video_Module = props => {
     } else {
       fadeInVid();
     }
-    //to accommodate for in btw casestudy routing
-    if (currentPath != window.location.href) {
+    // //to accommodate for in btw casestudy routing
+    if (props.type == "header" && currentPath != window.location.href) {
       updatePath(() => {
         currentPath = window.location.href;
       });
-      video.classList.add("animate");
+      fadeOutVid();
       window.setTimeout(fadeInVid, 300);
     }
   });

@@ -122,11 +122,11 @@ class RootApp_Data extends React.Component {
         }
         this.state.casestudiesFeatured.forEach(casestudy => {
           casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
-          casestudyOrder.push({
+          casestudyOrder[casestudy.data.casestudy_order - 1] = {
             id: casestudy.id,
             slug: casestudy.slugs[0],
             order: casestudy.data.casestudy_order
-          });
+          };
         });
         if (this.state.casestudiesFeatured) {
           this.setState({
