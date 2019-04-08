@@ -16,6 +16,7 @@ const Casestudy_Slice = props => {
     let eventX = 0;
     return function handleScroll(e) {
       if (window.innerWidth > 768) {
+        console.log(e.target.classList);
         //to accommodate safari & edge not understanding scrollIntoView option obj
         if (
           /^Apple/.test(navigator.vendor) ||
@@ -38,9 +39,15 @@ const Casestudy_Slice = props => {
             }
           }
           eventX = e.pageX;
-          document
-            .querySelector(`.${e.target.parentNode.classList}`)
-            .scrollTo(scrollX, 0);
+          if (e.target.classList.contains("slice-pano__img")) {
+            document
+              .querySelector(`.${e.target.parentNode.parentNode.classList}`)
+              .scrollTo(scrollX, 0);
+          } else if (e.target.classList.contains("gallery__images")) {
+            document
+              .getElementById(e.target.parentNode.id)
+              .scrollTo(scrollX, 0);
+          }
         } else {
           document.getElementById(e.target.id.toString()).scrollIntoView({
             behavior: "smooth",
