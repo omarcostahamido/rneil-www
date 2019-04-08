@@ -13,6 +13,7 @@ const Header = props => {
       id="home-header"
       className="header --isLoaded"
       style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
+      onClick={props.handleAnchorLink}
     >
       <div className="header__img animate">
         <img
@@ -24,7 +25,7 @@ const Header = props => {
         <span className="header-copy--wrap">
           <h1 className="header__main-copy">{props.copy}</h1>
         </span>
-        <span className="exhibitions--wrap" onClick={props.handleAnchorLink}>
+        <span className="exhibitions--wrap">
           <p id="exhibitions">exhibitions</p>
           <Down_Arrow
             class={!props.isLoading ? "down-arrow" : null}
