@@ -5,9 +5,6 @@
   @include label(inherit);
   h1 {
     @include h1-home;
-    // font-size: 8vw;
-    // line-height: 1.375;
-    // letter-spacing: -.5px;
   }
 }
 
@@ -42,10 +39,10 @@
 
 @include media-min($mobile) {
   .header__img {
-    height: 70%;
+    height: 65%;
   }
   .header__info {
-    height: calc(30% - 48px);
+    height: calc(35% - 48px);
   }
 }
 

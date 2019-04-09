@@ -11,7 +11,7 @@ const Header = props => {
   return (
     <div
       id="home-header"
-      className="header --isLoaded"
+      className={`header --isLoaded ${window.innerWidth > 1024 && "parallax"}`}
       style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
       onClick={props.handleAnchorLink}
     >
