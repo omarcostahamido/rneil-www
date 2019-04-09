@@ -1,5 +1,6 @@
 import React from "react";
 import Routes from "./Routes";
+import Error_Boundary from "./Error_Boundary";
 import Prismic from "prismic-javascript";
 
 class RootApp_Data extends React.Component {
@@ -24,10 +25,16 @@ class RootApp_Data extends React.Component {
           {
             fetch: [
               "home_page_header.home_page_header_title_copy",
+              "home_page_header.header_image_desktop",
+              "home_page_header.header_image_mobile",
+              "home_page_header.header_autoplay_vid",
+              "home_page_header.header_autoplay_vid_mobile",
               "casestudy.casestudy_order",
               "casestudy.casestudy_hero_image",
               "casestudy.casestudy_hero_image_mobile",
               "casestudy.casestudy_title",
+              "casestudy.casestudy_year",
+              "casestudy.grid_style",
               "casestudy.slugs",
               "casestudy.id",
               "about_page.about_page_copy",
@@ -115,11 +122,11 @@ class RootApp_Data extends React.Component {
         }
         this.state.casestudiesFeatured.forEach(casestudy => {
           casestudiesFeatured[casestudy.data.casestudy_order - 1] = casestudy;
-          casestudyOrder.push({
+          casestudyOrder[casestudy.data.casestudy_order - 1] = {
             id: casestudy.id,
             slug: casestudy.slugs[0],
             order: casestudy.data.casestudy_order
-          });
+          };
         });
         if (this.state.casestudiesFeatured) {
           this.setState({
@@ -153,13 +160,15 @@ class RootApp_Data extends React.Component {
   render() {
     return (
       <div>
-        <Routes
-          isLoading={this.state.isLoading}
-          homePageData={this.state.homePage}
-          aboutPageData={this.state.aboutPage}
-          casestudyData={this.state.casestudiesFeatured}
-          casestudyOrder={this.state.casestudyOrder}
-        />
+        <Error_Boundary>
+          <Routes
+            isLoading={this.state.isLoading}
+            homePageData={this.state.homePage}
+            aboutPageData={this.state.aboutPage}
+            casestudyData={this.state.casestudiesFeatured}
+            casestudyOrder={this.state.casestudyOrder}
+          />
+        </Error_Boundary>
       </div>
     );
   }

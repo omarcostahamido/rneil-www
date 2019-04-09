@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "./Nav";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
@@ -58,9 +58,15 @@ const About = props => {
       el.classList.remove("is--active");
     };
   };
+  let scroll = true;
+  useEffect(() => {
+    if ((scroll = true)) {
+      props.scrollTop();
+      scroll = false;
+    }
+  });
   return (
     <div onChange={props.scrollTop} className="--isLoaded about">
-      {!props.data && props.scrollTop()}
       <Nav className="--light-mode" color="#000" page="about" />
       <Waypoint
         onEnter={fadeIn}

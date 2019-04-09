@@ -58,6 +58,21 @@
   color: $color;
 }
 
+@mixin h1-home() {
+  font-size: 8vw;
+  line-height: 1.375;
+  letter-spacing: -.5px;
+  @include media-min($ipad) {
+    font-size: 5.5vw;
+  }
+  @include media-min($desktop) {
+    font-size: 3.333vw;
+  }
+  @include media-orientation($ipad-pro, 1279px , landscape) {
+    font-size: 4vw;
+  }
+}
+
 //slice layout stuff-------------------------
 
 @mixin slider-base {
@@ -113,6 +128,15 @@
 
 @mixin media-min($width) {
   @media only screen and (min-width: #{$width}) {
-    @content
+    @content;
+  }
+}
+
+@mixin media-orientation($min-width, $max-width, $orientation) {
+  @media only screen 
+    and (min-device-width: #{$min-width}) 
+    and (max-device-width: #{$max-width})
+    and (orientation: #{$orientation}) {
+      @content;
   }
 }

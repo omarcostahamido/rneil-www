@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "./Nav";
 
 const Not_Found = () => {
   const handleGoBack = () => {
@@ -6,10 +7,22 @@ const Not_Found = () => {
   };
 
   return (
-    <div>
-      <h1>Sorry, couldn't find that page</h1>
-      <button onClick={handleGoBack}>Go Back</button>
-    </div>
+    <section>
+      <Nav color="fff" class="--dark-mode" page="not-found" />
+      <div
+        style={{
+          color: "#fff",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100vw",
+          height: "100vh"
+        }}
+      >
+        <h1 style={{ paddingBottom: "1vw" }}>Sorry, couldn't find that page</h1>
+      </div>
+    </section>
   );
 };
 

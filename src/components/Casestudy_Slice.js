@@ -38,9 +38,15 @@ const Casestudy_Slice = props => {
             }
           }
           eventX = e.pageX;
-          document
-            .querySelector(`.${e.target.parentNode.classList}`)
-            .scrollTo(scrollX, 0);
+          if (e.target.classList.contains("slice-pano__img")) {
+            document
+              .getElementById(e.target.parentNode.parentNode.id)
+              .scrollTo(scrollX, 0);
+          } else if (e.target.classList.contains("gallery__images")) {
+            document
+              .getElementById(e.target.parentNode.id)
+              .scrollTo(scrollX, 0);
+          }
         } else {
           document.getElementById(e.target.id.toString()).scrollIntoView({
             behavior: "smooth",
@@ -67,7 +73,11 @@ const Casestudy_Slice = props => {
         return (
           <Pull_Quote_Slice
             id={props.id}
-            pullQuoteCopy={props.slice_doc.primary.pull_quote_copy[0].text}
+            pullQuoteCopy={
+              props.slice_doc.primary.pull_quote_copy[0]
+                ? props.slice_doc.primary.pull_quote_copy[0].text
+                : null
+            }
             position={props.slice_doc.primary.position}
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
@@ -80,8 +90,7 @@ const Casestudy_Slice = props => {
             style={props.slice_doc.primary.style}
             position={props.slice_doc.primary.position}
             singleImageUrl={
-              props.isMobile &&
-              props.slice_doc.primary.casestudy_image_mobile.url
+              props.isMobile && props.slice_doc.primary.casestudy_image_mobile
                 ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
@@ -95,8 +104,7 @@ const Casestudy_Slice = props => {
             <Image_Dyptich
               id={props.id}
               dyptichUrls={
-                props.isMobile &&
-                props.slice_doc.primary.dyptich_image_1_mobile.url
+                props.isMobile && props.slice_doc.primary.dyptich_image_1_mobile
                   ? [
                       props.slice_doc.primary.dyptich_image_1_mobile.url,
                       props.slice_doc.primary.dyptich_image_2_mobile.url
@@ -118,7 +126,7 @@ const Casestudy_Slice = props => {
             handleImageClick={handleImageClick}
             panoramicImageUrl={
               props.isMobile &&
-              props.slice_doc.primary.panoramic_slider_image_mobile.url
+              props.slice_doc.primary.panoramic_slider_image_mobile
                 ? props.slice_doc.primary.panoramic_slider_image_mobile.url
                 : props.slice_doc.primary.panoramic_slider_image.url
             }
@@ -128,13 +136,15 @@ const Casestudy_Slice = props => {
         );
       } else if (props.slice_type === "image_slider") {
         let sliderImages = [];
-        props.slice_doc.items.map(image => {
-          if (props.isMobile && image.image_slider_images_mobile.url) {
-            sliderImages.push(image.image_slider_images_mobile.url);
-          } else {
-            sliderImages.push(image.image_slider_images.url);
-          }
-        });
+        if (props.slice_doc.items.length > 1) {
+          props.slice_doc.items.map(image => {
+            if (props.isMobile && image.image_slider_images_mobile.url) {
+              sliderImages.push(image.image_slider_images_mobile.url);
+            } else {
+              sliderImages.push(image.image_slider_images.url);
+            }
+          });
+        }
         return (
           <Gallery
             id={props.id}
@@ -156,7 +166,7 @@ const Casestudy_Slice = props => {
             id={props.id}
             autoplayVideoUrl={
               props.isMobile &&
-              props.slice_doc.primary.autoplay_video_url_mobile.url
+              props.slice_doc.primary.autoplay_video_url_mobile
                 ? props.slice_doc.primary.autoplay_video_url_mobile.url
                 : props.slice_doc.primary.autoplay_video_url.url
             }
@@ -170,7 +180,9 @@ const Casestudy_Slice = props => {
           <Video_Module_Slice
             id={props.id}
             mediaModuleUrl={
-              props.slice_doc.primary.video_module_embed.embed_url
+              props.slice_doc.primary.video_module_embed
+                ? props.slice_doc.primary.video_module_embed.embed_url
+                : null
             }
             style={props.slice_doc.primary.style}
             handleFadeIn={props.handleFadeIn}
@@ -182,7 +194,9 @@ const Casestudy_Slice = props => {
           <Audio_Module_Slice
             id={props.id}
             mediaModuleUrl={
-              props.slice_doc.primary.audio_module_embed.embed_url
+              props.slice_doc.primary.audio_module_embed
+                ? props.slice_doc.primary.audio_module_embed.embed_url
+                : null
             }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}

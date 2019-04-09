@@ -22,15 +22,10 @@ const Image_Dyptich = props => {
     document.getElementById(`${props.id}-right`).classList.add("animate");
     document.getElementById(`${props.id}-right`).classList.remove("is--active");
   };
-  //hack so waypoint wont throw warnings while getting props on about
-  const intermittent = () => {};
   return (
     <div className="dyptich">
       <div className="dyptich__image left ">
-        <Waypoint
-          onEnter={props.id ? fadeInLeft : intermittent}
-          onLeave={props.id ? fadeOutLeft : intermittent}
-        >
+        <Waypoint onEnter={fadeInLeft} onLeave={fadeOutLeft}>
           <img
             className="animate"
             id={`${props.id}-left`}
@@ -39,10 +34,7 @@ const Image_Dyptich = props => {
         </Waypoint>
       </div>
       <div className="dyptich__image right ">
-        <Waypoint
-          onEnter={props.id ? fadeInRight : intermittent}
-          onLeave={props.id ? fadeOutRight : intermittent}
-        >
+        <Waypoint onEnter={fadeInRight} onLeave={fadeOutRight}>
           <img
             className="animate"
             id={`${props.id}-right`}

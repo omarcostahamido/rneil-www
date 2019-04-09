@@ -1,24 +1,6 @@
-// .homepage__body {
-//   &.--isLoading {
-//     @include entire-viewport;
-//     overflow: hidden;
-//     opacity: 0;
-//   }
-//   &.--isLoaded {
-//     opacity: 1;
-//     transition: opacity .5s ease;
-//   }
-// }
 .homepage__body {
   &.--isLoading {
     @include entire-viewport;
     overflow: hidden;
   }
-}
-div.homepage__casestudies-featured {
-  background-color: $black;
-  color: $white;
-  padding-top: 3.2rem;
-  position: relative;
-  z-index: 3;
 }

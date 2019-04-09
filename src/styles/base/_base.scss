@@ -1,20 +1,17 @@
+@font-face {
+  font-family: 'Favorit';
+  src: url('../assets/fonts/Favorit-Std/favorit-std-book.woff') format('woff');
+}
 html {
   //sets rem to base 10 system like pixels
   font-size: 62.5%;
   //for firefox scroll
   scrollbar-width: none;
-  // @include media-min($desktop) {
-  //   position: fixed;
-  //   height: 100%;
-  //   overflow: hidden;
-  // }
-  //^^^ fixes the overflow scroll bounce on desktop
-  //but kills the cool nav up and down..... fuck with later
 }
 
 body {
   background-color: $black;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Favorit', Helvetica, Arial, sans-serif;
   //base font-size is 16px
   font-size: 16px;
   text-align: left;
@@ -22,17 +19,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: auto;
   overflow-x: hidden;
-  // @include media-min($desktop) {
-  //   width: 100vw;
-  //   height: 100vh;
-  //   overflow-y: auto;
-  //   overflow-x: hidden;
-  // }
 }
 
 h1, h2, p, img, div, button, a {
   margin: 0;
   padding: 0;
+}
+
+h1,h2 {
+  font-weight: normal;
 }
 
 ::selection {
@@ -44,10 +39,11 @@ button:disabled {
   cursor: default;
 }
 
-img {
-  width: 33vw;
-}
 
 br {
   line-height: 1.667;
+}
+
+a {
+  text-decoration: none;
 }

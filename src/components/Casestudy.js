@@ -57,9 +57,12 @@ class Casestudy extends React.Component {
         this.state.doc[0].data.casestudy_supporting_title_copy[0] &&
         this.state.doc[0].data.casestudy_supporting_title_copy[0].text,
       titleCopyColor: this.state.doc[0].data.title_copy_color,
-      casestudyHero: this.state.doc[0].data.casestudy_hero_image.url,
-      casestudyHeroMobile: this.state.doc[0].data.casestudy_hero_image_mobile
-        .url,
+      casestudyHero: this.state.doc[0].data.in_casestudy_hero_desktop.url
+        ? this.state.doc[0].data.in_casestudy_hero_desktop.url
+        : this.state.doc[0].data.casestudy_hero_image.url,
+      casestudyHeroMobile: this.state.doc[0].data.in_casestudy_hero_mobile.url
+        ? this.state.doc[0].data.in_casestudy_hero_mobile.url
+        : this.state.doc[0].data.casestudy_hero_image_mobile.url,
       heroIsVideo: this.state.doc[0].data.image_or_video,
       autoplayHero: this.state.doc[0].data.autoplay_video_hero.url,
       autoplayHeroMobile: this.state.doc[0].data.autoplay_video_hero_mobile.url
@@ -128,10 +131,10 @@ class Casestudy extends React.Component {
       if were at the last casestudy, route to beginning 
       otherwise, set next route 
       */
-      if (currentIndex == 0) {
-        nextIndex = order[this.props.order.length - 1];
+      if (currentIndex == this.props.order.length - 1) {
+        nextIndex = order[0];
       } else {
-        nextIndex = order[currentIndex - 1];
+        nextIndex = order[currentIndex + 1];
       }
       // if (nextIndex && this.state.nextCasestudyId === null)
       if (nextIndex && !this.state.isNext) {
