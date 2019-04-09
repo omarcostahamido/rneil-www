@@ -18,13 +18,13 @@ const Panoramic_Slider_Slice = props => {
   });
   return (
     <div className="slice-pano " onClick={handleScroll}>
-      <div className="slice-pano--wrap" id={props.id}>
+      <div className="slice-pano--wrap " id={`${props.id}--main`}>
         <div className="slice-pano--padding" />
         <p>swipe</p>
         <span className="transform" id={`${props.id}--wrap`}>
           <img
             className="slice-pano__img animate"
-            id={`${props.id}--img`}
+            id={props.id}
             src={props.panoramicImageUrl}
           />
         </span>

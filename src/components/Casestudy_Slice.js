@@ -16,7 +16,6 @@ const Casestudy_Slice = props => {
     let eventX = 0;
     return function handleScroll(e) {
       if (window.innerWidth > 768) {
-        console.log(e.target.classList);
         //to accommodate safari & edge not understanding scrollIntoView option obj
         if (
           /^Apple/.test(navigator.vendor) ||
@@ -41,7 +40,7 @@ const Casestudy_Slice = props => {
           eventX = e.pageX;
           if (e.target.classList.contains("slice-pano__img")) {
             document
-              .querySelector(`.${e.target.parentNode.parentNode.classList}`)
+              .getElementById(e.target.parentNode.parentNode.id)
               .scrollTo(scrollX, 0);
           } else if (e.target.classList.contains("gallery__images")) {
             document
