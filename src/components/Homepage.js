@@ -14,6 +14,13 @@ class Homepage extends React.Component {
     // document.querySelector("div.header").style.top = `${(
     //   window.pageYOffset * 0.4
     // ).toString()}px`;
+    const homeBody = document.querySelector(".homepage__body");
+    console.log(homeBody);
+    console.log("body" + homeBody.getBoundingClientRect());
+    const casestudies = document.querySelector(
+      ".homepage__casestudies-featured"
+    );
+    console.log("case" + casestudies.getBoundingClientRect());
   };
   //LIFECYCLE----------------------------------
   componentDidMount() {
@@ -39,38 +46,41 @@ class Homepage extends React.Component {
             }`}
           >
             <Nav page="homepage" class="--home" />
-            <Header
-              isLoading={this.props.isLoading}
-              copy={
-                this.props.data
-                  ? this.props.data[0].data.home_page_header_title_copy[0].text
-                  : null
-              }
-              imageUrl={
-                this.props.data
-                  ? this.props.data[0].data.header_image_desktop.url
-                  : null
-              }
-              imageUrlMobile={
-                this.props.data[0].data.header_image_mobile.url
-                  ? this.props.data[0].data.header_image_mobile.url
-                  : this.props.data[0].data.header_image_desktop.url
-              }
-              autoplayUrl={
-                this.props.data[0].data.header_autoplay_vid.url
-                  ? this.props.data[0].data.header_autoplay_vid.url
-                  : null
-              }
-              autoplayUrlMobile={
-                this.props.data[0].data.header_autoplay_vid_mobile.url
-                  ? this.props.data[0].data.header_autoplay_vid_mobile.url
-                  : null
-              }
-              handleAnchorLink={this.handleAnchorLink}
-            />
-            <div className="homepage__casestudies-featured">
-              {this.props.renderCasestudies()}
-            </div>
+            <section className="parallax--wrap">
+              <Header
+                isLoading={this.props.isLoading}
+                copy={
+                  this.props.data
+                    ? this.props.data[0].data.home_page_header_title_copy[0]
+                        .text
+                    : null
+                }
+                imageUrl={
+                  this.props.data
+                    ? this.props.data[0].data.header_image_desktop.url
+                    : null
+                }
+                imageUrlMobile={
+                  this.props.data[0].data.header_image_mobile.url
+                    ? this.props.data[0].data.header_image_mobile.url
+                    : this.props.data[0].data.header_image_desktop.url
+                }
+                autoplayUrl={
+                  this.props.data[0].data.header_autoplay_vid.url
+                    ? this.props.data[0].data.header_autoplay_vid.url
+                    : null
+                }
+                autoplayUrlMobile={
+                  this.props.data[0].data.header_autoplay_vid_mobile.url
+                    ? this.props.data[0].data.header_autoplay_vid_mobile.url
+                    : null
+                }
+                handleAnchorLink={this.handleAnchorLink}
+              />
+              <div className="homepage__casestudies-featured ">
+                <span>{this.props.renderCasestudies()}</span>
+              </div>
+            </section>
           </div>
         )}
       </div>

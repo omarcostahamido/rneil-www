@@ -3,7 +3,13 @@
   background-color: $black;
   color: $white;
   position: relative;
-  z-index: 3;
+  // width: 80vw;
+  z-index: 2;
+  span {
+    width: 100%;
+    background-color: inherit;
+    height: inherit;
+  }
 }
 
 div.casestudy-featured {
