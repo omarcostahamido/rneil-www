@@ -10,22 +10,7 @@ class Homepage extends React.Component {
       .querySelector("div.homepage__casestudies-featured")
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  handleParallax = () => {
-    // document.querySelector("div.header").style.top = `${(
-    //   window.pageYOffset * 0.4
-    // ).toString()}px`;
-  };
-  //LIFECYCLE----------------------------------
-  componentDidMount() {
-    // if (window.innerWidth > 1024) {
-    //   document.addEventListener("scroll", this.handleParallax);
-    // }
-  }
-  componentWillUnmount() {
-    // if (window.innerWidth > 1024) {
-    //   document.removeEventListener("scroll", this.handleParallax);
-    // }
-  }
+
   // RENDER ---------------------------------------------
   render() {
     return (
@@ -70,6 +55,7 @@ class Homepage extends React.Component {
                 }
                 handleAnchorLink={this.handleAnchorLink}
               />
+
               <div className="homepage__casestudies-featured ">
                 {this.props.renderCasestudies()}
               </div>
