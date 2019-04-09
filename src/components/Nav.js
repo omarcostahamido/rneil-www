@@ -38,6 +38,7 @@ class Nav extends React.Component {
     }
   };
   handleNavColor = () => {
+    console.log("handling color");
     if (
       this.props.page == "homepage" &&
       window.pageYOffset >= window.innerHeight

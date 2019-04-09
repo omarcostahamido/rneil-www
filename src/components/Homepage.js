@@ -5,7 +5,7 @@ import Loader from "./Loader";
 
 class Homepage extends React.Component {
   handleAnchorLink = () => {
-    document.removeEventListener("scroll", this.handleParallax);
+    // document.removeEventListener("scroll", this.handleParallax);
     document
       .querySelector("div.homepage__casestudies-featured")
       .scrollIntoView({ behavior: "smooth", block: "start" });
@@ -14,24 +14,17 @@ class Homepage extends React.Component {
     // document.querySelector("div.header").style.top = `${(
     //   window.pageYOffset * 0.4
     // ).toString()}px`;
-    const homeBody = document.querySelector(".homepage__body");
-    console.log(homeBody);
-    console.log("body" + homeBody.getBoundingClientRect());
-    const casestudies = document.querySelector(
-      ".homepage__casestudies-featured"
-    );
-    console.log("case" + casestudies.getBoundingClientRect());
   };
   //LIFECYCLE----------------------------------
   componentDidMount() {
-    if (window.innerWidth > 1024) {
-      document.addEventListener("scroll", this.handleParallax);
-    }
+    // if (window.innerWidth > 1024) {
+    //   document.addEventListener("scroll", this.handleParallax);
+    // }
   }
   componentWillUnmount() {
-    if (window.innerWidth > 1024) {
-      document.removeEventListener("scroll", this.handleParallax);
-    }
+    // if (window.innerWidth > 1024) {
+    //   document.removeEventListener("scroll", this.handleParallax);
+    // }
   }
   // RENDER ---------------------------------------------
   render() {
@@ -78,7 +71,7 @@ class Homepage extends React.Component {
                 handleAnchorLink={this.handleAnchorLink}
               />
               <div className="homepage__casestudies-featured ">
-                <span>{this.props.renderCasestudies()}</span>
+                {this.props.renderCasestudies()}
               </div>
             </section>
           </div>
