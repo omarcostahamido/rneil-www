@@ -10,18 +10,18 @@ class Nav extends React.Component {
   };
   //FUNCS-----------------------------------------
   handleNavScroll = isMounting => {
+    let hasScrolled = false;
+    const nav = document.querySelector(".nav--sticky-wrap");
+    //handles wonky scroll for parallax on homepage
     if (this.props.page === "homepage") {
       const headerRect = document
         .querySelector(".header")
         .getBoundingClientRect();
       let previous = headerRect.y * 0.4;
-      let hasScrolled = false;
-      const nav = document.querySelector(".nav--sticky-wrap");
       const scrollAnimate = () => {
         let currentHead = document
           .querySelector(".header")
           .getBoundingClientRect();
-        //handle dynamic scrolling behavior
         if (currentHead.y >= 0) {
           nav.classList.remove("is--scroll-down");
         } else if (currentHead.y * 0.4 < previous) {
@@ -51,12 +51,10 @@ class Nav extends React.Component {
           .querySelector(".parallax--wrap")
           .removeEventListener("scroll", scrollAnimate);
       }
-    } else {
+    } //handles nav animation scroll everywhere else
+    else {
       let previous = window.pageYOffset * 0.4;
-      let hasScrolled = false;
-      const nav = document.querySelector(".nav--sticky-wrap");
       const scrollAnimate = () => {
-        //handle dynamic scrolling behavior
         if (window.pageYOffset <= 0) {
           nav.classList.remove("is--scroll-down");
         } else if (window.pageYOffset * 0.4 > previous) {
@@ -64,16 +62,6 @@ class Nav extends React.Component {
           nav.classList.add("is--scroll");
         } else {
           nav.classList.remove("is--scroll-down");
-          if (this.props.page == "homepage" && !hasScrolled) {
-            //fade in nav items
-            document
-              .querySelector(".nav__nav-items")
-              .classList.add("is--active");
-            document
-              .querySelector(".nav__nav-items")
-              .classList.remove("animate");
-            hasScrolled = true;
-          }
         }
         previous = window.pageYOffset * 0.4;
       };
@@ -88,7 +76,6 @@ class Nav extends React.Component {
     const currentX = document
       .querySelector(".homepage__casestudies-featured")
       .getBoundingClientRect();
-
     if (this.props.page == "homepage" && currentX.y <= 20) {
       document.querySelector(".logo-path").style.fill = "#fff";
       document.querySelector("div.nav__nav-items").style.color = "#fff";
