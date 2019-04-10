@@ -50,20 +50,20 @@
 
 .parallax {
   // transform: translate3d(0px, -98vh, 1px) scale(.5);
-  // transform: translateZ(-1px) scale(1.5);
-  // -webkit-transform: translateZ(-1px) scale(1.5);
-  // transform-origin: center;
-  // -webkit-transform-origin: center;
-  // z-index: -1;
+  transform: translateZ(-1px) scale(1.5);
+  -webkit-transform: translateZ(-1px) scale(1.5);
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  z-index: -1;
 }
 
 .parallax--wrap {
-  // height: 100vh;
-  // width: 100vw;
-  // overflow-x: hidden;
-  // overflow-y: auto;
-  // perspective: 2px;
-  // transform-style: preserve-3d;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+  transform-style: preserve-3d;
 }
 
 // //playing w/ react transition group - 
