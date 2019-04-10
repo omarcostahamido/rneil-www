@@ -84,7 +84,7 @@ class Casestudy extends React.Component {
     if (this.state.casestudyContent) {
       let i = 0;
       return (
-        <div>
+        <div className="casestudy-slices">
           {this.state.casestudyContent.map(casestudySlice => {
             i++;
             return (

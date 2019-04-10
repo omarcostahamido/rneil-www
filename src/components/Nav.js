@@ -43,7 +43,6 @@ class Nav extends React.Component {
         previous = currentHead.y * 0.4;
       };
       if (isMounting) {
-        console.log("scroll");
         document
           .querySelector(".parallax--wrap")
           .addEventListener("scroll", scrollAnimate);

@@ -32,6 +32,11 @@ const Header_Slice = props => {
       isFading = false;
     });
   };
+  const handleAnchorScroll = () => {
+    document
+      .querySelector(".casestudy-slices")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   let [currentPath, updatePath] = useState(window.location.href);
   let [isFading, updateIsFading] = useState(false);
   //to accommodate for in btw casestudy routing
@@ -46,7 +51,7 @@ const Header_Slice = props => {
     }
   });
   return (
-    <div className="--isLoaded">
+    <div className="--isLoaded" onClick={handleAnchorScroll}>
       <img
         src={props.casestudyHero}
         onLoad={fadeInBg}
