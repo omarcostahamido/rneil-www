@@ -5,9 +5,10 @@ import Prismic from "prismic-javascript";
 
 class RootApp_Data extends React.Component {
   state = {
+    doc: null,
     homePage: null,
     aboutPage: null,
-    casestudiesFeatured: null,
+    casestudiesFeatured: [],
     casestudyOrder: [],
     isLoading: true
   };

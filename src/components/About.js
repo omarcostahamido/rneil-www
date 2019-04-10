@@ -29,12 +29,6 @@ const About = props => {
       );
     }
   };
-  // props.scrollTop();
-  /**
-   * use a hook here to store the state of whether the 'in' for the transition
-   * should be true based on whether or not that element is in view
-   * or i could toggle my own classes with a func and bind it to the bigger 'about' onScroll div event
-   */
   const fadeIn = () => {
     document.querySelector(".about__header").classList.remove("animate");
     document.querySelector(".about__header").classList.add("is--active");
@@ -114,5 +108,3 @@ const About = props => {
 };
 
 export default About;
-
-//className={`about__header ${props.data ? "is--active" : "animate"}`}

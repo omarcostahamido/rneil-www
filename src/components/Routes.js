@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import PropTypes from "prop-types";
 import Homepage from "./Homepage.js";
 import { Router, Link } from "@reach/router";
 import Loader from "./Loader";
@@ -9,6 +10,7 @@ const Exhibitions = lazy(() => import("./Exhibitions"));
 const Not_Found = lazy(() => import("./Not_Found"));
 
 const Routes = props => {
+  console.log(props);
   //Common Funcs passed down to kids--------------------------
   const renderCasestudies = () => {
     if (props.casestudyData) {
@@ -55,7 +57,6 @@ const Routes = props => {
   };
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
-    // console.log(el);
     return () => {
       el.classList.remove("animate");
       el.classList.add("is--active");
@@ -102,8 +103,6 @@ const Routes = props => {
             renderCasestudies={renderCasestudies}
             scrollTop={scrollTop}
             isLoading={props.isLoading}
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
           />
           <About
             path="about"
@@ -119,5 +118,35 @@ const Routes = props => {
     </div>
   );
 };
-
+Routes.propTypes = {
+  isLoading: PropTypes.bool,
+  homePageData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      data: PropTypes.object
+    })
+  ),
+  casestudyOrder: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      slug: PropTypes.string,
+      order: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    })
+  ),
+  casestudyData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      data: PropTypes.object
+    })
+  ),
+  aboutPageData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      data: PropTypes.object
+    })
+  )
+};
 export default Routes;

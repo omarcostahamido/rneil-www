@@ -8,7 +8,6 @@ const Autoplay_Video_Module = props => {
   let [currentPath, updatePath] = useState(window.location.href);
   useEffect(() => {
     const video = document.getElementById(props.autoplayVideoUrl);
-    console.log(video);
     const fadeInVid = props.handleFadeIn(props.autoplayVideoUrl);
     const fadeOutVid = props.handleFadeOut(props.autoplayVideoUrl);
     if (video) {

@@ -1,4 +1,5 @@
 import React from "react";
+// import PropTypes from "prop-types";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
@@ -215,5 +216,17 @@ class Casestudy extends React.Component {
     );
   }
 }
-
+// Casestudy.propTypes = {
+//   isLoading: PropTypes.bool,
+//   id: PropTypes.string,
+//   slug: PropTypes.string,
+//   path: PropTypes.string,
+//   uri: PropTypes.string,
+//   location: PropTypes.object,
+//   order: PropTypes.arrayOf(PropTypes.object),
+//   handleFadeIn: PropTypes.func,
+//   handleFadeOut: PropTypes.func,
+//   navigate: PropTypes.func,
+//   scrollTop: PropTypes.func
+// };
 export default Casestudy;

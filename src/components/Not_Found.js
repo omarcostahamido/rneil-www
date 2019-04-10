@@ -2,10 +2,6 @@ import React from "react";
 import Nav from "./Nav";
 
 const Not_Found = () => {
-  const handleGoBack = () => {
-    history.back();
-  };
-
   return (
     <section>
       <Nav color="fff" class="--dark-mode" page="not-found" />

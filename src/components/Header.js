@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Down_Arrow from "./Down_Arrow";
 import Autoplay_Video_Module from "./Slices/Autoplay_Video_Module";
 
@@ -9,7 +10,6 @@ const Header = props => {
       document.querySelector(".header__img").classList.add("is--active");
     }, 200);
   };
-  console.log(props);
   return (
     <div
       id="home-header"
@@ -65,18 +65,16 @@ const Header = props => {
     </div>
   );
 };
-
+Header.propTypes = {
+  isLoading: PropTypes.bool,
+  mediaType: PropTypes.string,
+  imageUrlMobile: PropTypes.string,
+  imageUrl: PropTypes.string,
+  autoplayUrlMobile: PropTypes.string,
+  autoplayUrl: PropTypes.string,
+  copy: PropTypes.string,
+  handleAnchorLink: PropTypes.func,
+  handleFadeIn: PropTypes.func,
+  handleFadeOut: PropTypes.func
+};
 export default Header;
-
-// <Autoplay_Video_Module
-//             id={props.autoplayUrl}
-//             type="homepage-header"
-//             style="homepage-header__vid"
-//             autoplayVideoUrl={
-//               window.innerWidth < 1024 && props.autoplayUrlMobile
-//                 ? props.autoplayUrlMobile
-//                 : props.autoplayUrl
-//             }
-//             handleFadeIn={props.handleFadeIn}
-//             handleFadeOut={props.handleFadeOut}
-//           />
