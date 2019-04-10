@@ -52,8 +52,8 @@ class RootApp_Data extends React.Component {
               doc: response.results
             });
             this.cleanData();
-            this.removeLoader();
           }
+          this.removeLoader();
         })
         .catch(error => console.log(error));
     });
@@ -175,6 +175,3 @@ class RootApp_Data extends React.Component {
 }
 
 export default RootApp_Data;
-
-//<Loader isLoading={this.state.isLoading} class="--dark-mode" />
-//could add nav here and conditionally set styles
