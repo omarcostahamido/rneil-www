@@ -9,6 +9,7 @@ const Homepage = props => {
       .querySelector("div.homepage__casestudies-featured")
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  console.log(props);
   return (
     <div>
       {props.isLoading ? (
@@ -28,6 +29,7 @@ const Homepage = props => {
                   ? props.data[0].data.home_page_header_title_copy[0].text
                   : null
               }
+              mediaType={props.data ? props.data[0].data.image_or_video : null}
               imageUrl={
                 props.data ? props.data[0].data.header_image_desktop.url : null
               }
@@ -47,6 +49,8 @@ const Homepage = props => {
                   : null
               }
               handleAnchorLink={handleAnchorLink}
+              handleFadeIn={props.handleFadeIn}
+              handleFadeOut={props.handleFadeOut}
             />
 
             <div className="homepage__casestudies-featured ">

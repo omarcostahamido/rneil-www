@@ -8,6 +8,7 @@ const Autoplay_Video_Module = props => {
   let [currentPath, updatePath] = useState(window.location.href);
   useEffect(() => {
     const video = document.getElementById(props.autoplayVideoUrl);
+    console.log(video);
     const fadeInVid = props.handleFadeIn(props.autoplayVideoUrl);
     const fadeOutVid = props.handleFadeOut(props.autoplayVideoUrl);
     if (video) {
@@ -23,15 +24,16 @@ const Autoplay_Video_Module = props => {
         currentPath = window.location.href;
       });
       fadeOutVid();
-      // window.setTimeout(fadeInVid, 300);
     }
   });
   return (
     <div>
       <div
         id={props.id}
-        className={`media ${props.style} ${!(props.style == "autoplay-hero") &&
-          `animate`}`}
+        className={`media ${props.style} ${!(
+          props.style == "autoplay-hero" ||
+          props.style == "homepage-header__vid"
+        ) && `animate`}`}
         dangerouslySetInnerHTML={{
           __html: `
           <video
@@ -47,11 +49,13 @@ const Autoplay_Video_Module = props => {
         `
         }}
       />
-      <Waypoint
-        onEnter={props.id && fadeIn}
-        onLeave={props.id && fadeOut}
-        bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
-      />
+      {props.type !== "homepage-header" ? (
+        <Waypoint
+          onEnter={props.id && fadeIn}
+          onLeave={props.id && fadeOut}
+          bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
+        />
+      ) : null}
     </div>
   );
 };

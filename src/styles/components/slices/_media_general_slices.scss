@@ -4,6 +4,7 @@
     width: 100%;
   }
   &.autoplay-hero {
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +14,16 @@
       flex-shrink: 0;
       height: 100%;
       width: auto;
+    }
+  }
+  &.homepage-header__vid {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    video {
+      min-height: 100vh;
+      flex-shrink: 0;
+      object-fit: cover;
     }
   }
 }
@@ -46,6 +57,7 @@ div.video-player > div {
   .media {
     padding-top: 16.67vw;
     &.autoplay-hero {
+      padding: 0;
       video {
         min-width: 100%;
         height: auto;
