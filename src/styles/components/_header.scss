@@ -4,7 +4,7 @@
   background-color: $white;
   @include label(inherit);
   h1 {
-    @include h1-home;
+    @include h1(inherit);
   }
 }
 

@@ -11,35 +11,41 @@
 //Typography--root of 10 (think in px/10)-----
 
 @mixin fluid-type($min, $max) {
-  font-size: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 320px) / (1440 - 320)));
+  font-size: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 320px) / (2560 - 320)));
 }
 
 @mixin micro($color) {
   font-size: 1.4rem;
-  line-height: .82;
-  color: $color;
-}
-
-@mixin label($color) {
-  font-size: 1.7rem;
   line-height: 1;
   color: $color;
 }
 
-@mixin body-copy($color) {
-  font-size: 1.7rem;
+@mixin label($color) {
+  font-size: 1.8rem;
   line-height: 1.667;
   color: $color;
-  @include media-min($ipad) {
-    font-size: 2.2rem;
-  }
 }
+
+@mixin body-copy($color) {
+  @include fluid-type(18, 26);
+  // font-size: 1.7rem;
+  line-height: 1.667;
+  color: $color;
+  // @include media-min($ipad) {
+  //   font-size: 2.2rem;
+  // }
+} 
 @mixin h2($color) {
-  font-size: 3rem;
-  line-height: 1.5;
+  font-size: 8vw ;
+  line-height: 1.375;
+  letter-spacing: -.5px;
   color: $color;
   @include media-min($ipad) {
-    font-size: 4.8rem;
+    font-size: 4.5vw;
+  }
+  @include media-min($ipad-pro) {
+    font-size: 3.333vw;
+    line-height: 1.375;
   }
 }
 
@@ -53,25 +59,52 @@
 // }
 
 @mixin h1($color) {
-  @include fluid-type(36 , 48);
-  line-height: 1.5;
-  color: $color;
-}
-
-@mixin h1-home() {
-  font-size: 8vw;
+  font-size: 9.375vw;
   line-height: 1.375;
-  letter-spacing: -.5px;
+  letter-spacing: -.59px;
+  color: $color;
   @include media-min($ipad) {
     font-size: 5.5vw;
-  }
-  @include media-min($desktop) {
-    font-size: 3.333vw;
+    letter-spacing: -.5px;
   }
   @include media-orientation($ipad-pro, 1279px , landscape) {
     font-size: 4vw;
   }
+  @include media-min($desktop) {
+    font-size: 3.333vw;
+  }
 }
+
+@mixin h0($color) {
+  font-size: 17vw;
+  line-height: 1.25;
+  letter-spacing: -.5px;
+  color: $color;
+  @include media-min($ipad) {
+    font-size: 9.375vw;
+  }
+  @include media-min($ipad-pro) {
+    font-size: 8vw; 
+  }
+  @include media-min($desktop) {
+    font-size: 6.667vw;
+  }
+}
+
+// @mixin h1-home() {
+//   font-size: 8vw;
+//   line-height: 1.375;
+//   letter-spacing: -.5px;
+//   @include media-min($ipad) {
+//     font-size: 5.5vw;
+//   }
+//   @include media-min($desktop) {
+//     font-size: 3.333vw;
+//   }
+//   @include media-orientation($ipad-pro, 1279px , landscape) {
+//     font-size: 4vw;
+//   }
+// }
 
 //slice layout stuff-------------------------
 
