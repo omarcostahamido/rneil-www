@@ -5,12 +5,14 @@ import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
   const fadeIn = () => {
-    document.querySelector(".header--info").classList.add("is--active");
-    document.querySelector(".header--info").classList.remove("animate");
+    document.querySelector(".header-slice__info").classList.add("is--active");
+    document.querySelector(".header-slice__info").classList.remove("animate");
   };
   const fadeOut = () => {
-    document.querySelector(".header--info").classList.remove("is--active");
-    document.querySelector(".header--info").classList.add("animate");
+    document
+      .querySelector(".header-slice__info")
+      .classList.remove("is--active");
+    document.querySelector(".header-slice__info").classList.add("animate");
   };
   const fadeInBg = () => {
     updateIsFading(() => {

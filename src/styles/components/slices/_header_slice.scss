@@ -6,7 +6,7 @@
     @include h1(inherit);
     &.black {
       @include h1($black);
-    }
+    } 
     &.white {
       @include h1($white);
     }
@@ -44,6 +44,13 @@
   .casestudy__header {
     .header-slice__info {
       padding: 56px;
+    }
+  }
+}
+@include media-min($desktop-xxl) {
+  .casestudy__header {
+    .header-slice__info {
+      padding: 64px;
     }
   }
 }

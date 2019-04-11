@@ -98,18 +98,15 @@ div.nav__nav-items {
   nav.nav {
     padding: 40px 6.25vw;
   }
-
   .nav__logo {
     width: 232px;
   }
-
   div.nav__nav-items {
     * {
       margin-left: 40px;
     }
   }
 }
-
 @include media-min($ipad-pro) {
   nav.nav {
     padding:  40px 48px;
@@ -119,5 +116,10 @@ div.nav__nav-items {
 @include media-min($desktop-xl) {
   nav.nav {
     padding: 40px 56px;
+  }
+}
+@include media-min($desktop-xxl) {
+  nav.nav {
+    padding: 40px 64px;
   }
 }
