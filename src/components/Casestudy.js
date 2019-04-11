@@ -3,6 +3,8 @@ import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Casestudy_Slice from "./Casestudy_Slice";
 import Header_Slice from "./Slices/Header_Slice";
+import Location_Info_Slice from "./Slices/Location_Info_Slice";
+import Title_Slice from "./Slices/Title_Slice";
 import Next_Btn from "./Next_Btn";
 
 class Casestudy extends React.Component {
@@ -50,12 +52,16 @@ class Casestudy extends React.Component {
       });
       this.state.doc[0].data.casestudy_title[0].text;
     }
+    console.log(this.state.doc);
     this.setState({
       casestudyContent,
       casestudyTitle: this.state.doc[0].data.casestudy_title[0].text,
       casestudyTitleCopy:
         this.state.doc[0].data.casestudy_supporting_title_copy[0] &&
         this.state.doc[0].data.casestudy_supporting_title_copy[0].text,
+      casestudyLocation: this.state.doc[0].data.casestudy_location[0].text,
+      casestudyCity: this.state.doc[0].data.casestudy_city[0].text,
+      casestudyYear: this.state.doc[0].data.casestudy_year[0].text,
       titleCopyColor: this.state.doc[0].data.title_copy_color,
       casestudyHero: this.state.doc[0].data.in_casestudy_hero_desktop.url
         ? this.state.doc[0].data.in_casestudy_hero_desktop.url
@@ -201,6 +207,12 @@ class Casestudy extends React.Component {
           handleFadeIn={this.props.handleFadeIn}
           handleFadeOut={this.props.handleFadeOut}
         />
+        <Location_Info_Slice
+          location={this.state.casestudyLocation}
+          city={this.state.casestudyCity}
+          year={this.state.casestudyYear}
+        />
+        <Title_Slice title={this.state.casestudyTitle} />
         {this.renderCasestudyData()}
         <Next_Btn
           url={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}

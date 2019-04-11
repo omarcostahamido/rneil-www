@@ -4,7 +4,6 @@ import Down_Arrow from "../Down_Arrow";
 import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
-  console.log(window.innerHeight);
   const fadeIn = () => {
     document.querySelector(".header-slice__info").classList.add("is--active");
     document.querySelector(".header-slice__info").classList.remove("animate");
