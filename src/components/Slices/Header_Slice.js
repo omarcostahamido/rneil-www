@@ -4,6 +4,7 @@ import Down_Arrow from "../Down_Arrow";
 import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
+  console.log(window.innerHeight);
   const fadeIn = () => {
     document.querySelector(".header-slice__info").classList.add("is--active");
     document.querySelector(".header-slice__info").classList.remove("animate");
@@ -64,6 +65,7 @@ const Header_Slice = props => {
         style={
           !props.isVideo
             ? {
+                height: window.innerWidth <= 1024 && window.innerHeight,
                 backgroundColor: "inherit",
                 backgroundImage: `url(${props.casestudyHero})`,
                 WebkitBackgroundSize: "cover",
@@ -72,7 +74,10 @@ const Header_Slice = props => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center"
               }
-            : { backgroundColor: "transparent" }
+            : {
+                backgroundColor: "transparent",
+                height: window.innerWidth <= 1024 && window.innerHeight
+              }
         }
       >
         {props.isVideo ? (
