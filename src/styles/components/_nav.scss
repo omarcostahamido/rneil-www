@@ -7,11 +7,6 @@ div.nav--sticky-wrap {
   left: 0;
   z-index: 10;
   width: 100%;
-  // background-color: white;
-  // @supports(mix-blend-mode: exclusion) {
-  //   mix-blend-mode: exclusion;
-  //   background-color: transparent;
-  // }
   
   @include prefixer(transform,translate3d(0, 0, 0), true, false, true);
   @include prefixer(transition, transform 400ms ease-out, true, false, false);
@@ -31,15 +26,13 @@ div.nav--sticky-wrap {
 nav.nav {
   position: relative;
   @include flexbox;
-  align-items: center;
   justify-content: space-between;
- 
+  padding: 24px 6.25vw;
   
 }
 
 .nav__logo {
-  width: 81px;
-  padding: 24px 0 0 24px;
+  width: 81px;  
 }
 
 .logo-path {
@@ -65,9 +58,9 @@ div.nav__nav-items {
     color: inherit;
   }
   @include flexbox;
-  padding: 22px 21px 0 0;
+  // padding: 22px 21px 0 0;
   * {
-    margin-left: 22px;
+    margin-left: 20px;
   }
   &.about {
     a:first-child {
@@ -101,16 +94,30 @@ div.nav__nav-items {
 }
 
 //Mediaqueries------------------------------------------
-@include media-min(769px) {
+@include media-min($ipad) {
+  nav.nav {
+    padding: 40px 6.25vw;
+  }
+
   .nav__logo {
     width: 232px;
-    padding: 40px 0 0 48px;
   }
 
   div.nav__nav-items {
-    padding: 38px 48px 0 0;
     * {
       margin-left: 40px;
     }
+  }
+}
+
+@include media-min($ipad-pro) {
+  nav.nav {
+    padding:  40px 48px;
+  }
+}
+
+@include media-min($desktop-xl) {
+  nav.nav {
+    padding: 40px 56px;
   }
 }
