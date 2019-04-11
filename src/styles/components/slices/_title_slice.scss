@@ -1,0 +1,6 @@
+.casestudy__title {
+  h1 {
+    @include h0(inherit);
+  }
+  padding: 0 6.25vw 12.5vw 6.25vw;
+}

@@ -28,7 +28,7 @@ nav.nav {
   @include flexbox;
   justify-content: space-between;
   padding: 24px 6.25vw;
-  
+  align-items: center;
 }
 
 .nav__logo {
