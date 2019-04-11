@@ -10,7 +10,6 @@ const Exhibitions = lazy(() => import("./Exhibitions"));
 const Not_Found = lazy(() => import("./Not_Found"));
 
 const Routes = props => {
-  console.log(props);
   //Common Funcs passed down to kids--------------------------
   const renderCasestudies = () => {
     if (props.casestudyData) {

@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import Nav from "./Nav";
 import Header from "./Header";
 import Loader from "./Loader";
@@ -62,15 +61,5 @@ const Homepage = props => {
     </div>
   );
 };
-// Homepage.propTypes = {
-//   isLoading: PropTypes.bool,
-//   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   handleFadeIn: PropTypes.func,
-//   handleFadeOut: PropTypes.func,
-//   renderCasestudies: PropTypes.func,
-//   navigate: PropTypes.func,
-//   location: PropTypes.object,
-//   path: PropTypes.string,
-//   uri: PropTypes.string
-// };
+
 export default Homepage;

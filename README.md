@@ -23,6 +23,3 @@ Nav   Header  | Loader  Casestudy_Featured
 Nav   Casestudy_Slice   Header_Slice    Next_Btn
             |
       handles all /Slices
-
-
-
