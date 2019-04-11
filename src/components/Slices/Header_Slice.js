@@ -83,7 +83,7 @@ const Header_Slice = props => {
           />
         ) : null}
         <div
-          className="header--info"
+          className="header-slice__info"
           style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
         >
           <Waypoint
