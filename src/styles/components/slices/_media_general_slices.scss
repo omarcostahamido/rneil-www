@@ -28,15 +28,16 @@
   }
 }
 .media--wide {
-  padding-left: 8vw; 
-  padding-right: 8vw;
-  width: 84vw;
+  padding-left: 6.25vw; 
+  padding-right: 6.25vw;
   &.video-player--wrap {
     height: 44.52vw;
   }
 }
 .media--fullwidth {
   width: 100vw;
+  padding-left: 0;
+  padding-right: 0;
   &.video-player--wrap {
     height: 53vw;
   }
@@ -52,23 +53,22 @@ div.video-player > div {
 }
 
 //mediaqueries---------------------------------
+@include media-min($ipad) {
+  .media--wide {
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+  }
+}
 @include media-min($ipad-pro) {
   .media--narrow {
     padding-left: 29.1667vw;
     padding-right: 29.16667vw;
   }
-}
-@include media-min($desktop-xxl) {
-  .media--narrow {
-    padding-left: 33.3333vw;
-    padding-right: 33.3333vw;
+  .media--wide {
+    padding-left: 8.333vw;
+    padding-right: 8.333vw;
   }
 }
-
-
-
-
-
 @include media-min($desktop) {
   .media {
     &.autoplay-hero {
@@ -81,12 +81,15 @@ div.video-player > div {
     }
   }
   .media--wide {
-    padding-left: 10vw;
-    padding-right: 10vw;
-    width: 80vw;
     &.video-player--wrap {
         height: 42.4vw;
     }
+  }
+}
+@include media-min($desktop-xxl) {
+  .media--narrow {
+    padding-left: 33.3333vw;
+    padding-right: 33.3333vw;
   }
 }
 
