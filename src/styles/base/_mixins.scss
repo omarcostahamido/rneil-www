@@ -121,6 +121,7 @@
   scroll-snap-type: x mandatory;
   touch-action: pan-y;
   overflow-x: auto;
+  overflow-y: hidden;
   align-items: center;
   //this is for firefox scrollbar
   scrollbar-width: none; 
