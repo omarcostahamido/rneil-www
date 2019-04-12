@@ -88,7 +88,6 @@ const Casestudy_Slice = props => {
           <Image_Slice
             id={props.id}
             style={props.slice_doc.primary.style}
-            position={props.slice_doc.primary.position}
             singleImageUrl={
               props.isMobile &&
               props.slice_doc.primary.casestudy_image_mobile.url
