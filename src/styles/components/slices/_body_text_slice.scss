@@ -1,6 +1,8 @@
 .body-copy{
   @include body-copy(inherit);
-  padding: 34.133vw 8vw 0 8vw;
+  @include text-vertical-rhythm;
+  padding-right: 6.25vw;
+  padding-left: 6.25vw;
   white-space:pre-line;
 }
 @include media-min($desktop) {
@@ -11,6 +13,12 @@
   .body-copy--flex {
     display: flex;
     width: 100%;
+    &.--center {
+      justify-content: center;
+    }
+    &.--left {
+
+    }
     &.--right {
      flex-direction: row-reverse;
     }
@@ -21,6 +29,9 @@
         column-gap: 48px;
         max-width: 84vw;
       }
+    }
+    &.--wide {
+      width: 50vw;
     }
   }
 }
