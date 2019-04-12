@@ -20,12 +20,10 @@ const Body_Text_Slice = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
   return (
-    <div className={`body-copy--flex --${props.position}`}>
-      <div id={props.id} className="body-copy animate">
-        <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
-          <span>{handleRichText(props)}</span>
-        </Waypoint>
-      </div>
+    <div id={props.id} className={`body-copy animate --${props.position}`}>
+      <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
+        <span>{handleRichText(props)}</span>
+      </Waypoint>
     </div>
   );
 };

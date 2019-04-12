@@ -123,17 +123,41 @@
   overflow-x: auto;
   align-items: center;
   //this is for firefox scrollbar
-  scrollbar-width: none;
+  scrollbar-width: none; 
 }
 
 @mixin media-vertical-rhythm {
   padding-top: 12.5vw;
   padding-bottom: 12.5vw ;
+  @include media-min($ipad) {
+    padding-top: 9.375vw;
+    padding-bottom: 9.375vw;
+  }
+  @include media-min($ipad-pro) {
+    padding-top: 8.3335vw;
+    padding-bottom: 8.3335vw;
+  }
+  @include media-orientation($ipad-pro, 1279px, landscape) {
+    padding-top: 12.5vw;
+    padding-bottom: 12.5vw;
+  }
 }
 
 @mixin text-vertical-rhythm {
   padding-top: 12.5vw;
   padding-bottom: 12.5vw;
+  @include media-min($ipad) {
+    padding-top: 9.375vw;
+    padding-bottom: 9.375vw;
+  }
+  @include media-min($ipad-pro) {
+    padding-top: 8.3335vw;
+    padding-bottom: 8.3335vw;
+  }
+  @include media-orientation($ipad-pro, 1279px, landscape) {
+    padding-top: 12.5vw;
+    padding-bottom: 12.5vw;
+  }
 }
 
 //vendor prefixes-----------------------------
