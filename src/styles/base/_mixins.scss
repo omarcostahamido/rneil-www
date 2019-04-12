@@ -126,6 +126,16 @@
   scrollbar-width: none;
 }
 
+@mixin media-vertical-rhythm {
+  padding-top: 12.5vw;
+  padding-bottom: 12.5vw ;
+}
+
+@mixin text-vertical-rhythm {
+  padding-top: 12.5vw;
+  padding-bottom: 12.5vw;
+}
+
 //vendor prefixes-----------------------------
 
 @mixin prefixer($property, $value, $webkit:true, $moz:true, $ms:true) {

@@ -1,4 +1,23 @@
 .casestudy__location-info {
   @include label($light-grey);
-  padding: 12.5vw 6.25vw 25vw 6.25vw;
+  padding: 12.5vw 6.25vw;
+  @include media-min($ipad) {
+    padding: 6.25vw 6.25vw 9.375vw 6.25vw;
+  }
+  @include media-min($ipad-pro) {
+    padding: 48px 48px 8.333vw 48px;
+   
+  }
+  @include media-orientation($ipad-pro, 1279px, landscape) {
+    padding-bottom: 6.25vw;
+  }
+  @include media-min($desktop) {
+    padding-bottom: 4.165vw;
+  }
+  @include media-min($desktop-xl) {
+    padding: 56px 56px 4.165vw 56px;
+  }
+  @include media-min($desktop-xxl) {
+    padding: 64px 64px 4.165vw 64px;
+  }
 }
