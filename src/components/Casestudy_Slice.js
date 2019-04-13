@@ -8,6 +8,7 @@ import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
 import Panoramic_Slider_Slice from "./Slices/Panoramic_Slider_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
 import Gallery from "./Slices/Gallery";
+import Text_Dyptich from "./Slices/Text_Dyptich";
 
 const Casestudy_Slice = props => {
   //for the gallery & pano slider scroll bx
@@ -81,6 +82,21 @@ const Casestudy_Slice = props => {
             position={props.slice_doc.primary.position}
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
+          />
+        );
+      } else if (props.slice_type === "text_dyptich") {
+        return (
+          <Text_Dyptich
+            pullQuote={
+              props.slice_doc.primary.dyptich_pull_quote[0].text
+                ? props.slice_doc.primary.dyptich_pull_quote[0].text
+                : null
+            }
+            bodyCopy={
+              props.slice_doc.primary.dyptich_body_copy[0].text
+                ? props.slice_doc.primary.dyptich_body_copy[0].text
+                : null
+            }
           />
         );
       } else if (props.slice_type === "image") {
