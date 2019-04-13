@@ -15,7 +15,6 @@ const Casestudy_Slice = props => {
     let scrollX = 0;
     let eventX = 0;
     return function handleScroll(e) {
-      document.querySelector(".swipe").classList.add("animate");
       if (window.innerWidth > 1024) {
         //to accommodate safari & edge not understanding scrollIntoView option obj
         if (

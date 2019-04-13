@@ -18,14 +18,3 @@
     padding-right: 16.667vw;
   }
 }
-@include media-min($desktop) {
-  .pull-quote {
-    
-    &.--wide {
-    
-    }
-    &.--left {
-   
-    }
-  }
-}
