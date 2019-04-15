@@ -202,8 +202,8 @@
 
 @mixin media-orientation($min-width, $max-width, $orientation) {
   @media only screen 
-    and (min-device-width: #{$min-width}) 
-    and (max-device-width: #{$max-width})
+    and (min-width: #{$min-width}) 
+    and (max-width: #{$max-width})
     and (orientation: #{$orientation}) {
       @content;
   }

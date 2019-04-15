@@ -91,7 +91,6 @@
     width: 72%; 
   }
 }
-
 @include media-orientation($ipad-pro, 1279px, landscape) {
   .header{
     display: flex;
