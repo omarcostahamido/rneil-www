@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
@@ -52,15 +52,20 @@ const About = props => {
       el.classList.remove("is--active");
     };
   };
-  let scroll = true;
+  let [isScroll, setScroll] = useState(true);
   useEffect(() => {
-    if ((scroll = true)) {
+    if (isScroll) {
+      setScroll((isScroll = false));
       props.scrollTop();
-      scroll = false;
     }
   });
   return (
-    <div onChange={props.scrollTop} className="--isLoaded about">
+    <div
+      onScroll={() => {
+        setScroll((isScroll = false));
+      }}
+      className="--isLoaded about"
+    >
       <Nav className="--light-mode" color="#000" page="about" />
       <Waypoint
         onEnter={fadeIn}
@@ -87,19 +92,38 @@ const About = props => {
         </div>
       </Waypoint>
       <div className="dyptich--wrapper">
-        <Image_Dyptich
-          id={props.data && `${props.data[0].id}-about-dyptich`}
-          dyptichUrls={
-            props.data
-              ? [
-                  props.data[0].data.about_page_image.url,
-                  props.data[0].data.about_page_image_2.url
-                ]
-              : null
-          }
-          handleFadeIn={handleFadeIn}
-          handleFadeOut={handleFadeOut}
-        />
+        {props.data && window.innerWidth < 1024 ? (
+          <Image_Dyptich
+            id={props.data && `${props.data[0].id}-about-dyptich`}
+            dyptichUrls={
+              props.data
+                ? [
+                    props.data[0].data.image_left_mobile.url,
+                    props.data[0].data.image_right_mobile.url
+                  ]
+                : [
+                    props.data[0].data.about_page_image.url,
+                    props.data[0].data.about_page_image_2.url
+                  ]
+            }
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
+          />
+        ) : (
+          <Image_Dyptich
+            id={props.data && `${props.data[0].id}-about-dyptich`}
+            dyptichUrls={
+              props.data
+                ? [
+                    props.data[0].data.about_page_image.url,
+                    props.data[0].data.about_page_image_2.url
+                  ]
+                : null
+            }
+            handleFadeIn={handleFadeIn}
+            handleFadeOut={handleFadeOut}
+          />
+        )}
 
         {props.data && renderVideos(props)}
       </div>

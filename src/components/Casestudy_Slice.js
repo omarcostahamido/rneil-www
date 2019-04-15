@@ -79,7 +79,6 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.pull_quote_copy[0].text
                 : null
             }
-            position={props.slice_doc.primary.position}
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
           />

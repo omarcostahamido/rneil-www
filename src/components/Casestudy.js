@@ -121,7 +121,7 @@ class Casestudy extends React.Component {
   };
   //pass down to the casestudy and slices to toggle mobile/desktop assets
   checkForMobile = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1024) {
       this.setState({
         isMobile: true
       });

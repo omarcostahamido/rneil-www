@@ -43,6 +43,8 @@ class RootApp_Data extends React.Component {
               "about_page.about_page_image",
               "about_page.about_page_main_copy",
               "about_page.about_page_image_2",
+              "about_page.image_left_mobile",
+              "about_page.image_right_mobile",
               "about_page.about_page_videos",
               "about_page.id"
             ]
