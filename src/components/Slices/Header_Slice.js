@@ -55,7 +55,7 @@ const Header_Slice = props => {
   return (
     <div
       className="--isLoaded"
-      onClick={window.innerWidth > 1024 && handleAnchorScroll}
+      onClick={window.innerWidth > 1024 ? handleAnchorScroll : undefined}
     >
       <img
         src={props.casestudyHero}
