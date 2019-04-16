@@ -9,7 +9,7 @@
 }
 
 .header__img {
-  height: 60%;
+  height: 50%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
 }
 
 .header__info {
-  height: calc(40% - 48px);
+  height: calc(50% - 48px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,14 +39,26 @@
 
 @include media-min($mobile) {
   .header__img {
-    height: 65%;
+    height: 55%;
   }
   .header__info {
-    height: calc(35% - 48px);
+    height: calc(45% - 48px);
+  }
+}
+
+@media only screen and (min-width: 375px) and (min-height: 700px) {
+  .header__img {
+    height: 60%;
+  }
+  .header__info {
+    height: calc(40% - 48px);
   }
 }
 
 @include media-min($ipad) {
+  .header__img {
+    height: 70%;
+  }
   .header__info {
     padding: 48px 48px 0 48px;
     height: calc(30% - 96px)
