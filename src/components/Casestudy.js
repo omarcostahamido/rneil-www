@@ -216,8 +216,16 @@ class Casestudy extends React.Component {
           location={this.state.casestudyLocation}
           city={this.state.casestudyCity}
           year={this.state.casestudyYear}
+          id={this.state.id}
+          handleFadeIn={this.props.handleFadeIn}
+          handleFadeOut={this.props.handleFadeOut}
         />
-        <Title_Slice title={this.state.casestudyTitle} />
+        <Title_Slice
+          title={this.state.casestudyTitle}
+          id={this.state.id}
+          handleFadeIn={this.props.handleFadeIn}
+          handleFadeOut={this.props.handleFadeOut}
+        />
         {this.renderCasestudyData()}
         <Next_Btn
           url={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}
