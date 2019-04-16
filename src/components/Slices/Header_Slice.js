@@ -36,7 +36,7 @@ const Header_Slice = props => {
   };
   const handleAnchorScroll = () => {
     document
-      .querySelector(".casestudy-slices")
+      .querySelector(".casestudy__location-info")
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
   let [currentPath, updatePath] = useState(window.location.href);
@@ -53,7 +53,10 @@ const Header_Slice = props => {
     }
   });
   return (
-    <div className="--isLoaded" onClick={handleAnchorScroll}>
+    <div
+      className="--isLoaded"
+      onClick={window.innerWidth > 1024 && handleAnchorScroll}
+    >
       <img
         src={props.casestudyHero}
         onLoad={fadeInBg}

@@ -15,7 +15,7 @@ const Header = props => {
       id="home-header"
       className="header --isLoaded --parallax"
       style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
-      onClick={props.handleAnchorLink}
+      onClick={window.innerWidth > 1024 && props.handleAnchorLink}
     >
       <div
         className={`header__img ${
