@@ -7,7 +7,6 @@
     @include h1(inherit);
   }
 }
-
 .header__img {
   height: 50%;
   overflow: hidden;
@@ -21,7 +20,6 @@
     object-fit: cover;
   }
 }
-
 .header__info {
   height: calc(50% - 48px);
   display: flex;
@@ -36,7 +34,6 @@
     }
   }
 }
-
 @include media-min($mobile) {
   .header__img {
     height: 55%;
