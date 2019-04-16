@@ -119,9 +119,13 @@ class Nav extends React.Component {
     }
     this.handleNavScroll(true);
     if (window.location.pathname == "/") {
-      document
-        .querySelector(".parallax--wrap")
-        .addEventListener("scroll", this.handleNavColor);
+      if (window.innerWidth >= 1280) {
+        document
+          .querySelector(".parallax--wrap")
+          .addEventListener("scroll", this.handleNavColor);
+      } else {
+        document.addEventListener("scroll", this.handleNavColor);
+      }
     }
     this.handleLogoResize();
     window.addEventListener("resize", this.handleLogoResize);
@@ -134,7 +138,13 @@ class Nav extends React.Component {
   }
   componentWillUnmount() {
     this.handleNavScroll(false);
-    document.removeEventListener("scroll", this.handleNavColor);
+    if (window.innerWidth >= 1280) {
+      document
+        .querySelector(".parallax--wrap")
+        .removeEventListener("scroll", this.handleNavColor);
+    } else {
+      document.removeEventListener("scroll", this.handleNavColor);
+    }
     window.removeEventListener("resize", this.handleLogoResize);
   }
   //RENDER-------------------------------------------------------
