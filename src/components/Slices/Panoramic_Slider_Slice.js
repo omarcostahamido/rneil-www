@@ -12,13 +12,12 @@ const Panoramic_Slider_Slice = props => {
   };
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
-  const handleScroll = props.handleImageClick(".slice-pano--wrap");
   const fadeOutSwipe = props.handleFadeOut(`${props.id}--swipe`);
   useEffect(() => {
     document.querySelector(".slice-pano--wrap").scrollTo(0, 0);
   });
   return (
-    <div className="slice-pano " onClick={handleScroll}>
+    <div className="slice-pano " onClick={props.handleImageClick}>
       <div
         onScroll={fadeOutSwipe}
         className="slice-pano--wrap "

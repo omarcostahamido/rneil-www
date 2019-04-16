@@ -12,7 +12,6 @@ const Gallery = props => {
     //   .getElementById(`${props.id}--wrap`)
     //   .classList.remove("is--transform");
   };
-  const handleScroll = props.handleImageClick(".gallery--wrap");
   const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
@@ -20,11 +19,11 @@ const Gallery = props => {
           {galleryImages.map(image => {
             return (
               <img
-                className="gallery__images slide"
+                className="gallery__images "
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
                 key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
-                onClick={handleScroll}
+                onClick={props.handleImageClick}
               />
             );
           })}

@@ -15,14 +15,7 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.slide {
-  transition: transform 600ms ease;
-  transform: translate3d(100px, 0, 0);
-  &.is--slide {
-    transition: transform 600ms ease;
-    transform: translate3d(100px, 0, 0);
-  }
-}
+
 @include media-min($iphoneSE) {
   .transform {
     transition: transform 800ms ease;
