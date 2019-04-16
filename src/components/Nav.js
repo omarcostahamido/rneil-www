@@ -13,7 +13,7 @@ class Nav extends React.Component {
     let hasScrolled = false;
     const nav = document.querySelector(".nav--sticky-wrap");
     //handles wonky scroll for parallax on homepage
-    if (this.props.page === "homepage") {
+    if (this.props.page === "homepage" && window.innerWidth >= 1280) {
       const headerRect = document
         .querySelector(".header")
         .getBoundingClientRect();
@@ -53,6 +53,7 @@ class Nav extends React.Component {
       }
     } //handles nav animation scroll everywhere else
     else {
+      let hasScrolled = false;
       let previous = window.pageYOffset * 0.4;
       const scrollAnimate = () => {
         if (window.pageYOffset <= 0) {
@@ -62,6 +63,12 @@ class Nav extends React.Component {
           nav.classList.add("is--scroll");
         } else {
           nav.classList.remove("is--scroll-down");
+        }
+        if (this.props.page == "homepage" && !hasScrolled) {
+          //fade in nav items
+          document.querySelector(".nav__nav-items").classList.add("is--active");
+          document.querySelector(".nav__nav-items").classList.remove("animate");
+          hasScrolled = true;
         }
         previous = window.pageYOffset * 0.4;
       };
