@@ -12,41 +12,19 @@ const Gallery = props => {
     //   .getElementById(`${props.id}--wrap`)
     //   .classList.remove("is--transform");
   };
-  const handleImageAnimations = () => {
-    const images = document.querySelectorAll("img.gallery__images");
-    if (images.length > 1) {
-      images.forEach(image => {
-        if (
-          image.getBoundingClientRect().left < window.innerWidth &&
-          image.getBoundingClientRect().left > -150
-        ) {
-          image.classList.add("is--active");
-          image.classList.remove("animate");
-        } else {
-          image.classList.add("animate");
-          image.classList.remove("is--active");
-        }
-      });
-    }
-  };
   const handleScroll = props.handleImageClick(".gallery--wrap");
   const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div
-          id={props.id}
-          className="gallery--wrap animate"
-          onScroll={handleImageAnimations}
-        >
+        <div id={props.id} className="gallery--wrap ">
           {galleryImages.map(image => {
             return (
               <img
-                className="gallery__images animate"
+                className="gallery__images "
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
                 key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
                 onClick={handleScroll}
-                onLoad={handleImageAnimations}
               />
             );
           })}
