@@ -20,7 +20,7 @@ const Gallery = props => {
           {galleryImages.map(image => {
             return (
               <img
-                className="gallery__images "
+                className="gallery__images slide"
                 id={`gallery__image-${galleryImages.indexOf(image)}`}
                 key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
                 src={image}
