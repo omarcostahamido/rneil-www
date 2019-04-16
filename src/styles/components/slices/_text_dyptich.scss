@@ -35,3 +35,24 @@
     }
   }
 }
+@include media-min($desktop-lrg) {
+  .text-dyptich {
+    p {
+      padding-top: 2px;
+    }
+  }
+}
+@include media-min($desktop-xl) {
+  .text-dyptich {
+    p {
+      padding-top: 4px;
+    }
+  }
+}
+@include media-min($desktop-xxl) {
+  .text-dyptich {
+    p {
+      padding-top: 6px;
+    }
+  }
+}

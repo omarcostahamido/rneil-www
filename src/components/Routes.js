@@ -56,10 +56,12 @@ const Routes = props => {
   };
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
-    return () => {
-      el.classList.remove("animate");
-      el.classList.add("is--active");
-    };
+    if (el) {
+      return () => {
+        el.classList.remove("animate");
+        el.classList.add("is--active");
+      };
+    }
   };
   const handleFadeOut = elementId => {
     const el = document.getElementById(elementId);
