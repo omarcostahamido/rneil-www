@@ -28,8 +28,11 @@ const Casestudy_Featured = props => {
                 : props.hero
             }
           />
-          <p className="casestudy-featured__title">{props.title}</p>
-          <p>{props.year}</p>
+
+          <div className="casestudy-featured__info">
+            <p className="casestudy-featured__title">{props.title}</p>
+            <p>{props.year}</p>
+          </div>
         </div>
       </Waypoint>
     </div>

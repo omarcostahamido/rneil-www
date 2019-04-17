@@ -8,7 +8,8 @@
  
 }
 
-div.casestudy-featured {
+.casestudy-featured {
+  position: relative;
   padding-top: 14.4vw;
   color: $white;
   p {
@@ -18,8 +19,11 @@ div.casestudy-featured {
     width: 100%;
   }
 }
-.casestudy-featured__title {
-  padding: 16px 0 10px 0;
+
+.casestudy-featured__info {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
 }
 
 @include media-min($ipad) {
@@ -46,14 +50,27 @@ div.casestudy-featured {
   .casestudy-featured--grid {
     grid-column-gap: 10vw;
   }
+  
   .grid--wide {
     grid-column: 1 / span 2; 
  } 
+ 
 }
 
 @include media-min($desktop) {
   .casestudy-featured__title {
-    padding: 24px 0 10px 0;
+    position: relative;
+  }
+
+  .casestudy-featured__hero:hover {
+    opacity: .4;
+    transition: opacity 300ms ease;
+  }
+  .casestudy-featured__info {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    pointer-events: none;
   }
 }
 

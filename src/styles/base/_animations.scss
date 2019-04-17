@@ -54,7 +54,7 @@
 }
 //home page parallax-----------------
 .--parallax {
-  // transform: translate3d(0px, -98vh, 1px) scale(.5);
+  transform: translate3d(0px, -98vh, 1px) scale(.5);
   @include media-min($desktop) {
     transform: translateZ(-1px) scale(1.5);
     -webkit-transform: translateZ(-1px) scale(1.5);
@@ -68,11 +68,11 @@
 .parallax--wrap {
   @include media-min($desktop) {
     height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
-  overflow-y: auto;
-  perspective: 2px;
-  transform-style: preserve-3d;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 2px;
+    transform-style: preserve-3d;
   }
 }
 
