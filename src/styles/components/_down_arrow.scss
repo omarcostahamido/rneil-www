@@ -1,11 +1,11 @@
 .down-arrow {
-  animation: bounce .8s ease 4 800ms;
+  animation: bounce 1.667s linear infinite 800ms;
   margin-top: 3px;
 }
 
 @keyframes bounce {
-  0%{transform: translateY(0px)}
-  25%{transform: translateY(10px)}
-  75%{transform: translateY(-10px)}
-  100%{transform: translateY((0px))}
+  0%{transform: translateY(0px); animation-timing-function: cubic-bezier(.66, 0, .74, 1); }
+  43%{transform: translateY(-4px); animation-timing-function: cubic-bezier(.26, 0, .74, 1);}
+  86%{transform: translateY(0px); animation-timing-function: cubic-bezier(0, 0, .66, 1);}
+  100%{transform: translateY(0px);}
 }
