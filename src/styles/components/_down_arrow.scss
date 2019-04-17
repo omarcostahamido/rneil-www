@@ -2,10 +2,3 @@
   animation: bounce 1.1667s linear 6 800ms;
   margin-top: 6px;
 }
-
-@keyframes bounce {
-  0%{transform: translateY(0px); animation-timing-function: cubic-bezier(.66, 0, .74, 1); }
-  43%{transform: translateY(-4px); animation-timing-function: cubic-bezier(.26, 0, .34, 1);}
-  86%{transform: translateY(0px); animation-timing-function: cubic-bezier(0, 0, .34, 1);}
- 
-}

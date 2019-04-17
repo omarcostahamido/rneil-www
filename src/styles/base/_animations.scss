@@ -32,6 +32,10 @@
   transform: translate3d(40px, 0, 0);
   &.is--transform {
     transition: transform 800ms ease;
+    transform: translate3d(10px, 0, 0);
+  }
+  &.is--transform:hover {
+    transition: transform 600ms ease;
     transform: translate3d(0, 0, 0);
   }
 }
@@ -48,7 +52,7 @@
     opacity: 1;
   }
 }
-//home page parallax
+//home page parallax-----------------
 .--parallax {
   // transform: translate3d(0px, -98vh, 1px) scale(.5);
   @include media-min($desktop) {
@@ -70,52 +74,11 @@
   perspective: 2px;
   transform-style: preserve-3d;
   }
-  
 }
 
-// //playing w/ react transition group - 
-// .fade-enter {
-//   opacity: 0;
-//   color: black;
-// }
-
-// .fade-enter.fade-enter-active {
-//   opacity: 1;
-//   background-color: blue;
-//   transition: opacity 3000ms ease;
-// }
-
-// .fade-enter-done {
-//   background-color: pink;
-// }
-
-// .fade-appear {
-//   opacity: 0;
-//   color: black;
-// }
-
-// .fade-appear.fade-appear-active {
-//   opacity: 1;
-//  background-color: green;
-//   transition: opacity 3000ms ease;
-// }
-// .fade-leave {
-//   opacity: 1;
-// }
-
-// .fade-leave.fade-leave-active {
-//   background-color: red;
-//   opacity:0;
-//   transition: opacity 3000ms ease;
-// }
-
-// .fade-exit {
-//   opacity: 1;
-// }
-
-// .fade-exit.fade-exit-active {
-//   opacity: 0;
-//   background-color: red;
-//   transition: opacity 3000ms ease;
-// }
-  
+//arrow bounce--------------------------
+@keyframes bounce {
+  0%{transform: translateY(0px); animation-timing-function: cubic-bezier(.66, 0, .74, 1); }
+  43%{transform: translateY(-4px); animation-timing-function: cubic-bezier(.26, 0, .34, 1);}
+  86%{transform: translateY(0px); animation-timing-function: cubic-bezier(0, 0, .34, 1);}
+}
