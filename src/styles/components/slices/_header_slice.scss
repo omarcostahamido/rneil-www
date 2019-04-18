@@ -15,9 +15,19 @@
   .header-slice__info {
     padding: 6.25vw;
     h1 {
-      padding-bottom: 32px;
+      padding-bottom: 12px;
     }
   }
+}
+@include media-min($ipad) {
+  .casestudy__header {
+    .header-slice__info {
+      h1 {
+        padding-bottom: 16px;
+      }
+    }
+  }
+  
 }
 @include media-min($ipad-pro) {
   .casestudy__header {
@@ -40,6 +50,16 @@
     } 
   }
 }
+@include media-min($desktop-lrg){
+  .casestudy__header {
+    .header-slice__info {
+      h1 {
+        padding-bottom: 20px;
+      }
+    }
+  }
+  
+}
 @include media-min($desktop-xl) {
   .casestudy__header {
     .header-slice__info {
@@ -51,6 +71,26 @@
   .casestudy__header {
     .header-slice__info {
       padding: 64px;
+      h1 {
+        padding-bottom: 24px;
+      }
     }
   }
 }
+
+
+// < 720
+
+// 12px
+
+// ≥ 720
+
+// 16px
+
+// ≥ 1440
+
+// 20px
+
+// ≥ 1920
+
+// 24px
