@@ -54,8 +54,9 @@
 }
 //home page parallax-----------------
 .--parallax {
-  transform: translate3d(0px, -98vh, 1px) scale(.5);
+  // transform: translate3d(0px, -98vh, 1px) scale(.5);
   @include media-min($desktop) {
+  
     transform: translateZ(-1px) scale(1.5);
     -webkit-transform: translateZ(-1px) scale(1.5);
     transform-origin: center;
