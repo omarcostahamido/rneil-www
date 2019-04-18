@@ -36,13 +36,6 @@
     }
   }
 }
-@include media-orientation($ipad-pro, 1279px, landscape) {
-  .casestudy__header {
-    .header-slice__info {
-      width: 56%;
-    }
-  }
-}
 @include media-min($desktop) {
   .casestudy__header {
     .header-slice__info {
@@ -77,20 +70,3 @@
     }
   }
 }
-
-
-// < 720
-
-// 12px
-
-// ≥ 720
-
-// 16px
-
-// ≥ 1440
-
-// 20px
-
-// ≥ 1920
-
-// 24px
