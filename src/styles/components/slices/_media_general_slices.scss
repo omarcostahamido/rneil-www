@@ -26,6 +26,9 @@
       object-fit: cover;
     }
   }
+  &.media--about {
+    padding-bottom: 0;
+  }
 }
 .media--wide {
   padding-left: 6.25vw; 

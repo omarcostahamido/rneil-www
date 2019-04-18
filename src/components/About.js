@@ -17,6 +17,7 @@ const About = props => {
                   mediaModuleUrl={video.about_page_video_url.url}
                   handleFadeIn={props.handleFadeIn}
                   handleFadeOut={props.handleFadeOut}
+                  style="media--wide media--about"
                 />
                 <div className="about-videos__info">
                   <p>{video.video_title[0].text}</p>
@@ -124,7 +125,6 @@ const About = props => {
             handleFadeOut={handleFadeOut}
           />
         )}
-
         {props.data && renderVideos(props)}
       </div>
     </div>
