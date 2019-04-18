@@ -81,13 +81,17 @@
     @include prefixer(transform, translateZ(0), true, true, false);
     transform: translateZ(0);
     position: absolute;
-    left: 24px;
-    bottom: 24px;
+    left: 32px;
+    bottom: 32px;
     pointer-events: none;
   }
 }
 @include media-min($desktop-xxl) {
   .homepage__casestudies-featured {
     padding: 12.5vw 16.667vw;
+  }
+  .casestudy-featured__info {
+    left: 40px;
+    bottom: 40px;
   }
 }
