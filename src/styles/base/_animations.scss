@@ -67,14 +67,27 @@
       @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false,false );
       @include prefixer(transform, translate3d(10px, 0, 0), true ,true ,false);
       transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
-      transform: translate3d(3.125vw, 0, 0);
     }
-    &.is--transform:hover {
-      @include prefixer(transition, transform 400ms cubic-bezier(.1, 0, .2, 1), true ,false,false );
-      @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
-      transition: transform 400ms cubic-bezier(.1, 0, .2, 1);
-      transform: translate3d(0, 0, 0);
+    &.pano-slider {
+      &.is--transform {
+        transform: translate3d(3.125vw, 0, 0);
+      }
     }
+    &.pano-slider {
+      &.is--transform:hover {
+        @include prefixer(transition, transform 400ms cubic-bezier(.1, 0, .2, 1), true ,false,false );
+        @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
+        transition: transform 400ms cubic-bezier(.1, 0, .2, 1);
+        transform: translate3d(0, 0, 0);
+        
+      }
+    }
+    &.slice-slider {
+      &.is--transform {
+        transform: translate3d(0, 0, 0); 
+      }
+    }
+    
   }
 }
 //backup fade for all pages------
