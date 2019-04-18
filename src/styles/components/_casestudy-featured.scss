@@ -67,11 +67,15 @@
     position: relative;
   }
   .casestudy-featured__hero {
+    
     width: 100%;
     @include prefixer(transition, opacity 200ms cubic-bezier(.26, 0, .34, 1), true ,false ,false );
     transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
   }
   .casestudy-featured__hero:hover {
+    //solved little flicker outline on dark images
+    @include prefixer(transform, rotate(0), true ,true,false );
+    transform: rotate(0);
     opacity: .4;
     @include prefixer(transition, opacity 200ms cubic-bezier(.26, 0, .34, 1), true ,false ,false );
     transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
