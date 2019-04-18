@@ -79,7 +79,16 @@
 }
 //backup fade for all pages------
 .--isLoaded {
+  -webkit-animation: fade 800ms ease-out;
   animation: fade 800ms ease-out;
+}
+@-webkit-keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes fade {
   0%{
@@ -93,17 +102,17 @@
 .--parallax {
   // transform: translate3d(0px, -98vh, 1px) scale(.5);
   @include media-min($desktop) {
+    @include prefixer(transform, translateZ(-1px) scale(1.5), true ,true ,false);
+    @include prefixer(transform-origin, center, true ,true ,false);
     transform: translateZ(-1px) scale(1.5);
-    -webkit-transform: translateZ(-1px) scale(1.5);
     transform-origin: center;
-    -webkit-transform-origin: center;
     z-index: -1;
   }
-  
 }
 
 .parallax--wrap {
   @include media-min($desktop) {
+    @include prefixer(transform-style, preserve-3d, true ,true ,false);
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
@@ -114,6 +123,11 @@
 }
 
 //arrow bounce--------------------------
+@-webkit-keyframes bounce {
+  0%{transform: translateY(0px); animation-timing-function: cubic-bezier(.66, 0, .74, 1); }
+  43%{transform: translateY(-4px); animation-timing-function: cubic-bezier(.26, 0, .34, 1);}
+  86%{transform: translateY(0px); animation-timing-function: cubic-bezier(0, 0, .34, 1);}
+}
 @keyframes bounce {
   0%{transform: translateY(0px); animation-timing-function: cubic-bezier(.66, 0, .74, 1); }
   43%{transform: translateY(-4px); animation-timing-function: cubic-bezier(.26, 0, .34, 1);}
