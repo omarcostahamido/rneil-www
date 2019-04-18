@@ -3,9 +3,7 @@
   background-color: $black;
   color: $white;
   position: relative;
-  // width: 80vw;
   z-index: 2;
- 
 }
 
 .casestudy-featured {
@@ -53,11 +51,9 @@
   .casestudy-featured--grid {
     grid-column-gap: 10vw;
   }
-  
   .grid--wide {
     grid-column: 1 / span 2; 
  } 
- 
 }
 
 @include media-min($desktop) {
@@ -65,7 +61,6 @@
     &.--white {
       color:$black;
       background-color: $white;
-    
     }
   }
   .casestudy-featured__title {
@@ -73,13 +68,13 @@
   }
   .casestudy-featured__hero {
     width: 100%;
+    @include prefixer(transition, opacity 200ms cubic-bezier(.26, 0, .34, 1), true ,false ,false );
     transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
-    
   }
   .casestudy-featured__hero:hover {
     opacity: .4;
+    @include prefixer(transition, opacity 200ms cubic-bezier(.26, 0, .34, 1), true ,false ,false );
     transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
-    
   }
   .casestudy-featured__info {
     position: absolute;

@@ -1,6 +1,6 @@
 //blanket fade --------------------
 @mixin fade($opacity: 1) {
-  @include prefixer(transition, opacity 500ms ease-out, true ,false ,false );
+  @include prefixer(transition, opacity 450ms ease-out, true ,false ,false );
   @include prefixer(transform-style, preserve-3d, true, false, false);
   @include prefixer(backface-visibility, hidden, true, false, false);
   opacity: $opacity;
@@ -17,37 +17,65 @@
  }
 //slider&gallery transform ----------
 .transform {
-  transition: transform 600ms ease;
-  transform: translate3d(19px, 0, 0);
+  @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
+  @include prefixer(transform, translate3d(19px, 0, 0), true ,true ,false);
+  transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
+  transform: translate3d(12.5vw, 0, 0);
   &.is--transform {
-    transition: transform 600ms ease;
+    @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
+    @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
+    transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
     transform: translate3d(0, 0, 0);
   }
 }
 
 @include media-min($iphoneSE) {
   .transform {
-    transition: transform 800ms ease;
-    transform: translate3d(17px, 0, 0);
+    @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
+    @include prefixer(transform, translate3d(17px, 0, 0), true ,true ,false);
+    transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
+    transform: translate3d(12.5vw, 0, 0);
     &.is--transform {
-      transition: transform 800ms ease;
+      @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
+      @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
+      transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+@include media-min($ipad) {
+  .transform {
+    @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
+    @include prefixer(transform, translate3d(40px, 0, 0), true ,true ,false);
+    transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
+    transform: translate3d(8.333vw, 0, 0);
+    &.is--transform {
+      @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false,false );
+      @include prefixer(transform, translate3d(10px, 0, 0), true ,true ,false);
+      transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
       transform: translate3d(0, 0, 0);
     }
   }
 }
 @include media-min($desktop) {
-.transform {
-  transition: transform 800ms ease;
-  transform: translate3d(40px, 0, 0);
-  &.is--transform {
-    transition: transform 800ms ease;
-    transform: translate3d(10px, 0, 0);
+  .transform {
+    @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
+    @include prefixer(transform, translate3d(40px, 0, 0), true ,true ,false);
+    transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
+    transform: translate3d(9.375vw, 0, 0);
+    &.is--transform {
+      @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false,false );
+      @include prefixer(transform, translate3d(10px, 0, 0), true ,true ,false);
+      transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
+      transform: translate3d(3.125vw, 0, 0);
+    }
+    &.is--transform:hover {
+      @include prefixer(transition, transform 400ms cubic-bezier(.1, 0, .2, 1), true ,false,false );
+      @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
+      transition: transform 400ms cubic-bezier(.1, 0, .2, 1);
+      transform: translate3d(0, 0, 0);
+    }
   }
-  &.is--transform:hover {
-    transition: transform 600ms ease;
-    transform: translate3d(0, 0, 0);
-  }
-}
 }
 //backup fade for all pages------
 .--isLoaded {
@@ -65,7 +93,6 @@
 .--parallax {
   // transform: translate3d(0px, -98vh, 1px) scale(.5);
   @include media-min($desktop) {
-  
     transform: translateZ(-1px) scale(1.5);
     -webkit-transform: translateZ(-1px) scale(1.5);
     transform-origin: center;
