@@ -65,6 +65,7 @@
     &.--white {
       color:$black;
       background-color: $white;
+    
     }
   }
   .casestudy-featured__title {
@@ -73,10 +74,12 @@
   .casestudy-featured__hero {
     width: 100%;
     transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
+    
   }
   .casestudy-featured__hero:hover {
     opacity: .4;
     transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
+    
   }
   .casestudy-featured__info {
     position: absolute;

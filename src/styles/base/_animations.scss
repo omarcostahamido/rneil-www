@@ -1,4 +1,13 @@
 //blanket fade --------------------
+@mixin fade($opacity: 1) {
+  @include prefixer(transition, opacity 500ms ease-out, true ,false ,false );
+  @include prefixer(transform-style, preserve-3d, true, false, false);
+  @include prefixer(backface-visibility, hidden, true, false, false);
+  opacity: $opacity;
+  transition: opacity 450ms ease-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
 .is--active {
   @include fade(1);
  }
@@ -42,7 +51,7 @@
 }
 //backup fade for all pages------
 .--isLoaded {
-  animation: fade 1s linear;
+  animation: fade 800ms ease-out;
 }
 @keyframes fade {
   0%{

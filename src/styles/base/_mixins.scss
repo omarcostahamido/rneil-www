@@ -152,21 +152,6 @@
   display: flex;
 }
 
-//transitions / animations--------------------
-@mixin fade($opacity: 1) {
-  //testing out prefix mixin
-  @include prefixer(transition, opacity 500ms ease-out, true ,false ,false );
-  @include prefixer(transform-style, preserve-3d, true, false, false);
-  @include prefixer(backface-visibility, hidden, true, false, false);
-  // -webkit-transition: opacity 500ms ease-out;
-  // -webkit-transform-style: preserve-3d;
-  // -webkit-backface-visibility: hidden;
-  opacity: $opacity;
-  transition: opacity 500ms ease-out;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
 //mediaqueries-------------------------------
 
 @mixin media-min($width) {
