@@ -13,11 +13,13 @@ import Text_Dyptich from "./Slices/Text_Dyptich";
 const Casestudy_Slice = props => {
   //for the gallery & pano slider scroll bx
   const handleImageClick = e => {
-    document.getElementById(e.target.id.toString()).scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: /^slice/.test(e.target.classList[0]) ? "end" : "center"
-    });
+    if (window.innerWidth >= 1280) {
+      document.getElementById(e.target.id.toString()).scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: /^slice/.test(e.target.classList[0]) ? "end" : "center"
+      });
+    }
   };
   const renderSlice = props => {
     if (props.slice_doc) {

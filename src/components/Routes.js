@@ -16,6 +16,7 @@ const Routes = props => {
       return (
         <div className="casestudy-featured--grid">
           {props.casestudyData.map(casestudy => {
+            console.log(casestudy);
             return (
               <span
                 key={casestudy.slugs[0]}
@@ -33,6 +34,7 @@ const Routes = props => {
                     <Casestudy_Featured
                       class={`${casestudy.id}--feat`}
                       title={casestudy.data.casestudy_title[0].text}
+                      color={casestudy.data.home_info_color}
                       hero={casestudy.data.casestudy_hero_image.url}
                       heroMobile={
                         casestudy.data.casestudy_hero_image_mobile.url

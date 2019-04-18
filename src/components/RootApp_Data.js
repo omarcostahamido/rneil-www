@@ -36,6 +36,7 @@ class RootApp_Data extends React.Component {
               "casestudy.casestudy_hero_image_mobile",
               "casestudy.casestudy_title",
               "casestudy.casestudy_year",
+              "casestudy.home_info_color",
               "casestudy.grid_style",
               "casestudy.slugs",
               "casestudy.id",
@@ -55,6 +56,7 @@ class RootApp_Data extends React.Component {
             this.setState({
               doc: response.results
             });
+            console.log(this.state.doc);
             this.cleanData();
           }
           this.removeLoader();

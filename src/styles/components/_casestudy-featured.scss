@@ -12,6 +12,9 @@
   position: relative;
   padding-top: 14.4vw;
   color: $white;
+  &.--white {
+    color: $black;
+  }
   p {
     @include label(inherit);
   }
@@ -58,10 +61,19 @@
 }
 
 @include media-min($desktop) {
+  .casestudy-featured {
+    &.--white {
+      color:$black;
+      background-color: $white;
+    }
+  }
   .casestudy-featured__title {
     position: relative;
   }
-
+  .casestudy-featured__hero {
+    width: 100%;
+    transition: opacity 200ms ease;
+  }
   .casestudy-featured__hero:hover {
     opacity: .4;
     transition: opacity 300ms ease;

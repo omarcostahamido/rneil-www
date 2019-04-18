@@ -19,7 +19,11 @@ const Casestudy_Featured = props => {
   return (
     <div>
       <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
-        <div className="casestudy-featured">
+        <div
+          className={`casestudy-featured ${
+            props.color === "black" ? "--black" : "--white"
+          }`}
+        >
           <img
             className="casestudy-featured__hero"
             src={
@@ -28,7 +32,6 @@ const Casestudy_Featured = props => {
                 : props.hero
             }
           />
-
           <div className="casestudy-featured__info">
             <p className="casestudy-featured__title">{props.title}</p>
             <p>{props.year}</p>
