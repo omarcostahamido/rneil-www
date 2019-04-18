@@ -8,7 +8,8 @@
   align-items: center;
   justify-content: center;
   svg {
-    width: 180px;
+    padding: 0 20vw;
+    width: 256px;
     animation: fade .5s ease-in-out;
   }
   @keyframes fade {
@@ -19,7 +20,22 @@
     //put loading animation here
   }
 }
-
 .loaded {
   display: none;
+  pointer-events: none;
+}
+
+@include media-min($ipad) {
+  .isLoading {
+    svg {
+      padding: 0 33.333vw;
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  .isLoading {
+    svg {
+      padding: 0 37.5vw;
+    }
+  }
 }
