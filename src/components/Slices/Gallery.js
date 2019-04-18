@@ -20,7 +20,7 @@ const Gallery = props => {
   const handleGalleryBuild = galleryImages => {
     if (galleryImages) {
       return (
-        <div id={props.id} className="gallery--wrap ">
+        <div id={props.id} className="gallery--wrap">
           {galleryImages.map(image => {
             return (
               <img

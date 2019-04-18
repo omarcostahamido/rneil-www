@@ -29,7 +29,7 @@ const Routes = props => {
                   className={`${casestudy.slugs[0]}--feat`}
                   to={`/${casestudy.slugs[0]}/${casestudy.id}`}
                 >
-                  <div className={`${casestudy.id}--feat animate`}>
+                  <article className={`${casestudy.id}--feat animate`}>
                     <Casestudy_Featured
                       class={`${casestudy.id}--feat`}
                       title={casestudy.data.casestudy_title[0].text}
@@ -46,7 +46,7 @@ const Routes = props => {
                       handleFadeIn={handleFadeIn}
                       handleFadeOut={handleFadeOut}
                     />
-                  </div>
+                  </article>
                 </Link>
               </span>
             );

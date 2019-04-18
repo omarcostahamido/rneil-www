@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 const Next_Btn = props => {
   return (
-    <div className="next-btn">
+    <footer className="next-btn">
       <Link to={props.url}>next exhibition</Link>
       <svg width="24px" height="13px" viewBox="0 0 24 13">
         <g
@@ -21,7 +21,7 @@ const Next_Btn = props => {
           </g>
         </g>
       </svg>
-    </div>
+    </footer>
   );
 };
 

@@ -10,7 +10,7 @@ const Homepage = props => {
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
-    <div>
+    <main>
       {props.isLoading ? (
         <Loader isLoading={props.isLoading} class="--dark-mode" />
       ) : (
@@ -20,7 +20,7 @@ const Homepage = props => {
           }`}
         >
           <Nav page="homepage" class="--home" />
-          <section className="parallax--wrap">
+          <div className="parallax--wrap">
             <Header
               isLoading={props.isLoading}
               copy={
@@ -51,14 +51,13 @@ const Homepage = props => {
               handleFadeIn={props.handleFadeIn}
               handleFadeOut={props.handleFadeOut}
             />
-
-            <div className="homepage__casestudies-featured ">
+            <section className="homepage__casestudies-featured ">
               {props.renderCasestudies()}
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

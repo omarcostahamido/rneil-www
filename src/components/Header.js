@@ -11,13 +11,13 @@ const Header = props => {
     }, 200);
   };
   return (
-    <div
+    <header
       id="home-header"
       className="header --isLoaded --parallax"
       style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
       onClick={window.innerWidth > 1024 ? props.handleAnchorLink : undefined}
     >
-      <div
+      <figure
         className={`header__img ${
           props.mediaType === "is--image" ? "animate" : "is--active"
         }`}
@@ -49,8 +49,8 @@ const Header = props => {
             }
           />
         )}
-      </div>
-      <div className="header__info">
+      </figure>
+      <article className="header__info">
         <span className="header-copy--wrap">
           <h1 className="header__main-copy">{props.copy}</h1>
         </span>
@@ -61,8 +61,8 @@ const Header = props => {
             titleCopyColor="black"
           />
         </span>
-      </div>
-    </div>
+      </article>
+    </header>
   );
 };
 Header.propTypes = {

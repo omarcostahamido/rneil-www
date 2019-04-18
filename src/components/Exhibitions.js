@@ -4,10 +4,10 @@ import Nav from "./Nav";
 const Exhibitions = props => {
   props.scrollTop();
   return (
-    <div className="--isLoaded">
+    <main className="--isLoaded">
       <Nav class="--dark-mode" color="#fff" page="work" />
       <section className="work">{props.renderCasestudies()}</section>
-    </div>
+    </main>
   );
 };
 

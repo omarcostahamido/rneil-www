@@ -53,7 +53,7 @@ const Header_Slice = props => {
     }
   });
   return (
-    <div
+    <header
       className="--isLoaded"
       onClick={window.innerWidth > 1024 ? handleAnchorScroll : undefined}
     >
@@ -62,7 +62,7 @@ const Header_Slice = props => {
         onLoad={fadeInBg}
         style={{ display: "none" }}
       />
-      <div
+      <figure
         className="casestudy__header animate"
         style={
           !props.isVideo
@@ -91,7 +91,7 @@ const Header_Slice = props => {
             handleFadeOut={props.handleFadeOut}
           />
         ) : null}
-        <div
+        <article
           className="header-slice__info"
           style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
         >
@@ -111,9 +111,9 @@ const Header_Slice = props => {
             class="down-arrow"
             titleCopyColor={props.titleCopyColor}
           />
-        </div>
-      </div>
-    </div>
+        </article>
+      </figure>
+    </header>
   );
 };
 

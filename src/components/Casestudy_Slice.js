@@ -49,6 +49,7 @@ const Casestudy_Slice = props => {
       } else if (props.slice_type === "text_dyptich") {
         return (
           <Text_Dyptich
+            id={props.id}
             pullQuote={
               props.slice_doc.primary.dyptich_pull_quote[0].text
                 ? props.slice_doc.primary.dyptich_pull_quote[0].text
@@ -59,6 +60,8 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.dyptich_body_copy[0].text
                 : null
             }
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "image") {

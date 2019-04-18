@@ -1,11 +1,11 @@
-import React from "react";
+import React, { lazy } from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
-import Casestudy_Slice from "./Casestudy_Slice";
 import Header_Slice from "./Slices/Header_Slice";
-import Location_Info_Slice from "./Slices/Location_Info_Slice";
-import Title_Slice from "./Slices/Title_Slice";
-import Next_Btn from "./Next_Btn";
+const Casestudy_Slice = lazy(() => import("./Casestudy_Slice"));
+const Location_Info_Slice = lazy(() => import("./Slices/Location_Info_Slice"));
+const Title_Slice = lazy(() => import("./Slices/Title_Slice"));
+const Next_Btn = lazy(() => import("./Next_Btn"));
 
 class Casestudy extends React.Component {
   state = {
@@ -95,7 +95,7 @@ class Casestudy extends React.Component {
     if (this.state.casestudyContent) {
       let i = 0;
       return (
-        <div className="casestudy-slices">
+        <section className="casestudy-slices">
           {this.state.casestudyContent.map(casestudySlice => {
             i++;
             return (
@@ -115,7 +115,7 @@ class Casestudy extends React.Component {
               />
             );
           })}
-        </div>
+        </section>
       );
     }
   };
@@ -177,7 +177,7 @@ class Casestudy extends React.Component {
   //RENDER-------------------------------------------------
   render() {
     return (
-      <div
+      <main
         className={`casestudy ${
           this.state.colorMode && this.state.colorMode.toLowerCase() === "light"
             ? "casestudy--light"
@@ -236,7 +236,7 @@ class Casestudy extends React.Component {
               : "#000"
           }
         />
-      </div>
+      </main>
     );
   }
 }
