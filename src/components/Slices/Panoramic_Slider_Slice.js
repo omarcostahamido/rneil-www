@@ -6,9 +6,9 @@ const Panoramic_Slider_Slice = props => {
     document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
   };
   const transformOut = () => {
-    document
-      .getElementById(`${props.id}--wrap`)
-      .classList.remove("is--transform");
+    // document
+    //   .getElementById(`${props.id}--wrap`)
+    //   .classList.remove("is--transform");
   };
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
