@@ -6,6 +6,11 @@ const Gallery = props => {
   const fadeOut = props.handleFadeOut(props.id);
   const transformIn = () => {
     document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
+    window.setTimeout(() => {
+      document
+        .getElementById(`${props.id}--wrap`)
+        .classList.remove("transform");
+    }, 800);
   };
   const transformOut = () => {
     // document
@@ -43,7 +48,6 @@ const Gallery = props => {
         }`}
       >
         {props.galleryImages && handleGalleryBuild(props.galleryImages)}
-
         {props.pullQuote && (
           <h1 className="gallery__pullquote">{props.pullQuote}</h1>
         )}

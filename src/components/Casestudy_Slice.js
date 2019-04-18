@@ -16,7 +16,7 @@ const Casestudy_Slice = props => {
     if (window.innerWidth >= 1280) {
       document.getElementById(e.target.id.toString()).scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
+        block: "center",
         inline: /^slice/.test(e.target.classList[0]) ? "end" : "center"
       });
     }

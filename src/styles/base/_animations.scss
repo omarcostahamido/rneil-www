@@ -46,12 +46,12 @@
 @include media-min($ipad) {
   .transform {
     @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
-    @include prefixer(transform, translate3d(40px, 0, 0), true ,true ,false);
+    @include prefixer(transform, translate3d(8.333vw, 0, 0), true ,true ,false);
     transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
     transform: translate3d(8.333vw, 0, 0);
     &.is--transform {
       @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false,false );
-      @include prefixer(transform, translate3d(10px, 0, 0), true ,true ,false);
+      @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
       transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
       transform: translate3d(0, 0, 0);
     }
@@ -60,16 +60,16 @@
 @include media-min($desktop) {
   .transform {
     @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false ,false );
-    @include prefixer(transform, translate3d(40px, 0, 0), true ,true ,false);
+    @include prefixer(transform, translate3d(9.375vw, 0, 0), true ,true ,false);
     transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
     transform: translate3d(9.375vw, 0, 0);
     &.is--transform {
       @include prefixer(transition, transform 800ms cubic-bezier(.6, 0, .2, 1), true ,false,false );
-      @include prefixer(transform, translate3d(10px, 0, 0), true ,true ,false);
       transition: transform 800ms cubic-bezier(.6, 0, .2, 1);
     }
     &.pano-slider {
       &.is--transform {
+        @include prefixer(transform, translate3d(3.125vw, 0, 0), true ,true ,false);
         transform: translate3d(3.125vw, 0, 0);
       }
     }
@@ -79,11 +79,11 @@
         @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
         transition: transform 400ms cubic-bezier(.1, 0, .2, 1);
         transform: translate3d(0, 0, 0);
-        
       }
     }
     &.slice-slider {
       &.is--transform {
+        @include prefixer(transform, translate3d(0, 0, 0), true ,true ,false);
         transform: translate3d(0, 0, 0); 
       }
     }

@@ -6,6 +6,9 @@
     display: none !important;
   }
 }
+.slice-slider {
+  width: 100%;
+}
 .gallery--wrap {
   @include slider-wrap;
   padding-left: 6.25vw;
