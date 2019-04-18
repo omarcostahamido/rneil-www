@@ -56,7 +56,6 @@ class RootApp_Data extends React.Component {
             this.setState({
               doc: response.results
             });
-            console.log(this.state.doc);
             this.cleanData();
           }
           this.removeLoader();

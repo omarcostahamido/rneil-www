@@ -16,7 +16,6 @@ const Routes = props => {
       return (
         <div className="casestudy-featured--grid">
           {props.casestudyData.map(casestudy => {
-            console.log(casestudy);
             return (
               <span
                 key={casestudy.slugs[0]}
