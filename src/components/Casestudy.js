@@ -2,7 +2,8 @@ import React, { lazy } from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Header_Slice from "./Slices/Header_Slice";
-const Casestudy_Slice = lazy(() => import("./Casestudy_Slice"));
+import Casestudy_Slice from "./Casestudy_Slice";
+
 const Location_Info_Slice = lazy(() => import("./Slices/Location_Info_Slice"));
 const Title_Slice = lazy(() => import("./Slices/Title_Slice"));
 const Next_Btn = lazy(() => import("./Next_Btn"));
