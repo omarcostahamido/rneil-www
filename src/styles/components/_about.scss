@@ -2,76 +2,93 @@
 .about {
   background-color: $white;
 }
-
 .about__header {
-  padding: 0 8vw;
-}
-.about__title {
-  padding-top: 35.47vw;
-  @include h1($black);
-}
-.about__copy {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  padding-top: 10.67vw;
-  p {
-    margin-bottom: 12.8vw;
-    @include body-copy($black);
+  margin-bottom: calc(12.5vw + 12.5px);
+  div.pull-quote {
+    padding-top: 25vw;
   }
-  a {
-    width: 150px;
-    text-decoration: none;
-    color: inherit;
-    border-bottom: 1px solid $black;
-    padding-bottom: 10px;
-    @include label($black);
-  }
+}
+#about__email-link {
+  margin: 0 6.25vw;
+  width: 150px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid $black;
+  padding-bottom: 12.5px;
+  @include body-copy($black);
+  transition: opacity 200ms ease-out;
+}
+#about__email-link:hover {
+  opacity: .4;
+  transition: opacity 200ms ease-out;
+}
+.dyptich--wrapper {
+  padding-bottom: 12.5vw;
 }
 .about-videos__info {
+  padding: 0 6.25vw 12.5vw 6.25vw;
   p {
     @include label($black);
   }
   p:first-child {
-    padding: 24px 0 10px 8vw;
-  }
-  p:last-child {
-    padding-left: 8vw;
-    padding-bottom: 12.8vw;
+    padding-top: 8px;
   }
 }
-//MQ's- sm>>lrg--------------------------------
+
 @include media-min($ipad) {
-  .about__title {
-    padding-top: 20vw;//guess - no ipad styles yet
-  }
-}
-@include media-min($desktop) {
   .about__header {
-    padding: 0 10vw;
-  }
-  .about__title {
-    padding: 12.2vw 6vw 0 6vw;
-    max-width: 41.67vw;
-  }
-  .about__copy {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5vw 6vw 0 6vw;
-    p {
-      margin-bottom: 0;
-      max-width: 980px;
-      width: 41.67vw;
+    margin-bottom: 11.5px;
+    div.pull-quote {
+      padding-top: 18.75vw;
     }
+  }
+  #about__email-link { 
+    margin: 0 12.5vw;
+  }
+  .dyptich--wrapper {
+    padding-bottom: 18.75vw;
   }
   .about-videos__info {
-    p:first-child {
-      padding: 24px 0 10px 10vw;
-    }
-    p:last-child {
-      padding-left: 10vw;
-      padding-bottom: 8vw;
-    }
+    padding: 0 12.5vw 9.375vw 12.5vw;
   }
 }
+
+
+
+
+
+// //MQ's- sm>>lrg--------------------------------
+// @include media-min($ipad) {
+//   .about__title {
+//     padding-top: 20vw;//guess - no ipad styles yet
+//   }
+// }
+// @include media-min($desktop) {
+//   .about__header {
+//     padding: 0 10vw;
+//   }
+//   .about__title {
+//     padding: 12.2vw 6vw 0 6vw;
+//     max-width: 41.67vw;
+//   }
+//   .about__copy {
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 5vw 6vw 0 6vw;
+//     p {
+//       margin-bottom: 0;
+//       max-width: 980px;
+//       width: 41.67vw;
+//     }
+//   }
+//   .about-videos__info {
+//     p:first-child {
+//       padding: 24px 0 10px 10vw;
+//     }
+//     p:last-child {
+//       padding-left: 10vw;
+//       padding-bottom: 8vw;
+//     }
+//   }
+// }

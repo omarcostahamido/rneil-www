@@ -216,13 +216,13 @@ class Casestudy extends React.Component {
           location={this.state.casestudyLocation}
           city={this.state.casestudyCity}
           year={this.state.casestudyYear}
-          id={this.state.id}
+          id={this.state.casestudyId}
           handleFadeIn={this.props.handleFadeIn}
           handleFadeOut={this.props.handleFadeOut}
         />
         <Title_Slice
           title={this.state.casestudyTitle}
-          id={this.state.id}
+          id={this.state.casestudyId}
           handleFadeIn={this.props.handleFadeIn}
           handleFadeOut={this.props.handleFadeOut}
         />
