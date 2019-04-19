@@ -57,7 +57,7 @@ const Routes = props => {
   };
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
-    console.log(el);
+    // console.log(el);
     if (el) {
       return () => {
         el.classList.remove("animate");
@@ -67,7 +67,7 @@ const Routes = props => {
   };
   const handleFadeOut = elementId => {
     const el = document.getElementById(elementId);
-    console.log(el);
+    // console.log(el);
     if (el) {
       return () => {
         el.classList.add("animate");

@@ -73,6 +73,16 @@ div.video-player > div {
   .media--wide {
     padding-left: 8.333vw;
     padding-right: 8.333vw;
+    &.video-player--wrap {
+      height: 44.52vw;
+    }
+  }
+}
+@include media-orientation($ipad-pro, 1279px, landscape) {
+  .media--wide {
+    &.video-player--wrap {
+      height: 44.52vw;
+    }
   }
 }
 @include media-min($desktop) {

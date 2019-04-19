@@ -46,14 +46,28 @@
     margin: 0 12.5vw;
   }
   .dyptich--wrapper {
-    padding-bottom: 18.75vw;
+    padding-bottom: 9.375vw;
   }
   .about-videos__info {
     padding: 0 12.5vw 9.375vw 12.5vw;
   }
 }
 @include media-min($ipad-pro) {
-
+  .about__header {
+    margin-bottom: 11.5px;
+    div.pull-quote {
+      padding-top: 12.5vw;
+    }
+  }
+  #about__email-link { 
+    margin: 0 16.667vw;
+  }
+  .dyptich--wrapper {
+    padding-bottom: 6.25vw;
+  }
+  .about-videos__info {
+    padding: 0 8.333vw 6.25vw 8.333vw;
+  }
 }
 @include media-orientation($ipad-pro, 1279px, landscape) {
   .about__header {
@@ -67,48 +81,9 @@
     margin: 0 16.667vw;
   }
   .dyptich--wrapper {
-    padding-bottom: 18.75vw;
+    padding-bottom: 8.333vw;
   }
   .about-videos__info {
-    padding: 0 12.5vw 9.375vw 12.5vw;
+    padding: 0 8.333vw 8.333vw 8.333vw;
   }
 }
-
-
-
-
-// //MQ's- sm>>lrg--------------------------------
-// @include media-min($ipad) {
-//   .about__title {
-//     padding-top: 20vw;//guess - no ipad styles yet
-//   }
-// }
-// @include media-min($desktop) {
-//   .about__header {
-//     padding: 0 10vw;
-//   }
-//   .about__title {
-//     padding: 12.2vw 6vw 0 6vw;
-//     max-width: 41.67vw;
-//   }
-//   .about__copy {
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-between;
-//     padding: 5vw 6vw 0 6vw;
-//     p {
-//       margin-bottom: 0;
-//       max-width: 980px;
-//       width: 41.67vw;
-//     }
-//   }
-//   .about-videos__info {
-//     p:first-child {
-//       padding: 24px 0 10px 10vw;
-//     }
-//     p:last-child {
-//       padding-left: 10vw;
-//       padding-bottom: 8vw;
-//     }
-//   }
-// }
