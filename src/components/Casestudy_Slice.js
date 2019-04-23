@@ -24,6 +24,7 @@ const Casestudy_Slice = props => {
   const renderSlice = props => {
     if (props.slice_doc) {
       if (props.slice_type === "body_text") {
+        console.log(props.slice_doc);
         return (
           <Body_Text_Slice
             id={props.id}
