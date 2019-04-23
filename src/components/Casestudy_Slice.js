@@ -172,6 +172,7 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "audio_module") {
+        console.log(props.slice_doc);
         return (
           <Audio_Module_Slice
             id={props.id}
@@ -180,8 +181,16 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.audio_module_embed.embed_url
                 : null
             }
+            otherAudioUrl={
+              props.slice_doc.primary.audio_module_url.url
+                ? props.slice_doc.primary.audio_module_url.url
+                : null
+            }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
+            isSoundcloud={
+              props.slice_doc.primary.embed_type == "is--other" ? false : true
+            }
           />
         );
       }
