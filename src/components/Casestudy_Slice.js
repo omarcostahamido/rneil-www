@@ -172,7 +172,6 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "audio_module") {
-        console.log(props.slice_doc);
         return (
           <Audio_Module_Slice
             id={props.id}

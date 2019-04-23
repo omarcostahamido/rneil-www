@@ -4,7 +4,6 @@
   padding-right: 25vw;
 }
 .dyptich__image {
-  width: 50%;
   &.left {
     padding-bottom: 25vw;
   }
@@ -22,6 +21,7 @@
     justify-content: center;
   }
   .dyptich__image {
+    width: 50%;
     &.left {
       padding: 0 6.25vw 0 0;
     }

@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 import { Waypoint } from "react-waypoint";
 
 const Audio_Module_Slice = props => {
-  console.log(props);
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
   return (
