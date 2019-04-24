@@ -138,15 +138,14 @@ class Nav extends React.Component {
   }
   componentWillUnmount() {
     this.handleNavScroll(false);
-    if (window.location.pathname == "/") {
-      if (window.innerWidth >= 1280) {
-        document
-          .querySelector(".parallax--wrap")
-          .removeEventListener("scroll", this.handleNavColor);
-      } else {
-        document.removeEventListener("scroll", this.handleNavColor);
-      }
+    if (window.innerWidth >= 1280) {
+      document
+        .querySelector(".parallax--wrap")
+        .removeEventListener("scroll", this.handleNavColor);
+    } else {
+      document.removeEventListener("scroll", this.handleNavColor);
     }
+
     window.removeEventListener("resize", this.handleLogoResize);
   }
   //RENDER-------------------------------------------------------
