@@ -15,7 +15,6 @@ const Casestudy_Featured = props => {
     el.classList.add("animate");
     el.classList.remove("is--active");
   };
-
   return (
     <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
       <div

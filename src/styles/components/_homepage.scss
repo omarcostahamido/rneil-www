@@ -1,6 +1,6 @@
 .homepage__body {
-  overflow: hidden;
   &.--isLoading {
     @include entire-viewport;
+    overflow: hidden;
   }
 }
