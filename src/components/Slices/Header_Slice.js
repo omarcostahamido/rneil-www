@@ -10,10 +10,13 @@ const Header_Slice = props => {
     setInfoVisible(true);
   };
   const fadeOut = () => {
-    document
-      .querySelector(".header-slice__info")
-      .classList.remove("is--active");
-    document.querySelector(".header-slice__info").classList.add("animate");
+    if (infoIsVisible) {
+      document
+        .querySelector(".header-slice__info")
+        .classList.remove("is--active");
+      document.querySelector(".header-slice__info").classList.add("animate");
+      setInfoVisible(false);
+    }
   };
   const fadeInBg = () => {
     updateIsFading(() => {
