@@ -139,7 +139,6 @@ class Nav extends React.Component {
   componentWillUnmount() {
     this.handleNavScroll(false);
     if (this.props.page == "homepage") {
-      console.log("removing");
       if (window.innerWidth >= 1280) {
         document
           .querySelector(".parallax--wrap")

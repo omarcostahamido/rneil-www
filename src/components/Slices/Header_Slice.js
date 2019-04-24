@@ -47,25 +47,23 @@ const Header_Slice = props => {
   let [isFading, updateIsFading] = useState(false);
   let [heroHeight, setHeroHeight] = useState(window.innerHeight);
   //to accommodate for in btw casestudy routing
+  let [infoIsVisible, setInfoVisible] = useState(false);
   useEffect(() => {
     if (currentPath != window.location.href) {
-      updatePath(() => {
-        currentPath = window.location.href;
-      });
+      updatePath(window.location.href);
       if (!isFading) {
         fadeOutBg();
       }
     }
-  });
-  let [infoIsVisible, setInfoVisible] = useState(false);
-  useEffect(() => {
     if (!infoIsVisible) {
       fadeIn();
     }
     if (window.innerWidth >= 1280) {
       setHeroHeight(null);
     }
+    return setHeroHeight(window.innerHeight);
   }, []);
+  console.log(heroHeight);
   return (
     <header
       className="--isLoaded"
@@ -81,7 +79,7 @@ const Header_Slice = props => {
         style={
           !props.isVideo
             ? {
-                height: heroHeight,
+                height: window.innerWidth <= 1024 ? window.innerHeight : null,
                 backgroundColor: "inherit",
                 backgroundImage: `url(${props.casestudyHero})`,
                 WebkitBackgroundSize: "cover",
@@ -92,7 +90,7 @@ const Header_Slice = props => {
               }
             : {
                 backgroundColor: "transparent",
-                height: heroHeight
+                height: window.innerWidth <= 1024 ? window.innerHeight : null
               }
         }
       >
