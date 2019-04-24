@@ -6,11 +6,13 @@
   padding-left: 6.25vw;
   white-space:pre-line;
   a {
-    transition: opacity 200ms ease-out;
+    border-bottom: solid 1px black;
+    transition: all 200ms ease-out;
   }
   a:hover {
-    opacity: .4;
-    transition: opacity 200ms ease-out;
+    color: $dark-grey;
+    border-bottom-color: $dark-grey;
+    transition: all 200ms ease-out;
   }
 }
 @include media-min($ipad) {
