@@ -18,8 +18,12 @@
 //SLICES--------------------
 @import './components/slices/gallery';
 @import './components/slices/header_slice';
+@import './components/slices/location_info_slice';
+@import './components/slices/title_slice';
 @import './components/slices/body_text_slice';
 @import './components/slices/pull_quote_slice';
 @import './components/slices/media_general_slices';
 @import './components/slices/panoramic_slider_slice';
 @import './components/slices/image_dyptich';
+@import './components/slices/text_dyptich';
+@import './components/slices/audio_slice';

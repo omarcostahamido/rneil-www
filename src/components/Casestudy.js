@@ -1,9 +1,12 @@
-import React from "react";
+import React, { lazy } from "react";
 import Prismic from "prismic-javascript";
 import Nav from "./Nav";
-import Casestudy_Slice from "./Casestudy_Slice";
 import Header_Slice from "./Slices/Header_Slice";
-import Next_Btn from "./Next_Btn";
+import Casestudy_Slice from "./Casestudy_Slice";
+
+const Location_Info_Slice = lazy(() => import("./Slices/Location_Info_Slice"));
+const Title_Slice = lazy(() => import("./Slices/Title_Slice"));
+const Next_Btn = lazy(() => import("./Next_Btn"));
 
 class Casestudy extends React.Component {
   state = {
@@ -56,6 +59,15 @@ class Casestudy extends React.Component {
       casestudyTitleCopy:
         this.state.doc[0].data.casestudy_supporting_title_copy[0] &&
         this.state.doc[0].data.casestudy_supporting_title_copy[0].text,
+      casestudyLocation: this.state.doc[0].data.casestudy_location[0]
+        ? this.state.doc[0].data.casestudy_location[0].text
+        : null,
+      casestudyCity: this.state.doc[0].data.casestudy_city[0]
+        ? this.state.doc[0].data.casestudy_city[0].text
+        : null,
+      casestudyYear: this.state.doc[0].data.casestudy_year[0]
+        ? this.state.doc[0].data.casestudy_year[0].text
+        : null,
       titleCopyColor: this.state.doc[0].data.title_copy_color,
       casestudyHero: this.state.doc[0].data.in_casestudy_hero_desktop.url
         ? this.state.doc[0].data.in_casestudy_hero_desktop.url
@@ -84,7 +96,7 @@ class Casestudy extends React.Component {
     if (this.state.casestudyContent) {
       let i = 0;
       return (
-        <div>
+        <section className="casestudy-slices">
           {this.state.casestudyContent.map(casestudySlice => {
             i++;
             return (
@@ -104,13 +116,13 @@ class Casestudy extends React.Component {
               />
             );
           })}
-        </div>
+        </section>
       );
     }
   };
   //pass down to the casestudy and slices to toggle mobile/desktop assets
   checkForMobile = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1024) {
       this.setState({
         isMobile: true
       });
@@ -166,7 +178,7 @@ class Casestudy extends React.Component {
   //RENDER-------------------------------------------------
   render() {
     return (
-      <div
+      <main
         className={`casestudy ${
           this.state.colorMode && this.state.colorMode.toLowerCase() === "light"
             ? "casestudy--light"
@@ -201,6 +213,20 @@ class Casestudy extends React.Component {
           handleFadeIn={this.props.handleFadeIn}
           handleFadeOut={this.props.handleFadeOut}
         />
+        <Location_Info_Slice
+          location={this.state.casestudyLocation}
+          city={this.state.casestudyCity}
+          year={this.state.casestudyYear}
+          id={this.state.casestudyId}
+          handleFadeIn={this.props.handleFadeIn}
+          handleFadeOut={this.props.handleFadeOut}
+        />
+        <Title_Slice
+          title={this.state.casestudyTitle}
+          id={this.state.casestudyId}
+          handleFadeIn={this.props.handleFadeIn}
+          handleFadeOut={this.props.handleFadeOut}
+        />
         {this.renderCasestudyData()}
         <Next_Btn
           url={`/${this.state.nextCasestudySlug}/${this.state.nextCasestudyId}`}
@@ -211,9 +237,8 @@ class Casestudy extends React.Component {
               : "#000"
           }
         />
-      </div>
+      </main>
     );
   }
 }
-
 export default Casestudy;

@@ -1,11 +1,5 @@
 .down-arrow {
-  animation: bounce .8s ease 4 800ms;
-  margin-top: 3px;
-}
-
-@keyframes bounce {
-  0%{transform: translateY(0px)}
-  25%{transform: translateY(10px)}
-  75%{transform: translateY(-10px)}
-  100%{transform: translateY((0px))}
+  -webkit-animation: bounce 1.1667s linear infinite 800ms;
+  animation: bounce 1.1667s linear infinite 800ms;
+  margin-top: 6px;
 }

@@ -5,12 +5,14 @@ import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
   const fadeIn = () => {
-    document.querySelector(".header--info").classList.add("is--active");
-    document.querySelector(".header--info").classList.remove("animate");
+    document.querySelector(".header-slice__info").classList.add("is--active");
+    document.querySelector(".header-slice__info").classList.remove("animate");
   };
   const fadeOut = () => {
-    document.querySelector(".header--info").classList.remove("is--active");
-    document.querySelector(".header--info").classList.add("animate");
+    document
+      .querySelector(".header-slice__info")
+      .classList.remove("is--active");
+    document.querySelector(".header-slice__info").classList.add("animate");
   };
   const fadeInBg = () => {
     updateIsFading(() => {
@@ -32,6 +34,11 @@ const Header_Slice = props => {
       isFading = false;
     });
   };
+  const handleAnchorScroll = () => {
+    document
+      .querySelector(".casestudy__location-info")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   let [currentPath, updatePath] = useState(window.location.href);
   let [isFading, updateIsFading] = useState(false);
   //to accommodate for in btw casestudy routing
@@ -46,17 +53,21 @@ const Header_Slice = props => {
     }
   });
   return (
-    <div className="--isLoaded">
+    <header
+      className="--isLoaded"
+      onClick={window.innerWidth > 1024 ? handleAnchorScroll : undefined}
+    >
       <img
         src={props.casestudyHero}
         onLoad={fadeInBg}
         style={{ display: "none" }}
       />
-      <div
+      <figure
         className="casestudy__header animate"
         style={
           !props.isVideo
             ? {
+                height: window.innerWidth <= 1024 && window.innerHeight,
                 backgroundColor: "inherit",
                 backgroundImage: `url(${props.casestudyHero})`,
                 WebkitBackgroundSize: "cover",
@@ -65,7 +76,10 @@ const Header_Slice = props => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center"
               }
-            : { backgroundColor: "transparent" }
+            : {
+                backgroundColor: "transparent",
+                height: window.innerWidth <= 1024 && window.innerHeight
+              }
         }
       >
         {props.isVideo ? (
@@ -77,8 +91,8 @@ const Header_Slice = props => {
             handleFadeOut={props.handleFadeOut}
           />
         ) : null}
-        <div
-          className="header--info"
+        <article
+          className="header-slice__info"
           style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
         >
           <Waypoint
@@ -97,65 +111,10 @@ const Header_Slice = props => {
             class="down-arrow"
             titleCopyColor={props.titleCopyColor}
           />
-        </div>
-      </div>
-    </div>
+        </article>
+      </figure>
+    </header>
   );
 };
 
 export default Header_Slice;
-/**
- * 
- * <Waypoint
-          onEnter={handleFadeIn}
-          onLeave={handleFadeOut}
-          topOffset="40%"
-          bottomOffset="15%"
-        >
- * 
- * 
- *  const handleBackgroundFade = () => {
-    console.log("fading");
-    document.querySelector(".casestudy__header").classList.add("is--active");
-    document.querySelector(".casestudy__header").classList.remove("animate");
-  };
-  const setTimeoutFade = () => {
-    window.setTimeout(handleBackgroundFade, 1000);
-  };
-  setTimeoutFade();
- * 
- * 
- * hack to get some fade-in animations but not a smart route
- * also breaks on ios
- * 
- * {props.isVideo ? (
-        <video
-          autoplay={true}
-          muted
-          playsinline
-          onCanPlay={handleBackgroundFade}
-          src={props.casestudyHeroVideo}
-          style={{
-            opacity: "0",
-            position: "absolute",
-            pointerEvents: "none",
-            visibility: "hidden",
-            width: "100%",
-            height: "100%"
-          }}
-        />
-      ) : (
-        <img
-          onLoad={handleBackgroundFade}
-          src={props.casestudyHero}
-          style={{
-            opacity: "0",
-            position: "absolute",
-            pointerEvents: "none",
-            visibility: "hidden",
-            width: "100%",
-            height: "100%"
-          }}
-        />
-      )}
- */

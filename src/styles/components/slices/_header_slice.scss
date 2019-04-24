@@ -6,26 +6,67 @@
     @include h1(inherit);
     &.black {
       @include h1($black);
-    }
+    } 
     &.white {
       @include h1($white);
     }
   }
   @include entire-viewport;
-  .header--info {
-    max-width: 87.2vw;
-    padding: 12.8vw 6.4vw;
-    :first-child {
-      padding-bottom: 24px;
+  .header-slice__info {
+    padding: 6.25vw;
+    h1 {
+      padding-bottom: 12px;
+    }
+  }
+}
+@include media-min($ipad) {
+  .casestudy__header {
+    .header-slice__info {
+      h1 {
+        padding-bottom: 16px;
+      }
+    }
+  }
+  
+}
+@include media-min($ipad-pro) {
+  .casestudy__header {
+    .header-slice__info {
+      padding: 48px;
     }
   }
 }
 @include media-min($desktop) {
   .casestudy__header {
-    .header--info {
-      max-width: 50vw;
-      padding: 3.33vw;
+    .header-slice__info {
+      width: 56%;
     } 
   }
+}
+@include media-min($desktop-lrg){
+  .casestudy__header {
+    .header-slice__info {
+      h1 {
+        padding-bottom: 20px;
+      }
+    }
+  }
   
+}
+@include media-min($desktop-xl) {
+  .casestudy__header {
+    .header-slice__info {
+      padding: 56px;
+    }
+  }
+}
+@include media-min($desktop-xxl) {
+  .casestudy__header {
+    .header-slice__info {
+      padding: 64px;
+      h1 {
+        padding-bottom: 24px;
+      }
+    }
+  }
 }

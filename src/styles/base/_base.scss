@@ -7,7 +7,9 @@ html {
   font-size: 62.5%;
   //for firefox scroll
   scrollbar-width: none;
+  line-height: 0;
 }
+
 
 body {
   background-color: $black;
@@ -21,7 +23,7 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, p, img, div, button, a {
+h1, h2, p, img, div, button, a, figure, summary, section, nav, main, figcaption, article {
   margin: 0;
   padding: 0;
 }

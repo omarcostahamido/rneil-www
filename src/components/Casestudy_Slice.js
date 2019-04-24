@@ -8,54 +8,18 @@ import Audio_Module_Slice from "./Slices/Audio_Module_Slice";
 import Panoramic_Slider_Slice from "./Slices/Panoramic_Slider_Slice";
 import Image_Dyptich from "./Slices/Image_Dyptich";
 import Gallery from "./Slices/Gallery";
+import Text_Dyptich from "./Slices/Text_Dyptich";
 
 const Casestudy_Slice = props => {
   //for the gallery & pano slider scroll bx
-  const handleImageClick = () => {
-    let scrollX = 0;
-    let eventX = 0;
-    return function handleScroll(e) {
-      if (window.innerWidth > 768) {
-        //to accommodate safari & edge not understanding scrollIntoView option obj
-        if (
-          /^Apple/.test(navigator.vendor) ||
-          /^Microsoft/.test(navigator.vendor)
-        ) {
-          if (/^slice/.test(e.target.classList[0])) {
-            if (eventX < e.pageX) {
-              scrollX += e.target.getBoundingClientRect().width / 3;
-            } else {
-              scrollX -= e.target.getBoundingClientRect().width / 3;
-            }
-          } else {
-            if (
-              e.pageX / 3 + e.target.getBoundingClientRect().width >
-              scrollX
-            ) {
-              scrollX += e.pageX / 3 + e.target.getBoundingClientRect().width;
-            } else {
-              scrollX -= e.target.getBoundingClientRect().width;
-            }
-          }
-          eventX = e.pageX;
-          if (e.target.classList.contains("slice-pano__img")) {
-            document
-              .getElementById(e.target.parentNode.parentNode.id)
-              .scrollTo(scrollX, 0);
-          } else if (e.target.classList.contains("gallery__images")) {
-            document
-              .getElementById(e.target.parentNode.id)
-              .scrollTo(scrollX, 0);
-          }
-        } else {
-          document.getElementById(e.target.id.toString()).scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: /^slice/.test(e.target.classList[0]) ? "end" : "center"
-          });
-        }
-      }
-    };
+  const handleImageClick = e => {
+    if (window.innerWidth >= 1280) {
+      document.getElementById(e.target.id.toString()).scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: /^slice/.test(e.target.classList[0]) ? "end" : "center"
+      });
+    }
   };
   const renderSlice = props => {
     if (props.slice_doc) {
@@ -78,7 +42,24 @@ const Casestudy_Slice = props => {
                 ? props.slice_doc.primary.pull_quote_copy[0].text
                 : null
             }
-            position={props.slice_doc.primary.position}
+            handleFadeIn={props.handleFadeIn}
+            handleFadeOut={props.handleFadeOut}
+          />
+        );
+      } else if (props.slice_type === "text_dyptich") {
+        return (
+          <Text_Dyptich
+            id={props.id}
+            pullQuote={
+              props.slice_doc.primary.dyptich_pull_quote[0].text
+                ? props.slice_doc.primary.dyptich_pull_quote[0].text
+                : null
+            }
+            bodyCopy={
+              props.slice_doc.primary.dyptich_body_copy[0].text
+                ? props.slice_doc.primary.dyptich_body_copy[0].text
+                : null
+            }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
           />
@@ -88,9 +69,9 @@ const Casestudy_Slice = props => {
           <Image_Slice
             id={props.id}
             style={props.slice_doc.primary.style}
-            position={props.slice_doc.primary.position}
             singleImageUrl={
-              props.isMobile && props.slice_doc.primary.casestudy_image_mobile
+              props.isMobile &&
+              props.slice_doc.primary.casestudy_image_mobile.url
                 ? props.slice_doc.primary.casestudy_image_mobile.url
                 : props.slice_doc.primary.casestudy_image.url
             }
@@ -104,7 +85,8 @@ const Casestudy_Slice = props => {
             <Image_Dyptich
               id={props.id}
               dyptichUrls={
-                props.isMobile && props.slice_doc.primary.dyptich_image_1_mobile
+                props.isMobile &&
+                props.slice_doc.primary.dyptich_image_1_mobile.url
                   ? [
                       props.slice_doc.primary.dyptich_image_1_mobile.url,
                       props.slice_doc.primary.dyptich_image_2_mobile.url
@@ -126,7 +108,7 @@ const Casestudy_Slice = props => {
             handleImageClick={handleImageClick}
             panoramicImageUrl={
               props.isMobile &&
-              props.slice_doc.primary.panoramic_slider_image_mobile
+              props.slice_doc.primary.panoramic_slider_image_mobile.url
                 ? props.slice_doc.primary.panoramic_slider_image_mobile.url
                 : props.slice_doc.primary.panoramic_slider_image.url
             }
@@ -166,7 +148,7 @@ const Casestudy_Slice = props => {
             id={props.id}
             autoplayVideoUrl={
               props.isMobile &&
-              props.slice_doc.primary.autoplay_video_url_mobile
+              props.slice_doc.primary.autoplay_video_url_mobile.url
                 ? props.slice_doc.primary.autoplay_video_url_mobile.url
                 : props.slice_doc.primary.autoplay_video_url.url
             }
@@ -180,7 +162,7 @@ const Casestudy_Slice = props => {
           <Video_Module_Slice
             id={props.id}
             mediaModuleUrl={
-              props.slice_doc.primary.video_module_embed
+              props.slice_doc.primary.video_module_embed.embed_url
                 ? props.slice_doc.primary.video_module_embed.embed_url
                 : null
             }
@@ -194,7 +176,7 @@ const Casestudy_Slice = props => {
           <Audio_Module_Slice
             id={props.id}
             mediaModuleUrl={
-              props.slice_doc.primary.audio_module_embed
+              props.slice_doc.primary.audio_module_embed.embed_url
                 ? props.slice_doc.primary.audio_module_embed.embed_url
                 : null
             }

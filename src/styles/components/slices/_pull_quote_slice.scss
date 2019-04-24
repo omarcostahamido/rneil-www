@@ -1,17 +1,20 @@
 .pull-quote {
-  padding: 34.133vw 8vw 0 8vw;
+  @include text-vertical-rhythm;
+  padding-left: 6.25vw;
+  padding-right: 6.25vw;
   h2 {
     @include h2(inherit);
   }
 }
-@include media-min($desktop) {
+@include media-min($ipad) {
   .pull-quote {
-    padding: 16.667vw 16vw 0 16vw;
-    &.--wide {
-      max-width: 980px;
-    }
-    &.--left {
-      max-width: 600px;
-    }
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+  }
+}
+@include media-min($ipad-pro) {
+  .pull-quote {
+    padding-left: 16.667vw;
+    padding-right: 16.667vw;
   }
 }

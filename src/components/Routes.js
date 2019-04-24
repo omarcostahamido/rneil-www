@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import PropTypes from "prop-types";
 import Homepage from "./Homepage.js";
 import { Router, Link } from "@reach/router";
 import Loader from "./Loader";
@@ -28,10 +29,11 @@ const Routes = props => {
                   className={`${casestudy.slugs[0]}--feat`}
                   to={`/${casestudy.slugs[0]}/${casestudy.id}`}
                 >
-                  <div className={`${casestudy.id}--feat animate`}>
+                  <article className={`${casestudy.id}--feat animate`}>
                     <Casestudy_Featured
                       class={`${casestudy.id}--feat`}
                       title={casestudy.data.casestudy_title[0].text}
+                      color={casestudy.data.home_info_color}
                       hero={casestudy.data.casestudy_hero_image.url}
                       heroMobile={
                         casestudy.data.casestudy_hero_image_mobile.url
@@ -44,7 +46,7 @@ const Routes = props => {
                       handleFadeIn={handleFadeIn}
                       handleFadeOut={handleFadeOut}
                     />
-                  </div>
+                  </article>
                 </Link>
               </span>
             );
@@ -56,17 +58,22 @@ const Routes = props => {
   const handleFadeIn = elementId => {
     const el = document.getElementById(elementId);
     // console.log(el);
-    return () => {
-      el.classList.remove("animate");
-      el.classList.add("is--active");
-    };
+    if (el) {
+      return () => {
+        el.classList.remove("animate");
+        el.classList.add("is--active");
+      };
+    }
   };
   const handleFadeOut = elementId => {
     const el = document.getElementById(elementId);
-    return () => {
-      el.classList.add("animate");
-      el.classList.remove("is--active");
-    };
+    // console.log(el);
+    if (el) {
+      return () => {
+        el.classList.add("animate");
+        el.classList.remove("is--active");
+      };
+    }
   };
   //-----HACK to fix weird scroll bug between Router Links
   const scrollTop = () => {
@@ -102,8 +109,6 @@ const Routes = props => {
             renderCasestudies={renderCasestudies}
             scrollTop={scrollTop}
             isLoading={props.isLoading}
-            handleFadeIn={handleFadeIn}
-            handleFadeOut={handleFadeOut}
           />
           <About
             path="about"
@@ -119,5 +124,35 @@ const Routes = props => {
     </div>
   );
 };
-
+Routes.propTypes = {
+  isLoading: PropTypes.bool,
+  homePageData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      data: PropTypes.object
+    })
+  ),
+  casestudyOrder: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      slug: PropTypes.string,
+      order: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    })
+  ),
+  casestudyData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      data: PropTypes.object
+    })
+  ),
+  aboutPageData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      data: PropTypes.object
+    })
+  )
+};
 export default Routes;

@@ -1,35 +1,43 @@
-div.slice-pano {
-  padding-top: 34.133vw;
+.slice-pano {
+  @include media-vertical-rhythm;
   @include slider-base;
-  div.slice-pano--wrap {
+  .slice-pano--wrap {
     @include slider-wrap;
   }
-  div.slice-pano--padding {
-    padding-left: 8vw;
+  .slice-pano--padding {
+    padding-left: calc(50vw - 74px);
     p {
       @include label(inherit);
     }
   }
   img.slice-pano__img {
-    width: 400vw;
-    padding: 0 8vw 0 24px;
+    height: 66.667vh;
+    padding-left: 32px;
+    padding-right: 6.25vw;
     flex-shrink: 0;
   }
   ::-webkit-scrollbar {
     display: none;
   }
 }
-
-@include media-min($desktop) {
-  div.slice-pano {
-    padding-top: 16.667vw;
-    div.slice-pano--padding {
-      padding-left: 45.14vw;
-    }
+@include media-min($ipad) {
+  .slice-pano {
     img.slice-pano__img {
-      width: 175vw;
-      margin: 0 45.14vw 0 32px;
-     
+      padding-right: 12.5vw;  
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  .slice-pano {
+    img.slice-pano__img {
+      padding-right: 8.333vw;
+    }
+  }
+}
+@include media-min($desktop-xl) {
+  .slice-pano {
+    img.slice-pano__img {
+      height: 75vh;
     }
   }
 }

@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 const Loader = props => {
   return (
-    <div
+    <main
       className={
         props.isLoading && window.location.pathname === "/"
           ? "isLoading"
@@ -11,7 +11,7 @@ const Loader = props => {
       }
     >
       <Logo class={props.class} isLoader={true} />
-    </div>
+    </main>
   );
 };
 

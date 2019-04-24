@@ -5,9 +5,10 @@ import Prismic from "prismic-javascript";
 
 class RootApp_Data extends React.Component {
   state = {
+    doc: null,
     homePage: null,
     aboutPage: null,
-    casestudiesFeatured: null,
+    casestudiesFeatured: [],
     casestudyOrder: [],
     isLoading: true
   };
@@ -29,11 +30,13 @@ class RootApp_Data extends React.Component {
               "home_page_header.header_image_mobile",
               "home_page_header.header_autoplay_vid",
               "home_page_header.header_autoplay_vid_mobile",
+              "home_page_header.image_or_video",
               "casestudy.casestudy_order",
               "casestudy.casestudy_hero_image",
               "casestudy.casestudy_hero_image_mobile",
               "casestudy.casestudy_title",
               "casestudy.casestudy_year",
+              "casestudy.home_info_color",
               "casestudy.grid_style",
               "casestudy.slugs",
               "casestudy.id",
@@ -41,6 +44,8 @@ class RootApp_Data extends React.Component {
               "about_page.about_page_image",
               "about_page.about_page_main_copy",
               "about_page.about_page_image_2",
+              "about_page.image_left_mobile",
+              "about_page.image_right_mobile",
               "about_page.about_page_videos",
               "about_page.id"
             ]
@@ -52,8 +57,8 @@ class RootApp_Data extends React.Component {
               doc: response.results
             });
             this.cleanData();
-            this.removeLoader();
           }
+          this.removeLoader();
         })
         .catch(error => console.log(error));
     });
@@ -175,6 +180,3 @@ class RootApp_Data extends React.Component {
 }
 
 export default RootApp_Data;
-
-//<Loader isLoading={this.state.isLoading} class="--dark-mode" />
-//could add nav here and conditionally set styles
