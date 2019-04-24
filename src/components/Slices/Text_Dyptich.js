@@ -6,9 +6,12 @@ const Text_Dyptich = props => {
   const fadeOut = props.handleFadeOut(`${props.id}--text-dyptich`);
   return (
     <section id={`${props.id}--text-dyptich`} className="text-dyptich">
-      <Waypoint onEnter={fadeIn} onLeave={fadeOut} />
-      <h2>{props.pullQuote}</h2>
-      <p>{props.bodyCopy}</p>
+      <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
+        <div className="text-dyptich--wrap">
+          <h2>{props.pullQuote}</h2>
+          <p>{props.bodyCopy}</p>
+        </div>
+      </Waypoint>
     </section>
   );
 };

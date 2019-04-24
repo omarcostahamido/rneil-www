@@ -15,8 +15,10 @@
 .next-btn {
   display: block;
   text-align: center;
-  width: 84vw;
-  padding: 19.2vw 8vw 34.133vw 8vw;
+  margin: auto;
+  padding-top: 12.5vw;
+  padding-bottom: 25vw ;
+  // padding: 19.2vw 8vw 34.133vw 8vw;
   a {
     @include body-copy(inherit);
     text-decoration: none;
@@ -24,10 +26,20 @@
   }
 }
 //MQ's-----------------------------------
+@include media-min($ipad-pro) {
+  .next-btn {
+    padding-top: 6.25vw;
+    padding-bottom: 12.5vw;
+  }
+}
+@include media-orientation($ipad-pro, 1279px, landscape) {
+  .next-btn {
+    padding-top: 8.333vw;
+    padding-bottom: 16.667vw;
+  }
+}
 @include media-min($desktop) {
   .next-btn {
-    width: 80vw;
-    padding: 16.667vw 10vw;
     a{
       padding-right: 24px;
     }

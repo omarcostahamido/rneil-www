@@ -6,7 +6,7 @@ import Loader from "./Loader";
 const Homepage = props => {
   const handleAnchorLink = () => {
     document
-      .querySelector("div.homepage__casestudies-featured")
+      .querySelector(".homepage__casestudies-featured")
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (

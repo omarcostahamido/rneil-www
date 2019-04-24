@@ -3,9 +3,8 @@ import Prismic from "prismic-javascript";
 import Nav from "./Nav";
 import Header_Slice from "./Slices/Header_Slice";
 import Casestudy_Slice from "./Casestudy_Slice";
-
-const Location_Info_Slice = lazy(() => import("./Slices/Location_Info_Slice"));
-const Title_Slice = lazy(() => import("./Slices/Title_Slice"));
+import Location_Info_Slice from "./Slices/Location_Info_Slice";
+import Title_Slice from "./Slices/Title_Slice";
 const Next_Btn = lazy(() => import("./Next_Btn"));
 
 class Casestudy extends React.Component {

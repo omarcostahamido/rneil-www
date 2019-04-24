@@ -2,6 +2,8 @@
   @include text-vertical-rhythm;
   padding-left: 6.25vw;
   padding-right: 6.25vw;
+}
+.text-dyptich--wrap {
   h2 {
     @include h2(inherit);
     padding-bottom: 12.5vw;
@@ -14,6 +16,8 @@
   .text-dyptich {
     padding-left: 12.5vw;
     padding-right: 12.5vw;
+  }
+  .text-dyptich--wrap {
     display: flex;
     justify-content: center;
     h2 {
@@ -29,6 +33,8 @@
   .text-dyptich {
     padding-left: 16.667vw;
     padding-right: 16.667vw;
+  }
+  .text-dyptich--wrap {
     h2 {
       width: calc(50% - 4.167vw);
       padding-right: 4.167vw;
@@ -36,21 +42,21 @@
   }
 }
 @include media-min($desktop-lrg) {
-  .text-dyptich {
+  .text-dyptich--wrap {
     p {
       padding-top: 2px;
     }
   }
 }
 @include media-min($desktop-xl) {
-  .text-dyptich {
+  .text-dyptich--wrap {
     p {
       padding-top: 4px;
     }
   }
 }
 @include media-min($desktop-xxl) {
-  .text-dyptich {
+  .text-dyptich--wrap {
     p {
       padding-top: 6px;
     }

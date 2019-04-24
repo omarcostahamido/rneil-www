@@ -98,7 +98,21 @@ div.video-player > div {
   }
   .media--wide {
     &.video-player--wrap {
-        height: 42.4vw;
+        height: 43vw;
+    }
+  }
+}
+@include media-min($desktop-lrg) {
+  .media--wide {
+    &.video-player--wrap {
+        height: 43.5vw;
+    }
+  }
+}
+@include media-min($desktop-xl) {
+  .media--wide {
+    &.video-player--wrap {
+        height: 44vw;
     }
   }
 }
@@ -108,90 +122,6 @@ div.video-player > div {
     padding-right: 33.3333vw;
   }
 }
-
-
-// .media {
-//   padding-top: 34.133vw;
-//   img, video{
-//     width: 100%;
-//   }
-//   &.autoplay-hero {
-//     padding: 0;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     @include entire-viewport;
-//     padding: 0;
-//     video {
-//       flex-shrink: 0;
-//       height: 100%;
-//       width: auto;
-//     }
-//   }
-//   &.homepage-header__vid {
-//     padding: 0;
-//     display: flex;
-//     justify-content: center;
-//     video {
-//       min-height: 100vh;
-//       flex-shrink: 0;
-//       object-fit: cover;
-//     }
-//   }
-// }
-// .media--wide {
-//   padding-left: 8vw; 
-//   padding-right: 8vw;
-//   width: 84vw;
-//   &.video-player--wrap {
-//     height: 44.52vw;
-//   }
-// }
-// .media--fullwidth {
-//   width: 100vw;
-//   &.video-player--wrap {
-//     height: 53vw;
-//   }
-// }
-// .media--narrow {
-//   padding-left: 20vw;
-//   padding-right: 20vw;
-//   width: 60vw;
-// }
-
-// //click-vid-module
-// div.video-player > div {
-//   background: transparent !important;
-// }
-
-// //mediaqueries---------------------------------
-// @include media-min($desktop) {
-//   .media {
-//     padding-top: 16.67vw;
-//     &.autoplay-hero {
-//       padding: 0;
-//       video {
-//         min-width: 100%;
-//         height: auto;
-//         min-height: 100%;
-//       }
-//     }
-//   }
-//   .media--wide {
-//     padding-left: 10vw;
-//     padding-right: 10vw;
-//     width: 80vw;
-//     &.video-player--wrap {
-//         height: 42.4vw;
-//     }
-//   }
-//   .media--narrow {
-//     padding-left: 28vw;
-//     padding-right: 28vw;
-//     width: 44vw;
-//   }
-// }
-
 
 
 
