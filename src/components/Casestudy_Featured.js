@@ -4,7 +4,6 @@ import { Waypoint } from "react-waypoint";
 //this links to casestudy/${id}
 const Casestudy_Featured = props => {
   const fadeInResize = e => {
-    console.log(e);
     const el = document.querySelector(`.${props.class}`);
     if (e.target.innerWidth >= 1280) {
       el.classList.remove("animate");
@@ -25,7 +24,6 @@ const Casestudy_Featured = props => {
   };
   //hook to ensure casestudies fade in even after resize - parallax interference
   useEffect(() => {
-    console.log("effect");
     //hook will run this on initial mount
     window.addEventListener("resize", fadeInResize);
     // //hook runs this callback on unmount
