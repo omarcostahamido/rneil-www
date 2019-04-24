@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Waypoint } from "react-waypoint";
 
 //this links to casestudy/${id}
 const Casestudy_Featured = props => {
+  const fadeInResize = e => {
+    console.log(e);
+    const el = document.querySelector(`.${props.class}`);
+    if (e.target.innerWidth >= 1280) {
+      el.classList.remove("animate");
+      el.classList.add("is--active");
+    }
+  };
   //div that gets faded is in routes-renderCasestudies()
   //also wide/narrow in grid is ^^^
   const fadeIn = () => {
@@ -15,7 +23,14 @@ const Casestudy_Featured = props => {
     el.classList.add("animate");
     el.classList.remove("is--active");
   };
-
+  //hook to ensure casestudies fade in even after resize - parallax interference
+  useEffect(() => {
+    console.log("effect");
+    //hook will run this on initial mount
+    window.addEventListener("resize", fadeInResize);
+    // //hook runs this callback on unmount
+    return window.removeEventListener("resize", fadeIn);
+  }, []);
   return (
     <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
       <div
