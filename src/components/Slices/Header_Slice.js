@@ -7,6 +7,7 @@ const Header_Slice = props => {
   const fadeIn = () => {
     document.querySelector(".header-slice__info").classList.add("is--active");
     document.querySelector(".header-slice__info").classList.remove("animate");
+    setInfoVisible(true);
   };
   const fadeOut = () => {
     document
@@ -52,6 +53,12 @@ const Header_Slice = props => {
       }
     }
   });
+  let [infoIsVisible, setInfoVisible] = useState(false);
+  useEffect(() => {
+    if (!infoIsVisible) {
+      fadeIn();
+    }
+  }, []);
   return (
     <header
       className="--isLoaded"
