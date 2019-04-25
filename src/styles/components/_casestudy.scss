@@ -18,6 +18,7 @@
   margin: auto;
   padding-top: 12.5vw;
   padding-bottom: 25vw ;
+  transition: all 200ms ease-out;
   // padding: 19.2vw 8vw 34.133vw 8vw;
   a {
     @include body-copy(inherit);

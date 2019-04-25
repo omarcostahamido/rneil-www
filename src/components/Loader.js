@@ -9,6 +9,7 @@ const Loader = props => {
           ? "isLoading"
           : "loaded"
       }
+      style={window.innerWidth <= 1024 ? { height: window.innerHeight } : null}
     >
       <Logo class={props.class} isLoader={true} />
     </main>
