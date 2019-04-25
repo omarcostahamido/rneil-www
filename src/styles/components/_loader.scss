@@ -8,16 +8,14 @@
   align-items: center;
   justify-content: center;
   svg {
+    opacity: 0;
     padding: 0 20vw;
     width: 256px;
-    animation: fade .5s ease-in-out;
+    animation: fade .5s ease-out 1 forwards;
   }
   @keyframes fade {
     0% {opacity: 0}
     100% {opacity: 1}
-  }
-  @keyframes loading {
-    //put loading animation here
   }
 }
 .loaded {
