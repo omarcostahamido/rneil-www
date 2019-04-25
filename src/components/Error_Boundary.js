@@ -29,7 +29,8 @@ class Error_Boundary extends React.Component {
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
-              padding: "35px"
+              padding: "35px",
+              lineHeight: "1.667"
             }}
           >
             <h1 style={{ paddingBottom: "1vw" }}>Something went wrong...</h1>

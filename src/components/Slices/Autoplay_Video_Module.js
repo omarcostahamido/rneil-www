@@ -52,7 +52,7 @@ const Autoplay_Video_Module = props => {
         <Waypoint
           onEnter={props.id && fadeIn}
           onLeave={props.id && fadeOut}
-          bottomOffset={window.innerWidth < 768 ? "-30%" : "-70%"}
+          bottomOffset={window.innerWidth < 768 ? "-80%" : "-70%"}
         />
       ) : null}
     </div>

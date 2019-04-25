@@ -1,8 +1,9 @@
 import React, { lazy, Suspense } from "react";
 import PropTypes from "prop-types";
-import Homepage from "./Homepage.js";
+// import Homepage from "./Homepage.js";
 import { Router, Link } from "@reach/router";
 import Loader from "./Loader";
+const Homepage = lazy(() => import("./Homepage.js"));
 const Casestudy = lazy(() => import("./Casestudy"));
 const Casestudy_Featured = lazy(() => import("./Casestudy_Featured"));
 const About = lazy(() => import("./About"));

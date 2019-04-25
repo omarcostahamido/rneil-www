@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Down_Arrow from "./Down_Arrow";
 import Autoplay_Video_Module from "./Slices/Autoplay_Video_Module";
@@ -10,11 +10,19 @@ const Header = props => {
       document.querySelector(".header__img").classList.add("is--active");
     }, 200);
   };
+  let [headerHeight, setHeaderHeight] = useState(null);
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      setHeaderHeight(window.innerHeight);
+    } else {
+      setHeaderHeight(null);
+    }
+  });
   return (
     <header
       id="home-header"
       className="header --isLoaded --parallax"
-      style={window.innerWidth < 1024 ? { height: window.innerHeight } : null}
+      style={{ height: headerHeight }}
       onClick={window.innerWidth > 1024 ? props.handleAnchorLink : undefined}
     >
       <figure

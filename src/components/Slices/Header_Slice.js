@@ -93,7 +93,11 @@ const Header_Slice = props => {
         ) : null}
         <article
           className="header-slice__info"
-          style={props.isVideo ? { position: "absolute", zIndex: "2" } : null}
+          style={
+            props.isVideo
+              ? { position: "absolute", zIndex: "2", bottom: "0", left: "0" }
+              : null
+          }
         >
           <Waypoint
             onEnter={fadeIn}

@@ -22,9 +22,6 @@
   opacity: .4;
   transition: opacity 200ms ease-out;
 }
-.dyptich--wrapper {
-  padding-bottom: 12.5vw;
-}
 .about-videos__info {
   padding: 0 6.25vw 12.5vw 6.25vw;
   p {
@@ -34,7 +31,6 @@
     padding-top: 8px;
   }
 }
-
 @include media-min($ipad) {
   .about__header {
     margin-bottom: 11.5px;
@@ -44,9 +40,6 @@
   }
   #about__email-link { 
     margin: 0 12.5vw;
-  }
-  .dyptich--wrapper {
-    padding-bottom: 9.375vw;
   }
   .about-videos__info {
     padding: 0 12.5vw 9.375vw 12.5vw;
@@ -62,9 +55,6 @@
   #about__email-link { 
     margin: 0 16.667vw;
   }
-  .dyptich--wrapper {
-    padding-bottom: 6.25vw;
-  }
   .about-videos__info {
     padding: 0 8.333vw 6.25vw 8.333vw;
   }
@@ -79,9 +69,6 @@
   }
   #about__email-link { 
     margin: 0 16.667vw;
-  }
-  .dyptich--wrapper {
-    padding-bottom: 8.333vw;
   }
   .about-videos__info {
     padding: 0 8.333vw 8.333vw 8.333vw;

@@ -1,4 +1,3 @@
-
 //.--narrow is the default for body-copy
 .body-copy{
   @include body-copy(inherit);
@@ -6,6 +5,15 @@
   padding-right: 6.25vw;
   padding-left: 6.25vw;
   white-space:pre-line;
+  a {
+    border-bottom: solid 1px black;
+    transition: all 200ms ease-out;
+  }
+  a:hover {
+    color: $dark-grey;
+    border-bottom-color: $dark-grey;
+    transition: all 200ms ease-out;
+  }
 }
 @include media-min($ipad) {
   .body-copy {

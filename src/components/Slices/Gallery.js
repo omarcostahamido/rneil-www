@@ -55,7 +55,7 @@ const Gallery = props => {
       <Waypoint
         onEnter={fadeIn}
         onLeave={fadeOut}
-        bottomOffset={window.innerWidth < 768 ? "-40%" : "-70%"}
+        bottomOffset={window.innerWidth < 768 ? "-80%" : "-70%"}
       />
       <Waypoint
         onEnter={transformIn}
