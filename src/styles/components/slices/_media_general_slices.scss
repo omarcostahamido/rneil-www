@@ -98,14 +98,14 @@ div.video-player > div {
   }
   .media--wide {
     &.video-player--wrap {
-        height: 43vw;
+        // height: 43vw;
     }
   }
 }
 @include media-min($desktop-lrg) {
   .media--wide {
     &.video-player--wrap {
-        height: 43.5vw;
+        // height: 43.5vw;
     }
   }
 }
