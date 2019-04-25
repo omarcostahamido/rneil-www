@@ -1,6 +1,6 @@
 Portfolio site for bonsai artist, Ryan Neil. Built with Webpack, Netlify, React, and Prismic by Kendall Strautman. Designed by Brian Swarthout. 
 
-*--Main Component Tree--* view on wide screen re:formatting
+Main Component Tree - view on wide screen re:formatting
 
 App
 |
