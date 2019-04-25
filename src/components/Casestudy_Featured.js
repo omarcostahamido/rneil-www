@@ -27,7 +27,7 @@ const Casestudy_Featured = props => {
     //hook will run this on initial mount
     window.addEventListener("resize", fadeInResize);
     // //hook runs this callback on unmount
-    return window.removeEventListener("resize", fadeIn);
+    return window.removeEventListener("resize", fadeInResize);
   }, []);
   return (
     <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
