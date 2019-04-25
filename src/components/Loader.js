@@ -11,7 +11,7 @@ const Loader = props => {
       }
       style={window.innerWidth <= 1024 ? { height: window.innerHeight } : null}
     >
-      <Logo class={props.class} isLoader={true} />
+      <Logo class={`${props.class}`} isLoader={true} />
     </main>
   );
 };

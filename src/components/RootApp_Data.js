@@ -68,7 +68,7 @@ class RootApp_Data extends React.Component {
       this.setState({
         isLoading: false
       });
-    }, 2500);
+    }, 2000);
   };
   cleanData = () => {
     if (this.state.doc) {

@@ -11,11 +11,17 @@
     opacity: 0;
     padding: 0 20vw;
     width: 256px;
-    animation: fade .5s ease-out 1 forwards;
+    @include prefixer(animation, fade .5s ease-in-out 200ms forwards, true, true, true);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  @-webkit-keyframes fade {
+    0% {opacity: 0; }
+    100% {opacity: 1; }
   }
   @keyframes fade {
-    0% {opacity: 0}
-    100% {opacity: 1}
+    0% {opacity: 0; }
+    100% {opacity: 1; }
   }
 }
 .loaded {
