@@ -92,6 +92,7 @@ const Routes = props => {
             data={props.homePageData}
             renderCasestudies={renderCasestudies}
             isLoading={props.isLoading}
+            scrollTop={scrollTop}
             handleFadeIn={handleFadeIn}
             handleFadeOut={handleFadeOut}
           />
