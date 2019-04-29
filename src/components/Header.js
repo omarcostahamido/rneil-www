@@ -5,10 +5,8 @@ import Autoplay_Video_Module from "./Slices/Autoplay_Video_Module";
 
 const Header = props => {
   const fadeIn = () => {
-    window.setTimeout(() => {
-      document.querySelector(".header__img").classList.remove("animate");
-      document.querySelector(".header__img").classList.add("is--active");
-    }, 200);
+    document.querySelector(".header__img").classList.remove("animate");
+    document.querySelector(".header__img").classList.add("is--active");
   };
   let [headerHeight, setHeaderHeight] = useState(null);
   useEffect(() => {
