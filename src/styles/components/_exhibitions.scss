@@ -15,11 +15,16 @@
 }
 @include media-min($desktop) {
   .work > div {
-    margin: 12.5vw;
+    margin: 16.667vw 12.5vw;
   }
 }
 @include media-min($desktop-xl) {
   .work > div {
-    margin: 16.667vw;
+    margin: 9.375vw 16.667vw;
+  }
+}
+@include media-min($desktop-xxl) {
+  .work > div {
+    margin: 6.5vw 16.667vw;
   }
 }
