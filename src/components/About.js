@@ -31,6 +31,12 @@ const About = props => {
       );
     }
   };
+  const fadeIn = () => {
+    window.setTimeout(() => {
+      document.querySelector(".about").classList.remove("animate");
+      document.querySelector(".about").classList.add("is--active");
+    }, 300);
+  };
   //HOOKS----------------------------------------------
   let [isScroll, setScroll] = useState(true);
   useEffect(() => {
@@ -39,10 +45,7 @@ const About = props => {
       setScroll((isScroll = false));
       props.scrollTop();
     }
-    window.setTimeout(() => {
-      document.querySelector(".about").classList.remove("animate");
-      document.querySelector(".about").classList.add("is--active");
-    }, 300);
+    fadeIn();
     return () => {
       document.querySelector("body").classList.remove("body--is-white");
     };
