@@ -11,7 +11,8 @@
     opacity: 0;
     padding: 0 20vw;
     width: 256px;
-    @include prefixer(animation, fade .5s ease-in-out 200ms forwards, true, true, true);
+    @include prefixer(animation, fade .5s ease-in-out 200ms 1 forwards, true, true, true);
+    animation: fade .5s ease-in-out 200ms 1 forwards;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
@@ -43,3 +44,4 @@
     }
   }
 }
+
