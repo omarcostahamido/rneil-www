@@ -34,11 +34,15 @@ const About = props => {
   //HOOKS----------------------------------------------
   let [isScroll, setScroll] = useState(true);
   useEffect(() => {
+    document.querySelector("body").classList.add("body--is-white");
     if (isScroll) {
       setScroll((isScroll = false));
       props.scrollTop();
     }
-  });
+    return () => {
+      document.querySelector("body").classList.remove("body--is-white");
+    };
+  }, []);
   //RENDER----------------------------------------------
   return (
     <main

@@ -158,12 +158,23 @@ class Casestudy extends React.Component {
       }
     }
   };
+  checkColorMode = () => {
+    if (
+      this.state.colorMode &&
+      this.state.colorMode.toLowerCase() === "light"
+    ) {
+      document.querySelector("body").classList.add("body--is-white");
+    } else {
+      document.querySelector("body").classList.remove("body--is-white");
+    }
+  };
   //LIFECYCLE------------------------------------------------
   componentDidMount() {
     this.getPrismicData();
     this.checkForMobile();
     //HACK to fix weird scroll bug between Router Links
     this.props.scrollTop();
+    this.checkColorMode();
   }
   componentDidUpdate() {
     if (
@@ -173,6 +184,15 @@ class Casestudy extends React.Component {
       this.getPrismicData();
     }
     this.handleNextButton();
+    this.checkColorMode();
+  }
+  componentWillUnmount() {
+    if (
+      this.state.colorMode &&
+      this.state.colorMode.toLowerCase() === "light"
+    ) {
+      document.querySelector("body").classList.remove("body--is-white");
+    }
   }
   //RENDER-------------------------------------------------
   render() {

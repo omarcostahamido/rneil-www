@@ -12,6 +12,9 @@ html {
 
 
 body {
+  &.body--is-white {
+    background-color: $white;
+  }
   background-color: $black;
   font-family: 'Favorit', Helvetica, Arial, sans-serif;
   //base font-size is 16px
