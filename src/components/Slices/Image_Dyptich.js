@@ -23,6 +23,7 @@ const Image_Dyptich = props => {
       <div className="dyptich__image left ">
         <Waypoint onEnter={fadeInLeft} onLeave={fadeOutLeft}>
           <img
+            onLoad={fadeInLeft}
             className="animate"
             id={`${props.id}-left`}
             src={props.dyptichUrls && props.dyptichUrls[0]}
@@ -32,6 +33,7 @@ const Image_Dyptich = props => {
       <div className="dyptich__image right ">
         <Waypoint onEnter={fadeInRight} onLeave={fadeOutRight}>
           <img
+            onLoad={fadeInRight}
             className="animate"
             id={`${props.id}-right`}
             src={props.dyptichUrls && props.dyptichUrls[1]}
