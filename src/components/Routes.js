@@ -85,15 +85,14 @@ const Routes = props => {
   //RENDER-------------------------------------------------------
   return (
     <div>
-      <Suspense
-        fallback={<Loader isLoading={props.isLoading} class="--dark-mode" />}
-      >
+      <Suspense fallback={<div className="--dark-mode" />}>
         <Router>
           <Homepage
             path="/"
             data={props.homePageData}
             renderCasestudies={renderCasestudies}
             isLoading={props.isLoading}
+            scrollTop={scrollTop}
             handleFadeIn={handleFadeIn}
             handleFadeOut={handleFadeOut}
           />

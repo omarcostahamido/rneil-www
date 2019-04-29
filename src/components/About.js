@@ -33,9 +33,11 @@ const About = props => {
   };
   const fadeIn = () => {
     window.setTimeout(() => {
-      document.querySelector(".about").classList.remove("animate");
-      document.querySelector(".about").classList.add("is--active");
-    }, 300);
+      document.querySelector(".about__header").classList.remove("animate");
+      document.querySelector(".dyptich--wrapper").classList.remove("animate");
+      document.querySelector(".about__header").classList.add("is--active");
+      document.querySelector(".dyptich--wrapper").classList.add("is--active");
+    }, 200);
   };
   //HOOKS----------------------------------------------
   let [isScroll, setScroll] = useState(true);
@@ -56,10 +58,10 @@ const About = props => {
       onScroll={() => {
         setScroll((isScroll = false));
       }}
-      className="--isLoaded about animate"
+      className="--isLoaded about"
     >
       <Nav className="--light-mode" color="#000" page="about" />
-      <section className="about__header">
+      <section className="about__header animate">
         <Pull_Quote_Slice
           id="about-pull-quote"
           pullQuoteCopy={
@@ -74,7 +76,7 @@ const About = props => {
           </a>
         ) : null}
       </section>
-      <section className="dyptich--wrapper">
+      <section className="dyptich--wrapper animate">
         {props.data && window.innerWidth < 1024 ? (
           <Image_Dyptich
             id={props.data && `${props.data[0].id}-about-dyptich`}
