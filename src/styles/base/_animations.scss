@@ -92,8 +92,8 @@
 }
 //backup fade for all pages------
 .--isLoaded {
-  -webkit-animation: fade 800ms ease-out;
-  animation: fade 800ms ease-out;
+  -webkit-animation: fade 400ms ease-out;
+  animation: fade 400ms ease-out;
 }
 @-webkit-keyframes fade {
   0%{

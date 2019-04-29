@@ -12,7 +12,14 @@ html {
 
 
 body {
+  &.body--is-white {
+    background-color: $white;
+    @include prefixer(transition, color 200ms ease-out, true, true, true );
+    transition: color 200ms ease-out;
+  }
   background-color: $black;
+  @include prefixer(transition, color 200ms ease-out, true, true, true );
+  transition: color 200ms ease-out;
   font-family: 'Favorit', Helvetica, Arial, sans-serif;
   //base font-size is 16px
   font-size: 16px;
