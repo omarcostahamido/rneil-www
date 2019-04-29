@@ -39,6 +39,10 @@ const About = props => {
       setScroll((isScroll = false));
       props.scrollTop();
     }
+    window.setTimeout(() => {
+      document.querySelector(".about").classList.remove("animate");
+      document.querySelector(".about").classList.add("is--active");
+    }, 300);
     return () => {
       document.querySelector("body").classList.remove("body--is-white");
     };
@@ -49,7 +53,7 @@ const About = props => {
       onScroll={() => {
         setScroll((isScroll = false));
       }}
-      className="--isLoaded about"
+      className="--isLoaded about animate"
     >
       <Nav className="--light-mode" color="#000" page="about" />
       <section className="about__header">
