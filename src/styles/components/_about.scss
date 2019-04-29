@@ -28,7 +28,7 @@
     @include label($black);
   }
   p:first-child {
-    padding-top: 8px;
+    padding-top: 16px;
   }
 }
 @include media-min($ipad) {
