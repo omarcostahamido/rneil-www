@@ -1,4 +1,5 @@
 .header {
+  font-display: block;
   @include entire-viewport;
   position: relative;
   background-color: $white;
