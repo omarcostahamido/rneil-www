@@ -6,9 +6,11 @@ import Autoplay_Video_Module from "./Slices/Autoplay_Video_Module";
 const Header = props => {
   const fadeIn = () => {
     window.setTimeout(() => {
+      document.querySelector(".header__info").classList.remove("animate");
       document.querySelector(".header__img").classList.remove("animate");
+      document.querySelector(".header__info").classList.add("is--active");
       document.querySelector(".header__img").classList.add("is--active");
-    }, 200);
+    }, 150);
   };
   let [headerHeight, setHeaderHeight] = useState(null);
   useEffect(() => {
@@ -58,7 +60,7 @@ const Header = props => {
           />
         )}
       </figure>
-      <article className="header__info">
+      <article className="header__info animate">
         <span className="header-copy--wrap">
           <h1 className="header__main-copy">{props.copy}</h1>
         </span>

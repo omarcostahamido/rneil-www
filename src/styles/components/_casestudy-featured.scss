@@ -21,8 +21,8 @@
 }
 .casestudy-featured__info {
   position: absolute;
-  left: 24px;
-  bottom: 24px;
+  left: 20px;
+  bottom: 20px;
 }
 @include media-min($ipad) {
   .homepage__casestudies-featured {
@@ -84,6 +84,8 @@
     left: 32px;
     bottom: 32px;
     pointer-events: none;
+    left: 24px;
+    bottom: 24px;
   }
 }
 @include media-min($desktop-xxl) {

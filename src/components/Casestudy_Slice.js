@@ -133,11 +133,6 @@ const Casestudy_Slice = props => {
             handleImageClick={handleImageClick}
             galleryImages={sliderImages}
             type="slice-slider"
-            pullQuote={
-              props.slice_doc.primary.image_slider_pull_quote[0]
-                ? props.slice_doc.primary.image_slider_pull_quote[0].text
-                : null
-            }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
           />

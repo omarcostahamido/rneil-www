@@ -8,16 +8,20 @@
   align-items: center;
   justify-content: center;
   svg {
+    opacity: 0;
     padding: 0 20vw;
     width: 256px;
-    animation: fade .5s ease-in-out;
+    @include prefixer(animation, fade .5s ease-in-out 200ms forwards, true, true, true);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  @-webkit-keyframes fade {
+    0% {opacity: 0; }
+    100% {opacity: 1; }
   }
   @keyframes fade {
-    0% {opacity: 0}
-    100% {opacity: 1}
-  }
-  @keyframes loading {
-    //put loading animation here
+    0% {opacity: 0; }
+    100% {opacity: 1; }
   }
 }
 .loaded {

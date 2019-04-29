@@ -6,7 +6,9 @@
   padding-left: 6.25vw;
   white-space:pre-line;
   a {
-    border-bottom: solid 1px black;
+    border-bottom-color: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
     transition: all 200ms ease-out;
   }
   a:hover {
