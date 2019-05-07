@@ -4,7 +4,9 @@ import { Waypoint } from "react-waypoint";
 //this links to casestudy/${id}
 const Casestudy_Featured = props => {
   const fadeInResize = e => {
+    console.log("fading in resize");
     const el = document.querySelector(`.${props.class}`);
+    console.log(el);
     if (e.target.innerWidth >= 1280) {
       el.classList.remove("animate");
       el.classList.add("is--active");
@@ -27,7 +29,9 @@ const Casestudy_Featured = props => {
     //hook will run this on initial mount
     window.addEventListener("resize", fadeInResize);
     // //hook runs this callback on unmount
-    return window.removeEventListener("resize", fadeInResize);
+    return function removeResizeEvent() {
+      window.removeEventListener("resize", fadeInResize);
+    };
   }, []);
   return (
     <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
