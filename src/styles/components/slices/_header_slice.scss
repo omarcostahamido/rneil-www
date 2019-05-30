@@ -3,6 +3,7 @@
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  min-height: 568px;
   h1{
     @include h1(inherit);
     &.black {
@@ -22,6 +23,7 @@
 }
 @include media-min($ipad) {
   .casestudy__header {
+    min-height: 800px;
     .header-slice__info {
       h1 {
         padding-bottom: 16px;

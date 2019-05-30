@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import Nav from "./Nav";
 import Header from "./Header";
 import Loader from "./Loader";
@@ -10,8 +10,8 @@ const Homepage = props => {
       .scrollIntoView({ behavior: "smooth", block: "start" });
   };
   useEffect(() => {
-    props.scrollTop()
-  }, [])
+    props.scrollTop();
+  }, []);
   return (
     <main>
       {props.isLoading ? (

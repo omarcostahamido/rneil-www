@@ -27,7 +27,9 @@ const Casestudy_Featured = props => {
     //hook will run this on initial mount
     window.addEventListener("resize", fadeInResize);
     // //hook runs this callback on unmount
-    return window.removeEventListener("resize", fadeInResize);
+    return function removeResizeEvent() {
+      window.removeEventListener("resize", fadeInResize);
+    };
   }, []);
   return (
     <Waypoint onEnter={fadeIn} onLeave={fadeOut}>
@@ -39,7 +41,7 @@ const Casestudy_Featured = props => {
         <img
           className="casestudy-featured__hero"
           src={
-            props.heroMobile && window.innerWidth < 1024
+            props.heroMobile && window.innerWidth <= 1024
               ? props.heroMobile
               : props.hero
           }

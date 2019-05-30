@@ -99,18 +99,13 @@ const Header_Slice = props => {
               : null
           }
         >
-          <Waypoint
-            onEnter={fadeIn}
-            onLeave={fadeOut}
-            topOffset={window.innerWidth < 768 ? "40%" : "60%"}
-          />
+          <Waypoint onEnter={fadeIn} onLeave={fadeOut} />
           <h1
             id={`${props.id}--titleCopy`}
             className={props.titleCopyColor ? props.titleCopyColor : null}
           >
             {props.titleCopy}
           </h1>
-
           <Down_Arrow
             class="down-arrow"
             titleCopyColor={props.titleCopyColor}
@@ -122,3 +117,5 @@ const Header_Slice = props => {
 };
 
 export default Header_Slice;
+
+//topOffset={window.innerWidth < 768 ? "40%" : "60%"}

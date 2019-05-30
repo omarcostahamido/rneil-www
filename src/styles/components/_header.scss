@@ -3,6 +3,7 @@
   @include entire-viewport;
   position: relative;
   background-color: $white;
+  min-height: 567px;
   @include label(inherit);
   h1 {
     @include h1(inherit);
@@ -45,6 +46,9 @@
 }
 
 @media only screen and (min-width: 375px) and (min-height: 700px) {
+  .header {
+    min-height: 850px;
+  }
   .header__img {
     height: 60%;
   }
@@ -54,12 +58,21 @@
 }
 
 @include media-min($ipad) {
+  .header {
+    min-height: 925px;
+  }
   .header__img {
     height: 70%;
   }
   .header__info {
     padding: 48px 48px 0 48px;
     height: calc(30% - 96px)
+  }
+}
+
+@include media-min($ipad-pro) {
+  .header {
+    min-height: 0;
   }
 }
 
