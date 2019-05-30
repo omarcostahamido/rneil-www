@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Waypoint } from "react-waypoint";
 
 //this links to casestudy/${id}
@@ -22,13 +22,23 @@ const Casestudy_Featured = props => {
     el.classList.add("animate");
     el.classList.remove("is--active");
   };
+  const [hero, setHero] = useState(0);
+  const handleWhichHero = () => {
+    (props.heroMobile && window.innerWidth < 1024) ||
+    document.documentElement.clientWidth < 1024
+      ? setHero(props.heroMobile)
+      : setHero(props.hero);
+  };
   //hook to ensure casestudies fade in even after resize - parallax interference
   useEffect(() => {
+    handleWhichHero();
     //hook will run this on initial mount
     window.addEventListener("resize", fadeInResize);
+    window.addEventListener("resize", handleWhichHero);
     // //hook runs this callback on unmount
-    return function removeResizeEvent() {
+    return function removeResizeEvents() {
       window.removeEventListener("resize", fadeInResize);
+      window.removeEventListener("resize", handleWhichHero);
     };
   }, []);
   return (
@@ -38,14 +48,7 @@ const Casestudy_Featured = props => {
           props.color === "black" ? "--black" : "--white"
         }`}
       >
-        <img
-          className="casestudy-featured__hero"
-          src={
-            props.heroMobile && window.innerWidth <= 1024
-              ? props.heroMobile
-              : props.hero
-          }
-        />
+        <img className="casestudy-featured__hero" src={hero} />
         <div className="casestudy-featured__info">
           <p className="casestudy-featured__title">{props.title}</p>
           <p>{props.year}</p>
