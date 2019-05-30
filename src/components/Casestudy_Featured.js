@@ -43,7 +43,7 @@ const Casestudy_Featured = props => {
         <img
           className="casestudy-featured__hero"
           src={
-            props.heroMobile && window.innerWidth < 1024
+            props.heroMobile && window.innerWidth <= 1024
               ? props.heroMobile
               : props.hero
           }

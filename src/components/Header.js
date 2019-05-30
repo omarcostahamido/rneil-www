@@ -14,7 +14,7 @@ const Header = props => {
   };
   let [headerHeight, setHeaderHeight] = useState(null);
   useEffect(() => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth <= 1024) {
       setHeaderHeight(window.innerHeight);
     } else {
       setHeaderHeight(null);
