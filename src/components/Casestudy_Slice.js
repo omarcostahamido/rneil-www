@@ -12,7 +12,7 @@ import Text_Dyptich from "./Slices/Text_Dyptich";
 
 const Casestudy_Slice = props => {
   //for the gallery & pano slider scroll bx
-  const handleImageClick = e => {
+  function handleImageClick(e) {
     if (window.innerWidth >= 1280) {
       document.getElementById(e.target.id.toString()).scrollIntoView({
         behavior: "smooth",
@@ -20,8 +20,8 @@ const Casestudy_Slice = props => {
         inline: /^slice/.test(e.target.classList[0]) ? "end" : "center"
       });
     }
-  };
-  const renderSlice = props => {
+  }
+  function renderSlice(props) {
     if (props.slice_doc) {
       if (props.slice_type === "body_text") {
         return (
@@ -189,7 +189,7 @@ const Casestudy_Slice = props => {
         );
       }
     }
-  };
+  }
   return <div>{renderSlice(props)}</div>;
 };
 

@@ -4,11 +4,11 @@ import Header from "./Header";
 import Loader from "./Loader";
 
 const Homepage = props => {
-  const handleAnchorLink = () => {
+  function handleAnchorLink() {
     document
       .querySelector(".homepage__casestudies-featured")
       .scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  }
   useEffect(() => {
     props.scrollTop();
   }, []);

@@ -92,8 +92,10 @@ class RootApp_Data extends React.Component {
         });
       }
     }
-    if (this.state.casestudiesFeatured) {
+    try {
       this.reorderCasestudies();
+    } catch (error) {
+      console.log(error);
     }
   };
   reorderCasestudies = () => {
@@ -133,12 +135,10 @@ class RootApp_Data extends React.Component {
             order: casestudy.data.casestudy_order
           };
         });
-        if (this.state.casestudiesFeatured) {
-          this.setState({
-            casestudiesFeatured,
-            casestudyOrder
-          });
-        }
+        this.setState({
+          casestudiesFeatured,
+          casestudyOrder
+        });
       } else {
         this.state.casestudiesFeatured.forEach(casestudy => {
           casestudyOrder.push({
