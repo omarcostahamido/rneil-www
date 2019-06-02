@@ -14,7 +14,6 @@ const Header = props => {
   }
   let [headerHeight, setHeaderHeight] = useState(null);
   function updateHeaderHeight() {
-    console.log("updating height!!");
     if (window.innerWidth <= 1024) {
       setHeaderHeight(window.innerHeight);
     } else {

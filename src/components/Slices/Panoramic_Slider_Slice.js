@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Waypoint } from "react-waypoint";
 
 const Panoramic_Slider_Slice = props => {
@@ -16,7 +16,6 @@ const Panoramic_Slider_Slice = props => {
   useEffect(() => {
     document.querySelector(".slice-pano--wrap").scrollTo(0, 0);
   });
-
   return (
     <div className="slice-pano " onClick={props.handleImageClick}>
       <div

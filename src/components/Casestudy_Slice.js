@@ -90,18 +90,35 @@ const Casestudy_Slice = props => {
           <div className="dyptich--wrapper">
             <Image_Dyptich
               id={props.id}
-              dyptichUrls={
-                props.isMobile &&
+              isMobile={props.isMobile}
+              mobileUrls={
                 props.slice_doc.primary.dyptich_image_1_mobile.url
                   ? [
                       props.slice_doc.primary.dyptich_image_1_mobile.url,
                       props.slice_doc.primary.dyptich_image_2_mobile.url
                     ]
-                  : [
+                  : null
+              }
+              desktopUrls={
+                props.slice_doc.primary.dyptich_image_1.url
+                  ? [
                       props.slice_doc.primary.dyptich_image_1.url,
                       props.slice_doc.primary.dyptich_image_2.url
                     ]
+                  : null
               }
+              // dyptichUrls={
+              //   props.isMobile &&
+              //   props.slice_doc.primary.dyptich_image_1_mobile.url
+              //     ? [
+              //         props.slice_doc.primary.dyptich_image_1_mobile.url,
+              //         props.slice_doc.primary.dyptich_image_2_mobile.url
+              //       ]
+              //     : [
+              //         props.slice_doc.primary.dyptich_image_1.url,
+              //         props.slice_doc.primary.dyptich_image_2.url
+              //       ]
+              // }
               handleFadeIn={props.handleFadeIn}
               handleFadeOut={props.handleFadeOut}
             />
@@ -112,12 +129,6 @@ const Casestudy_Slice = props => {
           <Panoramic_Slider_Slice
             id={props.id}
             handleImageClick={handleImageClick}
-            // panoramicImageUrl={
-            //   props.isMobile &&
-            //   props.slice_doc.primary.panoramic_slider_image_mobile.url
-            //     ? props.slice_doc.primary.panoramic_slider_image_mobile.url
-            //     : props.slice_doc.primary.panoramic_slider_image.url
-            // }
             isMobile={props.isMobile}
             desktopUrl={
               props.slice_doc.primary.panoramic_slider_image.url

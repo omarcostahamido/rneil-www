@@ -18,6 +18,7 @@ const Image_Dyptich = props => {
     document.getElementById(`${props.id}-right`).classList.add("animate");
     document.getElementById(`${props.id}-right`).classList.remove("is--active");
   }
+  console.log(props);
   return (
     <div className="dyptich">
       <div className="dyptich__image left ">
@@ -25,7 +26,11 @@ const Image_Dyptich = props => {
           <img
             className="animate"
             id={`${props.id}-left`}
-            src={props.dyptichUrls && props.dyptichUrls[0]}
+            src={
+              props.isMobile && props.mobileUrls !== null
+                ? props.mobileUrls[0]
+                : props.desktopUrls[0]
+            }
           />
         </Waypoint>
       </div>
@@ -34,7 +39,11 @@ const Image_Dyptich = props => {
           <img
             className="animate"
             id={`${props.id}-right`}
-            src={props.dyptichUrls && props.dyptichUrls[1]}
+            src={
+              props.isMobile && props.mobileUrls !== null
+                ? props.mobileUrls[1]
+                : props.desktopUrls[1]
+            }
           />
         </Waypoint>
       </div>
