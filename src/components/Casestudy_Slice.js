@@ -69,11 +69,17 @@ const Casestudy_Slice = props => {
           <Image_Slice
             id={props.id}
             style={props.slice_doc.primary.style}
-            singleImageUrl={
+            isMobile={props.isMobile}
+            desktopUrl={
+              props.slice_doc.primary.casestudy_image.url
+                ? props.slice_doc.primary.casestudy_image.url
+                : null
+            }
+            mobileUrl={
               props.isMobile &&
               props.slice_doc.primary.casestudy_image_mobile.url
                 ? props.slice_doc.primary.casestudy_image_mobile.url
-                : props.slice_doc.primary.casestudy_image.url
+                : null
             }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
@@ -106,11 +112,23 @@ const Casestudy_Slice = props => {
           <Panoramic_Slider_Slice
             id={props.id}
             handleImageClick={handleImageClick}
-            panoramicImageUrl={
+            // panoramicImageUrl={
+            //   props.isMobile &&
+            //   props.slice_doc.primary.panoramic_slider_image_mobile.url
+            //     ? props.slice_doc.primary.panoramic_slider_image_mobile.url
+            //     : props.slice_doc.primary.panoramic_slider_image.url
+            // }
+            isMobile={props.isMobile}
+            desktopUrl={
+              props.slice_doc.primary.panoramic_slider_image.url
+                ? props.slice_doc.primary.panoramic_slider_image.url
+                : null
+            }
+            mobileUrl={
               props.isMobile &&
               props.slice_doc.primary.panoramic_slider_image_mobile.url
                 ? props.slice_doc.primary.panoramic_slider_image_mobile.url
-                : props.slice_doc.primary.panoramic_slider_image.url
+                : null
             }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}

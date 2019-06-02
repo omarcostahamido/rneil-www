@@ -121,9 +121,16 @@ class Casestudy extends React.Component {
   };
   //pass down to the casestudy and slices to toggle mobile/desktop assets
   checkForMobile = () => {
-    if (window.innerWidth < 1024) {
+    if (
+      window.innerWidth < 1024 ||
+      document.documentElement.clientWidth < 1024
+    ) {
       this.setState({
         isMobile: true
+      });
+    } else {
+      this.setState({
+        isMobile: false
       });
     }
   };
@@ -175,6 +182,7 @@ class Casestudy extends React.Component {
     //HACK to fix weird scroll bug between Router Links
     this.props.scrollTop();
     this.checkColorMode();
+    window.addEventListener("resize", this.checkForMobile);
   }
   componentDidUpdate() {
     if (
@@ -185,6 +193,7 @@ class Casestudy extends React.Component {
     }
     this.handleNextButton();
     this.checkColorMode();
+    window.addEventListener("resize", this.checkForMobile);
   }
   componentWillUnmount() {
     if (
@@ -193,6 +202,7 @@ class Casestudy extends React.Component {
     ) {
       document.querySelector("body").classList.remove("body--is-white");
     }
+    window.removeEventListener("resize", this.checkColorMobile);
   }
   //RENDER-------------------------------------------------
   render() {
