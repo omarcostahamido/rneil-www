@@ -13,13 +13,24 @@ const Header = props => {
     }, 150);
   }
   let [headerHeight, setHeaderHeight] = useState(null);
-  useEffect(() => {
+  function updateHeaderHeight() {
+    console.log("updating height!!");
     if (window.innerWidth <= 1024) {
       setHeaderHeight(window.innerHeight);
     } else {
       setHeaderHeight(null);
     }
-  });
+  }
+  function removeHeaderHeight() {
+    setHeaderHeight(null);
+  }
+  useEffect(() => {
+    updateHeaderHeight();
+    window.addEventListener("resize", removeHeaderHeight);
+    return function removeListener() {
+      window.removeEventListener("resize", removeHeaderHeight);
+    };
+  }, []);
   return (
     <header
       id="home-header"
