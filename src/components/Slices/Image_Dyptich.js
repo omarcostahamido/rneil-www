@@ -2,22 +2,22 @@ import React from "react";
 import { Waypoint } from "react-waypoint";
 
 const Image_Dyptich = props => {
-  const fadeInLeft = () => {
+  function fadeInLeft() {
     document.getElementById(`${props.id}-left`).classList.remove("animate");
     document.getElementById(`${props.id}-left`).classList.add("is--active");
-  };
-  const fadeOutLeft = () => {
+  }
+  function fadeOutLeft() {
     document.getElementById(`${props.id}-left`).classList.add("animate");
     document.getElementById(`${props.id}-left`).classList.remove("is--active");
-  };
-  const fadeInRight = () => {
+  }
+  function fadeInRight() {
     document.getElementById(`${props.id}-right`).classList.remove("animate");
     document.getElementById(`${props.id}-right`).classList.add("is--active");
-  };
-  const fadeOutRight = () => {
+  }
+  function fadeOutRight() {
     document.getElementById(`${props.id}-right`).classList.add("animate");
     document.getElementById(`${props.id}-right`).classList.remove("is--active");
-  };
+  }
   return (
     <div className="dyptich">
       <div className="dyptich__image left ">

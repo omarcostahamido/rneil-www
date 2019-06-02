@@ -3,33 +3,33 @@ import { Waypoint } from "react-waypoint";
 
 //this links to casestudy/${id}
 const Casestudy_Featured = props => {
-  const fadeInResize = e => {
+  function fadeInResize(e) {
     const el = document.querySelector(`.${props.class}`);
     if (e.target.innerWidth >= 1280) {
       el.classList.remove("animate");
       el.classList.add("is--active");
     }
-  };
+  }
   //div that gets faded is in routes-renderCasestudies()
   //also wide/narrow in grid is ^^^
-  const fadeIn = () => {
+  function fadeIn() {
     const el = document.querySelector(`.${props.class}`);
     el.classList.remove("animate");
     el.classList.add("is--active");
-  };
-  const fadeOut = () => {
+  }
+  function fadeOut() {
     const el = document.querySelector(`.${props.class}`);
     el.classList.add("animate");
     el.classList.remove("is--active");
-  };
+  }
   const [hero, setHero] = useState(0);
-  const handleWhichHero = () => {
+  function handleWhichHero() {
     (props.heroMobile && window.innerWidth < 1024) ||
     document.documentElement.clientWidth < 1024
       ? setHero(props.heroMobile)
       : setHero(props.hero);
-  };
-  //hook to ensure casestudies fade in even after resize - parallax interference
+  }
+  //hook to ensure casestudies fade in & heros update even after resize
   useEffect(() => {
     handleWhichHero();
     //hook will run this on initial mount
