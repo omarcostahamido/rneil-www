@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { Waypoint } from "react-waypoint";
 
 const Panoramic_Slider_Slice = props => {
-  const transformIn = () => {
+  function transformIn() {
     document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
-  };
-  const transformOut = () => {
+  }
+  function transformOut() {
     // document
     //   .getElementById(`${props.id}--wrap`)
     //   .classList.remove("is--transform");
-  };
+  }
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
   const fadeOutSwipe = props.handleFadeOut(`${props.id}--swipe`);

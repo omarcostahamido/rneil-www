@@ -4,20 +4,20 @@ import { Waypoint } from "react-waypoint";
 const Gallery = props => {
   const fadeIn = props.handleFadeIn(props.id);
   const fadeOut = props.handleFadeOut(props.id);
-  const transformIn = () => {
+  function transformIn() {
     document.getElementById(`${props.id}--wrap`).classList.add("is--transform");
     window.setTimeout(() => {
       document
         .getElementById(`${props.id}--wrap`)
         .classList.remove("transform");
     }, 800);
-  };
-  const transformOut = () => {
+  }
+  function transformOut() {
     // document
     //   .getElementById(`${props.id}--wrap`)
     //   .classList.remove("is--transform");
-  };
-  const handleGalleryBuild = galleryImages => {
+  }
+  function handleGalleryBuild(galleryImages) {
     if (galleryImages) {
       return (
         <div id={props.id} className="gallery--wrap">
@@ -35,7 +35,7 @@ const Gallery = props => {
         </div>
       );
     }
-  };
+  }
   //RENDER----------------------------------------------------------
   return (
     <div>

@@ -6,7 +6,7 @@ import Body_Text_Slice from "./Slices/Body_Text_Slice";
 import Video_Module_Slice from "./Slices/Video_Module_Slice";
 
 const About = props => {
-  const renderVideos = props => {
+  function renderVideos(props) {
     if (props.data[0].data.about_page_videos.length >= 1) {
       return (
         <div>
@@ -30,15 +30,15 @@ const About = props => {
         </div>
       );
     }
-  };
-  const fadeIn = () => {
+  }
+  function fadeIn() {
     window.setTimeout(() => {
       document.querySelector(".about__header").classList.remove("animate");
       document.querySelector(".dyptich--wrapper").classList.remove("animate");
       document.querySelector(".about__header").classList.add("is--active");
       document.querySelector(".dyptich--wrapper").classList.add("is--active");
     }, 200);
-  };
+  }
   //HOOKS----------------------------------------------
   let [isScroll, setScroll] = useState(true);
   useEffect(() => {

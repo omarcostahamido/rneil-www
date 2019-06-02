@@ -4,17 +4,17 @@ import Down_Arrow from "../Down_Arrow";
 import { Waypoint } from "react-waypoint";
 
 const Header_Slice = props => {
-  const fadeIn = () => {
+  function fadeIn() {
     document.querySelector(".header-slice__info").classList.add("is--active");
     document.querySelector(".header-slice__info").classList.remove("animate");
-  };
-  const fadeOut = () => {
+  }
+  function fadeOut() {
     document
       .querySelector(".header-slice__info")
       .classList.remove("is--active");
     document.querySelector(".header-slice__info").classList.add("animate");
-  };
-  const fadeInBg = () => {
+  }
+  function fadeInBg() {
     updateIsFading(() => {
       isFading = true;
     });
@@ -23,8 +23,8 @@ const Header_Slice = props => {
     updateIsFading(() => {
       isFading = false;
     });
-  };
-  const fadeOutBg = () => {
+  }
+  function fadeOutBg() {
     updateIsFading(() => {
       isFading = true;
     });
@@ -33,12 +33,12 @@ const Header_Slice = props => {
     updateIsFading(() => {
       isFading = false;
     });
-  };
-  const handleAnchorScroll = () => {
+  }
+  function handleAnchorScroll() {
     document
       .querySelector(".casestudy__location-info")
       .scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  }
   let [currentPath, updatePath] = useState(window.location.href);
   let [isFading, updateIsFading] = useState(false);
   //to accommodate for in btw casestudy routing
