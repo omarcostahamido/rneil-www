@@ -107,18 +107,6 @@ const Casestudy_Slice = props => {
                     ]
                   : null
               }
-              // dyptichUrls={
-              //   props.isMobile &&
-              //   props.slice_doc.primary.dyptich_image_1_mobile.url
-              //     ? [
-              //         props.slice_doc.primary.dyptich_image_1_mobile.url,
-              //         props.slice_doc.primary.dyptich_image_2_mobile.url
-              //       ]
-              //     : [
-              //         props.slice_doc.primary.dyptich_image_1.url,
-              //         props.slice_doc.primary.dyptich_image_2.url
-              //       ]
-              // }
               handleFadeIn={props.handleFadeIn}
               handleFadeOut={props.handleFadeOut}
             />
@@ -146,21 +134,21 @@ const Casestudy_Slice = props => {
           />
         );
       } else if (props.slice_type === "image_slider") {
-        let sliderImages = [];
+        let mobileImages = [];
+        let desktopImages = [];
         if (props.slice_doc.items.length > 1) {
           props.slice_doc.items.map(image => {
-            if (props.isMobile && image.image_slider_images_mobile.url) {
-              sliderImages.push(image.image_slider_images_mobile.url);
-            } else {
-              sliderImages.push(image.image_slider_images.url);
-            }
+            mobileImages.push(image.image_slider_images_mobile.url);
+            desktopImages.push(image.image_slider_images.url);
           });
         }
         return (
           <Gallery
             id={props.id}
+            isMobile={props.isMobile}
             handleImageClick={handleImageClick}
-            galleryImages={sliderImages}
+            mobileImages={mobileImages}
+            desktopImages={desktopImages}
             type="slice-slider"
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}

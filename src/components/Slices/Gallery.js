@@ -18,23 +18,21 @@ const Gallery = props => {
     //   .classList.remove("is--transform");
   }
   function handleGalleryBuild(galleryImages) {
-    if (galleryImages) {
-      return (
-        <div id={props.id} className="gallery--wrap">
-          {galleryImages.map(image => {
-            return (
-              <img
-                className="gallery__images "
-                id={`gallery__image-${galleryImages.indexOf(image)}`}
-                key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
-                src={image}
-                onClick={props.handleImageClick}
-              />
-            );
-          })}
-        </div>
-      );
-    }
+    return (
+      <div id={props.id} className="gallery--wrap">
+        {galleryImages.map(image => {
+          return (
+            <img
+              className="gallery__images "
+              id={`gallery__image-${galleryImages.indexOf(image)}`}
+              key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
+              src={image}
+              onClick={props.handleImageClick}
+            />
+          );
+        })}
+      </div>
+    );
   }
   //RENDER----------------------------------------------------------
   return (
@@ -47,7 +45,9 @@ const Gallery = props => {
             : "slice-slider"
         }`}
       >
-        {props.galleryImages && handleGalleryBuild(props.galleryImages)}
+        {props.isMobile && props.mobileImages !== []
+          ? handleGalleryBuild(props.mobileImages)
+          : handleGalleryBuild(props.desktopImages)}
         {props.pullQuote && (
           <h1 className="gallery__pullquote">{props.pullQuote}</h1>
         )}
