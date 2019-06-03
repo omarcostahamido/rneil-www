@@ -69,11 +69,17 @@ const Casestudy_Slice = props => {
           <Image_Slice
             id={props.id}
             style={props.slice_doc.primary.style}
-            singleImageUrl={
+            isMobile={props.isMobile}
+            desktopUrl={
+              props.slice_doc.primary.casestudy_image.url
+                ? props.slice_doc.primary.casestudy_image.url
+                : null
+            }
+            mobileUrl={
               props.isMobile &&
               props.slice_doc.primary.casestudy_image_mobile.url
                 ? props.slice_doc.primary.casestudy_image_mobile.url
-                : props.slice_doc.primary.casestudy_image.url
+                : null
             }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
@@ -84,17 +90,22 @@ const Casestudy_Slice = props => {
           <div className="dyptich--wrapper">
             <Image_Dyptich
               id={props.id}
-              dyptichUrls={
-                props.isMobile &&
+              isMobile={props.isMobile}
+              mobileUrls={
                 props.slice_doc.primary.dyptich_image_1_mobile.url
                   ? [
                       props.slice_doc.primary.dyptich_image_1_mobile.url,
                       props.slice_doc.primary.dyptich_image_2_mobile.url
                     ]
-                  : [
+                  : null
+              }
+              desktopUrls={
+                props.slice_doc.primary.dyptich_image_1.url
+                  ? [
                       props.slice_doc.primary.dyptich_image_1.url,
                       props.slice_doc.primary.dyptich_image_2.url
                     ]
+                  : null
               }
               handleFadeIn={props.handleFadeIn}
               handleFadeOut={props.handleFadeOut}
@@ -106,32 +117,38 @@ const Casestudy_Slice = props => {
           <Panoramic_Slider_Slice
             id={props.id}
             handleImageClick={handleImageClick}
-            panoramicImageUrl={
+            isMobile={props.isMobile}
+            desktopUrl={
+              props.slice_doc.primary.panoramic_slider_image.url
+                ? props.slice_doc.primary.panoramic_slider_image.url
+                : null
+            }
+            mobileUrl={
               props.isMobile &&
               props.slice_doc.primary.panoramic_slider_image_mobile.url
                 ? props.slice_doc.primary.panoramic_slider_image_mobile.url
-                : props.slice_doc.primary.panoramic_slider_image.url
+                : null
             }
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}
           />
         );
       } else if (props.slice_type === "image_slider") {
-        let sliderImages = [];
+        let mobileImages = [];
+        let desktopImages = [];
         if (props.slice_doc.items.length > 1) {
           props.slice_doc.items.map(image => {
-            if (props.isMobile && image.image_slider_images_mobile.url) {
-              sliderImages.push(image.image_slider_images_mobile.url);
-            } else {
-              sliderImages.push(image.image_slider_images.url);
-            }
+            mobileImages.push(image.image_slider_images_mobile.url);
+            desktopImages.push(image.image_slider_images.url);
           });
         }
         return (
           <Gallery
             id={props.id}
+            isMobile={props.isMobile}
             handleImageClick={handleImageClick}
-            galleryImages={sliderImages}
+            mobileImages={mobileImages}
+            desktopImages={desktopImages}
             type="slice-slider"
             handleFadeIn={props.handleFadeIn}
             handleFadeOut={props.handleFadeOut}

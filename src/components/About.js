@@ -39,6 +39,12 @@ const About = props => {
       document.querySelector(".dyptich--wrapper").classList.add("is--active");
     }, 200);
   }
+  const [isMobile, setIsMobile] = useState(null);
+  function checkForMobile() {
+    window.innerWidth < 1024 || document.documentElement.clientWidth < 1024
+      ? setIsMobile(true)
+      : setIsMobile(false);
+  }
   //HOOKS----------------------------------------------
   let [isScroll, setScroll] = useState(true);
   useEffect(() => {
@@ -50,6 +56,13 @@ const About = props => {
     fadeIn();
     return () => {
       document.querySelector("body").classList.remove("body--is-white");
+    };
+  }, []);
+  useEffect(() => {
+    checkForMobile();
+    window.addEventListener("resize", checkForMobile);
+    return function() {
+      window.removeEventListener("resize", checkForMobile);
     };
   }, []);
   //RENDER----------------------------------------------
@@ -77,27 +90,19 @@ const About = props => {
         ) : null}
       </section>
       <section className="dyptich--wrapper animate">
-        {props.data && window.innerWidth < 1024 ? (
+        {props.data && (
           <Image_Dyptich
             id={props.data && `${props.data[0].id}-about-dyptich`}
-            dyptichUrls={
-              props.data
+            isMobile={isMobile}
+            mobileUrls={
+              props.data && props.data[0].data.image_left_mobile.url
                 ? [
                     props.data[0].data.image_left_mobile.url,
                     props.data[0].data.image_right_mobile.url
                   ]
-                : [
-                    props.data[0].data.about_page_image.url,
-                    props.data[0].data.about_page_image_2.url
-                  ]
+                : null
             }
-            handleFadeIn={props.handleFadeIn}
-            handleFadeOut={props.handleFadeOut}
-          />
-        ) : (
-          <Image_Dyptich
-            id={props.data && `${props.data[0].id}-about-dyptich`}
-            dyptichUrls={
+            desktopUrls={
               props.data
                 ? [
                     props.data[0].data.about_page_image.url,

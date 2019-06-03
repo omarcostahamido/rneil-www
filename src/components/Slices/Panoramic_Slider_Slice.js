@@ -29,7 +29,11 @@ const Panoramic_Slider_Slice = props => {
           <img
             className="slice-pano__img animate"
             id={props.id}
-            src={props.panoramicImageUrl}
+            src={
+              props.isMobile && props.mobileUrl !== null
+                ? props.mobileUrl
+                : props.desktopUrl
+            }
           />
         </span>
       </div>

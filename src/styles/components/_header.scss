@@ -3,7 +3,7 @@
   @include entire-viewport;
   position: relative;
   background-color: $white;
-  min-height: 567px;
+  min-height: 560px;
   @include label(inherit);
   h1 {
     @include h1(inherit);
@@ -46,9 +46,6 @@
 }
 
 @media only screen and (min-width: 375px) and (min-height: 700px) {
-  .header {
-    min-height: 850px;
-  }
   .header__img {
     height: 60%;
   }
