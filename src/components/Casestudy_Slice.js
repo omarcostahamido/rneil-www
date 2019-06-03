@@ -13,6 +13,7 @@ import Text_Dyptich from "./Slices/Text_Dyptich";
 const Casestudy_Slice = props => {
   //for the gallery & pano slider scroll bx
   function handleImageClick(e) {
+    console.log(e.target.id)
     if (window.innerWidth >= 1280) {
       document.getElementById(e.target.id.toString()).scrollIntoView({
         behavior: "smooth",

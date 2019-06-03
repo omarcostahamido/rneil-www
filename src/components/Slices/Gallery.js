@@ -24,7 +24,7 @@ const Gallery = props => {
           return (
             <img
               className="gallery__images "
-              id={`gallery__image-${galleryImages.indexOf(image)}`}
+              id={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
               key={`gallery__image-${image}-${galleryImages.indexOf(image)}`}
               src={image}
               onClick={props.handleImageClick}
