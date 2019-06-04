@@ -15,24 +15,16 @@ const Header_Slice = props => {
     document.querySelector(".header-slice__info").classList.add("animate");
   }
   function fadeInBg() {
-    updateIsFading(() => {
-      isFading = true;
-    });
+    updateIsFading(true);
     document.querySelector(".casestudy__header").classList.add("is--active");
     document.querySelector(".casestudy__header").classList.remove("animate");
-    updateIsFading(() => {
-      isFading = false;
-    });
+    updateIsFading(false);
   }
   function fadeOutBg() {
-    updateIsFading(() => {
-      isFading = true;
-    });
+    updateIsFading(true);
     document.querySelector(".casestudy__header").classList.remove("is--active");
     document.querySelector(".casestudy__header").classList.add("animate");
-    updateIsFading(() => {
-      isFading = false;
-    });
+    updateIsFading(false);
   }
   function handleAnchorScroll() {
     document
@@ -48,7 +40,7 @@ const Header_Slice = props => {
         currentPath = window.location.href;
       });
       if (!isFading) {
-        fadeOutBg();
+        // fadeOutBg();
       }
     }
   });
