@@ -26,7 +26,9 @@ const Autoplay_Video_Module = props => {
     }
   });
   return (
-    <div>
+    <div
+      className={`${props.style == "autoplay-hero" && "autoplay-hero__wrap"}`}
+    >
       <div
         id={props.id}
         className={`media ${props.style} ${!(
