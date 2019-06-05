@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const Next_Btn = props => {
+  function fadeOutCasestudy() {
+    console.log("fading out");
+    document.querySelector(".casestudy__header").classList.remove("is--active");
+    document.querySelector(".casestudy__header").classList.add("animate");
+  }
   return (
-    <footer className="next-btn">
+    <footer className="next-btn" onClick={fadeOutCasestudy}>
       <Link to={props.url}>next exhibition</Link>
       <svg width="24px" height="13px" viewBox="0 0 24 13">
         <g
