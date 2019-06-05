@@ -33,7 +33,6 @@ const Header_Slice = props => {
   }, []);
   useEffect(function reCalcBtwRoutes() {
     if (currentPath != window.location.href) {
-      console.log("updating!!!");
       updatePath(window.location.href);
       calcHeight();
     }
