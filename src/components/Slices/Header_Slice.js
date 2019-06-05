@@ -15,16 +15,24 @@ const Header_Slice = props => {
     document.querySelector(".header-slice__info").classList.add("animate");
   }
   function fadeInBg() {
-    updateIsFading(true);
+    updateIsFading(() => {
+      isFading = true;
+    });
     document.querySelector(".casestudy__header").classList.add("is--active");
     document.querySelector(".casestudy__header").classList.remove("animate");
-    updateIsFading(false);
+    updateIsFading(() => {
+      isFading = false;
+    });
   }
   function fadeOutBg() {
-    updateIsFading(true);
+    updateIsFading(() => {
+      isFading = true;
+    });
     document.querySelector(".casestudy__header").classList.remove("is--active");
     document.querySelector(".casestudy__header").classList.add("animate");
-    updateIsFading(false);
+    updateIsFading(() => {
+      isFading = false;
+    });
   }
   function handleAnchorScroll() {
     document
@@ -40,10 +48,17 @@ const Header_Slice = props => {
         currentPath = window.location.href;
       });
       if (!isFading) {
-        // fadeOutBg();
+        fadeOutBg();
       }
     }
   });
+  const [landingHeight, setLandingHeight] = useState(null);
+  function calcHeight() {
+    setLandingHeight(window.innerHeight);
+  }
+  useEffect(() => {
+    calcHeight();
+  }, []);
   return (
     <header
       className="--isLoaded"
@@ -59,7 +74,7 @@ const Header_Slice = props => {
         style={
           !props.isVideo
             ? {
-                height: window.innerWidth <= 1024 && window.innerHeight,
+                height: window.innerWidth <= 1024 && landingHeight,
                 backgroundColor: "inherit",
                 backgroundImage: `url(${props.casestudyHero})`,
                 WebkitBackgroundSize: "cover",
@@ -70,7 +85,7 @@ const Header_Slice = props => {
               }
             : {
                 backgroundColor: "transparent",
-                height: window.innerWidth <= 1024 && window.innerHeight
+                height: window.innerWidth <= 1024 && landingHeight
               }
         }
       >
@@ -109,5 +124,3 @@ const Header_Slice = props => {
 };
 
 export default Header_Slice;
-
-//topOffset={window.innerWidth < 768 ? "40%" : "60%"}
