@@ -15,7 +15,6 @@ const Header_Slice = props => {
     document.querySelector(".header-slice__info").classList.add("animate");
   }
   function fadeInBg() {
-    console.log("fading in");
     document.querySelector(".casestudy__header").classList.add("is--active");
     document.querySelector(".casestudy__header").classList.remove("animate");
   }
@@ -28,9 +27,16 @@ const Header_Slice = props => {
   function calcHeight() {
     setLandingHeight(window.innerHeight);
   }
-  useEffect(() => {
+  const [currentPath, updatePath] = useState(window.location.href);
+  useEffect(function calcInitialHeight() {
     calcHeight();
   }, []);
+  useEffect(function reCalcBtwRoutes() {
+    if (currentPath != window.location.href) {
+      updatePath(window.location.href);
+      calcHeight();
+    }
+  });
   return (
     <header
       className="--isLoaded"

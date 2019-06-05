@@ -3,7 +3,6 @@ import { Link } from "@reach/router";
 
 const Next_Btn = props => {
   function fadeOutCasestudy() {
-    console.log("fading out");
     document.querySelector(".casestudy__header").classList.remove("is--active");
     document.querySelector(".casestudy__header").classList.add("animate");
   }
