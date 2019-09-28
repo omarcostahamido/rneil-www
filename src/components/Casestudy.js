@@ -178,7 +178,7 @@ class Casestudy extends React.Component {
   //LIFECYCLE------------------------------------------------
   componentDidMount() {
     this.getPrismicData();
-    // this.checkForMobile();
+    this.checkForMobile();
     //HACK to fix weird scroll bug between Router Links
     this.props.scrollTop();
     this.checkColorMode();
