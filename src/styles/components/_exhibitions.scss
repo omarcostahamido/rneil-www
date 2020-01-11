@@ -1,0 +1,30 @@
+.work > div {
+  background-color: $black;
+  margin: 12.5vw 6.25vw;
+  height: 100%;
+}
+@include media-min($ipad) {
+  .work > div {
+    margin: 16.667vw 6.25vw;
+  }
+}
+@include media-min($ipad-pro) {
+  .work > div {
+    margin: 12.5vw 8.333vw;
+  }
+}
+@include media-min($desktop) {
+  .work > div {
+    margin: 16.667vw 12.5vw;
+  }
+}
+@include media-min($desktop-xl) {
+  .work > div {
+    margin: 9.375vw 16.667vw;
+  }
+}
+@include media-min($desktop-xxl) {
+  .work > div {
+    margin: 6.5vw 16.667vw;
+  }
+}

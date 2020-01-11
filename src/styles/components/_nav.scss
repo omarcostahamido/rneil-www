@@ -1,1 +1,125 @@
 /*-----------Nav Styles Here-----------*/
+
+div.nav--sticky-wrap {
+  background-color: rbga(255,255,255,0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  
+  @include prefixer(transform,translate3d(0, 0, 0), true, false, true);
+  @include prefixer(transition, transform 400ms ease-out, true, false, false);
+  transform: translate3d(0, 0, 0);
+  transition: transform 400ms ease-out;
+  &.is--scroll {
+    
+  }
+  &.is--scroll-down {
+    @include prefixer(transform,translate3d(0, -100%, 0), true, false, true);
+    @include prefixer(transition, transform 250ms ease-out, true, false, false);
+    transform: translate3d(0, -100%, 0);
+    transition: transform 250ms ease-out;
+  }
+}
+
+nav.nav {
+  position: relative;
+  @include flexbox;
+  justify-content: space-between;
+  padding: 24px 6.25vw;
+  align-items: center;
+}
+
+.nav__logo {
+  width: 81px;  
+}
+
+.logo-path {
+  fill: $black;
+  &.--home {
+    fill: $black;
+  }
+  &.--dark-mode {
+    fill: $white;
+  }
+  &.--light-mode {
+    fill: $black;
+  }
+}
+
+
+div.nav__nav-items {
+  color: $black;
+  
+  a{
+    @include label($black);
+    text-decoration: none;
+    color: inherit;
+  }
+  @include flexbox;
+  // padding: 22px 21px 0 0;
+  * {
+    margin-left: 20px;
+  }
+  &.about {
+    a:first-child {
+      color: $light-grey;
+    }
+  }
+  &.work {
+    a:last-child {
+      color: $light-grey;
+    } 
+  }
+  &.--home {
+    color: $black;
+  }
+  &.--dark-mode {
+    color: $white;
+    
+  }
+  &.--light-mode {
+    color: $black;
+  }
+  &.animate {
+    @include fade(0);
+    //any additional specific modifiers here
+    //will override the _base class
+  }
+  &.is--active {
+    @include fade(1);
+    background-color: transparent;
+  }
+}
+
+//Mediaqueries------------------------------------------
+@include media-min($ipad) {
+  nav.nav {
+    padding: 40px 6.25vw;
+  }
+  .nav__logo {
+    width: 232px;
+  }
+  div.nav__nav-items {
+    * {
+      margin-left: 40px;
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  nav.nav {
+    padding:  40px 48px;
+  }
+}
+
+@include media-min($desktop-xl) {
+  nav.nav {
+    padding: 40px 56px;
+  }
+}
+@include media-min($desktop-xxl) {
+  nav.nav {
+    padding: 40px 64px;
+  }
+}

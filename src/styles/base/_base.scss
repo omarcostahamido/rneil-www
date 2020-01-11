@@ -1,19 +1,59 @@
+@font-face {
+  font-family: 'Favorit';
+  src: url('../assets/fonts/Favorit-Std/favorit-std-book.woff') format('woff');
+}
 html {
   //sets rem to base 10 system like pixels
   font-size: 62.5%;
+  //for firefox scroll
+  scrollbar-width: none;
+  line-height: 0;
 }
+
 
 body {
-  background-color: $white;
-  font-family: Helvetica, Arial, sans-serif;
+  &.body--is-white {
+    background-color: $white;
+    @include prefixer(transition, color 200ms ease-out, true, true, true );
+    transition: color 200ms ease-out;
+  }
+  background-color: $black;
+  @include prefixer(transition, color 200ms ease-out, true, true, true );
+  transition: color 200ms ease-out;
+  font-family: 'Favorit', Helvetica, Arial, sans-serif;
   //base font-size is 16px
-  font-size: $m-size;
+  font-size: 16px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-button {
-  cursor: pointer;
+h1, h2, p, img, div, button, a, figure, summary, section, nav, main, figcaption, article {
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2 {
+  font-weight: normal;
+}
+
+::selection {
+  background-color: none;
+  color:$dark-grey;
 }
 
 button:disabled {
   cursor: default;
+}
+
+
+br {
+  line-height: 1.667;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

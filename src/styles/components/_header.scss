@@ -1,11 +1,142 @@
 .header {
-
+  font-display: block;
+  @include entire-viewport;
+  position: relative;
+  background-color: $white;
+  min-height: 560px;
+  @include label(inherit);
+  h1 {
+    @include h1(inherit);
+  }
+}
+.header__img {
+  height: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  img {
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+.header__info {
+  height: calc(50% - 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 24px 0 24px;
+  .exhibitions--wrap {
+    cursor: pointer;
+    display: flex;
+    #exhibitions {
+      margin-right: 16px;
+    }
+  }
+}
+@include media-min($mobile) {
+  .header__img {
+    height: 55%;
+  }
+  .header__info {
+    height: calc(45% - 48px);
+  }
 }
 
-.header-message {
-
+@media only screen and (min-width: 375px) and (min-height: 700px) {
+  .header__img {
+    height: 60%;
+  }
+  .header__info {
+    height: calc(40% - 48px);
+  }
 }
 
-.header-img {
-  width: 768px;
+@include media-min($ipad) {
+  .header {
+    min-height: 925px;
+  }
+  .header__img {
+    height: 70%;
+  }
+  .header__info {
+    padding: 48px 48px 0 48px;
+    height: calc(30% - 96px)
+  }
+}
+
+@include media-min($ipad-pro) {
+  .header {
+    min-height: 0;
+  }
+}
+
+@include media-min($desktop) {
+  .header{
+    display: flex;
+   
+  }
+  .header__img {
+    height: 100%;
+    width: 40%;
+  }
+  .header__info {
+    justify-content: flex-end;
+    align-items: center;
+    margin: auto;
+    padding: 0 0 48px 0;
+    height: calc(100% - 48px);
+    width: calc(60% );
+    .header-copy--wrap {
+      display: flex;
+      height: 93%;
+      justify-content: center;
+      align-items: center;
+      .header__main-copy {
+        width: 80%;
+        
+      }      
+    }
+    .exhibitions--wrap {
+      align-items: flex-start;
+      width: 80%;
+    }
+  }
+}
+
+@include media-min($ipad-landscape) {
+  .header__main-copy {
+    width: 72%; 
+  }
+}
+@include media-orientation($ipad-pro, 1279px, landscape) {
+  .header{
+    display: flex;
+  }
+  .header__img {
+    height: 100%;
+    width: 40%;
+  }
+  .header__info {
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 0 48px 0;
+    height: calc(100% - 48px);
+    width: calc(60% );
+    .header-copy--wrap {
+      display: flex;
+      height: 90%;
+      justify-content: center;
+      align-items: center;
+      .header__main-copy {
+        width: 80%; 
+      }
+    }
+    .exhibitions--wrap {
+      align-items: flex-start;
+      width: 80%;
+    }
+  }
 }

@@ -1,0 +1,79 @@
+//.--narrow is the default for body-copy
+.body-copy{
+  @include body-copy(inherit);
+  @include text-vertical-rhythm;
+  padding-right: 6.25vw;
+  padding-left: 6.25vw;
+  white-space:pre-line;
+  a {
+    border-bottom-color: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    transition: all 200ms ease-out;
+  }
+  a:hover {
+    color: $dark-grey;
+    border-bottom-color: $dark-grey;
+    transition: all 200ms ease-out;
+  }
+}
+@include media-min($ipad) {
+  .body-copy {
+    padding-right: 12.5vw;
+    padding-left: 12.5vw;
+    &.--left {   
+        padding-right: 25vw;
+    }
+    &.--right {   
+        padding-left: 25vw;
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  .body-copy {
+    padding-left: 29.167vw;
+    padding-right: 29.167vw;
+    &.--left {
+      padding-left: 16.6667vw;
+      padding-right: 41.6667vw;
+    }
+    &.--right {
+      padding-left: 41.6667vw;
+      padding-right: 16.6667vw;
+    }
+    &.--two-column {
+      padding-left: 16.6667vw;
+      padding-right: 16.6667vw;
+    }
+    &.--wide {
+      padding-left: 16.6667vw;
+      padding-right: 16.6667vw;
+    }
+  }
+}
+@include media-min($desktop) {
+  .body-copy {
+    &.--two-column {
+      column-count: 2;
+      column-gap: 4.1665vw;
+    }
+  }
+}
+@include media-min($desktop-xxl) {
+  .body-copy {
+    padding-left: 33.333vw;
+    padding-right: 33.333vw;
+    &.--right {
+      padding-left: 50vw;
+      padding-right: 16.6667vw;
+    }
+    &.--left {
+      padding-left: 16.6667vw;
+      padding-right: 50vw;
+    }
+    &.--wide {
+      padding-left: 25vw;
+      padding-right: 25vw;
+    }
+  }
+}

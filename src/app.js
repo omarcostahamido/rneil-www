@@ -1,9 +1,7 @@
-//this file should be in charge of bootstrapping everything that lives elsewhere
-import React from 'react'
-import ReactDOM from 'react-dom'
-import RootApp from './components/RootApp'
-import 'normalize.css/normalize.css'
-import './styles/styles.scss'
+import "normalize.css/normalize.css";
+import "./styles/styles.scss";
+import React from "react";
+import ReactDOM from "react-dom";
+import RootApp_Data from "./components/RootApp_Data";
 
-
-ReactDOM.render(<RootApp />, document.getElementById('app'))
+ReactDOM.render(<RootApp_Data />, document.getElementById("app"));

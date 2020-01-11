@@ -1,0 +1,43 @@
+.slice-pano {
+  @include media-vertical-rhythm;
+  @include slider-base;
+  .slice-pano--wrap {
+    @include slider-wrap;
+  }
+  .slice-pano--padding {
+    padding-left: calc(50vw - 74px);
+    p {
+      @include label(inherit);
+    }
+  }
+  img.slice-pano__img {
+    height: 66.667vh;
+    padding-left: 32px;
+    padding-right: 6.25vw;
+    flex-shrink: 0;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+@include media-min($ipad) {
+  .slice-pano {
+    img.slice-pano__img {
+      padding-right: 12.5vw;  
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  .slice-pano {
+    img.slice-pano__img {
+      padding-right: 8.333vw;
+    }
+  }
+}
+@include media-min($desktop-xl) {
+  .slice-pano {
+    img.slice-pano__img {
+      height: 75vh;
+    }
+  }
+}

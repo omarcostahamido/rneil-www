@@ -1,0 +1,40 @@
+.dyptich {
+  @include media-vertical-rhythm;
+  padding-left: 25vw;
+  padding-right: 25vw;
+}
+.dyptich__image {
+  &.left {
+    padding-bottom: 25vw;
+  }
+  img {
+    width: 100%;
+  }
+}
+@include media-min($ipad) {
+  .dyptich {
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    justify-content: center;
+  }
+  .dyptich__image {
+    width: 50%;
+    &.left {
+      padding: 0 6.25vw 0 0;
+    }
+  } 
+}
+@include media-min($ipad-pro) {
+  .dyptich {
+    padding-left: 8.333vw;
+    padding-right: 8.333vw;
+  }
+  .dyptich__image {
+    &.left {
+      padding-right: 8.333vw;
+    }
+  } 
+}

@@ -1,1 +1,6 @@
-/*-------------------home page styles go here---------------*/
+.homepage__body {
+  &.--isLoading {
+    @include entire-viewport;
+    overflow: hidden;
+  }
+}

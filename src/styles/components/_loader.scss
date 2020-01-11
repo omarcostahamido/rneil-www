@@ -1,0 +1,47 @@
+.isLoading{
+  position: absolute;
+  z-index: 1000;
+  background-color: $black;
+  @include entire-viewport;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    opacity: 0;
+    padding: 0 20vw;
+    width: 256px;
+    @include prefixer(animation, fade .5s ease-in-out 200ms 1 forwards, true, true, true);
+    animation: fade .5s ease-in-out 200ms 1 forwards;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  @-webkit-keyframes fade {
+    0% {opacity: 0; }
+    100% {opacity: 1; }
+  }
+  @keyframes fade {
+    0% {opacity: 0; }
+    100% {opacity: 1; }
+  }
+}
+.loaded {
+  display: none;
+  pointer-events: none;
+}
+
+@include media-min($ipad) {
+  .isLoading {
+    svg {
+      padding: 0 33.333vw;
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  .isLoading {
+    svg {
+      padding: 0 37.5vw;
+    }
+  }
+}
+

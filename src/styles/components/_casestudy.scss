@@ -1,13 +1,48 @@
-//casestudy root
-.casestudy {
-  
+.casestudy { 
+  background-color: $black;
+  overflow: hidden;
+  &.casestudy--dark {
+    background-color: $black;
+    color: $white;
+  }
+  &.casestudy--light {
+    background-color: $white;
+  }
 }
-
 .casestudy-hero {
-  width: 1024px;
-  height: 800px;
+  width: 33vw;
 }
-
-.casestudy-title {
-
+.next-btn {
+  display: block;
+  text-align: center;
+  margin: auto;
+  padding-top: 12.5vw;
+  padding-bottom: 25vw ;
+  transition: all 200ms ease-out;
+  // padding: 19.2vw 8vw 34.133vw 8vw;
+  a {
+    @include body-copy(inherit);
+    text-decoration: none;
+    padding-right: 16px;
+  }
+}
+//MQ's-----------------------------------
+@include media-min($ipad-pro) {
+  .next-btn {
+    padding-top: 6.25vw;
+    padding-bottom: 12.5vw;
+  }
+}
+@include media-orientation($ipad-pro, 1279px, landscape) {
+  .next-btn {
+    padding-top: 8.333vw;
+    padding-bottom: 16.667vw;
+  }
+}
+@include media-min($desktop) {
+  .next-btn {
+    a{
+      padding-right: 24px;
+    }
+  }
 }

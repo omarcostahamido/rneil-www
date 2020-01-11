@@ -1,0 +1,99 @@
+.homepage__casestudies-featured {
+  padding: 0 6.25vw 12.5vw 6.25vw;
+  background-color: $black;
+  color: $white;
+  position: relative;
+  z-index: 2;
+}
+.casestudy-featured {
+  position: relative;
+  padding-top: 12.5vw;
+  color: $white;
+  &.--white {
+    color: $black;
+  }
+  p {
+    @include work-card(inherit);
+  }
+  .casestudy-featured__hero {
+    width: 100%;
+  }
+}
+.casestudy-featured__info {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+@include media-min($ipad) {
+  .homepage__casestudies-featured {
+    padding: 8.333vw 6.25vw;
+  }
+  .casestudy-featured--grid {
+    padding-top: 0;
+    display: grid;
+    grid-row-gap: 8.333vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 6.25vw;
+    .casestudy-featured {
+      padding: 0;
+    }
+  }
+}
+@include media-min($ipad-pro) {
+  .homepage__casestudies-featured {
+    padding: 12.5vw 8.333vw;
+  }
+  .casestudy-featured--grid {
+    grid-column-gap: 8.333vw;
+  }
+  .grid--wide {
+    grid-column: 1 / span 2; 
+ } 
+}
+@include media-min($desktop) {
+  .homepage__casestudies-featured {
+    padding: 12.5vw;
+  }
+  .casestudy-featured {
+    &.--white {
+      color:$black;
+      background-color: $white;
+    }
+  }
+  .casestudy-featured__title {
+    position: relative;
+  }
+  .casestudy-featured__hero {
+    width: 100%;
+    @include prefixer(transition, opacity 200ms cubic-bezier(.26, 0, .34, 1), true ,false ,false );
+    transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
+  }
+  .casestudy-featured__hero:hover {
+    //solved little flicker outline on dark images
+    @include prefixer(transform, rotate(0), true ,true,false );
+    transform: rotate(0);
+    opacity: .4;
+    @include prefixer(transition, opacity 200ms cubic-bezier(.26, 0, .34, 1), true ,false ,false );
+    transition: opacity 200ms cubic-bezier(.26, 0, .34, 1);
+  }
+  .casestudy-featured__info {
+    @include prefixer(transform, translateZ(0), true, true, false);
+    transform: translateZ(0);
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    pointer-events: none;
+    left: 24px;
+    bottom: 24px;
+  }
+}
+@include media-min($desktop-xxl) {
+  .homepage__casestudies-featured {
+    padding: 12.5vw 16.667vw;
+  }
+  .casestudy-featured__info {
+    left: 40px;
+    bottom: 40px;
+  }
+}
