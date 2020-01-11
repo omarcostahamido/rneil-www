@@ -77,8 +77,8 @@
 
 @mixin h0($color) {
   font-size: 15vw;
-  line-height: 1.25;
-  letter-spacing: -.5px;
+  line-height: 1.2;
+  letter-spacing: -.7px;
   color: $color;
   @include media-min($ipad) {
     font-size: 9.375vw;
