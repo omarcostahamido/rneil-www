@@ -45,8 +45,8 @@
 } 
 @mixin h2($color) {
   font-size: 8vw ;
-  line-height: 1.3;
-  letter-spacing: -.5px;
+  line-height: 1.2;
+  letter-spacing: -.7px;
   color: $color;
   @include media-min($ipad) {
     font-size: 4.5vw;
@@ -58,15 +58,14 @@
 
 @mixin h1($color) {
   font-size: 9.375vw;
-  line-height: 1.3;
-  letter-spacing: -.59px;
+  line-height: 1.2;
+  letter-spacing: -.7px;
   color: $color;
   @include media-min(480px) {
     font-size: 6.375vw;
   }
   @include media-min($ipad) {
     font-size: 5.5vw;
-    letter-spacing: -.5px;
   }
   @include media-min($desktop) {
     font-size: 4vw;
